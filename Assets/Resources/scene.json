@@ -1,0 +1,95 @@
+{
+  "type": "geometry",
+  "uid": 1,
+  "version": 1,
+  "base_length": 1,
+  "size": {
+    "x": 100,
+    "y": 100
+  },
+  "walls": {
+    "top": {
+      "uid": 2,
+      "type": "wall",
+      "version": 1,
+      "texture": "white dots",
+      "height": 5
+    },
+    "right": {
+      "uid": 7,
+      "type": "wall",
+      "version": 1,
+      "texture": "vstripes",
+      "height": 7
+    },
+    "bottom": {
+      "uid": 8,
+      "type": "wall",
+      "version": 1,
+      "texture": "hstripes",
+      "height": 9
+    },
+    "left": {
+      "uid": 9,
+      "type": "wall",
+      "version": 1,
+      "texture": "black dots",
+      "height": 5
+    }
+  },
+  "pillars": [
+    {
+      "type": "pillar",
+      "uid": 3,
+      "version": 1,
+      "texture": "white dots",
+      "height": 5,
+      "radius": 1,
+      "x": 50,
+      "y": 50,
+      "z": 1
+    },
+    {
+      "type": "pillar",
+      "uid": 4,
+      "version": 1,
+      "textures": [
+        "white dots",
+        "black dots"
+      ],
+      "height": 5,
+      "radius": 2,
+      "x": 50,
+      "y": 51,
+      "z": 1
+    },
+  ],
+  "reward": {
+    "pillars": [
+      {
+        "pillar_id": 4,
+        "sound": false
+      }
+    ],
+    "grid": [
+      {
+        "x": 7,
+        "y": 5,
+        "sound": false
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "sound": true
+      }
+    ]
+  },
+  "player": {
+    "x": 10,
+    "y": 10
+  },
+  "agent": {
+    "x": 4,
+    "y": 4
+  }
+}

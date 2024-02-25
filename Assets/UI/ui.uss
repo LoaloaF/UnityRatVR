@@ -1,0 +1,72 @@
+.ui-button {
+    opacity: 1;
+    -unity-font-style: bold;
+    height: 72px;
+    width: 350px;
+    justify-content: flex-start;
+    align-items: auto;
+    left: auto;
+    position: relative;
+    top: auto;
+    white-space: nowrap;
+    -unity-text-align: middle-center;
+    font-size: 25px;
+    -unity-text-outline-width: initial;
+    flex-direction: column;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgb(0, 112, 113);
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ui-button:hover {
+    background-color: rgba(0, 100, 101, 255);
+}
+
+.background {
+    background-color: rgb(0, 112, 113);
+    -unity-background-scale-mode: stretch-to-fill;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.content {
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: auto;
+    flex-shrink: 1;
+    background-color: rgb(250, 250, 250);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 25%;
+    height: 50%;
+}
+
+.unity-text-field-test {
+    background-color: rgb(255, 42, 42);
+}
+
+.unity-base-text-field-test {
+    background-color: rgba(135, 135, 135, 0.05);
+}
+
+.unity-base-field-test {
+    background-color: rgba(221, 221, 221, 255);
+}

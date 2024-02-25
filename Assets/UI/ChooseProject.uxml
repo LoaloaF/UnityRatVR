@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ui.uss?fileID=7433441132597879392&amp;guid=a4f53ee4335260d48aa64e206825dafa&amp;type=3#ui" />
+    <ui:VisualElement name="background" class="background">
+        <ui:VisualElement name="content" class="content" style="background-color: rgb(250, 250, 250);">
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" class="unity-base-text-field-test unity-text-field-test" style="background-color: rgba(111, 111, 111, 255);" />
+            <ui:ListView focusable="true" name="listProjects" header-title="tadf" class="unity-text-field-test" style="width: -20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

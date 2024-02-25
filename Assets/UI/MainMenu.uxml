@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ui.uss?fileID=7433441132597879392&amp;guid=a4f53ee4335260d48aa64e206825dafa&amp;type=3#ui" />
+    <ui:VisualElement name="Background" class="background">
+        <ui:VisualElement name="content" class="content">
+            <ui:Label text="RatVR" display-tooltip-when-elided="true" name="Title" style="-unity-text-align: middle-center; -unity-font-style: bold; font-size: 50px; height: 186px; color: rgba(0, 0, 0, 255); position: absolute; top: 20px;" />
+            <ui:VisualElement name="ButtonsMainpage" style="visibility: visible; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: upper-left; align-items: center; justify-content: center; flex-direction: column; bottom: 20px; position: absolute;">
+                <ui:Button text="Create new project" display-tooltip-when-elided="true" name="newProject" class="ui-button" style="justify-content: center; align-items: center; flex-grow: 0;" />
+                <ui:Button text="Open Existing Project" display-tooltip-when-elided="true" name="existingProject" class="ui-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
