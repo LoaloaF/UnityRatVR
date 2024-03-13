@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public ArduinoHandler myArduinoHandler;
     public logWriter mylogWriter;
     private int[] XYZvelInput = new int[3];
     private float rotY = 0f;
@@ -23,8 +22,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Tooltip("Weather to try to read the BallSensor, use WASD otherwise")]
     [SerializeField] bool enableBallInput = false;
+    CyclicPackagesSHMInterface ballVelSHMInterface;
 
-
+    void Start()
+    {
+        ballVelSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/ballvelocity_shmstruct.json");
+    }
 
     // Update is called once per frame
     void Update() {
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         MoveRat();
         RotateRat();
         LogBallSensor();
+        // checkReward();
         // LogPosition();
     }
 
@@ -42,6 +46,13 @@ public class PlayerMovement : MonoBehaviour
     //     List<string> logList = new List<string> {frameTimestamp, frameID, transform.position.x.ToString(), transform.position.z.ToString()};
     //     mylogWriter.write(string.Join(", ", logList));
     // }
+    // private void checkReward() {
+    //     float x = transform.position[0];
+    //     if (x < -3.5) {
+    //         mylogWriter.write("reward");
+        
+    //     }
+    // }
     private void LogBallSensor() {
         log = "frameTimestamp:" + DateTime.Now.ToString("HH.mm.ss.ffffff") + "_" +
                         "frameTimedelta:" + Time.deltaTime.ToString() + $"_frameID:{Time.frameCount:D6}" +
@@ -49,10 +60,34 @@ public class PlayerMovement : MonoBehaviour
         mylogWriter.write(log);
     }
 
+
+    public int[] GetBallXYZVelocities() 
+    {
+        int i = 0;
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+        int[] frameBallVel = new int[3];
+        int[] ballVel = new int[3];
+        while (true)
+        {
+            ballVel = ballVelSHMInterface.fastPopBallVelocity();
+            if (ballVel == null) break;
+
+            frameBallVel[0] += ballVel[0];
+            frameBallVel[1] += ballVel[1];
+            frameBallVel[2] += ballVel[2];
+            i++;
+        }
+        stopwatch.Stop();
+        Debug.Log($"Got {i} BVs in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
+        return frameBallVel;
+    }
+    
+
     // read input
     private int[] getInput() {
         if (enableBallInput) {
-            XYZvelInput = myArduinoHandler.GetBallXYZVelocities();
+            XYZvelInput = GetBallXYZVelocities();
         } else {
             XYZvelInput = getKeyboardInput();
         }

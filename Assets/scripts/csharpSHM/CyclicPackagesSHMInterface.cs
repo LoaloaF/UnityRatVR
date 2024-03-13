@@ -5,10 +5,8 @@ using Newtonsoft.Json;
 using System.Threading;
 using System.Collections.Generic;
 using System.IO; // For StreamReader and FileNotFoundException
-using UnityEngine;
 
-
-public class CyclicPackagesSHMInterface : MonoBehaviour
+public class CyclicPackagesSHMInterface
 {
     private MemoryMappedFile _memory;
     private MemoryMappedViewAccessor _accessor;
@@ -44,15 +42,24 @@ public class CyclicPackagesSHMInterface : MonoBehaviour
         }
         catch (FileNotFoundException ex)
         {
-            Debug.Log($"Error: Shared memory `{_shmName}` has not been created: {ex.Message}");
+            Log($"Error: Shared memory `{_shmName}` has not been created: {ex.Message}");
             // Handle the case where the shared memory file is not found
             // You can choose to throw an exception, log an error, or take any other appropriate action
             // System.Environment.Exit(1);
         }
         _accessor = _memory.CreateViewAccessor();
-        Debug.Log($"SHM interface created with JSON {shmStructureJsonFilename}");
+        Log($"SHM interface created with JSON {shmStructureJsonFilename}");
 
     }
+    public static void Log(string message)
+    {
+    #if UNITY_5_3_OR_NEWER
+        UnityEngine.Debug.Log(message);
+    #else
+        Console.WriteLine(message);
+    #endif
+    }
+
 
     public void Push(string item)
     {
@@ -63,55 +70,111 @@ public class CyclicPackagesSHMInterface : MonoBehaviour
             Array.Copy(encodedItem, byteEncodedArray, encodedItem.Length);
         }
 
-        NextWritePointer();
         long tempWPointer = _internalWritePointer != 0 ? _internalWritePointer : (_packageNBytes * _nPackages);
         for (int i = 0; i < _packageNBytes; i++)
         {
             _accessor.Write(tempWPointer - _packageNBytes + i, byteEncodedArray[i]);
         }
+        NextWritePointer();
     }
 
-    public string? PopItem()
+    public int[]? fastPopBallVelocity()
     {
+        int[] attemptPackageRead(long tempRPointer) {
+            byte[] ballVelPckg = new byte[_packageNBytes];
+            _accessor.ReadArray(tempRPointer - _packageNBytes, ballVelPckg, 0, 
+                                _packageNBytes);
+            
+            // if ballVelPckg is empty, then return null
+            if (ballVelPckg[0] == 0) {
+                Log("Read empty package:, trying again");
+                return attemptPackageRead(tempRPointer);
+            }
+
+            bool ReadInProggress = false;
+            byte[] ballVelocity = new byte[20];
+            int bvIdx = 0;
+            foreach (byte byte_i in ballVelPckg) {
+                // start reading the package when the first 'V' is found
+                if (byte_i == (byte)'V') ReadInProggress = true;
+                
+                // don't read immidiately only after after 'V' and ':' are passed
+                if (ReadInProggress && (byte_i != (byte)'V') && (byte_i != (byte)':')) {
+                    // when a , is found, then raw yaw and pitch have been read
+                    if (byte_i == (byte)',') break;
+                    
+                    ballVelocity[bvIdx] = byte_i;
+                    // try {
+                    // }
+                    // catch (IndexOutOfRangeException ex) {
+                    //     Log($"Error in SHM - Could not find `,`:");
+                    //     Log(Encoding.UTF8.GetString(ballVelPckg));
+                    //     Log("Trying again\n");
+                    //     return attemptPackageRead(tempRPointer);
+                    // }
+                    bvIdx++;
+                }
+            }
+
+            string[] bvStr = new string[3];
+            bvStr = Encoding.UTF8.GetString(ballVelocity).Split("_");
+            int[] bvInt = new int[3];
+            for (int i = 0; i < 3; i++) {
+                bvInt[i] = int.Parse(bvStr[i]);
+            }
+            return bvInt;
+            // try {
+            //     bvStr = Encoding.UTF8.GetString(ballVelocity).Split("_");
+            //     int[] bvInt = new int[3];
+            //     for (int i = 0; i < 3; i++) {
+            //         bvInt[i] = int.Parse(bvStr[i]);
+            //     }
+            //     return bvInt;
+            // }
+            // catch (Exception ex) {
+            //     Log($"Error in SHM - 3-int parse failed:");
+            //     Log(string.Join("_", bvStr));
+            //     Log("Trying again\n");
+            //     return attemptPackageRead(tempRPointer);
+            // }
+        }
+
 
     long readAddr = NextReadPointer();
-    // Debug.Log(readAddr);
     if (readAddr != -1)
     {
-        // long tempRPointer = readAddr ?? (_packageNBytes * _nPackages);
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
         long tempRPointer = readAddr != 0 ? readAddr : (_packageNBytes * _nPackages);
-        // Debug.Log($"readAddr: {readAddr}, tempRPointer:{tempRPointer}");
-        byte[] tmpVal = new byte[_packageNBytes];
-        for (int i = 0; i < _packageNBytes; i++)
-        {
-            tmpVal[i] = _accessor.ReadByte(tempRPointer - _packageNBytes + i);
-        }
-        return Encoding.UTF8.GetString(tmpVal);
+        int[] bvInt = attemptPackageRead(tempRPointer);
+        
+        stopwatch.Stop();
+        // Log($"Got {string.Join(",", bvInt)} in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+        return bvInt;
     }
-    // Debug.Log("Nullllll");
     return null;
-    }
+}
 
-
+    // very slow....
     public Dictionary<string, object>? PopExtractedItem()
     {
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
-    long readAddr = NextReadPointer();
-    // Debug.Log(readAddr);
-    if (readAddr != -1)
-    {
-        // long tempRPointer = readAddr ?? (_packageNBytes * _nPackages);
-        long tempRPointer = readAddr != 0 ? readAddr : (_packageNBytes * _nPackages);
-        // Debug.Log($"readAddr: {readAddr}, tempRPointer:{tempRPointer}");
-        byte[] tmpVal = new byte[_packageNBytes];
-        for (int i = 0; i < _packageNBytes; i++)
+        long readAddr = NextReadPointer();
+        if (readAddr != -1)
         {
-            tmpVal[i] = _accessor.ReadByte(tempRPointer - _packageNBytes + i);
+            long tempRPointer = readAddr != 0 ? readAddr : (_packageNBytes * _nPackages);
+            byte[] tmpVal = new byte[_packageNBytes];
+            _accessor.ReadArray(tempRPointer - _packageNBytes, tmpVal, 0, _packageNBytes);
+            var result = ExtractPacketData(tmpVal);
+
+            stopwatch.Stop();
+            Log($"PopExtractedItem method executed in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+            return result;
         }
-        return ExtractPacketData(tmpVal);
-    }
-    // Debug.Log("Nullllll");
-    return null;
+
+        stopwatch.Stop();
+        Log($"PopExtractedItem method executed in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+        return null;
     }
 
 
@@ -127,7 +190,7 @@ public class CyclicPackagesSHMInterface : MonoBehaviour
         }
         catch (FileNotFoundException ex)
         {
-            Debug.Log($"Error: Shared memory structure JSON not found: {ex.Message}");
+            Log($"Error: Shared memory structure JSON not found: {ex.Message}");
             // Handle the case where the shared memory file is not found
             // You can choose to throw an exception, log an error, or take any other appropriate action
             // System.Environment.Exit(1);
@@ -145,7 +208,7 @@ public class CyclicPackagesSHMInterface : MonoBehaviour
             byte[] buffer = new byte[_writePntrNBytes];
             _accessor.ReadArray(_totalNBytes - _writePntrNBytes, buffer, 0, _writePntrNBytes);
             Array.Reverse(buffer);  // Convert from little-endian to big-endian
-            // Debug.Log($"WritePointer: {BitConverter.ToInt64(buffer, 0)}");
+            // Log($"WritePointer: {BitConverter.ToInt64(buffer, 0)}");
             return BitConverter.ToInt64(buffer, 0);
         }
         set
@@ -166,9 +229,12 @@ public class CyclicPackagesSHMInterface : MonoBehaviour
 
     private long NextReadPointer()
     {
-        if (_readPointer == StoredWritePointer)
+        // in C#, let the readpointer not become equal to the writepointer,
+        // it is foreced to be always one package before for stability
+        // Perhaps in C# SHM read is possible while other process writes
+        // In Python, this problem doesn't exist 
+        if (_readPointer == StoredWritePointer-_packageNBytes)
         {
-            // Debug.Log("read pointer == write pointer");
             return -1;
         }
 
@@ -208,13 +274,11 @@ public class CyclicPackagesSHMInterface : MonoBehaviour
             pack = WrapStrValues(pack, key: ",V:");
         }
         // wrap the name value in " " marks
-        pack = WrapStrValues(pack, key: "{N:");
+        pack = pack.Substring(0, pack.IndexOf("{N:") + 3) + "\"" + pack.Substring(pack.IndexOf("{N:") + 3);
+        pack = pack.Substring(0, pack.IndexOf(",")) + "\"" + pack.Substring(pack.IndexOf(","));
 
         // insert quotes after { and , and before : to wrap keys in quotes
         string jsonPack = pack.Replace("{", "{\"").Replace(":", "\":").Replace(",", ",\"");
-
-        // Logger L = new Logger();
-        // L.LogDebug(jsonPack);
 
         try
         {
@@ -233,3 +297,4 @@ public class CyclicPackagesSHMInterface : MonoBehaviour
         }
     }
 }
+

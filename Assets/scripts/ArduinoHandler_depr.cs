@@ -1,151 +1,86 @@
 // The script interfacing the Arduino with 3 ball rotation sensors to Unity scene
-// Author: Eminhan Ozil
+// Author: Eminhan Ozil & Simon Steffens
 // ETH Zurich
-// 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 using System;
 
-public class ArduinoHandler_depr : MonoBehaviour
-    //public static class ArduinoHandler
-    {
+public class ArduinoHandler : MonoBehaviour {
         [Tooltip("Arduino Serial Port name as a string")]
-        public string PortName = "COM7";
+        [SerializeField] string PortName = "COM7";
 
         [Tooltip("Serial port baud rate")]
-        public int BaudRate = 38400;
-
-        [Tooltip("Sensitivity scaler for the ball readout, higher the value, less sensitive it is")]
-        public int VelocityScaler = 250;
-
-        [Tooltip("Sensitivity scaler for the ball readout, higher the value, less sensitive it is")]
-        public float HorizontalLookScaler = 350;
-
+        [SerializeField] int BaudRate = 38400;
 
         SerialPort stream = new SerialPort();
-        string serialLine;
-        float lookHorz = 0;
-        int velX = 0;
-        int velY = 0;
-        int[] vel = new int[2];
+        private string serialLineStr;
+        private string[] serialLineArr;
+        private int[] velXYZ = new int[3];
 
-        // when the script is first uploaded and called
-        void Start() 
-        {
+        void Start() {
+            setPortParameters();
+            openPort();
+        }
+
+        private void setPortParameters() {
             stream.PortName = PortName;
             stream.BaudRate = BaudRate;
             stream.ReadTimeout = 10;
+            stream.WriteTimeout = 10;
             stream.DtrEnable = true;
             stream.RtsEnable = true;
-            stream.Open();
-            Debug.Log("Port opened");
         }
-        // Start is called before the first frame update
-        //void Start()
-        //{
-        
-        //}
 
-        // Update is called once per frame
-        //void Update()
-        //{
-        
-        //}
-        //public IEnumerator AsynchronousReadFromArduino(Action<string> callback, Action fail = null, float timeout.PositiveInfinity) 
-        //{
-        //    DateTime initialTime = DateTime.Now;
-        //    DateTime nowTime;
-        //    TimeSpan diff = default(TimeSpan);
-
-        //    string dataString = null;
-
-        //    while (diff.Milliseconds < timeout) {
-        //        try {
-        //            dataString = stream.ReadLine();
-        //        }
-        //        catch (TimeoutException) {
-        //            dataString.null;
-        //        }
-
-        //        if (dataString != null) { 
-        //            callback(dataString);
-        //            yield break;
-        //        }   else {
-        //            yield return null;
-        //            }
-            
-        //        nowTime = DateTime.Now;
-        //        diff = nowTime - initialTime;
-        //    } 
-            
-        //    if (fail != null)
-        //        fail();
-        //    yield return null;
-        //}
-
-        public string ReadLineArduino()
-        {
-            stream.DiscardInBuffer();
-            stream.DiscardOutBuffer();
-            string nullString = "0_0_0";
-            try
-            {
-                return stream.ReadLine();
-            }
-            catch (TimeoutException)
-            {
-                return nullString;
+        private void openPort() {
+            try {
+                stream.Open();
+                Debug.Log("Port opened");
+                stream.DiscardInBuffer();
+                stream.DiscardOutBuffer();
+        }
+        catch (Exception e) {
+                Debug.LogError(String.Format("Could not open Port  `{0}`:\n{1}", stream.PortName, e));
             }
         }
 
-        public int[] GetBallVelocity()
-        {
-            serialLine = this.ReadLineArduino();
-            //Debug.Log(serialLine);
-            velX = int.Parse(serialLine.Split('_')[1]);
-            velX = velX / VelocityScaler;
-            vel[0] = velX;
-
-            velY = int.Parse(serialLine.Split('_')[0]);
-            velY = velY/ VelocityScaler;
-            vel[1] = velY;
-
-            return vel;
+        public void WriteLineArduino(string msg = "REWARD_MESSAGE") {
+            stream.WriteLine(msg);
         }
 
-        public float HorizontalLook()
-        {
+        public string ReadLineArduino() {
             //stream.DiscardInBuffer();
             //stream.DiscardOutBuffer();
-
-            serialLine = this.ReadLineArduino();
-            //Debug.Log(serialLine);
-            lookHorz = float.Parse(serialLine.Split('_')[2]);
-            lookHorz = lookHorz / HorizontalLookScaler;
-            //lookHorz = 1;
-            return lookHorz;
+            try {
+                return stream.ReadLine();
+            }
+            catch (TimeoutException e) {
+                return "0_0_0";
+            }
+            // catch (OverflowException e) {
+            //     return "0_0_0";
+            // }
         }
-        //public static int GetBallVelocityX() 
-        //{
-        //    serialLine = this.ReadLineArduino();
-        //    velX = int.Parse(serialLine.Split('_')[1]);
-        //    velX = velX / VelocityScaler;
-        //    //Debug.Log(velX);
-        //    return velX;
-        //}
-        //public int GetBallVelocityY()
-        //{
-        //    serialLine = this.ReadLineArduino();
-        //    velX = int.Parse(serialLine.Split('_')[0]);
-        //    velX = velX / VelocityScaler;
-        //    //Debug.Log(velX);
-        //    return velX;
-        //}
 
-        void onDestroy()
-        {
+        public int[] GetBallXYZVelocities() {
+            serialLineStr = this.ReadLineArduino();
+            //Debug.Log("serialLineStr: " + serialLineStr);
+            serialLineArr = serialLineStr.Split('_');
+
+            for (int i = 0; i < 3; i++) {
+                try {
+                    velXYZ[i] = int.Parse(serialLineArr[i]);
+                } catch (Exception e)  {
+                    velXYZ[i] = -1;
+                }   
+            }
+            return velXYZ;
+        }
+
+        private void OnApplicationQuit() {
             stream.Close();
+            Debug.Log("Steam closed");
         }
 }

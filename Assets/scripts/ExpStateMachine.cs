@@ -7,7 +7,6 @@ public class ExpStateMachine : MonoBehaviour
 {
     public GameObject player;
     public CharacterController playerController;
-    public ArduinoHandler myArduinoHandler;
 
     // public AudioSource audioSrc;
 
@@ -20,11 +19,12 @@ public class ExpStateMachine : MonoBehaviour
 
     private bool forwardOnly = false;
     public int rewardVelThreshold = 30;
+    CyclicPackagesSHMInterface portInputSHMInterface;
 
     // Start is called before the first frame update
     void Start()
     {
-        // audioSrc = GetComponent<AudioSource>();
+        portInputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/portentainput_shmstruct.json");
     }
 
     // Update is called once per frame
@@ -54,7 +54,9 @@ public class ExpStateMachine : MonoBehaviour
         if (toCheckVelSum > rewardVelThreshold && deltaTimeLastReward > MinInterRewardInterval) {
             deltaTimeLastReward = 0;
             // Debug.Log("REWARD!!");
-            myArduinoHandler.WriteLineArduino("Y4,40,1,0");
+            Debug.Log("Reward");
+            portInputSHMInterface.Push($"R100,100");
+
             // audioSrc.Play();
         } else {
             deltaTimeLastReward += Time.deltaTime;

@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1180528854}
   playerController: {fileID: 1180528855}
-  myArduinoHandler: {fileID: 1180528858}
+  myArduinoHandler: {fileID: 0}
   MinInterRewardInterval: 2
   rewardVelThreshold: 10
 --- !u!4 &763219762
@@ -2824,12 +2824,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1180528856}
   - component: {fileID: 1180528855}
-  - component: {fileID: 1180528858}
   - component: {fileID: 1180528859}
   - component: {fileID: 1180528861}
   - component: {fileID: 1180528862}
-  - component: {fileID: 1180528864}
   - component: {fileID: 1180528863}
+  - component: {fileID: 1180528864}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2883,20 +2882,6 @@ Transform:
   - {fileID: 763219762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1180528858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180528854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71aa2d47a38fdea52984d247fcd4b87a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PortName: COM3
-  BaudRate: 38400
 --- !u!114 &1180528859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,7 +2895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1180528855}
-  myArduinoHandler: {fileID: 1180528858}
   mylogWriter: {fileID: 1180528862}
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
@@ -2968,7 +2952,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1180528854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbcf3290cfc259487a27543fb78c364b, type: 3}
+  m_Script: {fileID: 11500000, guid: bb0cd408bd41eb8f8898cc120ea606c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1236976563 stripped
