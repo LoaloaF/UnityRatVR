@@ -110,8 +110,8 @@ public class AgentManager : MonoBehaviour
         if ((agent.remainingDistance < 0.3 && !agent.pathPending) || rand.Next(2000)==6)
         {
             Debug.Log("New random destination for agent");
-            GameObject newGoal = experimentManager.GetComponent<PillarManager>().GetRandomPillar();
-            agent.SetDestination(newGoal.transform.position-Vector3.up * newGoal.transform.position.y);
+            // GameObject newGoal = experimentManager.GetComponent<PillarManager>().GetRandomPillar();
+            // agent.SetDestination(newGoal.transform.position-Vector3.up * newGoal.transform.position.y);
             
             agentHasGoal = true;
         }
@@ -139,9 +139,8 @@ public class AgentManager : MonoBehaviour
             
             if ((agent.remainingDistance < 0.2 && !agent.pathPending))
             {
-                GameObject newGoal = experimentManager.GetComponent<PillarManager>().ActiveCheckpointPillar.gameObject;
-                agent.SetDestination(newGoal.transform.position - Vector3.up * newGoal.transform.position.y);
-
+                // GameObject newGoal = experimentManager.GetComponent<PillarManager>().ActiveCheckpointPillar.gameObject;
+                // agent.SetDestination(newGoal.transform.position - Vector3.up * newGoal.transform.position.y);
                 agentHasGoal = true;
             }
 

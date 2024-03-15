@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public logWriter mylogWriter;
     private int[] XYZvelInput = new int[3];
     private float rotY = 0f;
 
@@ -32,34 +31,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update() {
         XYZvelInput = getInput();
-        LogBallSensor();
         MoveRat();
         RotateRat();
-        LogBallSensor();
-        // checkReward();
-        // LogPosition();
     }
-
-    // private void LogPosition() {
-    //     string frameTimestamp = DateTime.Now.ToString("HH.mm.ss.ffffff");
-    //     string frameID = $"{Time.frameCount:D6}";
-    //     List<string> logList = new List<string> {frameTimestamp, frameID, transform.position.x.ToString(), transform.position.z.ToString()};
-    //     mylogWriter.write(string.Join(", ", logList));
-    // }
-    // private void checkReward() {
-    //     float x = transform.position[0];
-    //     if (x < -3.5) {
-    //         mylogWriter.write("reward");
-        
-    //     }
-    // }
-    private void LogBallSensor() {
-        log = "frameTimestamp:" + DateTime.Now.ToString("HH.mm.ss.ffffff") + "_" +
-                        "frameTimedelta:" + Time.deltaTime.ToString() + $"_frameID:{Time.frameCount:D6}" +
-                        $"_ballX:{XYZvelInput[0],4:D4}" + $"_ballY:{XYZvelInput[1],4:D4}" + $"_ballZ:{XYZvelInput[2],4:D4}";
-        mylogWriter.write(log);
-    }
-
 
     public int[] GetBallXYZVelocities() 
     {
@@ -87,11 +61,14 @@ public class PlayerMovement : MonoBehaviour
     // read input
     private int[] getInput() {
         if (enableBallInput) {
-            XYZvelInput = GetBallXYZVelocities();
+            if (!(ballVelSHMInterface == null)) {
+                XYZvelInput = GetBallXYZVelocities();
+            } else {
+                Debug.Log("SHM not linked. Can't read ball velocity");
+            }
         } else {
             XYZvelInput = getKeyboardInput();
         }
-        // Debug.Log("XYZvelInput: "+ XYZvelInput[0] +"_"+ XYZvelInput[1] +"_"+ XYZvelInput[2]);
         return XYZvelInput;
     }
 

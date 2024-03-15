@@ -10,8 +10,9 @@ namespace Experiment.ExperimentFSM
     {
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            var pillarManager = stateMachine.GetComponent<PillarManager>();
-            return pillarManager.CheckPlayerPillar();
+            // var pillarManager = stateMachine.GetComponent<PillarManager>();
+            // return pillarManager.CheckPlayerPillar();
+            return false;
         }
     }
 }

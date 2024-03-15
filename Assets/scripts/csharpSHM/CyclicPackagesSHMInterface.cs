@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Threading;
 using System.Collections.Generic;
 using System.IO; // For StreamReader and FileNotFoundException
+using UnityEngine; // For StreamReader and FileNotFoundException
 
 public class CyclicPackagesSHMInterface
 {
@@ -21,6 +22,11 @@ public class CyclicPackagesSHMInterface
 
     public CyclicPackagesSHMInterface(string shmStructureJsonFilename)
     {
+        if (!File.Exists(shmStructureJsonFilename)) {
+            string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFilename}";
+            throw new Exception(errorMessage);
+        }
+
         var shmStructure = LoadShmStructureJson(shmStructureJsonFilename);
         _shmName = shmStructure["shm_name"].ToString();
         _totalNBytes = (long)shmStructure["total_nbytes"];
@@ -29,24 +35,15 @@ public class CyclicPackagesSHMInterface
         _nPackages = (int)shmStructure["metadata"]["npackages"];
         _packageNBytes = (int)shmStructure["metadata"]["package_nbytes"];
 
-        try
+        if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
         {
-            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
-            {
-                _memory = MemoryMappedFile.CreateFromFile($"/dev/shm/{_shmName}", System.IO.FileMode.Open);
-            }
-            else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
-            {
-                _memory = MemoryMappedFile.OpenExisting(_shmName);
-            }
+            _memory = MemoryMappedFile.CreateFromFile($"/dev/shm/{_shmName}", System.IO.FileMode.Open);
         }
-        catch (FileNotFoundException ex)
+        else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
         {
-            Log($"Error: Shared memory `{_shmName}` has not been created: {ex.Message}");
-            // Handle the case where the shared memory file is not found
-            // You can choose to throw an exception, log an error, or take any other appropriate action
-            // System.Environment.Exit(1);
+            _memory = MemoryMappedFile.OpenExisting(_shmName);
         }
+            
         _accessor = _memory.CreateViewAccessor();
         Log($"SHM interface created with JSON {shmStructureJsonFilename}");
 

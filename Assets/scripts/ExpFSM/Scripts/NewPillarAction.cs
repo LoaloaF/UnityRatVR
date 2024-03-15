@@ -9,9 +9,8 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            var pillarManager = stateMachine.GetComponent<PillarManager>();
-
-            pillarManager.CreateNewCheckpoint();
+            // var pillarManager = stateMachine.GetComponent<PillarManager>();
+            // pillarManager.CreateNewCheckpoint();
 
         }
     }
