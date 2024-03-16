@@ -23,6 +23,7 @@ namespace FSM
         private void Update()
         {
             // Exectures all actions attached to the current state
+            Debug.Log(CurrentState);
             CurrentState.Execute(this);
         }
 
