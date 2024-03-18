@@ -2628,10 +2628,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1180528855}
-  ballYNormToCentimeter: 0.01387
-  ballXNormToCentimeter: 0.01405
-  ballZNormToCentimeter: 0.0135
-  enableBallInput: 0
+  firstPackID: 0
+  lastPackID: 0
+  ballYNormToCentimeter: 0.0001387
+  ballXNormToCentimeter: 0.0001405
+  ballZNormToCentimeter: 0.000135
+  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2639,12 +2641,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180528854}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16da666e6f1274d48a8728c143a6c5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fps: -1
+  fps: 15
 --- !u!208 &1180528863
 NavMeshObstacle:
   m_ObjectHideFlags: 0
