@@ -67,48 +67,57 @@ public class CyclicPackagesSHMInterface
             Array.Copy(encodedItem, byteEncodedArray, encodedItem.Length);
         }
 
+        NextInternalWritePointer();
         long tempWPointer = _internalWritePointer != 0 ? _internalWritePointer : (_packageNBytes * _nPackages);
         for (int i = 0; i < _packageNBytes; i++)
         {
             _accessor.Write(tempWPointer - _packageNBytes + i, byteEncodedArray[i]);
         }
-        NextWritePointer();
+        // NextWritePointer();
+        UpdateInternalWritePointer();
     }
 
-    public int[]? fastPopBallVelocity()
+    public (int[],int) fastPopBallVelocity()
     {
-        int[] attemptPackageRead(long tempRPointer) {
+        (int[], int) attemptPackageRead(long tempRPointer) {
             byte[] ballVelPckg = new byte[_packageNBytes];
             _accessor.ReadArray(tempRPointer - _packageNBytes, ballVelPckg, 0, 
                                 _packageNBytes);
             
             // if ballVelPckg is empty, then return null
-            if (ballVelPckg[0] == 0) {
-                Log("Read empty package:, trying again");
-                return attemptPackageRead(tempRPointer);
-            }
+            // if (ballVelPckg[0] == 0) {
+            //     Log("Read empty package:, trying again");
+            //     return attemptPackageRead(tempRPointer);
+            // }
 
-            bool ReadInProggress = false;
+            bool ReadBallVelInProggress = false;
+            bool ReadIDInProggress = false;
             byte[] ballVelocity = new byte[20];
+            byte[] packageID = new byte[10];
             int bvIdx = 0;
             foreach (byte byte_i in ballVelPckg) {
+                if (byte_i == (byte)'D') ReadIDInProggress = true;
+
+                if (ReadIDInProggress && (byte_i != (byte)'D') && (byte_i != (byte)':')) {
+                    // when a , is found, then the ID has been read
+                    if (byte_i == (byte)',') {
+                        ReadIDInProggress = false;
+                        bvIdx = 0;
+                    } else {
+                        packageID[bvIdx] = byte_i;
+                        bvIdx++;
+                    }
+                }
+
                 // start reading the package when the first 'V' is found
-                if (byte_i == (byte)'V') ReadInProggress = true;
+                if (byte_i == (byte)'V') ReadBallVelInProggress = true;
                 
                 // don't read immidiately only after after 'V' and ':' are passed
-                if (ReadInProggress && (byte_i != (byte)'V') && (byte_i != (byte)':')) {
+                if (ReadBallVelInProggress && (byte_i != (byte)'V') && (byte_i != (byte)':')) {
                     // when a , is found, then raw yaw and pitch have been read
                     if (byte_i == (byte)',') break;
                     
                     ballVelocity[bvIdx] = byte_i;
-                    // try {
-                    // }
-                    // catch (IndexOutOfRangeException ex) {
-                    //     Log($"Error in SHM - Could not find `,`:");
-                    //     Log(Encoding.UTF8.GetString(ballVelPckg));
-                    //     Log("Trying again\n");
-                    //     return attemptPackageRead(tempRPointer);
-                    // }
                     bvIdx++;
                 }
             }
@@ -119,21 +128,9 @@ public class CyclicPackagesSHMInterface
             for (int i = 0; i < 3; i++) {
                 bvInt[i] = int.Parse(bvStr[i]);
             }
-            return bvInt;
-            // try {
-            //     bvStr = Encoding.UTF8.GetString(ballVelocity).Split("_");
-            //     int[] bvInt = new int[3];
-            //     for (int i = 0; i < 3; i++) {
-            //         bvInt[i] = int.Parse(bvStr[i]);
-            //     }
-            //     return bvInt;
-            // }
-            // catch (Exception ex) {
-            //     Log($"Error in SHM - 3-int parse failed:");
-            //     Log(string.Join("_", bvStr));
-            //     Log("Trying again\n");
-            //     return attemptPackageRead(tempRPointer);
-            // }
+
+            int packageIDInt = int.Parse(Encoding.UTF8.GetString(packageID));
+            return (bvInt, packageIDInt);
         }
 
 
@@ -142,13 +139,15 @@ public class CyclicPackagesSHMInterface
     {
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
         long tempRPointer = readAddr != 0 ? readAddr : (_packageNBytes * _nPackages);
-        int[] bvInt = attemptPackageRead(tempRPointer);
+        int[] bvInt;
+        int packageID;
+        (bvInt, packageID) = attemptPackageRead(tempRPointer);
         
         stopwatch.Stop();
         // Log($"Got {string.Join(",", bvInt)} in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
-        return bvInt;
+        return (bvInt, packageID);
     }
-    return null;
+    return (new int[3], -1);
 }
 
     // very slow....
@@ -216,13 +215,21 @@ public class CyclicPackagesSHMInterface
         }
     }
 
-    private void NextWritePointer()
-    {
+    private void NextInternalWritePointer() {
         _internalWritePointer += _packageNBytes;
         _internalWritePointer %= _nPackages * _packageNBytes;
-
+    }
+    private void UpdateInternalWritePointer() {
         StoredWritePointer = _internalWritePointer;
     }
+
+    // private void NextWritePointer()
+    // {
+    //     _internalWritePointer += _packageNBytes;
+    //     _internalWritePointer %= _nPackages * _packageNBytes;
+
+    //     StoredWritePointer = _internalWritePointer;
+    // }
 
     private long NextReadPointer()
     {

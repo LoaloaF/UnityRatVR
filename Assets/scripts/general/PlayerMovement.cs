@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public int firstPackID;
+    public int lastPackID;
     private int[] XYZvelInput = new int[3];
     private float rotY = 0f;
 
@@ -42,16 +44,19 @@ public class PlayerMovement : MonoBehaviour
 
         int[] frameBallVel = new int[3];
         int[] ballVel = new int[3];
+        int ballVelPackID;
         while (true)
         {
-            ballVel = ballVelSHMInterface.fastPopBallVelocity();
-            if (ballVel == null) break;
+            (ballVel, ballVelPackID) = ballVelSHMInterface.fastPopBallVelocity();
+            if (ballVelPackID == -1) break;
+            if (i == 0) firstPackID = ballVelPackID;
 
             frameBallVel[0] += ballVel[0];
             frameBallVel[1] += ballVel[1];
             frameBallVel[2] += ballVel[2];
             i++;
         }
+        lastPackID = ballVelPackID;
         stopwatch.Stop();
         Debug.Log($"Got {i} BVs in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
         return frameBallVel;

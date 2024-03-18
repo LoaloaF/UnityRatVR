@@ -7,11 +7,11 @@ using System.IO; // For StreamReader and FileNotFoundException
 
 public class UnityTest_CyclicPackagesSHMInterface : MonoBehaviour
 {
-    CyclicPackagesSHMInterface interfaceObj;
+    CyclicPackagesSHMInterface ballVelSHMInterface;
 
     void Start()
     {
-        interfaceObj = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/ballvelocity_shmstruct.json");
+        ballVelSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/ballvelocity_shmstruct.json");
     }
 
     // Update is called once per frame
@@ -22,10 +22,11 @@ public class UnityTest_CyclicPackagesSHMInterface : MonoBehaviour
 
         int[] frameBallVel = new int[3];
         int[] ballVel = new int[3];
+        int ballVelPackID;
         while (true)
         {
-            ballVel = interfaceObj.fastPopBallVelocity();
-            if (ballVel == null) break;
+            (ballVel, ballVelPackID) = ballVelSHMInterface.fastPopBallVelocity();
+            if (ballVelPackID == -1) break;
 
             frameBallVel[0] += ballVel[0];
             frameBallVel[1] += ballVel[1];
