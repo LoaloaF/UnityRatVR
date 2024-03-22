@@ -24,17 +24,21 @@ public class UnityTest_CyclicPackagesSHMInterface : MonoBehaviour
         int[] ballVel = new int[3];
         int ballVelPackID;
         while (true)
-        {
-            (ballVel, ballVelPackID) = ballVelSHMInterface.fastPopBallVelocity();
-            if (ballVelPackID == -1) break;
+        // {
+        //     (ballVel, ballVelPackID) = ballVelSHMInterface.fastPopBallVelocity();
+        //     if (ballVelPackID == -1) break;
 
-            frameBallVel[0] += ballVel[0];
-            frameBallVel[1] += ballVel[1];
-            frameBallVel[2] += ballVel[2];
-            i++;
+        //     frameBallVel[0] += ballVel[0];
+        //     frameBallVel[1] += ballVel[1];
+        //     frameBallVel[2] += ballVel[2];
+        //     i++;
+        // }
+
+        {
+            // var output = ballVelSHMInterface.PopExtractedItem();
+            Debug.Log("output");
         }
         stopwatch.Stop();
         Debug.Log($"Got {i} BVs in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
     }
 }
-        

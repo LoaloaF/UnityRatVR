@@ -68,13 +68,34 @@ public class CyclicPackagesSHMInterface
         }
 
         NextInternalWritePointer();
+        // Debug.Log($"Pushing smth, SHMWritePointer={StoredWritePointer}, InternalWritePointer={_internalWritePointer}");
         long tempWPointer = _internalWritePointer != 0 ? _internalWritePointer : (_packageNBytes * _nPackages);
         for (int i = 0; i < _packageNBytes; i++)
         {
             _accessor.Write(tempWPointer - _packageNBytes + i, byteEncodedArray[i]);
         }
-        // NextWritePointer();
         UpdateInternalWritePointer();
+        // Debug.Log($"Done pushing, SHMWritePointer={StoredWritePointer}");
+    }
+
+    public string? Popitem()
+    {
+        long readAddr = NextReadPointer();
+        if (readAddr != -1)
+        {
+            // Debug.Log($"Popping smth, ReadAddr={readAddr}, SHMWritePointer={StoredWritePointer}");
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            long tempRPointer = readAddr != 0 ? readAddr : (_packageNBytes * _nPackages);
+            byte[] ballVelPckg = new byte[_packageNBytes];
+            string bvStr;
+            _accessor.ReadArray(tempRPointer - _packageNBytes, ballVelPckg, 0, 
+                                _packageNBytes);
+            bvStr = Encoding.UTF8.GetString(ballVelPckg);
+            stopwatch.Stop();
+            // Log($"Got {bvStr} in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+            return bvStr;
+        }
+        return null;
     }
 
     public (int[],int) fastPopBallVelocity()
@@ -84,12 +105,6 @@ public class CyclicPackagesSHMInterface
             _accessor.ReadArray(tempRPointer - _packageNBytes, ballVelPckg, 0, 
                                 _packageNBytes);
             
-            // if ballVelPckg is empty, then return null
-            // if (ballVelPckg[0] == 0) {
-            //     Log("Read empty package:, trying again");
-            //     return attemptPackageRead(tempRPointer);
-            // }
-
             bool ReadBallVelInProggress = false;
             bool ReadIDInProggress = false;
             byte[] ballVelocity = new byte[20];
@@ -148,7 +163,7 @@ public class CyclicPackagesSHMInterface
         return (bvInt, packageID);
     }
     return (new int[3], -1);
-}
+    }
 
     // very slow....
     public Dictionary<string, object>? PopExtractedItem()
@@ -187,9 +202,6 @@ public class CyclicPackagesSHMInterface
         catch (FileNotFoundException ex)
         {
             Log($"Error: Shared memory structure JSON not found: {ex.Message}");
-            // Handle the case where the shared memory file is not found
-            // You can choose to throw an exception, log an error, or take any other appropriate action
-            // System.Environment.Exit(1);
             return null;
         }
 
@@ -223,21 +235,17 @@ public class CyclicPackagesSHMInterface
         StoredWritePointer = _internalWritePointer;
     }
 
-    // private void NextWritePointer()
-    // {
-    //     _internalWritePointer += _packageNBytes;
-    //     _internalWritePointer %= _nPackages * _packageNBytes;
+    private void NextWritePointer()
+    {
+        _internalWritePointer += _packageNBytes;
+        _internalWritePointer %= _nPackages * _packageNBytes;
 
-    //     StoredWritePointer = _internalWritePointer;
-    // }
+        StoredWritePointer = _internalWritePointer;
+    }
 
     private long NextReadPointer()
     {
-        // in C#, let the readpointer not become equal to the writepointer,
-        // it is foreced to be always one package before for stability
-        // Perhaps in C# SHM read is possible while other process writes
-        // In Python, this problem doesn't exist 
-        if (_readPointer == StoredWritePointer-_packageNBytes)
+        if (_readPointer == StoredWritePointer)
         {
             return -1;
         }

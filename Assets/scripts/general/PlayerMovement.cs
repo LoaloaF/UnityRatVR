@@ -48,17 +48,18 @@ public class PlayerMovement : MonoBehaviour
         while (true)
         {
             (ballVel, ballVelPackID) = ballVelSHMInterface.fastPopBallVelocity();
+
             if (ballVelPackID == -1) break;
             if (i == 0) firstPackID = ballVelPackID;
+            lastPackID = ballVelPackID;
 
             frameBallVel[0] += ballVel[0];
             frameBallVel[1] += ballVel[1];
             frameBallVel[2] += ballVel[2];
             i++;
         }
-        lastPackID = ballVelPackID;
         stopwatch.Stop();
-        Debug.Log($"Got {i} BVs in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
+        Debug.Log($"Got {i} BVs ({firstPackID}-{lastPackID}) in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
         return frameBallVel;
     }
     

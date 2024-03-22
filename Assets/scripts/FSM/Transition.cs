@@ -8,6 +8,7 @@ namespace FSM
         public Decision Decision;
         public BaseState TrueState;
         public BaseState FalseState;
+        private int tmpStateID;
 
         public void Execute(BaseStateMachine stateMachine)
         {

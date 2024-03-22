@@ -8,6 +8,7 @@ namespace FSM
     {
         public List<FSMAction> Action = new List<FSMAction>();
         public List<Transition> Transitions = new List<Transition>();
+        public int stateID = -1;
 
         public override void Execute(BaseStateMachine machine)
         {
