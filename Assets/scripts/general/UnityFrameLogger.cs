@@ -22,6 +22,7 @@ public class UnityFrameLogger : MonoBehaviour
     private string framePackage;
     private int frameState;
     private float frameTime;
+    private int blinkerState;
 
     private BaseStateMachine _stateMachine;
     private PlayerMovement _playerMovement;
@@ -29,6 +30,7 @@ public class UnityFrameLogger : MonoBehaviour
     private CyclicPackagesSHMInterface unityOutputSHMInterface;
     private CyclicPackagesSHMInterface ReadUnityOutputSHMInterface;
 
+    public MeshRenderer frameIndicationBlinker;
 
 
     // Start is called before the first frame update
@@ -55,12 +57,15 @@ public class UnityFrameLogger : MonoBehaviour
         frameBallVelFirstPackID = _playerMovement.firstPackID;
         frameBallVelLastPackID = _playerMovement.lastPackID;
         frameState = _stateMachine.CurrentState.stateID;
+
+        // set blinker to 0 if frameIndicationBlinker.Color == Color.black else set it to 1
+        blinkerState = frameIndicationBlinker.material.color == Color.black ? 0 : 1;
         
         framePackage = $"N:U,ID:{frameCount},PCT:{frameTime},X:{framePositionX},"+
-                       $"Z:{framePositionZ},A:{frameAngle},S:{frameState},"+
+                       $"Z:{framePositionZ},A:{frameAngle},S:{frameState},FB:{blinkerState},"+
                        $"BFP:{frameBallVelFirstPackID},BLP:{frameBallVelLastPackID}";
         Debug.Log($"Calling Push with {framePackage}");
-        unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
+        // unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
     }
 }
 
