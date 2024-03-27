@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public int lastPackID;
     private int[] XYZvelInput = new int[3];
     private float rotY = 0f;
-
     private string log;
 
     // [Tooltip("Sensitivity scaler for the ball readout, higher the value, less sensitive it is")]
@@ -120,5 +119,14 @@ public class PlayerMovement : MonoBehaviour
     private void RotateRat() {
         rotY += (XYZvelInput[2]*ballZNormToCentimeter*2.29183F) *Time.deltaTime;
         transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
+    }
+    
+    public void TeleportRat(float X, float Z, float angle) {
+        Debug.Log("Teleporting to X: " + X + " Z: " + Z + " Angle: " + angle);
+
+        controller.enabled = false;
+        transform.position = new Vector3(X, transform.position.y, Z);
+        controller.enabled = true;
+        rotY = angle;
     }
 }

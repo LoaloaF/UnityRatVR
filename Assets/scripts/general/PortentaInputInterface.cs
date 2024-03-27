@@ -18,7 +18,7 @@ public class PortentaInputInterface : MonoBehaviour
     }
     public void sendSuccess(int rewardDelay, int rewardLength)
     {
-        send("S{rewardLength},{rewardDelay}\r\n");
+        send($"{rewardLength},{rewardDelay}\r\n");
     }
     
     public void sendFailure()
@@ -28,12 +28,12 @@ public class PortentaInputInterface : MonoBehaviour
     
     public void sendPunishment(int punishmentLength)
     {
-        send("P{punishmentLength}\r\n");
+        send($"P{punishmentLength}\r\n");
     }
 
     private void send(string cmd)
     {
-        portentaInputSHMInterface.Push(cmd);
         Debug.Log($"Sent {cmd} to portenta-input SHM");
+        portentaInputSHMInterface.Push(cmd);
     }
 }
