@@ -18,7 +18,7 @@ public class PortentaInputInterface : MonoBehaviour
     }
     public void sendSuccess(int rewardDelay, int rewardLength)
     {
-        send($"{rewardLength},{rewardDelay}\r\n");
+        send($"S{rewardLength},{rewardDelay}\r\n");
     }
     
     public void sendFailure()

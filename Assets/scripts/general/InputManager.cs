@@ -12,7 +12,6 @@ public class InputManager : MonoBehaviour
     public Button stopSessionButton;
     
     // Success UI
-    public Button SuccessButton;
     public TMP_InputField SuccessMagnitudeInput;
     public TMP_InputField SuccessDelayInput;
     
