@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update() {
         XYZvelInput = getInput();
+        Debug.Log(string.Join(", ", XYZvelInput));
         MoveRat();
         RotateRat();
     }
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             i++;
         }
         stopwatch.Stop();
-        Debug.Log($"Got {i} BVs ({firstPackID}-{lastPackID}) in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
+        // Debug.Log($"Got {i} BVs ({firstPackID}-{lastPackID}) in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
         return frameBallVel;
     }
     

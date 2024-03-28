@@ -688,7 +688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68722531}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b18d6b4e1332f7585bd372dba482b6ee, type: 3}
   m_Name: 
@@ -6484,10 +6484,10 @@ MonoBehaviour:
   controller: {fileID: 1180528855}
   firstPackID: 0
   lastPackID: 0
-  ballYNormToCentimeter: 0.1387
-  ballXNormToCentimeter: 0.1405
-  ballZNormToCentimeter: 0.135
-  enableBallInput: 0
+  ballYNormToCentimeter: 0.01387
+  ballXNormToCentimeter: 0.01405
+  ballZNormToCentimeter: 0.0135
+  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7738,7 +7738,7 @@ MonoBehaviour:
   ExperimentCore: {fileID: 68722531}
   sessionRunning: 0
   UIObject: {fileID: 1185421911}
-  showUI: 0
+  showUI: 1
 --- !u!1 &1646601492
 GameObject:
   m_ObjectHideFlags: 0
