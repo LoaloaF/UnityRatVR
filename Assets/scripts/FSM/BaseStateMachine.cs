@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using Cathei.BakingSheet;
+using RatVR.ExcelData;
+using RatVR.Scene;
 
 namespace FSM
 {
@@ -12,10 +16,23 @@ namespace FSM
          */
         [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents;
+        public SceneGeometryData scene;
+        // public string mapath;
+
+
+
+        
         private void Awake()
         {
             CurrentState = _initialState;
             _cachedComponents = new Dictionary<Type, Component>();
+
+        }
+
+        private void Start()
+        {
+            scene = GetComponent<SceneController>().scene;
+
         }
 
         public BaseState CurrentState { get; set; }
@@ -23,8 +40,12 @@ namespace FSM
         private void Update()
         {
             // Exectures all actions attached to the current state
-            // Debug.Log(CurrentState);
             CurrentState.Execute(this);
+            //Debug.Log(CurrentState);
+
+            //var positions = transform.GetComponentInChildren<Transform>().localPosition;
+            //Debug.Log(positions);
+
         }
 
         public new T GetComponent<T>() where T : Component

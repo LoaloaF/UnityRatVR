@@ -1,16 +1,20 @@
+
+
 using FSM;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 namespace Experiment.ExperimentFSM
+
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/Initilization")]
-    public class Initilization : FSMAction
+    [CreateAssetMenu(menuName = "FSM/Actions/ActionAtInit")]
+    public class ActionAtInit : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            Debug.Log("Initilization (Action) would execture here and now.");
+            Debug.Log("Runs when in init-state");
             // var pillarManager = stateMachine.GetComponent<PillarManager>();
+
             // pillarManager.CreateNewCheckpoint();
 
         }

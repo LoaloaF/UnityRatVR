@@ -661,12 +661,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68722531}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ccd3306c17195642804750d3a70c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialState: {fileID: 11400000, guid: b04c68077cce19fb3a5ad163fc1fdfa2, type: 2}
+  _initialState: {fileID: 11400000, guid: 882067945c5cb34499bed28c0eed12cc, type: 2}
 --- !u!114 &68722538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6594,7 +6594,7 @@ MonoBehaviour:
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135
-  enableBallInput: 1
+  enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8045,7 +8045,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f2929deff2446bc4f88663cfdcdb43ca, type: 2}
+  - {fileID: 2100000, guid: c501785eaff85ba41a5fe3b4438bc57f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
