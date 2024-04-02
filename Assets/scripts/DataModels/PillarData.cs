@@ -5,6 +5,8 @@ using System.Drawing;
 using UnityEngine;
 using RatVR.ExcelData;
 using System;
+// using static UnityEditor.PlayerSettings;
+using Unity.VisualScripting;
 
 namespace RatVR.Scene
 {
@@ -30,6 +32,19 @@ namespace RatVR.Scene
 
         private string texture;
         public string Texture { get { return texture; } set { texture = value; } }
+
+        private float transparency = 1f;
+        public float Transparency { get { return transparency; } set { transparency = value;  } }
+
+        private int isReward = 0;
+        public int IsReward { get { return isReward; } set { isReward = value; } }
+
+        private int isAirpuff = 0;
+        public int IsAirpuff { get { return isAirpuff; } set { isAirpuff = value; } }
+
+        private int rewardZone = 0;
+        public int RewardZone { get { return rewardZone; } set { rewardZone = value; } }
+        
 
         public PillarData(JSONObject data)
         {
@@ -84,6 +99,10 @@ namespace RatVR.Scene
             radius = excelObject.radius;
             position = new Vector3(pos.x, pos.y, excelObject.zPos);
             texture = excelObject.texture;
+            transparency = excelObject.transparency;
+            isReward = excelObject.isReward;
+            isAirpuff = excelObject.isAirpuff;
+            rewardZone = excelObject.rewardZone;
         }
 
         public static List<PillarData> PillarDataFromExcel(List<ExcelObjectData> objects, Dictionary<string, List<Vector2>> scenePlacement)
@@ -91,9 +110,12 @@ namespace RatVR.Scene
             List<PillarData> pillars = new List<PillarData>();
             foreach(ExcelObjectData excelObject in objects)
             {
-                foreach(Vector2 pos in scenePlacement[excelObject.object_name])
+                // Debug.Log("excel object: " + excelObject);
+                foreach (Vector2 pos in scenePlacement[excelObject.object_name])
                 {
+                    // Debug.Log("pos: " + pos);
                     pillars.Add(new PillarData(excelObject, pos));
+                    // Debug.Log(new PillarData(excelObject, pos).texture);
                 }
             }
             return pillars;

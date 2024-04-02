@@ -141,7 +141,7 @@ namespace Cathei.BakingSheet
                 
                 List<string> rowValues = new List<string>();
                 
-                for (int col=0; col<8; ++col)
+                for (int col=0; col<9; ++col)
                 {
                     cellContent = pages["Hyperparameters"].GetCell(col, row);
                     if (cellContent == null)
@@ -151,6 +151,7 @@ namespace Cathei.BakingSheet
                     else
                     {
                         rowValues.Add(cellContent);
+                        //Debug.Log(cellContent);
                     }
                 }
                 row++;
@@ -173,10 +174,10 @@ namespace Cathei.BakingSheet
             int lengthFlash = int.Parse(hyperparams.GetCell(11, 7));
             int lengthSound = int.Parse(hyperparams.GetCell(11, 8));
 
-            ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(1, 17));
-            ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(2, 17));
-            ExcelWallData botWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 3), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(3, 17));
-            ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(4, 17));
+            ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 1));
+            ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 2));
+            ExcelWallData botWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 3), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 3));
+            ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 4));
 
             bool cylinder = bool.Parse(hyperparams.GetCell(16, 6));
 
