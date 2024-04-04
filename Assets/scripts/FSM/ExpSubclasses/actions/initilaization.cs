@@ -14,6 +14,8 @@ namespace Experiment.ExperimentFSM
             UnityEngine.Debug.Log("Initilization (Action) would execture here and now.");
             // var pillarManager = stateMachine.GetComponent<PillarManager>();
             // pillarManager.CreateNewCheckpoint();
+
+
             int childcount = stateMachine.transform.childCount;
             if (stateMachine.scene != null)
             {
