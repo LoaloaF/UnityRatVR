@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: InstantTransition
+  m_Script: {fileID: 11500000, guid: cc7ac9608f8c6d54499f57259a7428f3, type: 3}
+  m_Name: RemainInState
   m_EditorClassIdentifier: 
-  Decision: {fileID: 0}
-  TrueState: {fileID: 11400000, guid: 09d9c4473e375c641a8318b2d0def4d3, type: 2}
-  FalseState: {fileID: 0}
+  stateID: -1

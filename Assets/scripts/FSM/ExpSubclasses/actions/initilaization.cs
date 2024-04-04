@@ -1,4 +1,5 @@
 using FSM;
+using System;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,14 +18,14 @@ namespace Experiment.ExperimentFSM
             if (stateMachine.scene != null)
             {
 
-                var pillardata = stateMachine.scene.Pillars;
-                Vector3 pos = pillardata[childcount - 1].Position;
-
-                UnityEngine.Debug.Log("name from scene object data: " + pillardata[childcount - 1].UID);
+                // var pillardata = stateMachine.scene.Pillars;
+                // Vector3 pos = pillardata[childcount - 1].Position;
+                // UnityEngine.Debug.Log("name from scene object data: " + pillardata[childcount - 1].UID);
             }
             else
             {
-                UnityEngine.Debug.Log("state machine scene is null");
+                throw new Exception("state machine scene is null");
+                // UnityEngine.Debug.Log("state machine scene is null");
             }
 
         }
