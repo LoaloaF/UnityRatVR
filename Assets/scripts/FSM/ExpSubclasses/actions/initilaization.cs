@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
+using RatVR.Scene;
 
 namespace Experiment.ExperimentFSM
 {
@@ -19,9 +20,9 @@ namespace Experiment.ExperimentFSM
             // int childcount = stateMachine.transform.childCount;
 
             if (stateMachine.scene == null){
-                throw new Exception("state machine scene is null");
-                // UnityEngine.Debug.Log("adding state machine scene in Initilization");
-                // stateMachine.scene = stateMachine.GetComponent<SceneController>().scene;
+                // throw new Exception("state machine scene is null");
+                UnityEngine.Debug.Log("adding state machine scene in Initilization");
+                stateMachine.scene = stateMachine.GetComponent<SceneController>().scene;
             }
 
             // if (stateMachine.scene != null)

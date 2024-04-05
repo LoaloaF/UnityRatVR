@@ -39,12 +39,6 @@ namespace FSM
 
         private void Update()
         {
-            if (scene == null)
-            {
-                UnityEngine.Debug.Log("adding state machine scene in update");
-                scene = GetComponent<SceneController>().scene;   
-            }
-
             // Exectures all actions attached to the current state
             CurrentState.Execute(this);
             //Debug.Log(CurrentState);
