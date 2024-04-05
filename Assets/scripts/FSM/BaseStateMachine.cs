@@ -39,16 +39,22 @@ namespace FSM
 
         private void Update()
         {
+            if (scene == null)
+            {
+                UnityEngine.Debug.Log("adding state machine scene in update");
+                scene = Getcomponent<SceneController>().scene;   
+            }
+
             // Exectures all actions attached to the current state
             CurrentState.Execute(this);
             //Debug.Log(CurrentState);
-
             //var positions = transform.GetComponentInChildren<Transform>().localPosition;
             //Debug.Log(positions);
 
         }
 
-        public new T GetComponent<T>() where T : Component
+        
+        public new T Getcomponent<T>() where T : Component
         {
             if(_cachedComponents.ContainsKey(typeof(T)))
                 return _cachedComponents[typeof(T)] as T;
@@ -60,6 +66,8 @@ namespace FSM
             }
             return component;
         }
+        
 
     }
+    
 }
