@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: InitialState
   m_EditorClassIdentifier: 
   stateID: -1
-  Action: []
+  Action:
+  - {fileID: 11400000, guid: 4b1272512e3ec9e42b4b5d56053352c9, type: 2}
   Transitions:
   - {fileID: 11400000, guid: 609ae156fb297c94f836c7c7eda8e7f8, type: 2}
   stateID: -1

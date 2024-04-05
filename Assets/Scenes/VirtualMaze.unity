@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addfc3d07fd13e54aa4552d6c6f6d946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene_path: C:\Users\RatVR\Downloads\EnvGen(3).xlsx
+  scene_path: Assets/Scripts/ExpGenerator/EnvGen(3).xlsx
   material_path: Assets/Resources/materials
   floor: {fileID: 1666924472}
   ceiling: {fileID: 360030911}

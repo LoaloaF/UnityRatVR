@@ -12,7 +12,7 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            UnityEngine.Debug.Log("Runs when in init-state");
+            UnityEngine.Debug.Log("Runs when in init-state"); 
             // var pillarManager = stateMachine.GetComponent<PillarManager>();
             if (stateMachine.scene != null)
             {
