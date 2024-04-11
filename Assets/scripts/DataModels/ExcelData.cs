@@ -66,8 +66,9 @@ namespace RatVR.ExcelData
         public float transparency;
         public int isReward;
         public int isAirpuff;
+        public int rewardZone;
 
-        public ExcelObjectData(string object_name, float radius, float height, float zPos, string texture, float transparency, int isReward, int isAirpuff)
+        public ExcelObjectData(string object_name, float radius, float height, float zPos, string texture, float transparency, int isReward, int isAirpuff, int rewardZone)
         {
             this.object_name = object_name;
             this.radius = radius;
@@ -77,6 +78,7 @@ namespace RatVR.ExcelData
             this.transparency = transparency;
             this.isReward = isReward;
             this.isAirpuff = isAirpuff;
+            this.rewardZone = rewardZone;
         }
 
         public ExcelObjectData(List<string> values)
@@ -89,6 +91,7 @@ namespace RatVR.ExcelData
             this.transparency = float.Parse(values[5], System.Globalization.CultureInfo.InvariantCulture);
             this.isReward = int.Parse(values[6]);
             this.isAirpuff = int.Parse(values[7]);
+            this.rewardZone = int.Parse(values[8]);
         }
 
         public override string ToString()
