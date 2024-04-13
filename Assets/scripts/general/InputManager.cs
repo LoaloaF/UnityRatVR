@@ -50,6 +50,12 @@ public class InputManager : MonoBehaviour
         _playerMovement = player.GetComponent<PlayerMovement>();
         unityInputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/unityinput_shmstruct.json");
         _portentaInputInterface = ExperimentCore.GetComponent<PortentaInputInterface>();
+
+        // clear input shm from previous runs
+        if (!showUI) {
+            while (unityInputSHMInterface.Popitem() != null);
+        }
+
     }
     // Update is called once per frame
     void Update()
