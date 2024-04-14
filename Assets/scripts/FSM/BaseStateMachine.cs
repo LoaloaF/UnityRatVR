@@ -14,27 +14,20 @@ namespace FSM
          * This class is the base class of the finite state machine. It needs to be applied to a gameobject in the scene.
          * Then one can create states, transitions and decision rules in the editor and build the FSM.
          */
-        [SerializeField] private BaseState _initialState;
+        // [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents;
         private InputManager _inputManager;
         public SceneGeometryData scene;
         public int generalCurrentStateID;
-        // public string mapath;
+        public StateDictionary stateDictionary;
 
         public void initializeBaseStateMachine(string paradigm_name) {
             string excelFullFileName = $"./Paradigms/{paradigm_name}.xlsx";
             GetComponent<SceneController>().LoadExcelScene(excelFullFileName);
             
-
-
-            // scene = GetComponent<SceneController>().scene;
-            
-            // CurrentState = initialStates.TryGetValue(paradigm_name);
-            // Debug.Log("Initilized :");
-            // Debug.Log(CurrentState);
-            // Debug.Log(CurrentState.stateID);
+            CurrentState = stateDictionary.TryGetValue(paradigm_name);
+            generalCurrentStateID = CurrentState.stateID;
         }
-
         
         private void Awake()
         {
@@ -45,8 +38,6 @@ namespace FSM
         {
             _inputManager = GetComponent<InputManager>();
             scene = GetComponent<SceneController>().scene;
-            CurrentState = _initialState;
-            generalCurrentStateID = _initialState.stateID;
         }
 
         public BaseState CurrentState { get; set; }
@@ -74,8 +65,41 @@ namespace FSM
             }
             return component;
         }
-        
-
     }
-    
+
+    [System.Serializable] public class StateDictionary
+    {
+        [SerializeField]
+        private List<string> keys = new List<string>();
+
+        [SerializeField]
+        private List<State> values = new List<State>();
+
+        public void Add(string key, State value)
+        {
+            keys.Add(key);
+            values.Add(value);
+        }
+
+        public State? TryGetValue(string key)
+        {
+            State value;
+            int index = keys.IndexOf(key);
+            foreach (string k in keys)
+            {
+                Debug.Log($"Key: '{k}'");
+            }
+            if (index >= 0)
+            {
+                value = values[index];
+            }
+            else
+            {
+                Debug.LogError($"State {key} not found");
+                value = null;
+            }
+            return value;
+        }
+    }    
+
 }

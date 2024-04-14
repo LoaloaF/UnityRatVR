@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
 
     public GameObject UIObject;
     public bool showUI = true;
-    private string paradigm = "P0100_Test";
+    private string paradigm_name = "P0100_Test";
 
     
     private CyclicPackagesSHMInterface unityInputSHMInterface;
@@ -93,7 +93,7 @@ public class InputManager : MonoBehaviour
             sendSwitchAirvalve();
         } else if (shmUnityInput.StartsWith("Paradigm")) {
             Debug.Log(shmUnityInput.Split(','));
-            paradigm = shmUnityInput.Split(',')[1];
+            paradigm_name = shmUnityInput.Split(',')[1];
         } else if (shmUnityInput.StartsWith("Punishment") 
                     || shmUnityInput.StartsWith("Success") 
                     || shmUnityInput.StartsWith("Teleport")){
@@ -147,8 +147,8 @@ public class InputManager : MonoBehaviour
         validationSphereRenderer.enabled = false;
         sessionRunning = true;
 
-        GetComponent<BaseStateMachine>().initializeBaseStateMachine(paradigm);
-        Debug.Log("Session started with paradigm: " + paradigm);
+        GetComponent<BaseStateMachine>().initializeBaseStateMachine(paradigm_name);
+        Debug.Log("Session started with paradigm_name: " + paradigm_name);
 
     }
     public void StopGame()
