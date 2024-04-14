@@ -16,8 +16,13 @@ namespace FSM
             {
                 stateMachine.CurrentState = TrueState;
             }
-            else if(Decision.Decide(stateMachine) && !(TrueState is RemainInState))
+            else if(Decision.Decide(stateMachine) && !(TrueState is RemainInState)) {
+                int paradigmID = stateMachine.generalCurrentStateID/100;
+                stateMachine.generalCurrentStateID = TrueState.stateID+paradigmID*100;
+                
                 stateMachine.CurrentState = TrueState;
+            }
+            
             else if(!(FalseState is RemainInState))
                 stateMachine.CurrentState = FalseState;
         }

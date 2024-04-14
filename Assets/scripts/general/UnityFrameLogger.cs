@@ -12,6 +12,7 @@ using FSM;
 public class UnityFrameLogger : MonoBehaviour
 {
     public GameObject player;
+    private InputManager _inputManager;
 
     private float framePositionX;
     private float framePositionZ;
@@ -39,6 +40,7 @@ public class UnityFrameLogger : MonoBehaviour
         _stateMachine = GetComponent<BaseStateMachine>();
         _playerMovement = player.GetComponent<PlayerMovement>();
         unityOutputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/unityoutput_shmstruct.json");
+        _inputManager = GetComponent<InputManager>();
 
         // ReadUnityOutputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/unityoutput_shmstruct.json");
         
@@ -47,6 +49,13 @@ public class UnityFrameLogger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_inputManager.sessionRunning)
+        {
+            LogFrame();
+        }
+    }
+
+    void LogFrame() {
         // var readOut = ReadUnityOutputSHMInterface.Popitem();
         // Debug.Log($"TestRead: {readOut}");
         frameTime = Time.realtimeSinceStartup;
@@ -56,16 +65,18 @@ public class UnityFrameLogger : MonoBehaviour
         frameAngle = player.transform.rotation.eulerAngles.y;
         frameBallVelFirstPackID = _playerMovement.firstPackID;
         frameBallVelLastPackID = _playerMovement.lastPackID;
-        frameState = _stateMachine.CurrentState.stateID;
+        frameState = _stateMachine.generalCurrentStateID;
 
         // set blinker to 0 if frameIndicationBlinker.Color == Color.black else set it to 1
         blinkerState = frameIndicationBlinker.material.color == Color.black ? 0 : 1;
         
         framePackage = $"N:U,ID:{frameCount},PCT:{frameTime},X:{framePositionX},"+
-                       $"Z:{framePositionZ},A:{frameAngle},S:{frameState},FB:{blinkerState},"+
-                       $"BFP:{frameBallVelFirstPackID},BLP:{frameBallVelLastPackID}";
-        Debug.Log($"Calling Push with {framePackage}");
-        // unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
+                    $"Z:{framePositionZ},A:{frameAngle},S:{frameState},FB:{blinkerState},"+
+                    $"BFP:{frameBallVelFirstPackID},BLP:{frameBallVelLastPackID}";
+
+        // Debug.Log($"Calling Push with {framePackage}");
+        Debug.Log(frameState);
+        unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
     }
 }
 

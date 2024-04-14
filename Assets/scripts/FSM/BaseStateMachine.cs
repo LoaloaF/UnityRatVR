@@ -16,7 +16,9 @@ namespace FSM
          */
         [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents;
+        private InputManager _inputManager;
         public SceneGeometryData scene;
+        public int generalCurrentStateID;
         // public string mapath;
 
 
@@ -32,6 +34,8 @@ namespace FSM
         private void Start()
         {
             scene = GetComponent<SceneController>().scene;
+            _inputManager = GetComponent<InputManager>();
+            generalCurrentStateID = _initialState.stateID;
 
         }
 
@@ -39,11 +43,14 @@ namespace FSM
 
         private void Update()
         {
-            // Exectures all actions attached to the current state
-            CurrentState.Execute(this);
-            //Debug.Log(CurrentState);
-            //var positions = transform.GetComponentInChildren<Transform>().localPosition;
-            //Debug.Log(positions);
+            if (_inputManager.sessionRunning)
+            {
+                // Exectures all actions attached to the current state
+                CurrentState.Execute(this);
+                //Debug.Log(CurrentState);
+                //var positions = transform.GetComponentInChildren<Transform>().localPosition;
+                //Debug.Log(positions);
+            }
 
         }
 
