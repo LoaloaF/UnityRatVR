@@ -1,1 +1,0 @@
-{"shm_type": "cyclic_packages", "shm_name": "CommandCyclicTestSHM", "total_nbytes": 264, "fields": {"shm_packages_nbytes": 256, "write_pntr_nbytes": 8}, "field_types": {"shm_packages_type": "str", "write_pntr_type": "uint8"}, "metadata": {"package_nbytes": 32, "npackages": 8}}

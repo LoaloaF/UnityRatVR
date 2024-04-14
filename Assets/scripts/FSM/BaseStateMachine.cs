@@ -21,22 +21,32 @@ namespace FSM
         public int generalCurrentStateID;
         // public string mapath;
 
+        public void initializeBaseStateMachine(string paradigm_name) {
+            string excelFullFileName = $"./Paradigms/{paradigm_name}.xlsx";
+            GetComponent<SceneController>().LoadExcelScene(excelFullFileName);
+            
 
+
+            // scene = GetComponent<SceneController>().scene;
+            
+            // CurrentState = initialStates.TryGetValue(paradigm_name);
+            // Debug.Log("Initilized :");
+            // Debug.Log(CurrentState);
+            // Debug.Log(CurrentState.stateID);
+        }
 
         
         private void Awake()
         {
-            CurrentState = _initialState;
             _cachedComponents = new Dictionary<Type, Component>();
-
         }
 
         private void Start()
         {
-            scene = GetComponent<SceneController>().scene;
             _inputManager = GetComponent<InputManager>();
+            scene = GetComponent<SceneController>().scene;
+            CurrentState = _initialState;
             generalCurrentStateID = _initialState.stateID;
-
         }
 
         public BaseState CurrentState { get; set; }
@@ -47,9 +57,6 @@ namespace FSM
             {
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
-                //Debug.Log(CurrentState);
-                //var positions = transform.GetComponentInChildren<Transform>().localPosition;
-                //Debug.Log(positions);
             }
 
         }

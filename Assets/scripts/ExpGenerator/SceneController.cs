@@ -26,8 +26,6 @@ namespace RatVR.Scene
         public static readonly SceneController Instance = new SceneController();
         private SceneController() { }
 
-        public string scene_path = "";
-        public string material_path = "Assets/Resources/materials";
         public GameObject floor, ceiling;
         public GameObject wallTop, wallBottom, wallRight, wallLeft;
         // public Material vStripes, hStripes, whiteDots, blackDots;
@@ -36,31 +34,10 @@ namespace RatVR.Scene
         private Color color;
         public SceneGeometryData scene;
 
-
-
-        private void Start()
+        public void LoadExcelScene(string path)
         {
-            // materialDict.Add("vstripes", vStripes);
-            // materialDict.Add("hstripes", hStripes);
-            // materialDict.Add("white dots", whiteDots);
-            // materialDict.Add("black dots", blackDots);
+            loadMaterials("Assets/Resources/materials");
 
-            loadMaterials(material_path);
-
-            // material_path = "changed in start function";
-
-            if (scene_path.Contains(".xlsx"))
-            {
-                LoadExcelScene(scene_path);
-            } 
-            else if (scene_path.Contains(".json"))
-            {
-                LoadJSONScene(scene_path);
-            }
-        }
-
-        private void LoadExcelScene(string path)
-        {
             ExcelSceneFileHandler excelScene = new ExcelSceneFileHandler(path);
 
             ExcelSceneMetaData excelMeta = excelScene.GetExcelSceneMetaData();
@@ -192,7 +169,7 @@ namespace RatVR.Scene
             return pos+translation;
         }
 
-        public void loadMaterials(string material_path)
+        private void loadMaterials(string material_path)
         {
             // load all the materials from material path
             string[] PathsArray = Directory.GetFiles(material_path, "*.mat");

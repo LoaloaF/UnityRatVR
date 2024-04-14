@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FSM;
 
 public class InputManager : MonoBehaviour
 {
@@ -29,18 +30,17 @@ public class InputManager : MonoBehaviour
     public GameObject player;
     private PlayerMovement _playerMovement;
     
-    public GameObject ExperimentCore;
     private PortentaInputInterface _portentaInputInterface;
     
     public bool sessionRunning = false;
 
     public GameObject UIObject;
     public bool showUI = true;
+    private string paradigm = "P0100_Test";
 
     
     private CyclicPackagesSHMInterface unityInputSHMInterface;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +49,7 @@ public class InputManager : MonoBehaviour
 
         _playerMovement = player.GetComponent<PlayerMovement>();
         unityInputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/unityinput_shmstruct.json");
-        _portentaInputInterface = ExperimentCore.GetComponent<PortentaInputInterface>();
+        _portentaInputInterface = GetComponent<PortentaInputInterface>();
 
         // clear input shm from previous runs
         if (!showUI) {
@@ -91,6 +91,9 @@ public class InputManager : MonoBehaviour
             sendFailure();
         } else if (shmUnityInput == "Airvalve") {
             sendSwitchAirvalve();
+        } else if (shmUnityInput.StartsWith("Paradigm")) {
+            Debug.Log(shmUnityInput.Split(','));
+            paradigm = shmUnityInput.Split(',')[1];
         } else if (shmUnityInput.StartsWith("Punishment") 
                     || shmUnityInput.StartsWith("Success") 
                     || shmUnityInput.StartsWith("Teleport")){
@@ -143,7 +146,9 @@ public class InputManager : MonoBehaviour
 
         validationSphereRenderer.enabled = false;
         sessionRunning = true;
-        Debug.Log("Session started");
+
+        GetComponent<BaseStateMachine>().initializeBaseStateMachine(paradigm);
+        Debug.Log("Session started with paradigm: " + paradigm);
 
     }
     public void StopGame()
