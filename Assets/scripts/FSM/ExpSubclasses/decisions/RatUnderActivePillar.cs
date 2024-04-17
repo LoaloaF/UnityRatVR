@@ -32,14 +32,17 @@ namespace Experiment.ExperimentFSM
                     else
                     {
                         Debug.Log("player hits a non-rewarding pillar");
+                        return false;
                         
                     }
                 }
                 else
                 {
+                    return false;
                     // Debug.Log("no collision detected, but this function is running in state machine");
                     
                 }
+                
 
             }
 

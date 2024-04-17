@@ -17,6 +17,7 @@ namespace FSM
         [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents;
         public SceneGeometryData scene;
+        public GameObject player;
         // public string mapath;
 
 
@@ -44,6 +45,7 @@ namespace FSM
             //Debug.Log(CurrentState);
             //var positions = transform.GetComponentInChildren<Transform>().localPosition;
             //Debug.Log(positions);
+            // deathzoenDetection();
 
         }
 

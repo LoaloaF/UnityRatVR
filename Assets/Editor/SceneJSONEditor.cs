@@ -16,6 +16,8 @@ namespace RatVR.Scene
         private int sizeY = 100;
         private int baseLength = 1;
 
+        private int deathZone = 1;
+
         private Vector2 playerPos = Vector2.zero;
         private Vector2 agentPos = Vector2.one * -5f;
 
@@ -49,6 +51,8 @@ namespace RatVR.Scene
             sizeX = EditorGUILayout.IntField("Size x:", sizeX);
             sizeY = EditorGUILayout.IntField("Size y:", sizeY);
             baseLength = EditorGUILayout.IntField("Base length:", baseLength);
+
+            deathZone = EditorGUILayout.IntField("Death Zone:", deathZone);
 
             playerPos = EditorGUILayout.Vector2Field("Player position", playerPos);
             agentPos = EditorGUILayout.Vector2Field("Player position", agentPos);
@@ -132,7 +136,7 @@ namespace RatVR.Scene
             WallData bottomWall = new WallData(1, textureBottom, wallHeight);
             WallData leftWall = new WallData(1, textureLeft, wallHeight);
 
-            SceneGeometryData sceneData = new SceneGeometryData(1, baseLength, new Vector2(sizeX,sizeY), playerPos, agentPos, topWall, bottomWall, rightWall, leftWall, GeneratePillarData());
+            SceneGeometryData sceneData = new SceneGeometryData(1, baseLength, new Vector2(sizeX,sizeY), playerPos, agentPos, topWall, bottomWall, rightWall, leftWall, GeneratePillarData(), deathZone, rewardDelay: 1, rewardLength: 1);
             Debug.Log(sceneData.CreateJSONString());
             System.IO.File.WriteAllText(path2Json, sceneData.CreateJSONString());
         }

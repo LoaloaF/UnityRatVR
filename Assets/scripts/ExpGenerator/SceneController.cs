@@ -28,13 +28,14 @@ namespace RatVR.Scene
 
         public string scene_path = "";
         public string material_path = "Assets/Resources/materials";
-        public GameObject floor, ceiling;
+        public GameObject floor, ceiling, deathzone;
         public GameObject wallTop, wallBottom, wallRight, wallLeft;
         // public Material vStripes, hStripes, whiteDots, blackDots;
         private Material  transparentMaterial;
         public Dictionary<string, Material> materials = new Dictionary<string, Material>();
-        private Color color;
+        private Color color;    
         public SceneGeometryData scene;
+        public string DeathZoneAction;
 
 
 
@@ -79,8 +80,9 @@ namespace RatVR.Scene
             // pillars.
 
             scene = new SceneGeometryData(1, excelMeta.baseLength, excelMeta.size, excelMeta.startLocation, excelMeta.agentLocation,
-                                                            excelMeta.wallTop, excelMeta.wallBot, excelMeta.wallRight, excelMeta.wallLeft, pillars);
+                                                            excelMeta.wallTop, excelMeta.wallBot, excelMeta.wallRight, excelMeta.wallLeft, pillars, excelMeta.deathzone, excelMeta.rewardDelay, excelMeta.rewardLength);
             // UnityEngine.Debug.Log("new SceneGeometryData");
+            DeathZoneAction = excelMeta.DeathZoneAction;
             LoadScene(scene);
         }
 
@@ -95,8 +97,16 @@ namespace RatVR.Scene
 
         private void LoadScene(SceneGeometryData sceneData)
         {
-            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
-            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.5f * sceneData.Size;
+            // deathzone size and position
+            deathzone.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
+            deathzone.transform.position = new Vector3(0, -0.1f, 0);
+
+            
+            // floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
+            // floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.5f * sceneData.Size;
+            // floor size with death zone
+            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.DeathZone, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.DeathZone);
+            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.DeathZone, scene.DeathZone)*2);
 
             ceiling.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
             ceiling.transform.position = new Vector3(0, 0.2f * sceneData.BaseLength * sceneData.Size.y, 0);
@@ -124,11 +134,23 @@ namespace RatVR.Scene
             wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.x);
             wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.x);
 
+           
+
             // wall position
             wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.1f  * sceneData.BaseLength * sceneData.Size.y, 0);
             wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.1f * sceneData.BaseLength * sceneData.Size.y, 0);
             wallRight.transform.localPosition = new Vector3(0, 0.1f * sceneData.BaseLength * sceneData.Size.x, -0.5f * sceneData.BaseLength * sceneData.Size.y);
             wallLeft.transform.localPosition = new Vector3(0, 0.1f * sceneData.BaseLength * sceneData.Size.x, 0.5f * sceneData.BaseLength * sceneData.Size.y);
+            
+             // use wall height from excel sheet
+             /*
+            wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, sceneData.TopWall.Height, 0);
+            wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, sceneData.BottomWall.Height, 0);
+            wallRight.transform.localPosition = new Vector3(0, sceneData.RightWall.Height, -0.5f * sceneData.BaseLength * sceneData.Size.y);
+            wallLeft.transform.localPosition = new Vector3(0, sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
+            // change ceiling height
+            ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height, 0);
+            */
 
             // wall textures
             wallTop.GetComponent<Renderer>().material = materials[sceneData.TopWall.Texture];
@@ -144,17 +166,19 @@ namespace RatVR.Scene
             foreach (PillarData pd in sceneData.Pillars)
             {
                 GameObject pillar = Instantiate(Resources.Load<GameObject>("Pillar"), this.transform); // the pillar object should be stored in the folder "Resources" 
-                Transform ColliderTransform = pillar.transform.Find("Collider");
-                ColliderTransform.localScale = new Vector3(pd.RewardZone, 2, pd.RewardZone);
+                
 
                 // pillar.GetComponentInChildren<Transform>().sc = new Vector3(pd.RewardZone, 2, pd.RewardZone);
 
                 pillar.name = "Pillar" + pd.UID.ToString();
                 Vector2 tranformedPos = CoordinateTransform(sceneData, new Vector2(pd.Position.x, pd.Position.y));
-                pillar.transform.localPosition = new Vector3(tranformedPos.x, pd.Position.z + -3.0f + pd.Height, tranformedPos.y);
+                pillar.transform.localPosition = new Vector3(tranformedPos.x, pd.Position.z + pd.Height, tranformedPos.y);
                 if (pd.Height != 0)
                 {
-                    pillar.transform.localScale = new Vector3(pd.Radius, pd.Height, pd.Radius);
+                    Transform CylinderTransform = pillar.transform.Find("Cylinder");
+                    CylinderTransform.localScale = new Vector3(pd.Radius, pd.Height, pd.Radius);
+                    Transform ColliderTransform = pillar.transform.Find("Collider");
+                    ColliderTransform.localScale = new Vector3(pd.RewardZone, 0.1f*sceneData.Size.x, pd.RewardZone);
                     // pillar.GetComponentInChildren<MeshRenderer>().material = materialDict[pd.Texture];
                     
                     if (!materials.ContainsKey(pd.Texture)) {
@@ -173,6 +197,8 @@ namespace RatVR.Scene
                     transparentMaterial.color = color;
 
                     pillar.GetComponentInChildren<MeshRenderer>().material = transparentMaterial;
+                    CylinderTransform.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(pd.Height, pd.Height);
+
                 }
                 else
                 {

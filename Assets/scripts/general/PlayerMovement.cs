@@ -130,4 +130,16 @@ public class PlayerMovement : MonoBehaviour
         controller.enabled = true;
         rotY = angle;
     }
+
+    public void SlowDown(Vector3 gain) {
+        
+        Debug.Log("SlowDown");
+        // slow movement
+        Vector3 forwardVel = transform.forward*XYZvelInput[1]*ballYNormToCentimeter*gain.x;
+        Vector3 rightVel = transform.right*XYZvelInput[0]*ballXNormToCentimeter*gain.y;
+        controller.Move((forwardVel+rightVel) *Time.deltaTime);
+        // slow rotation
+        rotY += (XYZvelInput[2]*ballZNormToCentimeter*2.29183F) *Time.deltaTime*gain.z;
+        transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
+    }
 }

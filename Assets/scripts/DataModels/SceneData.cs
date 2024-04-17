@@ -49,6 +49,16 @@ namespace RatVR.Scene
         private List<PillarData> pillars;
         public List<PillarData> Pillars { get { return pillars; } set { pillars = value; } }
 
+        private int deathZone;
+        public int DeathZone { get { return deathZone; } set { deathZone = value; } }
+
+        private int rewardDelay;
+        public int RewardDelay { get { return rewardDelay; } set { rewardDelay = value; } }
+
+        private int rewardLength;
+        public int RewardLength { get { return rewardLength; } set { rewardLength = value; } }
+
+
         #endregion
 
         public SceneGeometryData(JSONObject data)
@@ -107,7 +117,8 @@ namespace RatVR.Scene
             }
         }
 
-        public SceneGeometryData(float version, float baseLength, Vector2 size, Vector2 playerPos, Vector2 agentPos,WallData topWall, WallData bottomWall, WallData rightWall, WallData leftWall, List<PillarData> pillars)
+        public SceneGeometryData(float version, float baseLength, Vector2 size, Vector2 playerPos, Vector2 agentPos, WallData topWall, WallData bottomWall, WallData rightWall, WallData leftWall, 
+                                List<PillarData> pillars, int deathZone, int rewardDelay, int rewardLength)
         {
             this.uid = System.Guid.NewGuid().ToString();
             this.version = version;
@@ -120,6 +131,9 @@ namespace RatVR.Scene
             this.size = size;
             this.playerPosition = playerPos;
             this.agentPosition = agentPos;
+            this.deathZone = deathZone;
+            this.rewardDelay = rewardDelay;
+            this.rewardLength = rewardLength;
         }
 
         public string CreateJSONString()

@@ -21,21 +21,29 @@ namespace RatVR.ExcelData
         public ExcelWallData wallLeft;
 
         public bool cylinder;
+        public int rewardDelay;
+        public int rewardLength;
+        public string DeathZoneAction;
 
-        public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 startLocation, Vector2 agentLocation, int lengthFlash, int lengthSound, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, bool cylinder)
-        {
+        // public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 startLocation, Vector2 agentLocation, int lengthFlash, int lengthSound, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, bool cylinder)
+        public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 agentLocation, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, 
+                                        int rewardDelay, int rewardLength, string DeathZoneAction){
             this.size = size;
-            this.deathzone = deathzone;
             this.baseLength = baseLength;
-            this.startLocation = startLocation;
+            this.deathzone = deathzone;
+            
+            // this.startLocation = startLocation;
             this.agentLocation = agentLocation;
-            this.lengthFlash = lengthFlash;
-            this.lengthSound = lengthSound;
+            // this.lengthFlash = lengthFlash;
+            // this.lengthSound = lengthSound;
             this.wallTop = wallTop;
             this.wallRight = wallRight;
             this.wallBot = wallBot;
             this.wallLeft = wallLeft;
-            this.cylinder = cylinder;
+            // this.cylinder = cylinder;
+            this.rewardDelay = rewardDelay;
+            this.rewardLength = rewardLength;
+            this.DeathZoneAction = DeathZoneAction;
         }
     }
 

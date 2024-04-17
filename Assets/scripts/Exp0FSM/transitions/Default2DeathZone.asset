@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: Reward2Default
+  m_Name: Default2DeathZone
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 10692e8a11e8d564183739b10fe60cfd, type: 2}
-  TrueState: {fileID: 11400000, guid: 027c674192d337c49bfbca0c3b6f804d, type: 2}
-  FalseState: {fileID: 11400000, guid: c70d4f875d7187a46b87c7931370e8ea, type: 2}
+  Decision: {fileID: 11400000, guid: 7c14910906e0edb4ebff0adb0022dd7b, type: 2}
+  TrueState: {fileID: 11400000, guid: e1a44b6a615c53c4aac8bd5a416abe0d, type: 2}
+  FalseState: {fileID: 11400000, guid: 027c674192d337c49bfbca0c3b6f804d, type: 2}
