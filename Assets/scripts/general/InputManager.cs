@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
 
     public GameObject UIObject;
     public bool showUI = true;
-    private string paradigm_name = "P0100_Test";
+    public string paradigm_name = "P0100_Test";
 
     
     private CyclicPackagesSHMInterface unityInputSHMInterface;

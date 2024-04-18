@@ -18,6 +18,7 @@ namespace FSM
         private Dictionary<Type, Component> _cachedComponents;
         private InputManager _inputManager;
         public SceneGeometryData scene;
+        public GameObject player;
         public int generalCurrentStateID;
         public StateDictionary stateDictionary;
 
