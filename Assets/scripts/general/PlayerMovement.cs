@@ -7,6 +7,8 @@ using System.Runtime.InteropServices;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject experimentCore;
+    private InputManager _inputManager;
     public CharacterController controller;
     public int firstPackID;
     public int lastPackID;
@@ -26,15 +28,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        _inputManager = experimentCore.GetComponent<InputManager>();
         ballVelSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/ballvelocity_shmstruct.json");
     }
 
     // Update is called once per frame
     void Update() {
-        XYZvelInput = getInput();
-        Debug.Log(string.Join(", ", XYZvelInput));
-        MoveRat();
-        RotateRat();
+        if (_inputManager.sessionRunning) {
+            XYZvelInput = getInput();
+            // Debug.Log(string.Join(", ", XYZvelInput));
+            MoveRat();
+            RotateRat();
+        }
     }
 
     public int[] GetBallXYZVelocities() 

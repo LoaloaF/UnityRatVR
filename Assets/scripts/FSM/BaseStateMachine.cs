@@ -14,38 +14,41 @@ namespace FSM
          * This class is the base class of the finite state machine. It needs to be applied to a gameobject in the scene.
          * Then one can create states, transitions and decision rules in the editor and build the FSM.
          */
-        [SerializeField] private BaseState _initialState;
+        // [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents;
+        private InputManager _inputManager;
         public SceneGeometryData scene;
-        public GameObject player;
-        // public string mapath;
+        public int generalCurrentStateID;
+        public StateDictionary stateDictionary;
 
-
-
+        public void initializeBaseStateMachine(string paradigm_name) {
+            string excelFullFileName = $"./Paradigms/{paradigm_name}.xlsx";
+            GetComponent<SceneController>().LoadExcelScene(excelFullFileName);
+            
+            CurrentState = stateDictionary.TryGetValue(paradigm_name);
+            generalCurrentStateID = CurrentState.stateID;
+        }
         
         private void Awake()
         {
-            CurrentState = _initialState;
             _cachedComponents = new Dictionary<Type, Component>();
-
         }
 
         private void Start()
         {
+            _inputManager = GetComponent<InputManager>();
             scene = GetComponent<SceneController>().scene;
-
         }
 
         public BaseState CurrentState { get; set; }
 
         private void Update()
         {
-            // Exectures all actions attached to the current state
-            CurrentState.Execute(this);
-            //Debug.Log(CurrentState);
-            //var positions = transform.GetComponentInChildren<Transform>().localPosition;
-            //Debug.Log(positions);
-            // deathzoenDetection();
+            if (_inputManager.sessionRunning)
+            {
+                // Exectures all actions attached to the current state
+                CurrentState.Execute(this);
+            }
 
         }
 
@@ -62,8 +65,41 @@ namespace FSM
             }
             return component;
         }
-        
-
     }
-    
+
+    [System.Serializable] public class StateDictionary
+    {
+        [SerializeField]
+        private List<string> keys = new List<string>();
+
+        [SerializeField]
+        private List<State> values = new List<State>();
+
+        public void Add(string key, State value)
+        {
+            keys.Add(key);
+            values.Add(value);
+        }
+
+        public State? TryGetValue(string key)
+        {
+            State value;
+            int index = keys.IndexOf(key);
+            foreach (string k in keys)
+            {
+                Debug.Log($"Key: '{k}'");
+            }
+            if (index >= 0)
+            {
+                value = values[index];
+            }
+            else
+            {
+                Debug.LogError($"State {key} not found");
+                value = null;
+            }
+            return value;
+        }
+    }    
+
 }
