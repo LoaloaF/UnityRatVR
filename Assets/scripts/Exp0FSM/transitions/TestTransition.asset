@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: Reward2Default
+  m_Name: TestTransition
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 7ff235ae597582b45b28b3914a451d0a, type: 2}
-  TrueState: {fileID: 11400000, guid: f9fa0dbe849a22741bc701789328df00, type: 2}
+  Decision: {fileID: 11400000, guid: 00581e76c713e2b44bf1f7225ce8c291, type: 2}
+  TrueState: {fileID: 11400000, guid: 3bd1f5253a4e8f74bbd4f2d0f9be4fa3, type: 2}
   FalseState: {fileID: 11400000, guid: 027c674192d337c49bfbca0c3b6f804d, type: 2}

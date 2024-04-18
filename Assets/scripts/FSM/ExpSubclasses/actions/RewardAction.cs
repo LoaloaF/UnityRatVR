@@ -12,23 +12,32 @@ namespace Experiment.ExperimentFSM
 
     public class RewardAction : FSMAction
     {
+        private float timer;
+        private bool successsent = false;
         public override void Execute(BaseStateMachine stateMachine)
         {
-            Debug.Log("runs when in reward action, play sound, give reward");
-            int rewardDelay = stateMachine.scene.RewardDelay;
-            int rewardLength = stateMachine.scene.RewardLength;
-           
-            stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
-            Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
-
-
-            bool successSent = false;
-
-            // if (!successSent)
+            Debug.Log("Runs when in reward action");
+            Debug.Log("timer: " + timer);
+            
+            if (! successsent)
             {
-                
-                // successSent = true;
+                Debug.Log("play sound, give reward");
+                int rewardDelay = stateMachine.scene.RewardDelay;
+                int rewardLength = stateMachine.scene.RewardLength;
+            
+                // stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
+                Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
+                successsent = true;                               
             }
+            
+            if (timer > 5f)
+            {
+                Debug.Log("resetting timer");
+                timer = 0f;
+                successsent = false;
+            }
+            timer += Time.deltaTime;
+
 
 
         }

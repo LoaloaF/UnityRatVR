@@ -17,9 +17,11 @@ namespace Experiment.ExperimentFSM
             Vector2 nonDeathzone = new Vector2(stateMachine.scene.Size.x*0.5f - stateMachine.scene.DeathZone, stateMachine.scene.Size.y*0.5f - stateMachine.scene.DeathZone);
             if (Math.Abs(playerPos.x) > nonDeathzone.x || Math.Abs(playerPos.y) > nonDeathzone.y)
             {
+                Debug.Log("Player is in death zone");
                 return true;
             }else
             {
+                stateMachine.player.GetComponent<PlayerMovement>().gain = new Vector3(1f, 1f, 1f);
                 return false;
             }
 

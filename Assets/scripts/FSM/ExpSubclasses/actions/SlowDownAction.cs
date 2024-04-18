@@ -17,7 +17,7 @@ namespace Experiment.ExperimentFSM
             if (DeathZoneAction == "slow down")
             {
                 Vector3 gain = CalculateGain();
-                stateMachine.player.GetComponent<PlayerMovement>().SlowDown(gain);
+                stateMachine.player.GetComponent<PlayerMovement>().gain = gain;
             }
 
             Vector3 CalculateGain()
@@ -26,7 +26,7 @@ namespace Experiment.ExperimentFSM
                 return gain;
             }
 
-
+            /*
             var scenesize = stateMachine.scene.Size;
             // player position, x, z, rotation 
             Vector3 playerpos = new Vector3(stateMachine.player.transform.position.x,  stateMachine.player.transform.position.z, stateMachine.player.transform.eulerAngles.y);
@@ -75,7 +75,7 @@ namespace Experiment.ExperimentFSM
                 return diswallRatio;
             }
 
-            /*
+            
 
             float[] CalculateGain()
             {

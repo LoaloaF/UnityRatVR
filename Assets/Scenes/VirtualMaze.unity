@@ -5686,7 +5686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &934627015
 Transform:
   m_ObjectHideFlags: 0
@@ -6680,7 +6680,7 @@ Transform:
   m_GameObject: {fileID: 1180528854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6703,6 +6703,7 @@ MonoBehaviour:
   controller: {fileID: 1180528855}
   firstPackID: 0
   lastPackID: 0
+  gain: {x: 1, y: 1, z: 1}
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135

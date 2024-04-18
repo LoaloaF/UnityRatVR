@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: DefaultState
+  m_Name: TestState
   m_EditorClassIdentifier: 
-  stateID: 1
+  stateID: -1
   Action:
-  - {fileID: 11400000, guid: fe58eafb39c26964a869d0ff16cf610f, type: 2}
-  Transitions:
-  - {fileID: 11400000, guid: c3b92e616d3d4ba47ac2126df92c2ebc, type: 2}
-  - {fileID: 11400000, guid: 7eb7743c88194c54caa8052417ef84cd, type: 2}
-  - {fileID: 11400000, guid: dedeb89b470c60243a80499847abd310, type: 2}
+  - {fileID: 11400000, guid: 1b0a91e382a3d104daed056e85cdc26b, type: 2}
+  Transitions: []
   stateID: -1
