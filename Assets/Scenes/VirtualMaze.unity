@@ -634,12 +634,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1666924472}
   ceiling: {fileID: 360030911}
-  deathzone: {fileID: 434591712}
   wallTop: {fileID: 741731471}
   wallBottom: {fileID: 245758922}
   wallRight: {fileID: 419544900}
   wallLeft: {fileID: 768360619}
   DeathZoneAction: 
+  deathzone: {fileID: 434591712}
 --- !u!114 &68722536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd3306c17195642804750d3a70c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1180528854}
   generalCurrentStateID: -1
   stateDictionary:
     keys:
@@ -712,6 +713,7 @@ MonoBehaviour:
   sessionRunning: 0
   UIObject: {fileID: 1185421911}
   showUI: 0
+  paradigm_name: P0000_SpoutAssoc
 --- !u!4 &78000721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd21d5c83840bc1938634ef2ab2e53a7, type: 3}
@@ -6941,7 +6943,7 @@ MonoBehaviour:
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135
-  enableBallInput: 0
+  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8304,6 +8306,7 @@ MonoBehaviour:
   sessionRunning: 0
   UIObject: {fileID: 1185421911}
   showUI: 1
+  paradigm_name: P0100_Test
 --- !u!1 &1646601492
 GameObject:
   m_ObjectHideFlags: 0
