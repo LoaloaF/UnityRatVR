@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public int firstPackID;
     public int lastPackID;
     private int[] XYZvelInput = new int[3];
+    public Vector3 gain = new Vector3(1f, 1f, 1f);
     private float rotY = 0f;
     private string log;
 
@@ -115,15 +116,15 @@ public class PlayerMovement : MonoBehaviour
 
     // add Y input of ball to current forward vector (blue) and the same for right 
     private void MoveRat() {
-        Vector3 forwardVel = transform.forward*XYZvelInput[0]*ballYNormToCentimeter;
+        Vector3 forwardVel = transform.forward*XYZvelInput[0]*ballYNormToCentimeter*gain.x;
         // Debug.Log(forwardVel);
-        Vector3 rightVel = -transform.right*XYZvelInput[2]*ballXNormToCentimeter;
+        Vector3 rightVel = -transform.right*XYZvelInput[2]*ballXNormToCentimeter*gain.z;
         controller.Move((forwardVel+rightVel) *Time.deltaTime);
     }
 
     // add Z input of ball to current y rotation
     private void RotateRat() {
-        rotY += -(XYZvelInput[1]*ballZNormToCentimeter) *Time.deltaTime;
+        rotY += -(XYZvelInput[1]*ballZNormToCentimeter) *Time.deltaTime*gain.y;
         transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
     }
     
@@ -136,15 +137,4 @@ public class PlayerMovement : MonoBehaviour
         rotY = angle;
     }
 
-    public void SlowDown(Vector3 gain) {
-        
-        Debug.Log("SlowDown");
-        // slow movement
-        Vector3 forwardVel = transform.forward*XYZvelInput[1]*ballYNormToCentimeter*gain.x;
-        Vector3 rightVel = transform.right*XYZvelInput[0]*ballXNormToCentimeter*gain.y;
-        controller.Move((forwardVel+rightVel) *Time.deltaTime);
-        // slow rotation
-        rotY += (XYZvelInput[2]*ballZNormToCentimeter*2.29183F) *Time.deltaTime*gain.z;
-        transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
-    }
 }

@@ -79,7 +79,7 @@ namespace RatVR.Scene
         {
             // deathzone size and position
             deathzone.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
-            deathzone.transform.position = new Vector3(0, -0.1f, 0);
+            deathzone.transform.position = new Vector3(0, 0, 0);
 
             
             // floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
@@ -87,9 +87,10 @@ namespace RatVR.Scene
             // floor size with death zone
             floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.DeathZone, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.DeathZone);
             floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.DeathZone, scene.DeathZone)*2);
-
+            floor.transform.position = new Vector3(0, 0.01f, 0);
+            
             ceiling.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
-            ceiling.transform.position = new Vector3(0, 0.2f * sceneData.BaseLength * sceneData.Size.y, 0);
+            // ceiling.transform.position = new Vector3(0, 0.2f * sceneData.BaseLength * sceneData.Size.y, 0);
 
             // TODO: Change tiling of wall textures
             //wallTop.transform.localPosition = new Vector3(0, -25, 0.5f * sceneData.BaseLength * sceneData.Size.y);
@@ -109,18 +110,31 @@ namespace RatVR.Scene
             wallLeft.transform.rotation = Quaternion.Euler(90, 90, -90);
 
             // wall size, wall size should change with the arena size accrodingly
-            wallTop.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.y);
-            wallBottom.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.y);
-            wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.x);
-            wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.x);
+            // wallTop.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.y);
+            // wallBottom.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.y);
+            // wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.x);
+            // wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.x);
 
+            // wall height depends on the wall height from excel sheet, which should be fixed in different size of arenas 60cm maybe
+            // also remember the ceiling height
+            wallTop.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.TopWall.Height);          
+            wallBottom.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.BottomWall.Height);
+            wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.RightWall.Height);
+            wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.LeftWall.Height);
+            
+            wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f* sceneData.TopWall.Height, 0);
+            wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f*sceneData.BottomWall.Height, 0);
+            wallRight.transform.localPosition = new Vector3(0, 0.5f*sceneData.RightWall.Height, -0.5f * sceneData.BaseLength * sceneData.Size.y);
+            wallLeft.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
+
+            ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height, 0);
            
 
             // wall position
-            wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.1f  * sceneData.BaseLength * sceneData.Size.y, 0);
-            wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.1f * sceneData.BaseLength * sceneData.Size.y, 0);
-            wallRight.transform.localPosition = new Vector3(0, 0.1f * sceneData.BaseLength * sceneData.Size.x, -0.5f * sceneData.BaseLength * sceneData.Size.y);
-            wallLeft.transform.localPosition = new Vector3(0, 0.1f * sceneData.BaseLength * sceneData.Size.x, 0.5f * sceneData.BaseLength * sceneData.Size.y);
+            // wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.1f  * sceneData.BaseLength * sceneData.Size.y, 0);
+            // wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.1f * sceneData.BaseLength * sceneData.Size.y, 0);
+            // wallRight.transform.localPosition = new Vector3(0, 0.1f * sceneData.BaseLength * sceneData.Size.x, -0.5f * sceneData.BaseLength * sceneData.Size.y);
+            // wallLeft.transform.localPosition = new Vector3(0, 0.1f * sceneData.BaseLength * sceneData.Size.x, 0.5f * sceneData.BaseLength * sceneData.Size.y);
             
              // use wall height from excel sheet
              /*
