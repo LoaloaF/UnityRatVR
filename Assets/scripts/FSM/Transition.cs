@@ -8,7 +8,6 @@ namespace FSM
         public Decision Decision;
         public BaseState TrueState;
         public BaseState FalseState;
-        private int tmpStateID;
 
         public void Execute(BaseStateMachine stateMachine)
         {
@@ -17,9 +16,7 @@ namespace FSM
                 stateMachine.CurrentState = TrueState;
             }
             else if(Decision.Decide(stateMachine) && !(TrueState is RemainInState)) {
-                int paradigmID = stateMachine.generalCurrentStateID/100;
-                stateMachine.generalCurrentStateID = TrueState.stateID+paradigmID*100;
-                
+                Debug.Log($"Transition from {stateMachine.CurrentState} to {TrueState}");
                 stateMachine.CurrentState = TrueState;
             }
             
