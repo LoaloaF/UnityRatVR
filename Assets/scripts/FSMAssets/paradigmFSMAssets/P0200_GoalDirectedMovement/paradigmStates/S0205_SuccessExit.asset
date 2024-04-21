@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: S0205_SuccessExit
   m_EditorClassIdentifier: 
   stateID: 205
-  Action:
-  - {fileID: 0}
+  Action: []
   Transitions:
   - {fileID: 11400000, guid: efbf0453a25461a51897f2e533a12157, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateID: 202
   Action:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 50f646f0221c5a24f984ce02d044c0e5, type: 2}
+  - {fileID: 11400000, guid: 5e4b38b3964a61a429d5b5288ad0b1aa, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 5535e9a8530e3774885e98d785d2ea73, type: 2}
+  - {fileID: 11400000, guid: efbf0453a25461a51897f2e533a12157, type: 2}
