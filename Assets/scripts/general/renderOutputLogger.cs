@@ -9,46 +9,89 @@ using Unity.Collections;
 public class renderOutputLogger : MonoBehaviour
 {
     [SerializeField] RenderTexture finalTexture;
-    private VideoFrameSHMInterface unitycameraSHMInterface;
-    NativeArray<byte> output;
+    private VideoFrameSHMInterface unityCameraSHMInterface;
+
+    Texture2D texture;
+    private byte[] imageBytes;
+    private byte[] packBytes;
+
     // int frame_i = 0;
     
     // Start is called before the first frame update
     void Start()
     {
-        unitycameraSHMInterface = new VideoFrameSHMInterface("../tmp_shm_structure_JSONs/unitycam_shmstruct.json");
+        unityCameraSHMInterface = new VideoFrameSHMInterface("../tmp_shm_structure_JSONs/unitycam_shmstruct.json");
+        texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
     }
 
     // Update is called once per frame
     void Update()
     {
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-        SaveFinalTextureToImage(Time.frameCount);
+        SaveFinalTextureToImage();
         Debug.Log($"Saving frame in {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
         stopwatch.Stop();
     }
 
- void SaveFinalTextureToImage(int frame_i)
-{
-    // Convert the RenderTexture to a Texture2D
-    Texture2D texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
-    RenderTexture.active = finalTexture;
-    texture.ReadPixels(new Rect(425, 250, 1070, 800), 0, 0);
-    texture.Apply();
+    // void SaveFinalTextureToImage(int frame_i)
+    // {
+    //     // Convert the RenderTexture to a Texture2D
 
-    var imageBytes = texture.GetRawTextureData();
+    //     RenderTexture.active = finalTexture;
+    //     texture.ReadPixels(new Rect(425, 250, 1070, 800), 0, 0);
+    //     texture.Apply();
 
-    float frameCount = Time.frameCount;
-    float frameTime = Time.realtimeSinceStartup;
-    byte[] packBytes = Encoding.UTF8.GetBytes("<{" + $"N:I,ID:{frameCount},PCT:{frameTime}" + "}>\r\n");
-    unitycameraSHMInterface.AddFrame(imageBytes, packBytes);
+    //     var imageBytes = texture.GetRawTextureData();
 
-    // Clean up
-    RenderTexture.active = null;
-    Destroy(texture);
+    //     float frameCount = Time.frameCount;
+    //     float frameTime = Time.realtimeSinceStartup;
+    //     byte[] packBytes = Encoding.UTF8.GetBytes("<{" + $"N:I,ID:{frameCount},PCT:{frameTime}" + "}>\r\n");
+    //     unityCameraSHMInterface.AddFrame(imageBytes, packBytes);
 
-}
+    //     // Clean up
+    //     RenderTexture.active = null;
+    //     Destroy(texture);
 
+    // }
+    void SaveFinalTextureToImage()
+    {
+        // Ensure the finalTexture is not null and has the correct size
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+        // Read RenderTexture data into the Texture2D
+        RenderTexture.active = finalTexture;
+        texture.ReadPixels(new Rect(425, 250, 1070, 800), 0, 0);
+        texture.Apply();
+        Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+
+
+        // Get raw texture data bytes
+
+        imageBytes = texture.GetRawTextureData();
+        Debug.Log($"TS2 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+
+        // Prepare metadata packet bytes
+        float frameCount = Time.frameCount;
+        float frameTime = Time.realtimeSinceStartup;
+        string metadata = $"<{{N:I,ID:{frameCount},PCT:{frameTime}}}\r\n";
+        packBytes = Encoding.UTF8.GetBytes(metadata);
+        Debug.Log($"TS3 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+
+        // Send image and metadata to SHM interface
+        unityCameraSHMInterface.AddFrame(imageBytes, packBytes);
+        Debug.Log($"TS4 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+
+    }
+
+    void OnDestory()
+    {
+        RenderTexture.active = null;
+        if (texture != null)
+        {
+            Destroy(texture);
+            texture = null;
+        }
+    }
 
 
     // void SaveFinalTextureToImage(int frame_i)
@@ -58,12 +101,14 @@ public class renderOutputLogger : MonoBehaviour
     //     RenderTexture.active = finalTexture;
     //     texture.ReadPixels(new Rect(425, 250, 1070, 800), 0, 0);
     //     texture.Apply();
+    //     Debug.Log("size" + texture.GetRawTextureData().Length);
+
 
     //     // Create a NativeArray to hold the data
-    //     output = new NativeArray<byte>(texture.GetRawTextureData().Length*3, Allocator.Persistent);
+    //     output = new NativeArray<byte>(texture.width*texture.height*3, Allocator.Persistent);
 
     //     // Request an asynchronous readback of the data from GPU to CPU
-    //     AsyncGPUReadback.RequestIntoNativeArray(ref output, finalTexture, 0, texture.format, ReadbackCompleted);
+    //     AsyncGPUReadback.RequestIntoNativeArray(ref output, finalTexture, 0, TextureFormat.RGB24, ReadbackCompleted);
 
     //     // Clean up
     //     RenderTexture.active = null;
@@ -80,12 +125,13 @@ public class renderOutputLogger : MonoBehaviour
 
     //     var imageBytes = request.GetData<byte>().ToArray();
     //     Debug.Log(imageBytes.Length);
-
-    //     byte[] packBytes = Encoding.UTF8.GetBytes("<{" + $"N:I,ID:{Time.frameCount},PCT:1241938576" + "}>\r\n");
+    //     float frameCount = Time.frameCount;
+    //     float frameTime = Time.realtimeSinceStartup;
+    //     byte[] packBytes = Encoding.UTF8.GetBytes("<{" + $"N:I,ID:{frameCount},PCT:frameTime" + "}>\r\n");
     //     unitycameraSHMInterface.AddFrame(imageBytes, packBytes);
 
     //     // Dispose the NativeArray
-    //     output.Dispose();
+    //     // output.Dispose();
     // }
 
 
