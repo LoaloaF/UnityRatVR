@@ -640,6 +640,7 @@ MonoBehaviour:
   wallLeft: {fileID: 768360619}
   DeathZoneAction: 
   deathzone: {fileID: 434591712}
+  successSequenceLength: 3.3
 --- !u!114 &68722536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +648,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68722531}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8b85e5eabc3206029d6d0b673a821f5, type: 3}
   m_Name: 
@@ -666,15 +667,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd3306c17195642804750d3a70c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneController: {fileID: 0}
   player: {fileID: 1180528854}
   generalCurrentStateID: -1
   stateDictionary:
     keys:
     - P0000_SpoutAssoc
     - P0100_Test
+    - P0200_GoalDirectedMovement
     values:
     - {fileID: 11400000, guid: 39a77e9894b4f4e3fa76dbbfde0b4f93, type: 2}
     - {fileID: 11400000, guid: c27402b16531009deb49348b76809bf7, type: 2}
+    - {fileID: 11400000, guid: 7bf4fc9380da1639ba44312747c64876, type: 2}
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,8 +716,8 @@ MonoBehaviour:
   player: {fileID: 1180528854}
   sessionRunning: 0
   UIObject: {fileID: 1185421911}
-  showUI: 0
-  paradigm_name: P0000_SpoutAssoc
+  showUI: 1
+  paradigm_name: P0200_GoalDirectedMovement
 --- !u!4 &78000721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd21d5c83840bc1938634ef2ab2e53a7, type: 3}
@@ -3205,7 +3209,7 @@ GameObject:
   - component: {fileID: 434591715}
   - component: {fileID: 434591714}
   m_Layer: 0
-  m_Name: deathZone
+  m_Name: WallZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6958,7 +6962,7 @@ MonoBehaviour:
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135
-  enableBallInput: 1
+  enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0

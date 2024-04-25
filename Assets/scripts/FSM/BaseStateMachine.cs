@@ -17,28 +17,31 @@ namespace FSM
         // [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents;
         private InputManager _inputManager;
-        public SceneGeometryData scene;
+        public SceneController _sceneController;
         public GameObject player;
         public int generalCurrentStateID;
         public StateDictionary stateDictionary;
 
         public void initializeBaseStateMachine(string paradigm_name) {
             string excelFullFileName = $"./Paradigms/{paradigm_name}.xlsx";
+
             GetComponent<SceneController>().LoadExcelScene(excelFullFileName);
             
             CurrentState = stateDictionary.TryGetValue(paradigm_name);
+            Debug.Log($"Initial state: {CurrentState}");
             generalCurrentStateID = CurrentState.stateID;
         }
         
         private void Awake()
         {
             _cachedComponents = new Dictionary<Type, Component>();
+            _sceneController = GetComponent<SceneController>();
         }
 
         private void Start()
         {
             _inputManager = GetComponent<InputManager>();
-            scene = GetComponent<SceneController>().scene;
+            // scene = GetComponent<SceneController>().scene;
         }
 
         public BaseState CurrentState { get; set; }

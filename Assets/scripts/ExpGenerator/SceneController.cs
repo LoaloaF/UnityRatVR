@@ -35,8 +35,9 @@ namespace RatVR.Scene
         private Color color;    
         public SceneGeometryData scene;
         public string DeathZoneAction;
-        
         public  GameObject deathzone;
+        public  float successSequenceLength = 3.3f;
+        public  float maximumTrialLength = 30.4f;
 
         public void LoadExcelScene(string path)
         {
@@ -61,7 +62,6 @@ namespace RatVR.Scene
 
             scene = new SceneGeometryData(1, excelMeta.baseLength, excelMeta.size, excelMeta.startLocation, excelMeta.agentLocation,
                                                             excelMeta.wallTop, excelMeta.wallBot, excelMeta.wallRight, excelMeta.wallLeft, pillars, excelMeta.deathzone, excelMeta.rewardDelay, excelMeta.rewardLength);
-            // UnityEngine.Debug.Log("new SceneGeometryData");
             DeathZoneAction = excelMeta.DeathZoneAction;
             LoadScene(scene);
         }
