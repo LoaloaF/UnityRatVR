@@ -641,6 +641,7 @@ MonoBehaviour:
   DeathZoneAction: 
   deathzone: {fileID: 434591712}
   successSequenceLength: 3.3
+  maximumTrialLength: 30.4
 --- !u!114 &68722536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd3306c17195642804750d3a70c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneController: {fileID: 0}
+  _sceneController: {fileID: 68722535}
   player: {fileID: 1180528854}
   generalCurrentStateID: -1
   stateDictionary:
@@ -716,7 +717,7 @@ MonoBehaviour:
   player: {fileID: 1180528854}
   sessionRunning: 0
   UIObject: {fileID: 1185421911}
-  showUI: 1
+  showUI: 0
   paradigm_name: P0200_GoalDirectedMovement
 --- !u!4 &78000721 stripped
 Transform:
@@ -735,7 +736,6 @@ GameObject:
   - component: {fileID: 91614426}
   - component: {fileID: 91614425}
   - component: {fileID: 91614424}
-  - component: {fileID: 91614427}
   m_Layer: 6
   m_Name: Blinker
   m_TagString: Untagged
@@ -833,20 +833,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91614422}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &91614427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91614422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3be65344cdca5cfb80d9037f5e57f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinker: {fileID: 91614425}
-  framecounter: 0
 --- !u!1001 &128989529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1313,7 +1299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd21d5c83840bc1938634ef2ab2e53a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1346605779105055763, guid: bd21d5c83840bc1938634ef2ab2e53a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6962,7 +6948,7 @@ MonoBehaviour:
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135
-  enableBallInput: 0
+  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0

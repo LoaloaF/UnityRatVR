@@ -19,7 +19,7 @@ public class renderOutputLoggerTry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        unitycameraSHMInterface = new VideoFrameSHMInterface("../tmp_shm_structure_JSONs/unitycam_shmstruct.json");
+        unitycameraSHMInterface = new VideoFrameSHMInterface("unitycam_shmstruct.json");
         
     }
 

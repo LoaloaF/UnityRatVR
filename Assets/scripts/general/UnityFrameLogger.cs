@@ -40,7 +40,7 @@ public class UnityFrameLogger : MonoBehaviour
         _stateMachine = GetComponent<BaseStateMachine>();
         _playerMovement = player.GetComponent<PlayerMovement>();
         _inputManager = GetComponent<InputManager>();
-        unityOutputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/unityoutput_shmstruct.json");
+        unityOutputSHMInterface = new CyclicPackagesSHMInterface("unityoutput_shmstruct.json");
     }
 
     // Update is called once per frame

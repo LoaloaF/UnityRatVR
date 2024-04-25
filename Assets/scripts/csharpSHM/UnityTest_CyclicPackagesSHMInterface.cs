@@ -11,7 +11,7 @@ public class UnityTest_CyclicPackagesSHMInterface : MonoBehaviour
 
     void Start()
     {
-        ballVelSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/ballvelocity_shmstruct.json");
+        ballVelSHMInterface = new CyclicPackagesSHMInterface("ballvelocity_shmstruct.json");
     }
 
     // Update is called once per frame

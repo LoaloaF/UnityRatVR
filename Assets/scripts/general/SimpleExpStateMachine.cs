@@ -22,7 +22,7 @@ public class SimpleExpStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        portInputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/portentainput_shmstruct.json");
+        portInputSHMInterface = new CyclicPackagesSHMInterface("portentainput_shmstruct.json");
     }
 
     // Update is called once per frame

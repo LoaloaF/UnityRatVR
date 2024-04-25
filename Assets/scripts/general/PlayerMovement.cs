@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _inputManager = experimentCore.GetComponent<InputManager>();
-        ballVelSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/ballvelocity_shmstruct.json");
+        ballVelSHMInterface = new CyclicPackagesSHMInterface("ballvelocity_shmstruct.json");
     }
 
     // Update is called once per frame

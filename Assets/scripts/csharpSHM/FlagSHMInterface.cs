@@ -2,6 +2,7 @@ using System;
 using System.IO.MemoryMappedFiles;
 using Newtonsoft.Json;
 using System.IO; // For StreamReader and FileNotFoundException
+using UnityEngine;
 
 
 public class FlagSHMInterface
@@ -12,8 +13,14 @@ public class FlagSHMInterface
 
     public FlagSHMInterface(string shmStructureJsonFilename)
     {
-        dynamic shmStructure = LoadShmStructureJson(shmStructureJsonFilename);
+        string unityProjectPath = Path.GetDirectoryName(Application.dataPath);
+        string shmStructureJsonFullFilename = Path.Combine(unityProjectPath, "..", "tmp_shm_structure_JSONs", shmStructureJsonFilename);
+        if (!File.Exists(shmStructureJsonFullFilename)) {
+            string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFullFilename}";
+            throw new Exception(errorMessage);
+        }
 
+        var shmStructure = LoadShmStructureJson(shmStructureJsonFullFilename);
         _shmName = shmStructure.shm_name;
         _memory = MemoryMappedFile.CreateFromFile("/dev/shm/termflag", System.IO.FileMode.Open);
         // _memory = MemoryMappedFile.OpenExisting(_shmName);

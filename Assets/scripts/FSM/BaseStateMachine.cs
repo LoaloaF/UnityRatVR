@@ -23,7 +23,9 @@ namespace FSM
         public StateDictionary stateDictionary;
 
         public void initializeBaseStateMachine(string paradigm_name) {
-            string excelFullFileName = $"./Paradigms/{paradigm_name}.xlsx";
+            // string excelFullFileName = $"./Paradigms/{paradigm_name}.xlsx";
+            string projectPath = Path.GetDirectoryName(Application.dataPath);
+            string excelFullFileName = Path.Combine(projectPath, "Paradigms", $"{paradigm_name}.xlsx");
 
             GetComponent<SceneController>().LoadExcelScene(excelFullFileName);
             

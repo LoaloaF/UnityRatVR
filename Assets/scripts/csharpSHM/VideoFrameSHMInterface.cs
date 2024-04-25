@@ -18,7 +18,14 @@ public class VideoFrameSHMInterface
 
     public VideoFrameSHMInterface(string shmStructureJsonFilename)
     {
-        dynamic shmStructure = LoadShmStructureJson(shmStructureJsonFilename);
+        string unityProjectPath = Path.GetDirectoryName(Application.dataPath);
+        string shmStructureJsonFullFilename = Path.Combine(unityProjectPath, "..", "tmp_shm_structure_JSONs", shmStructureJsonFilename);
+        if (!File.Exists(shmStructureJsonFullFilename)) {
+            string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFullFilename}";
+            throw new Exception(errorMessage);
+        }
+
+        dynamic shmStructure = LoadShmStructureJson(shmStructureJsonFullFilename);
 
         _shmName = shmStructure.shm_name;
         _totalNbytes = shmStructure.total_nbytes;

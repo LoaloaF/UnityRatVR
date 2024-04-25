@@ -9,7 +9,7 @@ public class PortentaInputInterface : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {    
-        portentaInputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/portentainput_shmstruct.json");
+        portentaInputSHMInterface = new CyclicPackagesSHMInterface("portentainput_shmstruct.json");
     }
 
     public void sendSwitchAirvalve()

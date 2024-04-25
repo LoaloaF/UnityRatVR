@@ -22,12 +22,14 @@ public class CyclicPackagesSHMInterface
 
     public CyclicPackagesSHMInterface(string shmStructureJsonFilename)
     {
-        if (!File.Exists(shmStructureJsonFilename)) {
-            string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFilename}";
+        string unityProjectPath = Path.GetDirectoryName(Application.dataPath);
+        string shmStructureJsonFullFilename = Path.Combine(unityProjectPath, "..", "tmp_shm_structure_JSONs", shmStructureJsonFilename);
+        if (!File.Exists(shmStructureJsonFullFilename)) {
+            string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFullFilename}";
             throw new Exception(errorMessage);
         }
 
-        var shmStructure = LoadShmStructureJson(shmStructureJsonFilename);
+        var shmStructure = LoadShmStructureJson(shmStructureJsonFullFilename);
         _shmName = shmStructure["shm_name"].ToString();
         _totalNBytes = (long)shmStructure["total_nbytes"];
         _shmPackagesNBytes = (long)shmStructure["fields"]["shm_packages_nbytes"];
@@ -45,7 +47,7 @@ public class CyclicPackagesSHMInterface
         }
             
         _accessor = _memory.CreateViewAccessor();
-        Log($"SHM interface created with JSON {shmStructureJsonFilename}");
+        Log($"SHM interface created with JSON {shmStructureJsonFullFilename}");
 
     }
     public static void Log(string message)

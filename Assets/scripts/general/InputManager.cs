@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
         Time.timeScale = 0;
 
         _playerMovement = player.GetComponent<PlayerMovement>();
-        unityInputSHMInterface = new CyclicPackagesSHMInterface("../tmp_shm_structure_JSONs/unityinput_shmstruct.json");
+        unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
         _portentaInputInterface = GetComponent<PortentaInputInterface>();
 
         // clear input shm from previous runs
