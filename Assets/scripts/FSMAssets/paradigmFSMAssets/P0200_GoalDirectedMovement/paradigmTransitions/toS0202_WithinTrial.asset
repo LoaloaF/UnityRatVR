@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0201_Exploration
+  m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
+  m_Name: toS0202_WithinTrial
   m_EditorClassIdentifier: 
-  stateID: 201
-  Action: []
-  Transitions:
-  - {fileID: 11400000, guid: a4fb9a6147b9a3bf4b384a854c487f44, type: 2}
-  - {fileID: 11400000, guid: cdfdef5cb218468b1aa3c0218278e06a, type: 2}
+  Decision: {fileID: 11400000, guid: 10692e8a11e8d564183739b10fe60cfd, type: 2}
+  TrueState: {fileID: 11400000, guid: b84b135594280b47d9935004c23b834b, type: 2}
+  FalseState: {fileID: 0}
