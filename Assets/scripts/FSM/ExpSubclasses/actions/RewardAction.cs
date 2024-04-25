@@ -12,7 +12,7 @@ namespace Experiment.ExperimentFSM
 
     public class RewardAction : FSMAction
     {
-        private float timer;
+        private float timer = 0f;
         private bool successsent = false;
         public override void Execute(BaseStateMachine stateMachine)
         {

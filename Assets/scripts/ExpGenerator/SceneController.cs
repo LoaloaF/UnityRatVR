@@ -172,7 +172,7 @@ namespace RatVR.Scene
                     Transform CylinderTransform = pillar.transform.Find("Cylinder");
                     CylinderTransform.localScale = new Vector3(pd.Radius, pd.Height, pd.Radius);
                     Transform ColliderTransform = pillar.transform.Find("Collider");
-                    ColliderTransform.localScale = new Vector3(pd.RewardZone, 0.1f*sceneData.Size.x, pd.RewardZone);
+                    ColliderTransform.localScale = new Vector3(pd.RewardZone, 0.2f*sceneData.Size.x, pd.RewardZone);
                     // pillar.GetComponentInChildren<MeshRenderer>().material = materialDict[pd.Texture];
                     
                     if (!materials.ContainsKey(pd.Texture)) {
