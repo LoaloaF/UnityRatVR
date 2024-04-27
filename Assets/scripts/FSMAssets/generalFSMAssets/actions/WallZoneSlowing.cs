@@ -13,11 +13,11 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            string DeathZoneAction = stateMachine.GetComponent<SceneController>().DeathZoneAction;
+            string DeathZoneAction = stateMachine._sceneController.DeathZoneAction;
             if (DeathZoneAction == "slow_down")
             {
                 Vector3 gain = CalculateGain();
-                stateMachine.player.GetComponent<PlayerMovement>().SlowDown(gain);
+                stateMachine._playerMovement.SlowDown(gain);
             }
 
             Vector3 CalculateGain()
@@ -29,20 +29,20 @@ namespace Experiment.ExperimentFSM
 
             var scenesize = stateMachine._sceneController.scene.Size;
             // player position, x, z, rotation 
-            Vector3 playerpos = new Vector3(stateMachine.player.transform.position.x,  stateMachine.player.transform.position.z, stateMachine.player.transform.eulerAngles.y);
+            Vector3 playerpos = new Vector3(stateMachine.Player.transform.position.x,  stateMachine.Player.transform.position.z, stateMachine.Player.transform.eulerAngles.y);
             // ball input, [0]:forward, [1]: right, [2]: rotation (move relatively to the direction player is facing)
-            // int[] XYZvelInput = stateMachine.player.GetComponent<PlayerMovement>().XYZvelInput;
+            // int[] XYZvelInput = stateMachine.Player.GetComponent<PlayerMovement>().XYZvelInput;
                       
             // distance to the 4 walls
             float[] diswall = calculatediswallRatio();
             // float[] gain = CalculateGain();
 
             
-            UnityEngine.Debug.Log("Runs when in wall zone state"); 
-            UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
+            // UnityEngine.Debug.Log("Runs when in wall zone state"); 
+            // UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
             // UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] + " " + gain[3] );
 
-            CharacterController cc = stateMachine.player.GetComponent<CharacterController>();
+            CharacterController cc = stateMachine.Player.GetComponent<CharacterController>();
             // cc.move();
 
 

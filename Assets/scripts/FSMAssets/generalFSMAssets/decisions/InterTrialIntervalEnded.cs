@@ -8,23 +8,25 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/SuccessSequenceEnded")]
-    public class SuccessSequenceEnded : Decision
+     [CreateAssetMenu(menuName = "FSM/Decisions/InterTrialIntervalEnded")]
+    public class InterTrialIntervalEnded : Decision
     {
         private float t0;
-        // private float currentTime;
+        private float currentTime;
         private bool firstDecicionCall = true;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             if (firstDecicionCall)
             {
                 t0 = Time.realtimeSinceStartup;
-                // currentTime = t0;
+                currentTime = t0;
                 firstDecicionCall = false;
             }
             
+            Debug.Log(Time.realtimeSinceStartup);
+            Debug.Log(t0);
             if (Time.realtimeSinceStartup-t0 > 
-                stateMachine._sessionManager.successSequenceLength) {
+                stateMachine._sessionManager.interTrialIntervalTrialLength) {
                 firstDecicionCall = true;
                 return true;
             }

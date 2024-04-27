@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 68722537}
   - component: {fileID: 68722539}
   - component: {fileID: 68722540}
+  - component: {fileID: 68722541}
   m_Layer: 0
   m_Name: ExperimentCore
   m_TagString: ExperimentManager
@@ -640,8 +641,6 @@ MonoBehaviour:
   wallLeft: {fileID: 768360619}
   DeathZoneAction: 
   deathzone: {fileID: 434591712}
-  successSequenceLength: 3.3
-  maximumTrialLength: 30.4
 --- !u!114 &68722536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,12 +648,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68722531}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8b85e5eabc3206029d6d0b673a821f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1180528854}
+  Player: {fileID: 1180528854}
   frameIndicationBlinker: {fileID: 91614425}
 --- !u!114 &68722537
 MonoBehaviour:
@@ -668,8 +667,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd3306c17195642804750d3a70c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1180528854}
+  _playerMovement: {fileID: 1180528859}
+  frameIndicationBlinker: {fileID: 91614425}
+  validationSphereRenderer: {fileID: 186109822}
   _sceneController: {fileID: 68722535}
-  player: {fileID: 1180528854}
+  _sessionManager: {fileID: 0}
   generalCurrentStateID: -1
   stateDictionary:
     keys:
@@ -714,11 +717,34 @@ MonoBehaviour:
   TeleportAngleInput: {fileID: 308576901}
   frameIndicationBlinker: {fileID: 91614425}
   validationSphereRenderer: {fileID: 186109822}
-  player: {fileID: 1180528854}
-  sessionRunning: 0
+  Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
-  showUI: 0
+  showUI: 1
   paradigm_name: P0200_GoalDirectedMovement
+--- !u!114 &68722541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68722531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccb7b3e28625a7ae8bbefa77812754f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sessionRunning: 0
+  successSequenceLength: 2
+  maximumTrialLength: 10
+  interTrialIntervalTrialLength: 4
+  trialEndTeleportCenterDistMin: 10
+  trialEndTeleportCenterDistMax: 30
+  trialEndTeleportCenterAngleMin: 0
+  trialEndTeleportCenterAngleMax: 180
+  rewardedPillars: 01000000020000000300000004000000
+  currentTrialEndTeleportCenterDist: 0
+  currentTrialEndTeleportCenterAngle: 0
+  currentTrialrewardedPillar: 0
 --- !u!4 &78000721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd21d5c83840bc1938634ef2ab2e53a7, type: 3}
@@ -4795,7 +4821,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690834431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 631526912269d02a18e031329e498868, type: 3}
   m_Name: 
@@ -6941,14 +6967,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310b3095a8a81d68bba61313a8d1d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  experimentCore: {fileID: 68722531}
   controller: {fileID: 1180528855}
   firstPackID: 0
   lastPackID: 0
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135
-  enableBallInput: 1
+  enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8307,8 +8332,7 @@ MonoBehaviour:
   TeleportAngleInput: {fileID: 308576901}
   frameIndicationBlinker: {fileID: 91614425}
   validationSphereRenderer: {fileID: 186109822}
-  player: {fileID: 1180528854}
-  sessionRunning: 0
+  Player: {fileID: 0}
   UIObject: {fileID: 1185421911}
   showUI: 1
   paradigm_name: P0100_Test

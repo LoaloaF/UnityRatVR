@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Unity.Collections;
+using FSM;
 
 public class renderOutputLogger : MonoBehaviour
 {
     [SerializeField] RenderTexture finalTexture;
     private VideoFrameSHMInterface unityCameraSHMInterface;
+    private BaseStateMachine _stateMachine;
 
     Texture2D texture;
     private byte[] imageBytes;
@@ -20,17 +22,22 @@ public class renderOutputLogger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _stateMachine = GetComponent<BaseStateMachine>();
         unityCameraSHMInterface = new VideoFrameSHMInterface("unitycam_shmstruct.json");
         texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-        SaveFinalTextureToImage();
-        Debug.Log($"Saving frame in {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
-        stopwatch.Stop();
+        if (_stateMachine._sessionManager.sessionRunning)
+        {
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            SaveFinalTextureToImage();
+            // Debug.Log($"Saving frame in {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+            stopwatch.Stop();
+        }
     }
 
     // void SaveFinalTextureToImage(int frame_i)
@@ -62,24 +69,24 @@ public class renderOutputLogger : MonoBehaviour
         RenderTexture.active = finalTexture;
         texture.ReadPixels(new Rect(425, 250, 1070, 800), 0, 0);
         texture.Apply();
-        Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+        // Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
 
         // Get raw texture data bytes
 
         imageBytes = texture.GetRawTextureData();
-        Debug.Log($"TS2 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+        // Debug.Log($"TS2 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
         // Prepare metadata packet bytes
         float frameCount = Time.frameCount;
         float frameTime = Time.realtimeSinceStartup;
         string metadata = $"<{{N:I,ID:{frameCount},PCT:{frameTime}}}\r\n";
         packBytes = Encoding.UTF8.GetBytes(metadata);
-        Debug.Log($"TS3 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+        // Debug.Log($"TS3 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
         // Send image and metadata to SHM interface
         unityCameraSHMInterface.AddFrame(imageBytes, packBytes);
-        Debug.Log($"TS4 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+        // Debug.Log($"TS4 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
     }
 

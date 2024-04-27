@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
   m_Name: toS0201_TrialStart
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 10692e8a11e8d564183739b10fe60cfd, type: 2}
+  Decision: {fileID: 11400000, guid: 541409748de4ecb29a4f14a7fe515740, type: 2}
   TrueState: {fileID: 11400000, guid: 62679663f94c7e1c3bc90dc745aaffcb, type: 2}
-  FalseState: {fileID: 0}
+  FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

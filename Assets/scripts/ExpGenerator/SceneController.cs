@@ -36,8 +36,6 @@ namespace RatVR.Scene
         public SceneGeometryData scene;
         public string DeathZoneAction;
         public  GameObject deathzone;
-        public  float successSequenceLength = 3.3f;
-        public  float maximumTrialLength = 30.4f;
 
         public void LoadExcelScene(string path)
         {

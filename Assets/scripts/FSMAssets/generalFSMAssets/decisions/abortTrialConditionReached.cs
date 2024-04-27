@@ -16,20 +16,20 @@ namespace Experiment.ExperimentFSM
         private bool firstDecicionCall = true;
         public override bool Decide(BaseStateMachine stateMachine)
         {
+            // Debug.Log("Time.realtimeSinceStartup:"+Time.realtimeSinceStartup+ " t0:"+t0+" firstDecicionCall: "+firstDecicionCall);
             if (firstDecicionCall)
             {
+                // Debug.Log("FIRSTabortTrialConditionReached");
                 t0 = Time.realtimeSinceStartup;
                 currentTime = t0;
                 firstDecicionCall = false;
-                Debug.Log("First Call");
             }
             
             if (Time.realtimeSinceStartup-t0 > 
-                stateMachine.GetComponent<SceneController>().maximumTrialLength) {
+                stateMachine._sessionManager.maximumTrialLength) {
                 firstDecicionCall = true;
                 return true;
             }
-            Debug.Log("check");
             return false;
         }
 

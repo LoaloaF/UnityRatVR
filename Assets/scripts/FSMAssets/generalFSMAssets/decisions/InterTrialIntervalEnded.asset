@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: P0200_GoalDirectedMovement
+  m_Script: {fileID: 11500000, guid: 5b1c70449a54d3ff8a186bba3b5337e9, type: 3}
+  m_Name: InterTrialIntervalEnded
   m_EditorClassIdentifier: 
-  stateID: 200
-  Action: []
-  Transitions:
-  - {fileID: 11400000, guid: e7004a81351af2778915854722d8c277, type: 2}

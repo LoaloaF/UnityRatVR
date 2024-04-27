@@ -102,6 +102,31 @@ namespace RatVR.ExcelData
             this.rewardZone = int.Parse(values[8]);
         }
 
+        // public class ExcelSessionParameters
+        // {
+        //     public Vector2 size;
+        //     public float baseLength;
+        //     public int deathzone;
+
+        //     public ExcelSessionParameters(float baseLength, int deathzone){
+        //         this.baseLength = baseLength;
+        //         this.deathzone = deathzone;
+        //     }
+        // }
+
+        
+        // public class ExcelDynamicSessionParameters
+        // {
+        //     public Vector2 size;
+        //     public float baseLength;
+        //     public int deathzone;
+
+        //     public ExcelDynamicSessionParameters(float baseLength, int deathzone){
+        //         this.baseLength = baseLength;
+        //         this.deathzone = deathzone;
+        //     }
+        // }
+
         public override string ToString()
         {
             return object_name + "r: " + radius.ToString() + ", h: " + height.ToString() + ", zPos: " + zPos.ToString();

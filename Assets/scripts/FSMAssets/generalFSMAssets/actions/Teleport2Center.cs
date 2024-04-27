@@ -20,7 +20,7 @@ namespace Experiment.ExperimentFSM
                 float x = 0f;
                 float z = 0f;
                 float rot = 0f;
-                stateMachine.player.GetComponent<PlayerMovement>().TeleportRat(x, z, rot);
+                stateMachine._playerMovement.TeleportRat(x, z, rot);
             }
             else
             {

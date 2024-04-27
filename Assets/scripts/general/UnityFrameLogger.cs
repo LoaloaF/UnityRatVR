@@ -11,9 +11,7 @@ using FSM;
 
 public class UnityFrameLogger : MonoBehaviour
 {
-    public GameObject player;
-    private InputManager _inputManager;
-
+    public GameObject Player;
     private float framePositionX;
     private float framePositionZ;
     private float frameAngle;
@@ -28,7 +26,7 @@ public class UnityFrameLogger : MonoBehaviour
     private BaseStateMachine _stateMachine;
     private PlayerMovement _playerMovement;
 
-    private CyclicPackagesSHMInterface unityOutputSHMInterface;
+    public CyclicPackagesSHMInterface unityOutputSHMInterface;
     private CyclicPackagesSHMInterface ReadUnityOutputSHMInterface;
 
     public MeshRenderer frameIndicationBlinker;
@@ -38,15 +36,14 @@ public class UnityFrameLogger : MonoBehaviour
     void Start()
     {
         _stateMachine = GetComponent<BaseStateMachine>();
-        _playerMovement = player.GetComponent<PlayerMovement>();
-        _inputManager = GetComponent<InputManager>();
+        _playerMovement = Player.GetComponent<PlayerMovement>();
         unityOutputSHMInterface = new CyclicPackagesSHMInterface("unityoutput_shmstruct.json");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_inputManager.sessionRunning)
+        if (_stateMachine._sessionManager.sessionRunning)
         {
             LogFrame();
         }
@@ -57,9 +54,9 @@ public class UnityFrameLogger : MonoBehaviour
         // Debug.Log($"TestRead: {readOut}");
         frameTime = Time.realtimeSinceStartup;
         frameCount = Time.frameCount;
-        framePositionX = player.transform.position.x;
-        framePositionZ = player.transform.position.z;
-        frameAngle = player.transform.rotation.eulerAngles.y;
+        framePositionX = Player.transform.position.x;
+        framePositionZ = Player.transform.position.z;
+        frameAngle = Player.transform.rotation.eulerAngles.y;
         frameBallVelFirstPackID = _playerMovement.firstPackID;
         frameBallVelLastPackID = _playerMovement.lastPackID;
         frameState = _stateMachine.generalCurrentStateID;
@@ -72,7 +69,6 @@ public class UnityFrameLogger : MonoBehaviour
                     $"BFP:{frameBallVelFirstPackID},BLP:{frameBallVelLastPackID}";
 
         // Debug.Log($"Calling Push with {framePackage}");
-        Debug.Log(frameState);
         unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
     }
 }

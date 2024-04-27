@@ -27,13 +27,11 @@ public class InputManager : MonoBehaviour
 
     public MeshRenderer frameIndicationBlinker;
     public MeshRenderer validationSphereRenderer; // MeshRenderer object that you can assign in the UI
-    public GameObject player;
+    public GameObject Player;
     private PlayerMovement _playerMovement;
     
     private PortentaInputInterface _portentaInputInterface;
     
-    public bool sessionRunning = false;
-
     public GameObject UIObject;
     public bool showUI = true;
     public string paradigm_name = "P0100_Test";
@@ -47,7 +45,7 @@ public class InputManager : MonoBehaviour
         // Pause the game at the start
         Time.timeScale = 0;
 
-        _playerMovement = player.GetComponent<PlayerMovement>();
+        _playerMovement = Player.GetComponent<PlayerMovement>();
         unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
         _portentaInputInterface = GetComponent<PortentaInputInterface>();
 
@@ -66,9 +64,9 @@ public class InputManager : MonoBehaviour
             UIObject.SetActive(false);
         }
         
-        // if the Unity UI isn't used, take input from the shared memory
-        if (!showUI) processSHMInput();
-        if (sessionRunning) switchBlinkerColor();
+        // depr: if the Unity UI isn't used, take input from the shared memory
+        // if (!showUI) processSHMInput();
+        processSHMInput();
     }
     private void processSHMInput()
     {
@@ -124,28 +122,15 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void switchBlinkerColor()
-    {
-        if ( Time.frameCount%2 == 1) {
-                frameIndicationBlinker.material.color = Color.white;
-        } else {
-            frameIndicationBlinker.material.color = Color.black;
-        }
-    }
-
     // Function to start the game
     public void StartGame()
     {
-        
-        // Unpause the game
-        Time.timeScale = 1;
+        // // Unpause the game
+        // Time.timeScale = 1;
 
         // Disable the start button
         startSessionButton.interactable = false;
         stopSessionButton.interactable = true;
-
-        validationSphereRenderer.enabled = false;
-        sessionRunning = true;
 
         GetComponent<BaseStateMachine>().initializeBaseStateMachine(paradigm_name);
         Debug.Log("Session started with paradigm_name: " + paradigm_name);
@@ -153,16 +138,12 @@ public class InputManager : MonoBehaviour
     }
     public void StopGame()
     {
-        // Unpause the game
-        Time.timeScale = 0;
+        // // Unpause the game
+        // Time.timeScale = 0;
 
         // Disable the start button
         startSessionButton.interactable = true;
         stopSessionButton.interactable = false;
-
-        validationSphereRenderer.enabled = true;
-        sessionRunning = false;
-        _playerMovement.TeleportRat(0,0,0);
         Debug.Log("Session stopped");
     }
     
