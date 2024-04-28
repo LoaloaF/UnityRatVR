@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
     public MeshRenderer validationSphereRenderer; // MeshRenderer object that you can assign in the UI
     public GameObject Player;
     private PlayerMovement _playerMovement;
+    private SessionManager _sessionManager;
     
     private PortentaInputInterface _portentaInputInterface;
     
@@ -46,8 +47,9 @@ public class InputManager : MonoBehaviour
         Time.timeScale = 0;
 
         _playerMovement = Player.GetComponent<PlayerMovement>();
-        unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
+        _sessionManager = GetComponent<SessionManager>();
         _portentaInputInterface = GetComponent<PortentaInputInterface>();
+        unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
 
         // clear input shm from previous runs
         if (!showUI) {
@@ -94,11 +96,14 @@ public class InputManager : MonoBehaviour
             paradigm_name = shmUnityInput.Split(',')[1];
         } else if (shmUnityInput.StartsWith("Punishment") 
                     || shmUnityInput.StartsWith("Success") 
+                    || shmUnityInput.StartsWith("TrialEndTeleportDistanceDelta") 
+                    || shmUnityInput.StartsWith("TrialEndTeleportAngleDelta") 
                     || shmUnityInput.StartsWith("Teleport")){
             try {
                 splitInput = shmUnityInput.Split(',');
                 command = splitInput[0];
                 value1 = float.Parse(splitInput[1]);
+                // more than a single value within message
                 if (command == "Success" || command == "Teleport") {
                     value2 = float.Parse(splitInput[2]);
                     if (command == "Teleport") {
@@ -116,6 +121,10 @@ public class InputManager : MonoBehaviour
                 _portentaInputInterface.sendSuccess((int)value1, (int)value2);
             } else if (command == "Teleport") {
                 _playerMovement.TeleportRat(value1, value2, value3);
+            } else if (command == "TrialEndTeleportDistanceDelta") {
+                _sessionManager.updateTrialEndTeleportCenterDist(value1);
+            } else if (command == "TrialEndTeleportAngleDelta") {
+                _sessionManager.updateTrialEndTeleportCenterAngle(value1);
             }
         } else {
             Debug.LogError("Invalid command: " + shmUnityInput);

@@ -14,8 +14,53 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
+            // this is the position in excel coordicates, not unity coordinates
+            // Debug.Log(stateMachine._sceneController.scene.Pillars[0].position);
+            Vector3 pillarPosition = new Vector3(0,0,18);
+            Debug.Log("nextTrialEndTeleportCenterDist: "+stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
+
+            Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
+                                                    stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
+
+            // TEST create a cuvbe object at newStartPosition
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.transform.position = newStartPosition;
+            stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
+
+
             stateMachine.validationSphereRenderer.enabled = false;
             stateMachine._playerMovement.EnableMovement();
+
+            float pillarDist = stateMachine._sessionManager.nextTrialEndTeleportCenterDist;
+            float pillarAngle = stateMachine._sessionManager.nextTrialEndTeleportCenterAngle;
+            // have this for every pillar
+            string pillarTransparency = "1";
+            string pillarIsRewarded = "1";
+            string packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparency},P1R:{pillarIsRewarded}";
+            stateMachine._sessionManager.logNewTrial(packValues);
+        }
+
+        public Vector3 samplenewStartPosition(Vector3 center, float radius, float orientation=0)
+        {
+            // Generate a random angle in radians
+            float angle = Random.Range(0, 2 * Mathf.PI);
+            Debug.Log("angle: "+angle);
+
+            // default to inverted anlge (pointing towrads center)
+            // orientation = (angle+Mathf.PI) * Mathf.Rad2Deg;
+            orientation = (angle) * Mathf.Rad2Deg;
+
+            Debug.Log("radius "+radius);
+
+            // Calculate the x and z coordinates
+            float x = radius * Mathf.Cos(angle);
+            float z = radius * Mathf.Sin(angle);
+            Debug.Log("x: "+x);
+            Debug.Log("z: "+z);
+
+            // Create the new point
+            Vector3 point = new Vector3(center.x + x, orientation, center.z + z);
+            return point;
         }
     }
 }

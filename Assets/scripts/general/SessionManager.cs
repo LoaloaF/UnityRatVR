@@ -11,31 +11,57 @@ public sealed class SessionManager : MonoBehaviour
     public  bool sessionRunning = false;
     public  float successSequenceLength = 3.3f;
     public  float maximumTrialLength = 30.4f;
-    public  float interTrialIntervalTrialLength = 5;
+    public  float interTrialIntervalTrialLength = 1;
 
     // TODO: needs link to excel sheet
     // dynamicSessionParameters
-    public  float trialEndTeleportCenterDistMin = 10f;
-    public  float trialEndTeleportCenterDistMax = 30f;
-    public  float trialEndTeleportCenterAngleMin = 0f;
-    public  float trialEndTeleportCenterAngleMax = 180f;
-    public  int[] rewardedPillars = new int[] {1, 2, 3, 4};
+    public  static float trialEndTeleportCenterDistMin = 7.1f;
+    public  static float trialEndTeleportCenterDistMax = 20f;
+    public  static float trialEndTeleportCenterAngleMin = 0f;
+    public  static float trialEndTeleportCenterAngleMax = 0f;
+    public  static int[] rewardedPillars = new int[] {1};
+    public  static float[] pillarTransparency = new float[] {1};
+    // public  int[] rewardedPillars = new int[] {1, 2, 3, 4};
+    // public  float[] pillarTransparency = new float[] {1, 1, 1, 1};
 
     // set from outside (FSM actions) not all paradigms will use all of these
-    public  float currentTrialEndTeleportCenterDist;
-    public  float currentTrialEndTeleportCenterAngle;
-    public  int currentTrialrewardedPillar;
+    public  float nextTrialEndTeleportCenterDist = trialEndTeleportCenterDistMin;
+    public  float nextTrialEndTeleportCenterAngle = trialEndTeleportCenterAngleMin;
+    public  int[] nextTrialRewardedPillars = rewardedPillars;
+    public  float[] nextTrialPillarTransparency = pillarTransparency;
 
     // general trial logging parameters
-    private float frameTime;
+    private float trialStartTimestamp = 0f;
+    private float previousTrialDuration = -1f;
     private int trialCount = 0;
-    private string trialPackage;
+    private string trialPackage = "";
+
+    public void updateTrialEndTeleportCenterAngle(float newTrialEndTeleportCenterAngle) 
+    {
+        if (newTrialEndTeleportCenterAngle > trialEndTeleportCenterAngleMin && 
+            newTrialEndTeleportCenterAngle < trialEndTeleportCenterAngleMax)
+        {
+            nextTrialEndTeleportCenterAngle = newTrialEndTeleportCenterAngle;
+        } else {
+            Debug.Log($"newTrialEndTeleportCenterAngle {newTrialEndTeleportCenterAngle} is out of bounds");
+        }
+    }
+
+    public void updateTrialEndTeleportCenterDist(float newTrialEndTeleportCenterDist) 
+    {
+        if (newTrialEndTeleportCenterDist > trialEndTeleportCenterDistMin && 
+            newTrialEndTeleportCenterDist < trialEndTeleportCenterDistMax)
+        {
+            nextTrialEndTeleportCenterDist = newTrialEndTeleportCenterDist;
+        } else {
+            Debug.Log($"newTrialEndTeleportCenterDist {newTrialEndTeleportCenterDist} is out of bounds");
+        }
+    }
 
     public void logNewTrial(string packageValues) {
-        frameTime = Time.realtimeSinceStartup;
-
+        trialStartTimestamp = Time.realtimeSinceStartup;
         trialPackage = $"N:TN,ID:{trialCount},FID:{Time.frameCount},"+
-                       $"PCT:{frameTime},{packageValues}";
+                       $"PCT:{Time.realtimeSinceStartup},{packageValues}";
 
         Debug.Log($"Calling Push with New Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
@@ -43,10 +69,10 @@ public sealed class SessionManager : MonoBehaviour
     }
 
     public void logEndTrial(string packageValues) {
-        frameTime = Time.realtimeSinceStartup;
-
+        previousTrialDuration = Time.realtimeSinceStartup - trialStartTimestamp;
         trialPackage = $"N:TE,ID:{trialCount},FID:{Time.frameCount},"+
-                       $"PCT:{frameTime},{packageValues}";
+                       $"PCT:{Time.realtimeSinceStartup},TD:{previousTrialDuration},"+
+                       $"{packageValues}";
 
         Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");

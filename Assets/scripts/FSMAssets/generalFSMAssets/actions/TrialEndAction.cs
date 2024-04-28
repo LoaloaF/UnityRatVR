@@ -17,7 +17,9 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             // Debug.Log("TrialEndAction");
-            stateMachine._sessionManager.logEndTrial("V:1");
+            
+            // which Pillar was reached
+            stateMachine._sessionManager.logEndTrial("P:1");
 
         }
 
