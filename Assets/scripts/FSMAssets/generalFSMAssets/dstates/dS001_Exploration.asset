@@ -15,5 +15,5 @@ MonoBehaviour:
   stateID: 1
   Action: []
   Transitions:
-  - {fileID: 11400000, guid: 7eb7743c88194c54caa8052417ef84cd, type: 2}
   - {fileID: 11400000, guid: dedeb89b470c60243a80499847abd310, type: 2}
+Assets/scripts/FSMAssets/generalFSMAssets/dstates/dS001_Exploration.asset

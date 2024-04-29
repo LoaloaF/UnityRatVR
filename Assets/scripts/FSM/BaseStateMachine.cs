@@ -27,7 +27,7 @@ namespace FSM
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             string excelFullFileName = Path.Combine(projectPath, "Paradigms", $"{paradigm_name}.xlsx");
 
-            GetComponent<SceneController>().LoadExcelScene(excelFullFileName);
+            _sceneController.LoadExcelScene(excelFullFileName);
             
             CurrentState = stateDictionary.TryGetValue(paradigm_name);
             Debug.Log($"Initial state: {CurrentState}");

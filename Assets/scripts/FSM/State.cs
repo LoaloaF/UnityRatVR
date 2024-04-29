@@ -12,10 +12,15 @@ namespace FSM
         public override void Execute(BaseStateMachine machine)
         {
             foreach (var action in Action)
+            {
                 action.Execute(machine);
+            }    
 
             foreach(var transition in Transitions)
+            {
                 transition.Execute(machine);
+            }
+                
         }
     }
 }
