@@ -34,7 +34,7 @@ namespace Experiment.ExperimentFSM
 
                 if (diswall[0] < 1f)
                 {
-                    if (playerVel.x > 0)
+                    if (playerVel.x >= 0)
                     {
                         gain = new Vector3(diswall[0], diswall[0], 1f);
                     }
@@ -42,7 +42,7 @@ namespace Experiment.ExperimentFSM
 
                 if (diswall[1] < 1f)
                 {
-                    if (playerVel.x < 0)
+                    if (playerVel.x <= 0)
                     {
                         gain = new Vector3(diswall[1], diswall[1], 1f);
                     }
@@ -50,7 +50,7 @@ namespace Experiment.ExperimentFSM
 
                 if (diswall[2] < 1f)
                 {
-                    if (playerVel.z > 0)
+                    if (playerVel.z >= 0)
                     {
                          gain = new Vector3(diswall[2], diswall[2], 1f);
                     }
@@ -58,7 +58,7 @@ namespace Experiment.ExperimentFSM
 
                 if (diswall[3] < 1f)
                 {
-                    if (playerVel.z < 0)
+                    if (playerVel.z <= 0)
                     {
                          gain = new Vector3(diswall[3], diswall[3], 1f);
                     }
@@ -84,7 +84,8 @@ namespace Experiment.ExperimentFSM
                 {
                     if (Math.Abs(diswall[i]) < (stateMachine.scene.DeathZone))
                     {
-                        diswallRatio[i] = Math.Abs(diswall[i])/stateMachine.scene.DeathZone;
+                       diswallRatio[i] = Math.Abs(diswall[i])/stateMachine.scene.DeathZone;
+                       // diswallRatio[i] = (Math.Abs(diswall[i])-5f)/(stateMachine.scene.DeathZone-5f);
                     }
                 }
 

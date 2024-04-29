@@ -29,7 +29,7 @@ namespace RatVR.Scene
         public GameObject floor, ceiling;
 
         public GameObject wallTop, wallBottom, wallRight, wallLeft;
-        // public Material vStripes, hStripes, whiteDots, blackDots;
+        public GameObject meshTop, meshBottom, meshRight, meshLeft;
         private Material  transparentMaterial;
         public Dictionary<string, Material> materials = new Dictionary<string, Material>();
         private Color color;    
@@ -109,6 +109,11 @@ namespace RatVR.Scene
             wallRight.transform.rotation = Quaternion.Euler(90, 90, 90);
             wallLeft.transform.rotation = Quaternion.Euler(90, 90, -90);
 
+            meshTop.transform.rotation = Quaternion.Euler(90, 0, 90);
+            meshBottom.transform.rotation = Quaternion.Euler(90, 0, -90);
+            meshRight.transform.rotation = Quaternion.Euler(90, 90, 90);
+            meshLeft.transform.rotation = Quaternion.Euler(90, 90, -90);
+
             // wall size, wall size should change with the arena size accrodingly
             // wallTop.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.y);
             // wallBottom.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.2f * 0.1f * sceneData.BaseLength * sceneData.Size.y);
@@ -128,6 +133,11 @@ namespace RatVR.Scene
             wallLeft.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
 
             ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height, 0);
+
+            meshTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x -5f, 0.5f* sceneData.TopWall.Height, 0);
+            meshBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x +5f, 0.5f*sceneData.BottomWall.Height, 0);
+            meshRight.transform.localPosition = new Vector3(0, 0.5f*sceneData.RightWall.Height, -0.5f * sceneData.BaseLength * sceneData.Size.y +5f);
+            meshLeft.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y -5f);
            
 
             // wall position
