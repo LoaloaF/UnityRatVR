@@ -12,6 +12,7 @@ public class renderOutputLogger : MonoBehaviour
     private VideoFrameSHMInterface unityCameraSHMInterface;
 
     Texture2D texture;
+    Texture2D ScalableTex;    
     private byte[] imageBytes;
     private byte[] packBytes;
 
@@ -20,8 +21,8 @@ public class renderOutputLogger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        unityCameraSHMInterface = new VideoFrameSHMInterface("unitycam_shmstruct.json");
-        texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
+        unityCameraSHMInterface = new VideoFrameSHMInterface("../tmp_shm_structure_JSONs/unitycam_shmstruct.json");
+        
     }
 
     // Update is called once per frame
@@ -57,24 +58,30 @@ public class renderOutputLogger : MonoBehaviour
     {
         // Ensure the finalTexture is not null and has the correct size
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
+        texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
         // Read RenderTexture data into the Texture2D
         RenderTexture.active = finalTexture;
         texture.ReadPixels(new Rect(425, 250, 1070, 800), 0, 0);
         texture.Apply();
+
+
+        TextureScaler.scale(texture,535,400,FilterMode.Trilinear);
+
         Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
 
         // Get raw texture data bytes
 
         imageBytes = texture.GetRawTextureData();
+        
+
         Debug.Log($"TS2 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
         // Prepare metadata packet bytes
         float frameCount = Time.frameCount;
         float frameTime = Time.realtimeSinceStartup;
-        string metadata = $"<{{N:I,ID:{frameCount},PCT:{frameTime}}}\r\n";
-        packBytes = Encoding.UTF8.GetBytes(metadata);
+        // string metadata = $"<{{N:I,ID:{frameCount},PCT:{frameTime}}}\r\n";
+        packBytes = Encoding.UTF8.GetBytes("<{" + $"N:I,ID:{frameCount},PCT:{frameTime}" + "}>\r\n");
         Debug.Log($"TS3 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
         // Send image and metadata to SHM interface

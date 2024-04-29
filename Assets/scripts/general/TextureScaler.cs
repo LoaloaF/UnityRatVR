@@ -14,7 +14,7 @@ public class TextureScaler
 {
 
 	/// <summary>
-	///	Returns a scaled copy of given texture. 
+	///	Returns a scaled copy of given texture. A
 	/// </summary>
 	/// <param name="tex">Source texure to scale</param>
 	/// <param name="width">Destination texture width</param>
