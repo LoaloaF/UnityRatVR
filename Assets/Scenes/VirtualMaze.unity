@@ -717,7 +717,7 @@ MonoBehaviour:
   player: {fileID: 1180528854}
   sessionRunning: 0
   UIObject: {fileID: 1185421911}
-  showUI: 0
+  showUI: 1
   paradigm_name: P0200_GoalDirectedMovement
 --- !u!4 &78000721 stripped
 Transform:
@@ -4795,7 +4795,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690834431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 631526912269d02a18e031329e498868, type: 3}
   m_Name: 
@@ -6948,7 +6948,7 @@ MonoBehaviour:
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135
-  enableBallInput: 1
+  enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
