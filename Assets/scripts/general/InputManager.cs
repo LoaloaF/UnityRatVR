@@ -52,9 +52,10 @@ public class InputManager : MonoBehaviour
         unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
 
         // clear input shm from previous runs
-        if (!showUI) {
-            while (unityInputSHMInterface.Popitem() != null);
-        }
+        // if (!showUI) {
+        //     while (unityInputSHMInterface.Popitem() != null);
+        // }
+        while (unityInputSHMInterface.Popitem() != null);
 
     }
     // Update is called once per frame
