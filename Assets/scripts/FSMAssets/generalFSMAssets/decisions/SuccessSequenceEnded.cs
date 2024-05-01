@@ -11,23 +11,23 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/SuccessSequenceEnded")]
     public class SuccessSequenceEnded : Decision
     {
-        private float t0;
-        // private float currentTime;
+        private float timer = 0f;
         private bool firstDecicionCall = true;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             if (firstDecicionCall)
             {
-                t0 = Time.realtimeSinceStartup;
-                // currentTime = t0;
+                // t0 = Time.realtimeSinceStartup;
                 firstDecicionCall = false;
             }
             
-            if (Time.realtimeSinceStartup-t0 > 
-                stateMachine._sessionManager.successSequenceLength) {
+            if (timer > stateMachine.GetComponent<SceneController>().successSequenceLength) {
                 firstDecicionCall = true;
+                timer = 0f;
                 return true;
             }
+            
+            timer += Time.deltaTime;
             return false;
         }
 

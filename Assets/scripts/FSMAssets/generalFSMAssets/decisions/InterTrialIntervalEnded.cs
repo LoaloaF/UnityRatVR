@@ -11,25 +11,23 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/InterTrialIntervalEnded")]
     public class InterTrialIntervalEnded : Decision
     {
-        private float t0;
-        private float currentTime;
+        private float timer = 0f;
         private bool firstDecicionCall = true;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             if (firstDecicionCall)
             {
-                t0 = Time.realtimeSinceStartup;
-                currentTime = t0;
+                // t0 = Time.realtimeSinceStartup;
                 firstDecicionCall = false;
             }
             
-            Debug.Log(Time.realtimeSinceStartup);
-            Debug.Log(t0);
-            if (Time.realtimeSinceStartup-t0 > 
-                stateMachine._sessionManager.interTrialIntervalTrialLength) {
+            if (timer > stateMachine.GetComponent<SceneController>().interTrialIntervalTrialLength) {
                 firstDecicionCall = true;
+                timer = 0f;
                 return true;
             }
+            
+            timer += Time.deltaTime;
             return false;
         }
 
