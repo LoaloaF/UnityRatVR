@@ -21,7 +21,7 @@ namespace Experiment.ExperimentFSM
                 firstDecicionCall = false;
             }
             
-            if (timer > stateMachine.GetComponent<SceneController>().interTrialIntervalTrialLength) {
+            if (timer > stateMachine._sessionManager.interTrialIntervalTrialLength) {
                 firstDecicionCall = true;
                 timer = 0f;
                 return true;

@@ -38,6 +38,10 @@ namespace FSM
 
         public void initializeBaseStateMachine(string paradigm_name) {
             string projectPath = Path.GetDirectoryName(Application.dataPath);
+            // this adjusts the path when exec from build subfolder 
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) {
+                projectPath = Path.Combine(projectPath, "..");
+            }
             string excelFullFileName = Path.Combine(projectPath, "Paradigms", $"{paradigm_name}.xlsx");
 
             _sceneController.LoadExcelScene(excelFullFileName);

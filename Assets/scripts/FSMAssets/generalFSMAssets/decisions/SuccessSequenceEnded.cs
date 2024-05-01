@@ -21,7 +21,7 @@ namespace Experiment.ExperimentFSM
                 firstDecicionCall = false;
             }
             
-            if (timer > stateMachine.GetComponent<SceneController>().successSequenceLength) {
+            if (timer > stateMachine._sessionManager.successSequenceLength) {
                 firstDecicionCall = true;
                 timer = 0f;
                 return true;
