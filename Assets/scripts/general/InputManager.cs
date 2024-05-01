@@ -39,6 +39,7 @@ public class InputManager : MonoBehaviour
 
     
     private CyclicPackagesSHMInterface unityInputSHMInterface;
+    private FlagSHMInterface termflagSHMInterface;
     
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class InputManager : MonoBehaviour
         _sessionManager = GetComponent<SessionManager>();
         _portentaInputInterface = GetComponent<PortentaInputInterface>();
         unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
+        termflagSHMInterface = new FlagSHMInterface("termflag_shmstruct.json");
 
         // clear input shm from previous runs
         // if (!showUI) {
@@ -61,6 +63,10 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (checkTermFlag()) {
+            Application.Quit();
+        }
+
         if (showUI && UIObject.activeSelf==false) {
             UIObject.SetActive(true);
         } else if (!showUI && UIObject.activeSelf==true) {
@@ -71,6 +77,13 @@ public class InputManager : MonoBehaviour
         // if (!showUI) processSHMInput();
         processSHMInput();
     }
+    private bool checkTermFlag()
+    {
+        Debug.Log("Checking termflag");
+        Debug.Log(termflagSHMInterface.IsSet());
+        return termflagSHMInterface.IsSet();
+    }
+
     private void processSHMInput()
     {
         string shmUnityInput;

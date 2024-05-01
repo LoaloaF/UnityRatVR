@@ -30,6 +30,7 @@ public class FlagSHMInterface
         // _memory = MemoryMappedFile.OpenExisting(_shmName);
         
         _accessor = _memory.CreateViewAccessor();
+        Debug.Log($"SHM interface created with JSON {shmStructureJsonFullFilename}");
     }
 
     private bool State
