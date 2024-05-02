@@ -5,6 +5,7 @@ using UnityEngine;
 public class PortentaInputInterface : MonoBehaviour
 {
     private CyclicPackagesSHMInterface portentaInputSHMInterface;
+    private bool onoff = false;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,10 @@ public class PortentaInputInterface : MonoBehaviour
 
     public void sendSwitchAirvalve()
     {
-        send("A\r\n");
+        string s1 = "A1\r\n";
+        string s2 = "A0\r\n";
+        send(onoff ? s1 : s2);
+        onoff = !onoff;
     }
     public void sendSuccess(int rewardDelay, int rewardLength)
     {

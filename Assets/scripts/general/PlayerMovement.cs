@@ -119,12 +119,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 forwardVel = transform.forward*XYZvelInput[0]*ballYNormToCentimeter*gain.x;
         // Debug.Log(forwardVel);
         Vector3 rightVel = -transform.right*XYZvelInput[2]*ballXNormToCentimeter*gain.y;
-        controller.Move((forwardVel+rightVel) *Time.deltaTime);
+        controller.Move((forwardVel+rightVel));
     }
 
     // add Z input of ball to current y rotation
     private void RotateRat() {
-        rotY += -(XYZvelInput[1]*ballZNormToCentimeter) *Time.deltaTime*gain.z;
+        rotY += -(XYZvelInput[1]*ballZNormToCentimeter)*gain.z;
         transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
     }
     
