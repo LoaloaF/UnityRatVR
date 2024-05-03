@@ -18,21 +18,22 @@ namespace Experiment.ExperimentFSM
             // Debug.Log(stateMachine._sceneController.scene.Pillars[0].position);
             int pillarNum = stateMachine.transform.childCount;
             Transform child = stateMachine.transform.GetChild(0);
+            child.GetComponentInChildren<PillarCollision>().PlayerDetected = false;
 
             Vector3 pillarPosition = child.position;
             Debug.Log("nextTrialEndTeleportCenterDist: "+stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
 
             Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
-                                                    stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
+                                                    stateMachine._sessionManager.nextTrialEndTeleportCenterDist,
+                                                    stateMachine._sessionManager.nextTrialEndTeleportCenterAngle);
 
             // TEST create a cuvbe object at newStartPosition
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.position = newStartPosition;
-            stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
-
-
             stateMachine.validationSphereRenderer.enabled = false;
             stateMachine._playerMovement.EnableMovement();
+            stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
+
 
             float pillarDist = stateMachine._sessionManager.nextTrialEndTeleportCenterDist;
             float pillarAngle = stateMachine._sessionManager.nextTrialEndTeleportCenterAngle;
@@ -54,13 +55,14 @@ namespace Experiment.ExperimentFSM
 
             // default to inverted anlge (pointing towrads center)
             // orientation = (angle+Mathf.PI) * Mathf.Rad2Deg;
-            orientation = (angle) * Mathf.Rad2Deg;
+            orientation += (angle) * Mathf.Rad2Deg - 180; 
+            Debug.Log("orientation: "+orientation);
 
             Debug.Log("radius "+radius);
 
             // Calculate the x and z coordinates
-            float x = radius * Mathf.Cos(angle);
-            float z = radius * Mathf.Sin(angle);
+            float x = radius * Mathf.Sin(angle);
+            float z = radius * Mathf.Cos(angle);
             Debug.Log("x: "+x);
             Debug.Log("z: "+z);
 

@@ -6969,7 +6969,7 @@ MonoBehaviour:
   ballYNormToCentimeter: 0.01387
   ballXNormToCentimeter: 0.01405
   ballZNormToCentimeter: 0.0135
-  enableBallInput: 0
+  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0

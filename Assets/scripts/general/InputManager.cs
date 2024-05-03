@@ -63,9 +63,9 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (checkTermFlag()) {
-        //     Application.Quit();
-        // }
+        if (checkTermFlag()) {
+            Application.Quit();
+        }
 
         if (showUI && UIObject.activeSelf==false) {
             UIObject.SetActive(true);
@@ -73,14 +73,13 @@ public class InputManager : MonoBehaviour
             UIObject.SetActive(false);
         }
         
-        // depr: if the Unity UI isn't used, take input from the shared memory
-        // if (!showUI) processSHMInput();
-        // processSHMInput();
+        if (!showUI) processSHMInput();
+            processSHMInput();
     }
     private bool checkTermFlag()
     {
-        Debug.Log("Checking termflag");
-        Debug.Log(termflagSHMInterface.IsSet());
+        // Debug.Log("Checking termflag");
+        // Debug.Log(termflagSHMInterface.IsSet());
         return termflagSHMInterface.IsSet();
     }
 
