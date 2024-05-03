@@ -28,8 +28,9 @@ namespace Experiment.ExperimentFSM
                                                     stateMachine._sessionManager.nextTrialEndTeleportCenterAngle);
 
             // TEST create a cuvbe object at newStartPosition
-            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = newStartPosition;
+            // GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            // cube.transform.position = newStartPosition;
+            
             stateMachine.validationSphereRenderer.enabled = false;
             stateMachine._playerMovement.EnableMovement();
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);

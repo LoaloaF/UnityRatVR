@@ -18,7 +18,7 @@ namespace Experiment.ExperimentFSM
             {
                 Vector3 gain = CalculateGain();
                  UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] );
-                stateMachine.player.GetComponent<PlayerMovement>().gain = gain;
+                stateMachine.Player.GetComponent<PlayerMovement>().gain = gain;
             }
 
             Vector3 CalculateGain()
@@ -29,7 +29,7 @@ namespace Experiment.ExperimentFSM
                 Vector3 gain = new Vector3(1f, 1f, 1f);
 
                
-                CharacterController controller = stateMachine.player.GetComponent<CharacterController>();
+                CharacterController controller = stateMachine.Player.GetComponent<CharacterController>();
                 Vector3 playerVel = controller.velocity;
 
                 if (diswall[0] < 1f)
@@ -70,7 +70,7 @@ namespace Experiment.ExperimentFSM
             float[] calculatediswallRatio()
             {
                 var scenesize = stateMachine._sceneController.scene.Size;
-                Vector3 playerpos = new Vector3(stateMachine.player.transform.position.x,  stateMachine.player.transform.position.z, stateMachine.player.transform.eulerAngles.y);
+                Vector3 playerpos = new Vector3(stateMachine.Player.transform.position.x,  stateMachine.Player.transform.position.z, stateMachine.Player.transform.eulerAngles.y);
                 float[] diswall = new float[4];
                 // check x and y in scene size
                 diswall[0] = playerpos.x - scenesize.x*0.5f;
@@ -92,10 +92,10 @@ namespace Experiment.ExperimentFSM
 
             /*
             
-            // player position, x, z, rotation 
+            // Player position, x, z, rotation 
             
-            // ball input, [0]:forward, [1]: right, [2]: rotation (move relatively to the direction player is facing)
-            // int[] XYZvelInput = stateMachine.player.GetComponent<PlayerMovement>().XYZvelInput;
+            // ball input, [0]:forward, [1]: right, [2]: rotation (move relatively to the direction Player is facing)
+            // int[] XYZvelInput = stateMachine.Player.GetComponent<PlayerMovement>().XYZvelInput;
                       
             // distance to the 4 walls
             float[] diswall = calculatediswallRatio();

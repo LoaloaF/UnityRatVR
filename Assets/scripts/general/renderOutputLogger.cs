@@ -11,6 +11,7 @@ public class renderOutputLogger : MonoBehaviour
 {
     [SerializeField] RenderTexture finalTexture;
     private VideoFrameSHMInterface unityCameraSHMInterface;
+    public GameObject ExperimentCore;
     private BaseStateMachine _stateMachine;
 
     Texture2D texture;
@@ -23,7 +24,7 @@ public class renderOutputLogger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _stateMachine = GetComponent<BaseStateMachine>();
+        _stateMachine = ExperimentCore.GetComponent<BaseStateMachine>();
         unityCameraSHMInterface = new VideoFrameSHMInterface("unitycam_shmstruct.json");
         texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
     }

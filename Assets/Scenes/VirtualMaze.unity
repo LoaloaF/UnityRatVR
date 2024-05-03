@@ -703,13 +703,11 @@ MonoBehaviour:
   wallRight: {fileID: 419544900}
   wallLeft: {fileID: 768360619}
   meshTop: {fileID: 1891229700}
-  meshBottom: {fileID: 58426290}
+  meshBottom: {fileID: 1162499984}
   meshRight: {fileID: 1241682925}
   meshLeft: {fileID: 341669017}
   DeathZoneAction: 
   deathzone: {fileID: 434591712}
-  successSequenceLength: 3
-  maximumTrialLength: 30.4
 --- !u!114 &68722536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +715,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68722531}
-  m_Enabled: 1
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8b85e5eabc3206029d6d0b673a821f5, type: 3}
@@ -760,7 +757,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68722531}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b18d6b4e1332f7585bd372dba482b6ee, type: 3}
   m_Name: 
@@ -804,16 +801,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sessionRunning: 1
-  successSequenceLength: 2
-  maximumTrialLength: 10
+  successSequenceLength: 1
+  maximumTrialLength: 50
   interTrialIntervalTrialLength: 4
-  nextTrialEndTeleportCenterDist: 50
+  nextTrialEndTeleportCenterDist: 20
   nextTrialEndTeleportCenterAngle: 0
   nextTrialRewardedPillars: 01000000
   nextTrialPillarTransparency:
   - 1
-  showUI: 0
-  paradigm_name: P0100_Test
 --- !u!4 &78000721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd21d5c83840bc1938634ef2ab2e53a7, type: 3}
@@ -4954,12 +4949,12 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690834431}
   m_Enabled: 0
-  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 631526912269d02a18e031329e498868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   finalTexture: {fileID: 8400000, guid: d59f723dea37116fea8a8f16842cda11, type: 2}
+  ExperimentCore: {fileID: 68722531}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7040,7 +7035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1162499985
 Transform:
   m_ObjectHideFlags: 0
@@ -7139,9 +7134,9 @@ MonoBehaviour:
   firstPackID: 0
   lastPackID: 0
   gain: {x: 1, y: 1, z: 1}
-  ballYNormToCentimeter: 0.001
-  ballXNormToCentimeter: 0.001
-  ballZNormToCentimeter: 0.001
+  ballYNormToCentimeter: 0.00145
+  ballXNormToCentimeter: 0.00145
+  ballZNormToCentimeter: 0.004
   enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
