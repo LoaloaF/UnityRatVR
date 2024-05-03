@@ -16,7 +16,10 @@ namespace Experiment.ExperimentFSM
         {
             // this is the position in excel coordicates, not unity coordinates
             // Debug.Log(stateMachine._sceneController.scene.Pillars[0].position);
-            Vector3 pillarPosition = new Vector3(0,0,18);
+            int pillarNum = stateMachine.transform.childCount;
+            Transform child = stateMachine.transform.GetChild(0);
+
+            Vector3 pillarPosition = child.position;
             Debug.Log("nextTrialEndTeleportCenterDist: "+stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
 
             Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
@@ -36,7 +39,10 @@ namespace Experiment.ExperimentFSM
             // have this for every pillar
             string pillarTransparency = "1";
             string pillarIsRewarded = "1";
-            string packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparency},P1R:{pillarIsRewarded}";
+            string pillarPunishment = "1";
+
+
+            string packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparency},P1R:{pillarIsRewarded},P1N:{pillarPunishment}";
             stateMachine._sessionManager.logNewTrial(packValues);
         }
 

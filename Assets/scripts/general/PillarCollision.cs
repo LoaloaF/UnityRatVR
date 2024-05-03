@@ -33,7 +33,31 @@ public class PillarCollision : MonoBehaviour
     }
     */
 
-    private void OnTriggerEnter(Collider other)
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         Debug.Log("player is detected in pillar collision script");
+    //         // Debug.Log(transform.position);
+    //         PlayerDetected = true;
+    //     }
+    //     else
+    //     {
+    //     }
+
+    // }
+
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         Debug.Log("player exits collider");
+    //         // Debug.Log(transform.position);
+    //         PlayerDetected = false;
+    //     }
+    // }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -43,18 +67,9 @@ public class PillarCollision : MonoBehaviour
         }
         else
         {
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("player exits collider");
-            // Debug.Log(transform.position);
             PlayerDetected = false;
         }
+
     }
 
 }

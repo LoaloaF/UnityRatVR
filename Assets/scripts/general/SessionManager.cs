@@ -36,6 +36,10 @@ public sealed class SessionManager : MonoBehaviour
     private int trialCount = 0;
     private string trialPackage = "";
 
+    public void Start()
+    {
+        sessionRunning = false;
+    }
     public void updateTrialEndTeleportCenterAngle(float newTrialEndTeleportCenterAngle) 
     {
         if (newTrialEndTeleportCenterAngle > trialEndTeleportCenterAngleMin && 
@@ -66,6 +70,7 @@ public sealed class SessionManager : MonoBehaviour
         Debug.Log($"Calling Push with New Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
         trialCount++;
+        Debug.Log("Trial count " + trialCount);
     }
 
     public void logEndTrial(string packageValues) {

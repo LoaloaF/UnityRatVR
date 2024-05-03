@@ -733,11 +733,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccb7b3e28625a7ae8bbefa77812754f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sessionRunning: 0
+  sessionRunning: 1
   successSequenceLength: 2
   maximumTrialLength: 10
   interTrialIntervalTrialLength: 4
-  nextTrialEndTeleportCenterDist: 5
+  nextTrialEndTeleportCenterDist: 50
   nextTrialEndTeleportCenterAngle: 0
   nextTrialRewardedPillars: 01000000
   nextTrialPillarTransparency:

@@ -63,9 +63,9 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (checkTermFlag()) {
-            Application.Quit();
-        }
+        // if (checkTermFlag()) {
+        //     Application.Quit();
+        // }
 
         if (showUI && UIObject.activeSelf==false) {
             UIObject.SetActive(true);
@@ -75,7 +75,7 @@ public class InputManager : MonoBehaviour
         
         // depr: if the Unity UI isn't used, take input from the shared memory
         // if (!showUI) processSHMInput();
-        processSHMInput();
+        // processSHMInput();
     }
     private bool checkTermFlag()
     {
