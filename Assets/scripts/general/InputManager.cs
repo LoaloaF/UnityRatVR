@@ -27,19 +27,19 @@ public class InputManager : MonoBehaviour
 
     public MeshRenderer frameIndicationBlinker;
     public MeshRenderer validationSphereRenderer; // MeshRenderer object that you can assign in the UI
-    public GameObject player;
+    public GameObject Player;
     private PlayerMovement _playerMovement;
+    private SessionManager _sessionManager;
     
     private PortentaInputInterface _portentaInputInterface;
     
-    public bool sessionRunning = false;
-
     public GameObject UIObject;
     public bool showUI = true;
     public string paradigm_name = "P0100_Test";
 
     
     private CyclicPackagesSHMInterface unityInputSHMInterface;
+    private FlagSHMInterface termflagSHMInterface;
     
     // Start is called before the first frame update
     void Start()
@@ -47,29 +47,42 @@ public class InputManager : MonoBehaviour
         // Pause the game at the start
         Time.timeScale = 0;
 
-        _playerMovement = player.GetComponent<PlayerMovement>();
-        unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
+        _playerMovement = Player.GetComponent<PlayerMovement>();
+        _sessionManager = GetComponent<SessionManager>();
         _portentaInputInterface = GetComponent<PortentaInputInterface>();
+        unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
+        termflagSHMInterface = new FlagSHMInterface("termflag_shmstruct.json");
 
         // clear input shm from previous runs
-        if (!showUI) {
-            while (unityInputSHMInterface.Popitem() != null);
-        }
+        // if (!showUI) {
+        //     while (unityInputSHMInterface.Popitem() != null);
+        // }
+        while (unityInputSHMInterface.Popitem() != null);
 
     }
     // Update is called once per frame
     void Update()
     {
+        if (checkTermFlag()) {
+            Application.Quit();
+        }
+
         if (showUI && UIObject.activeSelf==false) {
             UIObject.SetActive(true);
         } else if (!showUI && UIObject.activeSelf==true) {
             UIObject.SetActive(false);
         }
         
-        // if the Unity UI isn't used, take input from the shared memory
         if (!showUI) processSHMInput();
-        if (sessionRunning) switchBlinkerColor();
+            processSHMInput();
     }
+    private bool checkTermFlag()
+    {
+        // Debug.Log("Checking termflag");
+        // Debug.Log(termflagSHMInterface.IsSet());
+        return termflagSHMInterface.IsSet();
+    }
+
     private void processSHMInput()
     {
         string shmUnityInput;
@@ -96,11 +109,14 @@ public class InputManager : MonoBehaviour
             paradigm_name = shmUnityInput.Split(',')[1];
         } else if (shmUnityInput.StartsWith("Punishment") 
                     || shmUnityInput.StartsWith("Success") 
+                    || shmUnityInput.StartsWith("TrialEndTeleportDistanceDelta") 
+                    || shmUnityInput.StartsWith("TrialEndTeleportAngleDelta") 
                     || shmUnityInput.StartsWith("Teleport")){
             try {
                 splitInput = shmUnityInput.Split(',');
                 command = splitInput[0];
                 value1 = float.Parse(splitInput[1]);
+                // more than a single value within message
                 if (command == "Success" || command == "Teleport") {
                     value2 = float.Parse(splitInput[2]);
                     if (command == "Teleport") {
@@ -118,34 +134,25 @@ public class InputManager : MonoBehaviour
                 _portentaInputInterface.sendSuccess((int)value1, (int)value2);
             } else if (command == "Teleport") {
                 _playerMovement.TeleportRat(value1, value2, value3);
+            } else if (command == "TrialEndTeleportDistanceDelta") {
+                _sessionManager.updateTrialEndTeleportCenterDist(value1);
+            } else if (command == "TrialEndTeleportAngleDelta") {
+                _sessionManager.updateTrialEndTeleportCenterAngle(value1);
             }
         } else {
             Debug.LogError("Invalid command: " + shmUnityInput);
         }
     }
 
-    private void switchBlinkerColor()
-    {
-        if ( Time.frameCount%2 == 1) {
-                frameIndicationBlinker.material.color = Color.white;
-        } else {
-            frameIndicationBlinker.material.color = Color.black;
-        }
-    }
-
     // Function to start the game
     public void StartGame()
     {
-        
-        // Unpause the game
-        Time.timeScale = 1;
+        // // Unpause the game
+        // Time.timeScale = 1;
 
         // Disable the start button
         startSessionButton.interactable = false;
         stopSessionButton.interactable = true;
-
-        validationSphereRenderer.enabled = false;
-        sessionRunning = true;
 
         GetComponent<BaseStateMachine>().initializeBaseStateMachine(paradigm_name);
         Debug.Log("Session started with paradigm_name: " + paradigm_name);
@@ -153,16 +160,12 @@ public class InputManager : MonoBehaviour
     }
     public void StopGame()
     {
-        // Unpause the game
-        Time.timeScale = 0;
+        // // Unpause the game
+        // Time.timeScale = 0;
 
         // Disable the start button
         startSessionButton.interactable = true;
         stopSessionButton.interactable = false;
-
-        validationSphereRenderer.enabled = true;
-        sessionRunning = false;
-        _playerMovement.TeleportRat(0,0,0);
         Debug.Log("Session stopped");
     }
     

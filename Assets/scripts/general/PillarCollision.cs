@@ -47,14 +47,29 @@ public class PillarCollision : MonoBehaviour
 
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("player exits collider");
-            // Debug.Log(transform.position);
-            PlayerDetected = false;
-        }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         Debug.Log("player exits collider");
+    //         // Debug.Log(transform.position);
+    //         PlayerDetected = false;
+    //     }
+    // }
+
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         Debug.Log("player is detected in pillar collision script");
+    //         // Debug.Log(transform.position);
+    //         PlayerDetected = true;
+    //     }
+    //     else
+    //     {
+    //         PlayerDetected = false;
+    //     }
+
+    // }
 
 }

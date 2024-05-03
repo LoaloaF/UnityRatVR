@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 public class AgentManager : MonoBehaviour
 {
-    private GameObject player;
+    private GameObject Player;
     private int agentMode = 0;
     public int AgentMode
     {
@@ -33,7 +33,7 @@ public class AgentManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        Player = GameObject.FindWithTag("Player");
         experimentManager = GameObject.FindWithTag("ExperimentManager");
         agent = GetComponent<NavMeshAgent>();
 
@@ -87,7 +87,7 @@ public class AgentManager : MonoBehaviour
             case 2: // movement to checkpoint with coorporation
                 MovementCoorporation();
                 break;
-            case 3: // competitive with player
+            case 3: // competitive with Player
                 break;
             default: 
                 break;
@@ -100,7 +100,7 @@ public class AgentManager : MonoBehaviour
         if (!spawned)
         {
             spawned = true;
-            transform.position = player.transform.TransformPoint(Vector3.forward * (-10)) + Vector3.up;
+            transform.position = Player.transform.TransformPoint(Vector3.forward * (-10)) + Vector3.up;
             //transform.position.Set(transform.position.x, 2f, transform.position.z);
         }
     }
@@ -117,7 +117,7 @@ public class AgentManager : MonoBehaviour
         }
 
         // collision avoidance
-        Vector3 dir = (transform.position - player.transform.position);
+        Vector3 dir = (transform.position - Player.transform.position);
         if (dir.sqrMagnitude < 14) {
             agent.Move(Vector3.Normalize(dir) * 0.15f / (0.1f + dir.magnitude));
         }
@@ -145,7 +145,7 @@ public class AgentManager : MonoBehaviour
             }
 
             // collision avoidance
-            Vector3 dir = (transform.position - player.transform.position);
+            Vector3 dir = (transform.position - Player.transform.position);
             if (dir.sqrMagnitude < 16)
             {
                 agent.Move(Vector3.Normalize(dir) * 0.15f / (0.1f + dir.magnitude));
@@ -158,9 +158,9 @@ public class AgentManager : MonoBehaviour
         while (true)
         {
             attentionSeeking = true;
-            Vector3 distance2Player = transform.position - player.transform.position;
-            // dot product with forward vector of player and the vector from the player to the agent to figure out if the agent is in FOV
-            float currentViewingDirection = Vector3.Dot(player.transform.TransformDirection(Vector3.forward).normalized, distance2Player.normalized);
+            Vector3 distance2Player = transform.position - Player.transform.position;
+            // dot product with forward vector of Player and the vector from the Player to the agent to figure out if the agent is in FOV
+            float currentViewingDirection = Vector3.Dot(Player.transform.TransformDirection(Vector3.forward).normalized, distance2Player.normalized);
 
             if (currentViewingDirection > 0.7f && distance2Player.sqrMagnitude < 20)
             {
@@ -176,15 +176,15 @@ public class AgentManager : MonoBehaviour
                 continue;
             }
 
-            // agent should be 4 units in front of player to attract attention
-            Vector3 goalPoint = player.transform.position + player.transform.TransformVector(Vector3.forward * 4f);
-            // if agent is behind player
+            // agent should be 4 units in front of Player to attract attention
+            Vector3 goalPoint = Player.transform.position + Player.transform.TransformVector(Vector3.forward * 4f);
+            // if agent is behind Player
             /*if (currentViewingDirection < -0.3f)
             {
-                goalPoint = player.transform.position + player.transform.TransformVector(Vector3.right * 7f);
+                goalPoint = Player.transform.position + Player.transform.TransformVector(Vector3.right * 7f);
             }*/
 
-            Vector3 distance2Goal = goalPoint - player.transform.position;
+            Vector3 distance2Goal = goalPoint - Player.transform.position;
             goalPoint.y = 1;
 
             Debug.Log(string.Format("Distance2Player: {0},currentViewingDirection: {1},goalPoint: {2}", distance2Player.magnitude.ToString(), currentViewingDirection.ToString(), goalPoint.ToString()));

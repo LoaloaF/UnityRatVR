@@ -13,7 +13,7 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            string DeathZoneAction = stateMachine.GetComponent<SceneController>().DeathZoneAction;
+            string DeathZoneAction = stateMachine._sceneController.DeathZoneAction;
             if (DeathZoneAction == "slow_down")
             {
                 Vector3 gain = CalculateGain();

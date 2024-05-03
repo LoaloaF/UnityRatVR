@@ -15,16 +15,33 @@ namespace FSM
          * Then one can create states, transitions and decision rules in the editor and build the FSM.
          */
         // [SerializeField] private BaseState _initialState;
+        public GameObject Player;
+        [HideInInspector] public PlayerMovement _playerMovement;
+
+        public MeshRenderer frameIndicationBlinker;
+        public MeshRenderer validationSphereRenderer; // MeshRenderer object that you can assign in the UI
         private Dictionary<Type, Component> _cachedComponents;
         private InputManager _inputManager;
-        public SceneController _sceneController;
-        public GameObject player;
+
+        [HideInInspector] public SceneController _sceneController;
+        [HideInInspector] public SessionManager _sessionManager;
         public int generalCurrentStateID;
         public StateDictionary stateDictionary;
 
+        public void resetBaseStateMachine() {
+            _sessionManager.sessionRunning = false;
+            // _sessionManager.logEndSession();
+            // _sessionManager.resetSession();
+            generalCurrentStateID = -1;
+            _playerMovement.DisableMovement();
+        }
+
         public void initializeBaseStateMachine(string paradigm_name) {
-            // string excelFullFileName = $"./Paradigms/{paradigm_name}.xlsx";
             string projectPath = Path.GetDirectoryName(Application.dataPath);
+            // this adjusts the path when exec from build subfolder 
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) {
+                projectPath = Path.Combine(projectPath, "..");
+            }
             string excelFullFileName = Path.Combine(projectPath, "Paradigms", $"{paradigm_name}.xlsx");
 
             _sceneController.LoadExcelScene(excelFullFileName);
@@ -32,28 +49,35 @@ namespace FSM
             CurrentState = stateDictionary.TryGetValue(paradigm_name);
             Debug.Log($"Initial state: {CurrentState}");
             generalCurrentStateID = CurrentState.stateID;
+            _sessionManager.sessionRunning = true;
+
+            Time.timeScale = 1;
+            _playerMovement.EnableMovement();
+
         }
         
         private void Awake()
         {
             _cachedComponents = new Dictionary<Type, Component>();
             _sceneController = GetComponent<SceneController>();
+            _sessionManager = GetComponent<SessionManager>();
+            _playerMovement = Player.GetComponent<PlayerMovement>();
         }
 
         private void Start()
         {
             _inputManager = GetComponent<InputManager>();
-            // scene = GetComponent<SceneController>().scene;
         }
 
         public BaseState CurrentState { get; set; }
 
         private void Update()
         {
-            if (_inputManager.sessionRunning)
+            if (_sessionManager.sessionRunning)
             {
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
+                switchBlinkerColor();
             }
 
         }
@@ -70,6 +94,15 @@ namespace FSM
                 _cachedComponents.Add(typeof(T), component);
             }
             return component;
+        }
+
+        private void switchBlinkerColor()
+        {
+            if ( Time.frameCount%2 == 1) {
+                    frameIndicationBlinker.material.color = Color.white;
+            } else {
+                frameIndicationBlinker.material.color = Color.black;
+            }
         }
     }
 
@@ -93,7 +126,7 @@ namespace FSM
             int index = keys.IndexOf(key);
             foreach (string k in keys)
             {
-                Debug.Log($"Key: '{k}'");
+                // Debug.Log($"Key: '{k}'");
             }
             if (index >= 0)
             {

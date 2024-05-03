@@ -7,8 +7,7 @@ using System.Runtime.InteropServices;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject experimentCore;
-    private InputManager _inputManager;
+    private bool movementEnabled = true;
     public CharacterController controller;
     public int firstPackID;
     public int lastPackID;
@@ -29,13 +28,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _inputManager = experimentCore.GetComponent<InputManager>();
         ballVelSHMInterface = new CyclicPackagesSHMInterface("ballvelocity_shmstruct.json");
     }
 
     // Update is called once per frame
     void Update() {
-        if (_inputManager.sessionRunning) {
+        if (movementEnabled) {
             XYZvelInput = getInput();
             // Debug.Log(string.Join(", ", XYZvelInput));
             MoveRat();
@@ -69,6 +67,13 @@ public class PlayerMovement : MonoBehaviour
         return frameBallVel;
     }
     
+    public void EnableMovement() {
+        movementEnabled = true;
+    }
+    
+    public void DisableMovement() {
+        movementEnabled = false;
+    }
 
     // read input
     private int[] getInput() {

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S0201_TrialStart
   m_EditorClassIdentifier: 
   stateID: 201
-  Action: []
+  Action:
+  - {fileID: 11400000, guid: 12460b2e7d84e889dbbd7dc90a34d9b2, type: 2}
   Transitions:
   - {fileID: 11400000, guid: efbf0453a25461a51897f2e533a12157, type: 2}

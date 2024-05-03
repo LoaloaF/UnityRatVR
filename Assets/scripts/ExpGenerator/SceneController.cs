@@ -36,12 +36,16 @@ namespace RatVR.Scene
         public SceneGeometryData scene;
         public string DeathZoneAction;
         public  GameObject deathzone;
-        public  float successSequenceLength = 3.3f;
-        public  float maximumTrialLength = 30.4f;
 
         public void LoadExcelScene(string path)
         {
-            loadMaterials("Assets/Resources/materials");
+            string projectPath = Path.GetDirectoryName(Application.dataPath);
+            UnityEngine.Debug.Log("projectPath: " + System.IO.Directory.GetParent(projectPath).FullName);
+            // this adjusts the path when exec from build subfolder 
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) {
+                projectPath = System.IO.Directory.GetParent(projectPath).FullName;
+            }
+            loadMaterials(Path.Combine(projectPath, "Assets/Resources/materials"));
 
             ExcelSceneFileHandler excelScene = new ExcelSceneFileHandler(path);
 

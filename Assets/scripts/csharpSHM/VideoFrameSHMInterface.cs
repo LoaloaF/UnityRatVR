@@ -19,6 +19,10 @@ public class VideoFrameSHMInterface
     public VideoFrameSHMInterface(string shmStructureJsonFilename)
     {
         string unityProjectPath = Path.GetDirectoryName(Application.dataPath);
+        // this adjusts the path when exec from build subfolder 
+        if (Directory.Exists(Path.Combine(unityProjectPath, "Assets")) == false) {
+            unityProjectPath = Path.Combine(unityProjectPath, "..");
+        }
         string shmStructureJsonFullFilename = Path.Combine(unityProjectPath, "..", "tmp_shm_structure_JSONs", shmStructureJsonFilename);
         if (!File.Exists(shmStructureJsonFullFilename)) {
             string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFullFilename}";

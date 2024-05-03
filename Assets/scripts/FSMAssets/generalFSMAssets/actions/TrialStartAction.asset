@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: dS003_WallZone
+  m_Script: {fileID: 11500000, guid: 55d177b71bbdffd72bb0c2a0657b5b8e, type: 3}
+  m_Name: TrialStartAction
   m_EditorClassIdentifier: 
-  stateID: 3
-  Action:
-  - {fileID: 0}
-  - {fileID: 0}
-  Transitions:
-  - {fileID: 11400000, guid: 5535e9a8530e3774885e98d785d2ea73, type: 2}

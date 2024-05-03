@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S0208_WithinInterTrialInterval
   m_EditorClassIdentifier: 
   stateID: 208
-  Action: []
+  Action:
+  - {fileID: 11400000, guid: 9edac44aadf0b8339b98a670a3db6a59, type: 2}
   Transitions:
   - {fileID: 11400000, guid: c03739fd97c4427b6bf87aa57944abfc, type: 2}

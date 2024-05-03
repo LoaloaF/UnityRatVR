@@ -661,6 +661,7 @@ GameObject:
   - component: {fileID: 68722537}
   - component: {fileID: 68722539}
   - component: {fileID: 68722540}
+  - component: {fileID: 68722541}
   m_Layer: 0
   m_Name: ExperimentCore
   m_TagString: ExperimentManager
@@ -717,11 +718,12 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68722531}
   m_Enabled: 1
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8b85e5eabc3206029d6d0b673a821f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1180528854}
+  Player: {fileID: 1180528854}
   frameIndicationBlinker: {fileID: 91614425}
 --- !u!114 &68722537
 MonoBehaviour:
@@ -735,8 +737,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd3306c17195642804750d3a70c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1180528854}
+  _playerMovement: {fileID: 1180528859}
+  frameIndicationBlinker: {fileID: 91614425}
+  validationSphereRenderer: {fileID: 186109822}
   _sceneController: {fileID: 68722535}
-  player: {fileID: 1180528854}
+  _sessionManager: {fileID: 0}
   generalCurrentStateID: -1
   stateDictionary:
     keys:
@@ -781,9 +787,31 @@ MonoBehaviour:
   TeleportAngleInput: {fileID: 308576901}
   frameIndicationBlinker: {fileID: 91614425}
   validationSphereRenderer: {fileID: 186109822}
-  player: {fileID: 1180528854}
-  sessionRunning: 0
+  Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
+  showUI: 1
+  paradigm_name: P0200_GoalDirectedMovement
+--- !u!114 &68722541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68722531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccb7b3e28625a7ae8bbefa77812754f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sessionRunning: 1
+  successSequenceLength: 2
+  maximumTrialLength: 10
+  interTrialIntervalTrialLength: 4
+  nextTrialEndTeleportCenterDist: 50
+  nextTrialEndTeleportCenterAngle: 0
+  nextTrialRewardedPillars: 01000000
+  nextTrialPillarTransparency:
+  - 1
   showUI: 0
   paradigm_name: P0100_Test
 --- !u!4 &78000721 stripped
@@ -4926,6 +4954,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690834431}
   m_Enabled: 0
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 631526912269d02a18e031329e498868, type: 3}
   m_Name: 
@@ -7044,7 +7073,6 @@ GameObject:
   - component: {fileID: 1180528859}
   - component: {fileID: 1180528861}
   - component: {fileID: 1180528863}
-  - component: {fileID: 1180528864}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7072,10 +7100,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1
-  m_Radius: 1
+  m_Radius: 0
   m_SlopeLimit: 45
   m_StepOffset: 0
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1180528856
@@ -7107,7 +7135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310b3095a8a81d68bba61313a8d1d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  experimentCore: {fileID: 68722531}
   controller: {fileID: 1180528855}
   firstPackID: 0
   lastPackID: 0
@@ -7145,18 +7172,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.75, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &1180528864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180528854}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb0cd408bd41eb8f8898cc120ea606c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1185421911
 GameObject:
   m_ObjectHideFlags: 0
@@ -8537,8 +8552,7 @@ MonoBehaviour:
   TeleportAngleInput: {fileID: 308576901}
   frameIndicationBlinker: {fileID: 91614425}
   validationSphereRenderer: {fileID: 186109822}
-  player: {fileID: 1180528854}
-  sessionRunning: 0
+  Player: {fileID: 0}
   UIObject: {fileID: 1185421911}
   showUI: 1
   paradigm_name: P0100_Test
