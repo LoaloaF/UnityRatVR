@@ -14,6 +14,9 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
+            stateMachine._sceneController.floor.SetActive(true);
+            stateMachine._sceneController.wallzone.SetActive(true);
+
             // this is the position in excel coordicates, not unity coordinates
             // Debug.Log(stateMachine._sceneController.scene.Pillars[0].position);
             int pillarNum = stateMachine.transform.childCount;
@@ -46,6 +49,8 @@ namespace Experiment.ExperimentFSM
 
             string packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparency},P1R:{pillarIsRewarded},P1N:{pillarPunishment}";
             stateMachine._sessionManager.logNewTrial(packValues);
+            stateMachine._sessionManager.trialRunning = true;
+
         }
 
         public Vector3 samplenewStartPosition(Vector3 center, float radius, float orientation=0)

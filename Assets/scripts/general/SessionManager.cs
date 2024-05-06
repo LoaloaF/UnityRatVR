@@ -9,6 +9,8 @@ public sealed class SessionManager : MonoBehaviour
     // TODO: needs link to excel sheet
     // staticSessionParameters
     public  bool sessionRunning = false;
+    public  bool trialRunning = false;
+    public  bool abortTrialFlag = false;
     public  float successSequenceLength = 3.3f;
     public  float maximumTrialLength = 30.4f;
     public  float interTrialIntervalTrialLength = 1;
@@ -63,13 +65,13 @@ public sealed class SessionManager : MonoBehaviour
     }
 
     public void logNewTrial(string packageValues) {
+        trialCount++;
         trialStartTimestamp = Time.realtimeSinceStartup;
         trialPackage = $"N:TN,ID:{trialCount},FID:{Time.frameCount},"+
                        $"PCT:{Time.realtimeSinceStartup},{packageValues}";
 
         Debug.Log($"Calling Push with New Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
-        trialCount++;
         Debug.Log("Trial count " + trialCount);
     }
 

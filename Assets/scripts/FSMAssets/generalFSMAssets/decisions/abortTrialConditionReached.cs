@@ -25,6 +25,9 @@ namespace Experiment.ExperimentFSM
                 firstDecicionCall = false;
             }
             
+            Debug.Log(Time.realtimeSinceStartup-t0);
+            Debug.Log(stateMachine._sessionManager.maximumTrialLength);
+            
             if (Time.realtimeSinceStartup-t0 > 
                 stateMachine._sessionManager.maximumTrialLength) {
                 firstDecicionCall = true;

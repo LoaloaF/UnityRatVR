@@ -151,6 +151,7 @@ public class InputManager : MonoBehaviour
         // Time.timeScale = 1;
 
         // Disable the start button
+        _sessionManager.abortTrialFlag = false;
         startSessionButton.interactable = false;
         stopSessionButton.interactable = true;
 
@@ -164,6 +165,7 @@ public class InputManager : MonoBehaviour
         // Time.timeScale = 0;
 
         // Disable the start button
+        _sessionManager.abortTrialFlag = true;
         startSessionButton.interactable = true;
         stopSessionButton.interactable = false;
         Debug.Log("Session stopped");

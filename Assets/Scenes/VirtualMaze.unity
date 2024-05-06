@@ -698,6 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1666924472}
   ceiling: {fileID: 360030911}
+  wallzone: {fileID: 434591712}
   wallTop: {fileID: 741731471}
   wallBottom: {fileID: 245758922}
   wallRight: {fileID: 419544900}
@@ -801,8 +802,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sessionRunning: 1
+  trialRunning: 0
+  abortTrialFlag: 0
   successSequenceLength: 1
-  maximumTrialLength: 50
+  maximumTrialLength: 10
   interTrialIntervalTrialLength: 4
   nextTrialEndTeleportCenterDist: 20
   nextTrialEndTeleportCenterAngle: 0

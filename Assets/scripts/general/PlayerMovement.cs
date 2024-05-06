@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private bool movementEnabled = true;
+    private bool movementEnabled = false;
     public CharacterController controller;
     public int firstPackID;
     public int lastPackID;

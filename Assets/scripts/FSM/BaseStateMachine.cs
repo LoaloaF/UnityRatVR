@@ -28,14 +28,6 @@ namespace FSM
         public int generalCurrentStateID;
         public StateDictionary stateDictionary;
 
-        public void resetBaseStateMachine() {
-            _sessionManager.sessionRunning = false;
-            // _sessionManager.logEndSession();
-            // _sessionManager.resetSession();
-            generalCurrentStateID = -1;
-            _playerMovement.DisableMovement();
-        }
-
         public void initializeBaseStateMachine(string paradigm_name) {
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             // this adjusts the path when exec from build subfolder 
