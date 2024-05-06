@@ -16,6 +16,7 @@ namespace Experiment.ExperimentFSM
         {
             int rewardDelay = stateMachine._sceneController.scene.RewardDelay;
             int rewardLength = stateMachine._sceneController.scene.RewardLength;
+            Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
            
             stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
         }

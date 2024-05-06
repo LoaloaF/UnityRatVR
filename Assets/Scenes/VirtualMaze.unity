@@ -747,10 +747,12 @@ MonoBehaviour:
     - P0000_SpoutAssoc
     - P0100_Test
     - P0200_GoalDirectedMovement
+    - P0100_SpoutAssoc
     values:
     - {fileID: 11400000, guid: 39a77e9894b4f4e3fa76dbbfde0b4f93, type: 2}
     - {fileID: 11400000, guid: c27402b16531009deb49348b76809bf7, type: 2}
     - {fileID: 11400000, guid: 7bf4fc9380da1639ba44312747c64876, type: 2}
+    - {fileID: 11400000, guid: ae9a7e14d28bf944d80499df384f57de, type: 2}
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +790,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0200_GoalDirectedMovement
+  paradigm_name: P0100_SpoutAssoc
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,7 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sessionRunning: 1
-  trialRunning: 0
+  trialRunning: 1
   abortTrialFlag: 0
   successSequenceLength: 1
   maximumTrialLength: 10
