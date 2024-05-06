@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
         {         
             // stateMachine.validationSphereRenderer.enabled = true;
             string packValues = "";
-            //stateMachine._sessionManager.logNewTrial(packValues);
+            stateMachine._sessionManager.logNewTrial(packValues);
             Debug.Log("session manager, log new trial");
             stateMachine._sessionManager.trialRunning = true;
 
