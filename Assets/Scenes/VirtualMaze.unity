@@ -789,7 +789,7 @@ MonoBehaviour:
   validationSphereRenderer: {fileID: 186109822}
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
-  showUI: 1
+  showUI: 0
   paradigm_name: P0200_GoalDirectedMovement
 --- !u!114 &68722541
 MonoBehaviour:
@@ -808,7 +808,7 @@ MonoBehaviour:
   abortTrialFlag: 0
   successSequenceLength: 1
   maximumTrialLength: 10
-  interTrialIntervalTrialLength: 4
+  interTrialIntervalTrialLength: 3
   nextTrialEndTeleportCenterDist: 20
   nextTrialEndTeleportCenterAngle: 0
   nextTrialRewardedPillars: 01000000
@@ -4953,7 +4953,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690834431}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 631526912269d02a18e031329e498868, type: 3}
   m_Name: 
@@ -7150,12 +7150,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180528854}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16da666e6f1274d48a8728c143a6c5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fps: 30
+  fps: 60
 --- !u!208 &1180528863
 NavMeshObstacle:
   m_ObjectHideFlags: 0
