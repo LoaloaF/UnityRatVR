@@ -790,7 +790,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0100_SpoutAssoc
+  paradigm_name: P0200_GoalDirectedMovement
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0
