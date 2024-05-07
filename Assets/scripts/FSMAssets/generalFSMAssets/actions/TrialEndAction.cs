@@ -20,7 +20,9 @@ namespace Experiment.ExperimentFSM
             
             // which Pillar was reached
             stateMachine._sessionManager.logEndTrial("P:1");
-
+            
+            Color white = new Color(1, 1, 1, 1);
+            stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
         }
 
     }

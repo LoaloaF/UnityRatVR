@@ -36,6 +36,8 @@ namespace RatVR.Scene
         public SceneGeometryData scene;
         public string DeathZoneAction;
         public  GameObject deathzone;
+        
+        public  GameObject Lighting;
 
         public void LoadExcelScene(string path)
         {
