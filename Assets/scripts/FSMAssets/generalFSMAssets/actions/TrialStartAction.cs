@@ -12,42 +12,61 @@ namespace Experiment.ExperimentFSM
 
     public class TrialStartAction : FSMAction
     {
+
+        private float pillarTransparency = 1;
+        private float pillarIsRewarded = 1;
+        private float pillarIsPunishment = 0;
+        private float pillarDist;
+        private float pillarAngle;
+        private int pillarNumber;
+
+        private string pillarTransparencyString;
+        private string pillarIsRewardedString;
+        private string pillarIsPunishmentString;
+        private string packValues;
+
         public override void Execute(BaseStateMachine stateMachine)
         {
             stateMachine._sceneController.floor.SetActive(true);
             stateMachine._sceneController.wallzone.SetActive(true);
 
-            // this is the position in excel coordicates, not unity coordinates
-            // Debug.Log(stateMachine._sceneController.scene.Pillars[0].position);
-            int pillarNum = stateMachine.transform.childCount;
-            Transform child = stateMachine.transform.GetChild(0);
-            child.GetComponentInChildren<PillarCollision>().PlayerDetected = false;
 
-            Vector3 pillarPosition = child.position;
+            // Configure each pillar
+            pillarNumber = stateMachine.transform.childCount;
+            foreach (Transform child in stateMachine.transform)
+            {
+                child.GetComponentInChildren<PillarCollision>().PlayerDetected = false;
+                pillarTransparency = GenerateRandomValue(stateMachine._sessionManager.pillarTransparencyMin, stateMachine._sessionManager.pillarTransparencyMax);
+                Debug.Log("pillarTransparency: "+pillarTransparency);
+                pillarIsRewarded = 1;
+                pillarIsPunishment = 0;
+                Color originalColor = child.GetComponentInChildren<MeshRenderer>().material.color;
+                child.GetComponentInChildren<MeshRenderer>().material.color = new Color(originalColor.r, originalColor.g, originalColor.b, pillarTransparency);
+            }
+
+            // Teleport the rat to a new start position
+            Vector3 pillarPosition = stateMachine.transform.GetChild(0).position;
             Debug.Log("nextTrialEndTeleportCenterDist: "+stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
 
             Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
                                                     stateMachine._sessionManager.nextTrialEndTeleportCenterDist,
                                                     stateMachine._sessionManager.nextTrialEndTeleportCenterAngle);
 
-            // TEST create a cuvbe object at newStartPosition
-            // GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            // cube.transform.position = newStartPosition;
             
             stateMachine.validationSphereRenderer.enabled = false;
             stateMachine._playerMovement.EnableMovement();
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
 
-            float pillarDist = stateMachine._sessionManager.nextTrialEndTeleportCenterDist;
-            float pillarAngle = stateMachine._sessionManager.nextTrialEndTeleportCenterAngle;
-            // have this for every pillar
-            string pillarTransparency = "1";
-            string pillarIsRewarded = "1";
-            string pillarPunishment = "1";
+            // Prepare and log the trial
+            pillarDist = stateMachine._sessionManager.nextTrialEndTeleportCenterDist;
+            pillarAngle = stateMachine._sessionManager.nextTrialEndTeleportCenterAngle;
 
+            pillarTransparencyString = pillarTransparency.ToString();
+            pillarIsRewardedString = pillarIsRewarded.ToString();
+            pillarIsPunishmentString = pillarIsPunishment.ToString();
 
-            string packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparency},P1R:{pillarIsRewarded},P1N:{pillarPunishment}";
+            packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparencyString},P1R:{pillarIsRewardedString},P1N:{pillarIsPunishmentString}";
             stateMachine._sessionManager.logNewTrial(packValues);
             stateMachine._sessionManager.trialRunning = true;
 
@@ -57,14 +76,10 @@ namespace Experiment.ExperimentFSM
         {
             // Generate a random angle in radians
             float angle = Random.Range(0, 2 * Mathf.PI);
-            Debug.Log("angle: "+angle);
 
             // default to inverted anlge (pointing towrads center)
             // orientation = (angle+Mathf.PI) * Mathf.Rad2Deg;
             orientation += (angle) * Mathf.Rad2Deg - 180; 
-            Debug.Log("orientation: "+orientation);
-
-            Debug.Log("radius "+radius);
 
             // Calculate the x and z coordinates
             float x = radius * Mathf.Sin(angle);
@@ -75,6 +90,12 @@ namespace Experiment.ExperimentFSM
             // Create the new point
             Vector3 point = new Vector3(center.x + x, orientation, center.z + z);
             return point;
+        }
+
+
+        public float GenerateRandomValue(float _minVal, float _maxVal)
+        {
+            return Random.Range(_minVal, _maxVal);
         }
     }
 }

@@ -33,10 +33,16 @@ namespace RatVR.Scene
         private Material  transparentMaterial;
         public Dictionary<string, Material> materials = new Dictionary<string, Material>();
         private Color color;    
+        public SessionManager _sessionManager;
+        public ExcelSessionMetaData sessionMetaData;
         public SceneGeometryData scene;
         public string DeathZoneAction;
         public  GameObject deathzone;
 
+
+        private void Awake() {
+            _sessionManager = GetComponent<SessionManager>();
+        }
         public void LoadExcelScene(string path)
         {
             string projectPath = Path.GetDirectoryName(Application.dataPath);
@@ -49,8 +55,14 @@ namespace RatVR.Scene
 
             ExcelSceneFileHandler excelScene = new ExcelSceneFileHandler(path);
 
-            ExcelSceneMetaData excelMeta = excelScene.GetExcelSceneMetaData();
+            // get sceneMetaData
+            ExcelSceneMetaData sceneMetaData = excelScene.GetExcelSceneMetaData();
             List<ExcelObjectData> excelObjects = excelScene.GetExcelSceneObjects();
+
+
+            // get sessionMetatData
+            sessionMetaData = excelScene.GetExcelSessionMetaData();
+            _sessionManager.InitializeSessionManager(sessionMetaData);
 
             /*
             foreach (var key in excelScene.ScenePlacement().Keys)
@@ -64,9 +76,17 @@ namespace RatVR.Scene
             List < PillarData> pillars = PillarData.PillarDataFromExcel(excelObjects, excelScene.ScenePlacement());
             // pillars.
 
-            scene = new SceneGeometryData(1, excelMeta.baseLength, excelMeta.size, excelMeta.startLocation, excelMeta.agentLocation,
-                                                            excelMeta.wallTop, excelMeta.wallBot, excelMeta.wallRight, excelMeta.wallLeft, pillars, excelMeta.deathzone, excelMeta.rewardDelay, excelMeta.rewardLength);
-            DeathZoneAction = excelMeta.DeathZoneAction;
+            scene = new SceneGeometryData(1, 
+                                          sceneMetaData.baseLength, 
+                                          sceneMetaData.size,
+                                          sceneMetaData.wallTop, 
+                                          sceneMetaData.wallBot, 
+                                          sceneMetaData.wallRight, 
+                                          sceneMetaData.wallLeft, 
+                                          pillars, 
+                                          sceneMetaData.deathzone);
+            
+            DeathZoneAction = sceneMetaData.DeathZoneAction;
             LoadScene(scene);
         }
 
@@ -181,12 +201,13 @@ namespace RatVR.Scene
                 pillar.name = "Pillar" + pd.UID.ToString();
                 Vector2 tranformedPos = CoordinateTransform(sceneData, new Vector2(pd.Position.x, pd.Position.y));
                 pillar.transform.localPosition = new Vector3(tranformedPos.x, pd.Position.z + pd.Height, tranformedPos.y);
+                UnityEngine.Debug.Log("Postision and height" + pd.Height);
                 if (pd.Height != 0)
                 {
                     Transform CylinderTransform = pillar.transform.Find("Cylinder");
                     CylinderTransform.localScale = new Vector3(pd.Radius, pd.Height, pd.Radius);
                     Transform ColliderTransform = pillar.transform.Find("Collider");
-                    ColliderTransform.localScale = new Vector3(pd.RewardZone*1.5f, 0.2f*sceneData.Size.x, pd.RewardZone*1.5f);
+                    ColliderTransform.localScale = new Vector3(pd.RewardRadius*1.5f, 0.2f*sceneData.Size.x, pd.RewardRadius*1.5f);
                     // pillar.GetComponentInChildren<MeshRenderer>().material = materialDict[pd.Texture];
                     
                     if (!materials.ContainsKey(pd.Texture)) {

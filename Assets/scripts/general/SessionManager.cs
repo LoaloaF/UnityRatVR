@@ -1,19 +1,33 @@
 using UnityEngine;
-
+using RatVR.ExcelData;
 /// <summary>
 /// This class manages provided a reference to session parameters from the excel sheet
 /// And it manages single trial logging
 /// </summary>
 public sealed class SessionManager : MonoBehaviour
 {        
-    // TODO: needs link to excel sheet
-    // staticSessionParameters
+    public int rewardPostSoundDelay;
+    public int rewardAmount;
+    public int punishmentLength;
+    public int punishmentInactivationLength;
+    public string onWallZoneEntry;
+    public string onInterTrialInterval;
+    public int interTrialIntervalLength;
+    public int abortInterTrialIntervalLength;
+    public int successSequenceLength;
+    public  float maximumTrialLength;
+    public string trialPackageVariables;
+    public int rewardedPillarsMin;
+    public int rewardedPillarsMax;
+    public int pillarTransparencyMin;
+    public int pillarTransparencyMax;
+    public int pillarPunishmentMin;
+    public int pillarPunishmentMax;
+
     public  bool sessionRunning = false;
     public  bool trialRunning = false;
     public  bool abortTrialFlag = false;
-    public  float successSequenceLength = 3.3f;
-    public  float maximumTrialLength = 30.4f;
-    public  float interTrialIntervalTrialLength = 1;
+
 
     // TODO: needs link to excel sheet
     // dynamicSessionParameters
@@ -42,6 +56,28 @@ public sealed class SessionManager : MonoBehaviour
     {
         sessionRunning = false;
     }
+
+    public void InitializeSessionManager(ExcelSessionMetaData sessionMetaData)
+    {
+        this.rewardPostSoundDelay = sessionMetaData.rewardPostSoundDelay;
+        this.rewardAmount = sessionMetaData.rewardAmount;
+        this.punishmentLength = sessionMetaData.punishmentLength;
+        this.punishmentInactivationLength = sessionMetaData.punishmentInactivationLength;
+        this.onWallZoneEntry = sessionMetaData.onWallZoneEntry;
+        this.onInterTrialInterval = sessionMetaData.onInterTrialInterval;
+        this.interTrialIntervalLength = sessionMetaData.interTrialIntervalLength;
+        this.abortInterTrialIntervalLength = sessionMetaData.abortInterTrialIntervalLength;
+        this.successSequenceLength = sessionMetaData.successSequenceLength;
+        this.maximumTrialLength = sessionMetaData.maximumTrialLength;
+        this.trialPackageVariables = sessionMetaData.trialPackageVariables;
+        this.rewardedPillarsMin = sessionMetaData.rewardedPillarsMin;
+        this.rewardedPillarsMax = sessionMetaData.rewardedPillarsMax;
+        this.pillarTransparencyMin = sessionMetaData.pillarTransparencyMin;
+        this.pillarTransparencyMax = sessionMetaData.pillarTransparencyMax;
+        this.pillarPunishmentMin = sessionMetaData.pillarPunishmentMin;
+        this.pillarPunishmentMax = sessionMetaData.pillarPunishmentMax;
+    }
+    
     public void updateTrialEndTeleportCenterAngle(float newTrialEndTeleportCenterAngle) 
     {
         if (newTrialEndTeleportCenterAngle > trialEndTeleportCenterAngleMin && 

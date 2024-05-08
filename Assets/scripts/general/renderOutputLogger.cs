@@ -94,18 +94,20 @@ public class renderOutputLogger : MonoBehaviour
         // Send image and metadata to SHM interface
         unityCameraSHMInterface.AddFrame(imageBytes, packBytes);
         // Debug.Log($"TS4 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
-
-    }
-
-    void OnDestory()
-    {
         RenderTexture.active = null;
-        if (texture != null)
-        {
-            Destroy(texture);
-            texture = null;
-        }
+        Destroy(texture);
+
     }
+
+    // void OnDestory()
+    // {
+    //     RenderTexture.active = null;
+    //     if (texture != null)
+    //     {
+    //         Destroy(texture);
+    //         texture = null;
+    //     }
+    // }
 
 
     // void SaveFinalTextureToImage(int frame_i)

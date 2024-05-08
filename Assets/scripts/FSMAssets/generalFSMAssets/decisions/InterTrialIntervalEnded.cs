@@ -21,7 +21,7 @@ namespace Experiment.ExperimentFSM
                 firstDecicionCall = false;
             }
             
-            if (timer > stateMachine._sessionManager.interTrialIntervalTrialLength) {
+            if (timer > stateMachine._sessionManager.interTrialIntervalLength) {
                 firstDecicionCall = true;
                 timer = 0f;
                 return true;

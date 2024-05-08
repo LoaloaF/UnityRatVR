@@ -14,8 +14,11 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            int rewardDelay = stateMachine._sceneController.scene.RewardDelay;
-            int rewardLength = stateMachine._sceneController.scene.RewardLength;
+            int rewardDelay = stateMachine._sessionManager.rewardPostSoundDelay;
+            int rewardLength = stateMachine._sessionManager.rewardAmount;
+
+
+
             Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
            
             stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);

@@ -10,10 +10,6 @@ namespace RatVR.ExcelData
         public Vector2 size;
         public float baseLength;
         public int deathzone;
-        public Vector2 startLocation;
-        public Vector2 agentLocation;
-        public float lengthFlash;
-        public float lengthSound;
 
         public ExcelWallData wallTop;
         public ExcelWallData wallRight;
@@ -21,29 +17,123 @@ namespace RatVR.ExcelData
         public ExcelWallData wallLeft;
 
         public bool cylinder;
-        public int rewardDelay;
-        public int rewardLength;
+ 
         public string DeathZoneAction;
 
         // public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 startLocation, Vector2 agentLocation, int lengthFlash, int lengthSound, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, bool cylinder)
-        public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 agentLocation, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, 
-                                        int rewardDelay, int rewardLength, string DeathZoneAction){
-            this.size = size;
-            this.baseLength = baseLength;
-            this.deathzone = deathzone;
-            
-            // this.startLocation = startLocation;
-            this.agentLocation = agentLocation;
-            // this.lengthFlash = lengthFlash;
-            // this.lengthSound = lengthSound;
+        public ExcelSceneMetaData(ExcelWallData wallTop, 
+                                  ExcelWallData wallRight, 
+                                  ExcelWallData wallBot, 
+                                  ExcelWallData wallLeft
+                                 ){
+            this.size = new Vector2(210, 210);
+            this.baseLength = 1;
+            this.deathzone = 30;
+            this.DeathZoneAction = "center_teleport";
             this.wallTop = wallTop;
             this.wallRight = wallRight;
             this.wallBot = wallBot;
             this.wallLeft = wallLeft;
-            // this.cylinder = cylinder;
-            this.rewardDelay = rewardDelay;
-            this.rewardLength = rewardLength;
-            this.DeathZoneAction = DeathZoneAction;
+        }
+    }
+
+    public class ExcelSessionMetaData
+    {
+        public int rewardPostSoundDelay;
+        public int rewardAmount;
+        public int punishmentLength;
+        public int punishmentInactivationLength;
+        public string onWallZoneEntry;
+        public string onInterTrialInterval;
+        public int interTrialIntervalLength;
+        public int abortInterTrialIntervalLength;
+        public int successSequenceLength;
+        public int maximumTrialLength;
+        public string trialPackageVariables;
+        public int rewardedPillarsMin;
+        public int rewardedPillarsMax;
+        public int pillarTransparencyMin;
+        public int pillarTransparencyMax;
+        public int pillarPunishmentMin;
+        public int pillarPunishmentMax;
+        public int sessionFREEVAR1;
+        public int sessionFREEVAR2;
+        public string sessionFREEVAR3;
+        public string sessionFREEVAR4;
+
+        // Agent parameters
+        public int agentFREEVAR1;
+        public int agentFREEVAR2;
+        public int agentFREEVAR3;
+        public int agentFREEVAR4;
+        public string agentFREEVAR5;
+        public string agentFREEVAR6;
+        public string agentFREEVAR7;
+        public string agentFREEVAR8;
+
+
+        // public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 startLocation, Vector2 agentLocation, int lengthFlash, int lengthSound, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, bool cylinder)
+        public ExcelSessionMetaData(int rewardPostSoundDelay, 
+                                    int rewardAmount, 
+                                    int punishmentLength, 
+                                    int punishmentInactivationLength, 
+                                    string onWallZoneEntry, 
+                                    string onInterTrialInterval, 
+                                    int interTrialIntervalLength, 
+                                    int abortInterTrialIntervalLength, 
+                                    int successSequenceLength, 
+                                    int maximumTrialLength,
+                                    string trialPackageVariables, 
+                                    int rewardedPillarsMin, 
+                                    int rewardedPillarsMax, 
+                                    int pillarTransparencyMin, 
+                                    int pillarTransparencyMax, 
+                                    int pillarPunishmentMin, 
+                                    int pillarPunishmentMax,
+                                    int sessionFREEVAR1,
+                                    int sessionFREEVAR2,
+                                    string sessionFREEVAR3,
+                                    string sessionFREEVAR4,
+                                    int agentFREEVAR1,
+                                    int agentFREEVAR2,
+                                    int agentFREEVAR3,
+                                    int agentFREEVAR4,
+                                    string agentFREEVAR5,
+                                    string agentFREEVAR6,
+                                    string agentFREEVAR7,
+                                    string agentFREEVAR8
+                                    ){
+
+            this.rewardPostSoundDelay = rewardPostSoundDelay;
+            this.rewardAmount = rewardAmount;
+            this.punishmentLength = punishmentLength;
+            this.punishmentInactivationLength = punishmentInactivationLength;
+            this.onWallZoneEntry = onWallZoneEntry;
+            this.onInterTrialInterval = onInterTrialInterval;
+            this.interTrialIntervalLength = interTrialIntervalLength;
+            this.abortInterTrialIntervalLength = abortInterTrialIntervalLength;
+            this.successSequenceLength = successSequenceLength;
+            this.maximumTrialLength = maximumTrialLength;
+            this.trialPackageVariables = trialPackageVariables;
+            this.rewardedPillarsMin = rewardedPillarsMin;
+            this.rewardedPillarsMax = rewardedPillarsMax;
+            this.pillarTransparencyMin = pillarTransparencyMin;
+            this.pillarTransparencyMax = pillarTransparencyMax;
+            this.pillarPunishmentMin = pillarPunishmentMin;
+            this.pillarPunishmentMax = pillarPunishmentMax;
+            this.sessionFREEVAR1 = sessionFREEVAR1;
+            this.sessionFREEVAR2 = sessionFREEVAR2;
+            this.sessionFREEVAR3 = sessionFREEVAR3;
+            this.sessionFREEVAR4 = sessionFREEVAR4;
+            this.agentFREEVAR1 = agentFREEVAR1;
+            this.agentFREEVAR2 = agentFREEVAR2;
+            this.agentFREEVAR3 = agentFREEVAR3;
+            this.agentFREEVAR4 = agentFREEVAR4;
+            this.agentFREEVAR5 = agentFREEVAR5;
+            this.agentFREEVAR6 = agentFREEVAR6;
+            this.agentFREEVAR7 = agentFREEVAR7;
+            this.agentFREEVAR8 = agentFREEVAR8;
+
         }
     }
 
@@ -71,12 +161,15 @@ namespace RatVR.ExcelData
         public float height;
         public float zPos;
         public string texture;
+        public int rewardRadius;
+        public int pillarFREEVAR1;
+        public int pillarFREEVAR2;
+
         public float transparency;
         public int isReward;
         public int isAirpuff;
-        public int rewardZone;
 
-        public ExcelObjectData(string object_name, float radius, float height, float zPos, string texture, float transparency, int isReward, int isAirpuff, int rewardZone)
+        public ExcelObjectData(string object_name, float radius, float height, float zPos, string texture, float transparency, int isReward, int isAirpuff)
         {
             this.object_name = object_name;
             this.radius = radius;
@@ -86,7 +179,6 @@ namespace RatVR.ExcelData
             this.transparency = transparency;
             this.isReward = isReward;
             this.isAirpuff = isAirpuff;
-            this.rewardZone = rewardZone;
         }
 
         public ExcelObjectData(List<string> values)
@@ -96,10 +188,13 @@ namespace RatVR.ExcelData
             this.height = float.Parse(values[2], System.Globalization.CultureInfo.InvariantCulture);
             this.zPos = float.Parse(values[3], System.Globalization.CultureInfo.InvariantCulture);
             this.texture = values[4];
-            this.transparency = float.Parse(values[5], System.Globalization.CultureInfo.InvariantCulture);
-            this.isReward = int.Parse(values[6]);
-            this.isAirpuff = int.Parse(values[7]);
-            this.rewardZone = int.Parse(values[8]);
+            this.rewardRadius = int.Parse(values[5]);
+            this.pillarFREEVAR1 = -1;
+            this.pillarFREEVAR2 = -1;
+            this.transparency = 1;
+            this.isReward = 1;
+            this.isAirpuff = 0;
+            
         }
 
         // public class ExcelSessionParameters

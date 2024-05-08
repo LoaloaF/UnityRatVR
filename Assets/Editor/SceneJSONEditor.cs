@@ -136,7 +136,7 @@ namespace RatVR.Scene
             WallData bottomWall = new WallData(1, textureBottom, wallHeight);
             WallData leftWall = new WallData(1, textureLeft, wallHeight);
 
-            SceneGeometryData sceneData = new SceneGeometryData(1, baseLength, new Vector2(sizeX,sizeY), playerPos, agentPos, topWall, bottomWall, rightWall, leftWall, GeneratePillarData(), deathZone, rewardDelay: 1, rewardLength: 1);
+            SceneGeometryData sceneData = new SceneGeometryData(1, baseLength, new Vector2(sizeX,sizeY), topWall, bottomWall, rightWall, leftWall, GeneratePillarData(), deathZone);
             Debug.Log(sceneData.CreateJSONString());
             System.IO.File.WriteAllText(path2Json, sceneData.CreateJSONString());
         }

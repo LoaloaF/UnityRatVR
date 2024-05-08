@@ -42,8 +42,8 @@ namespace RatVR.Scene
         private int isAirpuff = 0;
         public int IsAirpuff { get { return isAirpuff; } set { isAirpuff = value; } }
 
-        private int rewardZone = 0;
-        public int RewardZone { get { return rewardZone; } set { rewardZone = value; } }
+        private int rewardRadius = 0;
+        public int RewardRadius { get { return rewardRadius; } set { rewardRadius = value; } }
         
 
         public PillarData(JSONObject data)
@@ -99,10 +99,11 @@ namespace RatVR.Scene
             radius = excelObject.radius;
             position = new Vector3(pos.x, pos.y, excelObject.zPos);
             texture = excelObject.texture;
+            rewardRadius = excelObject.rewardRadius;
+
             transparency = excelObject.transparency;
             isReward = excelObject.isReward;
             isAirpuff = excelObject.isAirpuff;
-            rewardZone = excelObject.rewardZone;
         }
 
         public static List<PillarData> PillarDataFromExcel(List<ExcelObjectData> objects, Dictionary<string, List<Vector2>> scenePlacement)

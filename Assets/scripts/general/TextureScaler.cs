@@ -69,5 +69,6 @@ public class TextureScaler
 		//Then clear & draw the texture to fill the entire RTT.
 		GL.Clear(true,true,new Color(0,0,0,0));
 		Graphics.DrawTexture(new Rect(0,0,1,1),src);
+		Object.Destroy(rtt);
 	}
 }

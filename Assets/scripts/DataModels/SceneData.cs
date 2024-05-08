@@ -22,12 +22,6 @@ namespace RatVR.Scene
         private Vector2 size;
         public Vector2 Size { get { return size; } set { size = value; } }
 
-        private Vector2 playerPosition;
-        public Vector2 PlayerPosition { get { return playerPosition; } set { playerPosition = value; } }
-
-        private Vector2 agentPosition;
-        public Vector2 AgentPosition { get { return agentPosition; } set { agentPosition = value; } }
-
         private JSONArray rewardLocationPillars;
         public JSONArray RewardLocationPillars { get { return rewardLocationPillars; } set { rewardLocationPillars = value; } }
 
@@ -52,12 +46,8 @@ namespace RatVR.Scene
         private int deathZone;
         public int DeathZone { get { return deathZone; } set { deathZone = value; } }
 
-        private int rewardDelay;
-        public int RewardDelay { get { return rewardDelay; } set { rewardDelay = value; } }
 
-        private int rewardLength;
-        public int RewardLength { get { return rewardLength; } set { rewardLength = value; } }
-
+    
 
         #endregion
 
@@ -117,8 +107,15 @@ namespace RatVR.Scene
             }
         }
 
-        public SceneGeometryData(float version, float baseLength, Vector2 size, Vector2 playerPos, Vector2 agentPos, WallData topWall, WallData bottomWall, WallData rightWall, WallData leftWall, 
-                                List<PillarData> pillars, int deathZone, int rewardDelay, int rewardLength)
+        public SceneGeometryData(float version, 
+                                float baseLength, 
+                                Vector2 size, 
+                                WallData topWall, 
+                                WallData bottomWall, 
+                                WallData rightWall, 
+                                WallData leftWall, 
+                                List<PillarData> pillars, 
+                                int deathZone)
         {
             this.uid = System.Guid.NewGuid().ToString();
             this.version = version;
@@ -129,11 +126,7 @@ namespace RatVR.Scene
             this.leftWall = leftWall;
             this.pillars = pillars;
             this.size = size;
-            this.playerPosition = playerPos;
-            this.agentPosition = agentPos;
             this.deathZone = deathZone;
-            this.rewardDelay = rewardDelay;
-            this.rewardLength = rewardLength;
         }
 
         public string CreateJSONString()
@@ -145,8 +138,6 @@ namespace RatVR.Scene
             data.Add("base_length", baseLength);
 
             data.Add("size", Vector2JSON(size));
-            data.Add("player", Vector2JSON(playerPosition));
-            data.Add("agent", Vector2JSON(agentPosition));
 
             JSONObject walls = new JSONObject();
             walls.Add("top", topWall.WallDataJson());

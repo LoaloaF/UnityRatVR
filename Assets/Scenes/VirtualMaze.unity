@@ -707,6 +707,7 @@ MonoBehaviour:
   meshBottom: {fileID: 1162499984}
   meshRight: {fileID: 1241682925}
   meshLeft: {fileID: 341669017}
+  _sessionManager: {fileID: 0}
   DeathZoneAction: 
   deathzone: {fileID: 434591712}
 --- !u!114 &68722536
@@ -748,11 +749,13 @@ MonoBehaviour:
     - P0100_Test
     - P0200_GoalDirectedMovement
     - P0100_SpoutAssoc
+    - P----_NewFormatTemplate
     values:
     - {fileID: 11400000, guid: 39a77e9894b4f4e3fa76dbbfde0b4f93, type: 2}
     - {fileID: 11400000, guid: c27402b16531009deb49348b76809bf7, type: 2}
     - {fileID: 11400000, guid: 7bf4fc9380da1639ba44312747c64876, type: 2}
     - {fileID: 11400000, guid: ae9a7e14d28bf944d80499df384f57de, type: 2}
+    - {fileID: 11400000, guid: ccd427f7944c12222a881a9c72711289, type: 2}
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +793,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0100_SpoutAssoc
+  paradigm_name: P----_NewFormatTemplate
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,12 +806,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccb7b3e28625a7ae8bbefa77812754f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardPostSoundDelay: 0
+  rewardAmount: 0
+  punishmentLength: 0
+  punishmentInactivationLength: 0
+  onWallZoneEntry: 
+  onInterTrialInterval: 
+  interTrialIntervalLength: 0
+  abortInterTrialIntervalLength: 0
+  successSequenceLength: 0
+  maximumTrialLength: 10
+  trialPackageVariables: 
+  rewardedPillarsMin: 0
+  rewardedPillarsMax: 0
+  pillarTransparencyMin: 0
+  pillarTransparencyMax: 0
+  pillarPunishmentMin: 0
+  pillarPunishmentMax: 0
   sessionRunning: 1
   trialRunning: 1
   abortTrialFlag: 0
-  successSequenceLength: 1
-  maximumTrialLength: 10
-  interTrialIntervalTrialLength: 4
   nextTrialEndTeleportCenterDist: 20
   nextTrialEndTeleportCenterAngle: 0
   nextTrialRewardedPillars: 01000000

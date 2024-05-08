@@ -130,20 +130,20 @@ namespace Cathei.BakingSheet
        public List<ExcelObjectData> GetExcelSceneObjects()
        {
             List<ExcelObjectData> excelObjects = new List<ExcelObjectData>();
-            if (!pages.ContainsKey("Hyperparameters")) throw new Exception("Hyperparameters table missing!!");
+            if (!pages.ContainsKey("EnvParameters")) throw new Exception("EnvParameters table missing!!");
 
             int row = 1;
             while (true)
             {
                 // check if there is still an entry:
-                var cellContent = pages["Hyperparameters"].GetCell(0, row);
+                var cellContent = pages["EnvParameters"].GetCell(0, row);
                 if (cellContent == null || cellContent == "") break;
                 
                 List<string> rowValues = new List<string>();
                 
-                for (int col=0; col<9; ++col)
+                for (int col=0; col<7; ++col)
                 {
-                    cellContent = pages["Hyperparameters"].GetCell(col, row);
+                    cellContent = pages["EnvParameters"].GetCell(col, row);
                     if (cellContent == null)
                     {
                         rowValues.Add("");
@@ -163,30 +163,69 @@ namespace Cathei.BakingSheet
 
         public ExcelSceneMetaData GetExcelSceneMetaData()
         {
-            if (!pages.ContainsKey("Hyperparameters")) throw new Exception("Hyperparameters table missing!!");
-            var hyperparams = pages["Hyperparameters"];
+            if (!pages.ContainsKey("EnvParameters")) throw new Exception("EnvParameters table missing!!");
+            var hyperparams = pages["EnvParameters"];
 
-            Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(11,1)), int.Parse(hyperparams.GetCell(12,1)));
-            int deathzone = int.Parse(hyperparams.GetCell(11, 3));
-            float baseLength = float.Parse(hyperparams.GetCell(11, 2), System.Globalization.CultureInfo.InvariantCulture);
+            // Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(11,1)), int.Parse(hyperparams.GetCell(12,1)));
+            // int deathzone = int.Parse(hyperparams.GetCell(11, 3));
+            // float baseLength = float.Parse(hyperparams.GetCell(11, 2), System.Globalization.CultureInfo.InvariantCulture);
             // Vector2 startLocation = new Vector2(int.Parse(hyperparams.GetCell(11, 4)), int.Parse(hyperparams.GetCell(12, 4)));
-            Vector2 agentLocation = new Vector2(int.Parse(hyperparams.GetCell(11, 5)), int.Parse(hyperparams.GetCell(12, 5)));
+            // Vector2 agentLocation = new Vector2(int.Parse(hyperparams.GetCell(11, 5)), int.Parse(hyperparams.GetCell(12, 5)));
             // int lengthFlash = int.Parse(hyperparams.GetCell(11, 7));
             // int lengthSound = int.Parse(hyperparams.GetCell(11, 8));
 
-            ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 1));
-            ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 2));
-            ExcelWallData botWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 3), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 3));
-            ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(16, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(17, 4));
+            ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 1));
+            ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 2));
+            ExcelWallData botWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 3), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 3));
+            ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 4));
 
-            int rewardDelay = int.Parse(hyperparams.GetCell(11, 6));
-            int rewardLength = int.Parse(hyperparams.GetCell(11, 7));
-
-            string DeathZoneAction = hyperparams.GetCell(11, 8);
             // bool cylinder = bool.Parse(hyperparams.GetCell(16, 6));
 
             // return new ExcelSceneMetaData(size, baseLength, deathzone, startLocation, agentLocation, lengthFlash, lengthSound, topWall, rightWall, botWall, leftWall, cylinder);
-            return new ExcelSceneMetaData(size, baseLength, deathzone, agentLocation, topWall, rightWall, botWall, leftWall, rewardDelay, rewardLength, DeathZoneAction);
+            return new ExcelSceneMetaData(topWall, rightWall, botWall, leftWall);
+        }
+
+        public ExcelSessionMetaData GetExcelSessionMetaData()
+        {
+            if (!pages.ContainsKey("SessionParameters")) throw new Exception("SessionParameters table missing!!");
+            var hyperparams = pages["SessionParameters"];
+            int rewardPostSoundDelay = int.Parse(hyperparams.GetCell(1, 1));
+            int rewardAmount = int.Parse(hyperparams.GetCell(1, 2));
+            int punishmentLength = int.Parse(hyperparams.GetCell(1, 3));
+            int punishmentInactivationLength = int.Parse(hyperparams.GetCell(1, 4));
+            string onWallZoneEntry = hyperparams.GetCell(1, 5);
+            string onInterTrialInterval = hyperparams.GetCell(1, 6);
+            int interTrialIntervalLength = int.Parse(hyperparams.GetCell(1, 7));
+            int abortInterTrialIntervalLength = int.Parse(hyperparams.GetCell(1, 8)); 
+            int successSequenceLength = int.Parse(hyperparams.GetCell(1, 9));
+            int maximumTrialLength = int.Parse(hyperparams.GetCell(1, 10));
+            string trialPackageVariables = hyperparams.GetCell(1, 11);
+            int rewardedPillarsMin = int.Parse(hyperparams.GetCell(1, 12));
+            int rewardedPillarsMax = int.Parse(hyperparams.GetCell(1, 13));
+            int pillarTransparencyMin = int.Parse(hyperparams.GetCell(1, 14));
+            int pillarTransparencyMax = int.Parse(hyperparams.GetCell(1, 15)); 
+            int pillarPunishmentMin = int.Parse(hyperparams.GetCell(1, 16));
+            int pillarPunishmentMax = int.Parse(hyperparams.GetCell(1, 17));
+            int sessionFREEVAR1 = -1;
+            int sessionFREEVAR2 = -1;
+            string sessionFREEVAR3 = "";
+            string sessionFREEVAR4 = "";
+            int agentFREEVAR1 = -1;
+            int agentFREEVAR2 = -1;
+            int agentFREEVAR3 = -1;
+            int agentFREEVAR4 = -1;
+            string agentFREEVAR5 = "";
+            string agentFREEVAR6 = "";
+            string agentFREEVAR7 = "";
+            string agentFREEVAR8 = "";
+
+
+            return new ExcelSessionMetaData(rewardPostSoundDelay, rewardAmount, punishmentLength, 
+            punishmentInactivationLength, onWallZoneEntry, onInterTrialInterval, interTrialIntervalLength, 
+            abortInterTrialIntervalLength, successSequenceLength, maximumTrialLength, trialPackageVariables, rewardedPillarsMin, 
+            rewardedPillarsMax, pillarTransparencyMin, pillarTransparencyMax, pillarPunishmentMin, pillarPunishmentMax,
+            sessionFREEVAR1, sessionFREEVAR2, sessionFREEVAR3, sessionFREEVAR4, agentFREEVAR1, agentFREEVAR2,
+            agentFREEVAR3, agentFREEVAR4, agentFREEVAR5, agentFREEVAR6, agentFREEVAR7, agentFREEVAR8);
         }
     }
 }

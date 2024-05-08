@@ -29,6 +29,7 @@ namespace FSM
         public StateDictionary stateDictionary;
 
         public void initializeBaseStateMachine(string paradigm_name) {
+            
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             // this adjusts the path when exec from build subfolder 
             if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) {

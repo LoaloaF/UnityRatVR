@@ -23,7 +23,6 @@ public class UnityTest_CyclicPackagesSHMInterface : MonoBehaviour
         // int[] frameBallVel = new int[3];
         string frameBallVel = "";
         int[] ballVel = new int[3];
-        int ballVelPackID;
 
         while (true)
         {
