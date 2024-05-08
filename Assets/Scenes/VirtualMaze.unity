@@ -807,7 +807,7 @@ MonoBehaviour:
   sessionRunning: 1
   trialRunning: 1
   abortTrialFlag: 0
-  successSequenceLength: 1
+  successSequenceLength: 2
   maximumTrialLength: 10
   interTrialIntervalTrialLength: 3
   nextTrialEndTeleportCenterDist: 20
@@ -5140,7 +5140,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690834431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 631526912269d02a18e031329e498868, type: 3}
   m_Name: 
