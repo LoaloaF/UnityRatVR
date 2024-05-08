@@ -15,27 +15,16 @@ namespace Experiment.ExperimentFSM
         private float currentTime;
         private bool firstDecicionCall = true;
         public override bool Decide(BaseStateMachine stateMachine)
-        {
-            // Debug.Log("Time.realtimeSinceStartup:"+Time.realtimeSinceStartup+ " t0:"+t0+" firstDecicionCall: "+firstDecicionCall);
-            if (firstDecicionCall)
-            {
-                // Debug.Log("FIRSTabortTrialConditionReached");
-                timer = 0f;
-                firstDecicionCall = false;
-            }
-            
-            if (timer > stateMachine._sessionManager.maximumTrialLength) {
-                firstDecicionCall = true;
-                timer = 0f;
+        {            
+            if (Time.realtimeSinceStartup-stateMachine._sessionManager.trialStartTimestamp > 
+                stateMachine._sessionManager.maximumTrialLength) {
                 return true;
             }
 
             timer += Time.deltaTime;
             return false;
         }
-
     }
-
 }
 
 

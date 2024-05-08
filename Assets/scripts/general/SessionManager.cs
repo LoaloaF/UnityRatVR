@@ -45,9 +45,9 @@ public sealed class SessionManager : MonoBehaviour
     public  float nextTrialEndTeleportCenterAngle = trialEndTeleportCenterAngleMin;
     public  int[] nextTrialRewardedPillars = rewardedPillars;
     public  float[] nextTrialPillarTransparency = pillarTransparency;
+    public float trialStartTimestamp = 0f;
 
     // general trial logging parameters
-    private float trialStartTimestamp = 0f;
     private float previousTrialDuration = -1f;
     private int trialCount = 0;
     private string trialPackage = "";

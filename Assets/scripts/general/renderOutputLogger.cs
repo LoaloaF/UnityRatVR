@@ -75,7 +75,7 @@ public class renderOutputLogger : MonoBehaviour
 
         TextureScaler.scale(texture,535,400,FilterMode.Trilinear);
 
-        Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
+        // Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
         // Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
 
@@ -87,7 +87,7 @@ public class renderOutputLogger : MonoBehaviour
         // Prepare metadata packet bytes
         float frameCount = Time.frameCount;
         float frameTime = Time.realtimeSinceStartup;
-        string metadata = $"<{{N:I,ID:{frameCount},PCT:{frameTime}}}\r\n";
+        string metadata = "<{" + $"N:I,ID:{frameCount},PCT:{frameTime}" + "}>\r\n";
         packBytes = Encoding.UTF8.GetBytes(metadata);
         // Debug.Log($"TS3 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 

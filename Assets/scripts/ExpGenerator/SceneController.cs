@@ -38,6 +38,8 @@ namespace RatVR.Scene
         public SceneGeometryData scene;
         public string DeathZoneAction;
         public  GameObject deathzone;
+        
+        public  GameObject Lighting;
 
 
         private void Awake() {

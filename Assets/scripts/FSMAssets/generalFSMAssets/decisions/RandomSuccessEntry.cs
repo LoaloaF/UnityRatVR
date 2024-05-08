@@ -25,6 +25,7 @@ namespace ExperimentFSM
             }
 
             timer += Time.deltaTime;
+            Debug.Log(timer);
             
             return decisionCall;
 
