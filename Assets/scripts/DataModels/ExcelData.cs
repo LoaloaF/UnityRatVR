@@ -45,9 +45,9 @@ namespace RatVR.ExcelData
         public int punishmentInactivationLength;
         public string onWallZoneEntry;
         public string onInterTrialInterval;
-        public int interTrialIntervalLength;
+        public float interTrialIntervalLength;
         public int abortInterTrialIntervalLength;
-        public int successSequenceLength;
+        public float successSequenceLength;
         public int maximumTrialLength;
         public string trialPackageVariables;
         public int rewardedPillarsMin;
@@ -79,9 +79,9 @@ namespace RatVR.ExcelData
                                     int punishmentInactivationLength, 
                                     string onWallZoneEntry, 
                                     string onInterTrialInterval, 
-                                    int interTrialIntervalLength, 
+                                    float interTrialIntervalLength, 
                                     int abortInterTrialIntervalLength, 
-                                    int successSequenceLength, 
+                                    float successSequenceLength, 
                                     int maximumTrialLength,
                                     string trialPackageVariables, 
                                     int rewardedPillarsMin, 

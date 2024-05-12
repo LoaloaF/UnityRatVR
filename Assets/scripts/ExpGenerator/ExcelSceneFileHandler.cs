@@ -195,9 +195,9 @@ namespace Cathei.BakingSheet
             int punishmentInactivationLength = int.Parse(hyperparams.GetCell(1, 4));
             string onWallZoneEntry = hyperparams.GetCell(1, 5);
             string onInterTrialInterval = hyperparams.GetCell(1, 6);
-            int interTrialIntervalLength = int.Parse(hyperparams.GetCell(1, 7));
+            float interTrialIntervalLength = float.Parse(hyperparams.GetCell(1, 7));
             int abortInterTrialIntervalLength = int.Parse(hyperparams.GetCell(1, 8)); 
-            int successSequenceLength = int.Parse(hyperparams.GetCell(1, 9));
+            float successSequenceLength = float.Parse(hyperparams.GetCell(1, 9));
             int maximumTrialLength = int.Parse(hyperparams.GetCell(1, 10));
             string trialPackageVariables = hyperparams.GetCell(1, 11);
             int rewardedPillarsMin = int.Parse(hyperparams.GetCell(1, 12));

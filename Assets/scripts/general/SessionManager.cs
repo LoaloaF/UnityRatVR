@@ -12,9 +12,9 @@ public sealed class SessionManager : MonoBehaviour
     public int punishmentInactivationLength;
     public string onWallZoneEntry;
     public string onInterTrialInterval;
-    public int interTrialIntervalLength;
+    public float interTrialIntervalLength;
     public int abortInterTrialIntervalLength;
-    public int successSequenceLength;
+    public float successSequenceLength;
     public  float maximumTrialLength;
     public string trialPackageVariables;
     public int rewardedPillarsMin;

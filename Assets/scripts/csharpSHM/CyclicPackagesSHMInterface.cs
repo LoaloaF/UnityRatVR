@@ -185,12 +185,14 @@ public class CyclicPackagesSHMInterface
             var result = ExtractPacketData(tmpVal);
 
             stopwatch.Stop();
-            Log($"PopExtractedItem method executed in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+            // Log($"PopExtractedItem method executed in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+            // Log($"PopExtractedItem method returning smth:)");
             return result;
         }
 
         stopwatch.Stop();
-        Log($"PopExtractedItem method executed in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+        // Log($"PopExtractedItem method executed in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs");
+        // Log($"PopExtractedItem method returning null");
         return null;
     }
 
