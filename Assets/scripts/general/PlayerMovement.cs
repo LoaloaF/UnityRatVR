@@ -18,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
     // [Tooltip("Sensitivity scaler for the ball readout, higher the value, less sensitive it is")]
     //Normalize sensor inputs by multiplying: {'ballY': 0.01587624672951014, 'ballX': 0.01605927252520382, 'ballZ': 0.017359466370467733}
-    [SerializeField] float ballYNormToCentimeter = 0.01587F; //250
-    [SerializeField] float ballXNormToCentimeter = 0.01605F; //250
-    [SerializeField] float ballZNormToCentimeter = 0.01735F; //350
+    private float ballForwardNormToCentimeter = 0.001542F; //250
+    private float ballSidewaysNormToCentimeter = 0.001478F; //250
+    private float ballRotatationNormToCentimeter = 0.003806F; //350
 
     [Tooltip("Weather to try to read the BallSensor, use WASD otherwise")]
     [SerializeField] bool enableBallInput = false;
@@ -121,15 +121,15 @@ public class PlayerMovement : MonoBehaviour
 
     // add Y input of ball to current forward vector (blue) and the same for right 
     private void MoveRat() {
-        Vector3 forwardVel = transform.forward*XYZvelInput[0]*ballYNormToCentimeter*gain.x;
+        Vector3 forwardVel = transform.forward*XYZvelInput[0]*ballForwardNormToCentimeter*gain.x;
         // Debug.Log(forwardVel);
-        Vector3 rightVel = -transform.right*XYZvelInput[2]*ballXNormToCentimeter*gain.y;
+        Vector3 rightVel = -transform.right*XYZvelInput[2]*ballSidewaysNormToCentimeter*gain.y;
         controller.Move((forwardVel+rightVel));
     }
 
     // add Z input of ball to current y rotation
     private void RotateRat() {
-        rotY += -(XYZvelInput[1]*ballZNormToCentimeter)*gain.z;
+        rotY += -(XYZvelInput[1]*ballRotatationNormToCentimeter)*gain.z;
         transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
     }
     

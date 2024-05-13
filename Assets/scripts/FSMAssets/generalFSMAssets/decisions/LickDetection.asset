@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c57e8043a769988e8539d394d27d1ee, type: 3}
   m_Name: LickDetection
   m_EditorClassIdentifier: 
-  threshold: 200
+  threshold: 110

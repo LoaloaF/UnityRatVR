@@ -14,22 +14,24 @@ namespace ExperimentFSM
         {
             if (portentaOutputSHMInterface == null) portentaOutputSHMInterface = new CyclicPackagesSHMInterface("portentaoutput_shmstruct.json");
 
+            bool foundLick = false;
             while (true) {
                 var portentaPackage = portentaOutputSHMInterface.PopExtractedItem();
-                if (portentaPackage == null) break;
+                if (portentaPackage == null) {
+                    nChecks = 0;
+                    if (foundLick) Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
+                    return foundLick;
+                }
 
                 // Debug.Log(portentaPackage["N"] + " " + portentaPackage["V"] + " " + portentaPackage["ID"]);
                 if (portentaPackage["N"].ToString().Trim() == "L" && double.Parse(portentaPackage["V"].ToString()) > threshold)
                 {
-                    Debug.Log($"Lick above threshold detected, after {nChecks} checks");
-                    nChecks = 0;
-                    return true;
+                    // Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
+                    // nChecks = 0;
+                    foundLick = true;
                 }
                 nChecks++;
             }
-            // Debug.Log($"No lick in this frame, {nChecks} checks");
-            nChecks = 0;
-            return false;
         }
     }
 }
