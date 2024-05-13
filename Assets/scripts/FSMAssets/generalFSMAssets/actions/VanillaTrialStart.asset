@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0001_TrialStart
+  m_Script: {fileID: 11500000, guid: ed48fedccf477a4588e3f8557274cb19, type: 3}
+  m_Name: VanillaTrialStart
   m_EditorClassIdentifier: 
-  stateID: 1
-  Action:
-  - {fileID: 11400000, guid: a3fc53b4522f5d2b6ac291588a339175, type: 2}
-  Transitions:
-  - {fileID: 11400000, guid: be56628f81233803cbee804148fdc23c, type: 2}

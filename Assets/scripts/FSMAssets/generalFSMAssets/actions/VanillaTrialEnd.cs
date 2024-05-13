@@ -8,18 +8,17 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/TrialEndAction")]
+    [CreateAssetMenu(menuName = "FSM/Actions/VanillaTrialEnd")]
 
-    public class TrialEndAction : FSMAction
+    public class VanillaTrialEnd : FSMAction
     {
         public MeshRenderer validationSphereRenderer; // MeshRenderer object that you can assign in the UI
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            // Debug.Log("TrialEndAction");
             
             // which Pillar was reached
-            stateMachine._sessionManager.logEndTrial("P:1");
+            stateMachine._sessionManager.logEndTrial("-1");
             
             Color white = new Color(1, 1, 1, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);

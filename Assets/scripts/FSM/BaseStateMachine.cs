@@ -70,6 +70,7 @@ namespace FSM
             {
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
+                generalCurrentStateID = CurrentState.stateID;
                 switchBlinkerColor();
             }
 

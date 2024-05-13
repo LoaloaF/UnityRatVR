@@ -104,18 +104,18 @@ public sealed class SessionManager : MonoBehaviour
         trialCount++;
         trialStartTimestamp = Time.realtimeSinceStartup;
         trialPackage = $"N:TN,ID:{trialCount},FID:{Time.frameCount},"+
-                       $"PCT:{Time.realtimeSinceStartup},{packageValues}";
+                       $"PCT:{Time.realtimeSinceStartup}{packageValues}";
 
         Debug.Log($"Calling Push with New Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
         Debug.Log("Trial count " + trialCount);
     }
 
-    public void logEndTrial(string packageValues) {
+    public void logEndTrial(string reaachedPillar) {
         previousTrialDuration = Time.realtimeSinceStartup - trialStartTimestamp;
         trialPackage = $"N:TE,ID:{trialCount},FID:{Time.frameCount},"+
                        $"PCT:{Time.realtimeSinceStartup},TD:{previousTrialDuration},"+
-                       $"{packageValues}";
+                       $"P:{reaachedPillar}";
 
         Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
