@@ -51,7 +51,17 @@ public class UnityFrameLogger : MonoBehaviour
     void LogFrame() {
         // var readOut = ReadUnityOutputSHMInterface.Popitem();
         // Debug.Log($"TestRead: {readOut}");
-        frameTime = Time.realtimeSinceStartup;
+        // frameTime = Time.realtimeSinceStartup;
+        DateTime currentDateTime = DateTime.UtcNow;
+
+        // Calculate the Unix timestamp in milliseconds
+        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
+
+        // Calculate the microseconds part
+        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
+
+        // Combine milliseconds and microseconds
+        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
         frameCount = Time.frameCount;
         framePositionX = Player.transform.position.x;
         framePositionZ = Player.transform.position.z;
@@ -63,7 +73,7 @@ public class UnityFrameLogger : MonoBehaviour
         // set blinker to 0 if frameIndicationBlinker.Color == Color.black else set it to 1
         blinkerState = frameIndicationBlinker.material.color == Color.black ? 0 : 1;
         
-        framePackage = $"N:U,ID:{frameCount},PCT:{frameTime},X:{framePositionX},"+
+        framePackage = $"N:U,ID:{frameCount},PCT:{unixTimestampMicroseconds},X:{framePositionX},"+
                     $"Z:{framePositionZ},A:{frameAngle},S:{frameState},FB:{blinkerState},"+
                     $"BFP:{frameBallVelFirstPackID},BLP:{frameBallVelLastPackID}";
 

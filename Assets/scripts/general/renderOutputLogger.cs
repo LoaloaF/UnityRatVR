@@ -69,11 +69,11 @@ public class renderOutputLogger : MonoBehaviour
         texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
         // Read RenderTexture data into the Texture2D
         RenderTexture.active = finalTexture;
-        texture.ReadPixels(new Rect(425, 250, 1070, 800), 0, 0);
+        texture.ReadPixels(new Rect(450, 250, 1000, 800), 0, 0);
         texture.Apply();
 
 
-        TextureScaler.scale(texture,535,400,FilterMode.Trilinear);
+        TextureScaler.scale(texture,500,400,FilterMode.Trilinear);
 
         // Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
         // Debug.Log($"TS1 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
@@ -86,8 +86,17 @@ public class renderOutputLogger : MonoBehaviour
 
         // Prepare metadata packet bytes
         float frameCount = Time.frameCount;
-        float frameTime = Time.realtimeSinceStartup;
-        string metadata = "<{" + $"N:I,ID:{frameCount},PCT:{frameTime}" + "}>\r\n";
+        // float frameTime = Time.time;
+
+        DateTime currentDateTime = DateTime.UtcNow;
+        // Calculate the Unix timestamp in milliseconds
+        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
+        // Calculate the microseconds part
+        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
+        // Combine milliseconds and microseconds
+        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
+
+        string metadata = "<{" + $"N:I,ID:{frameCount},PCT:{unixTimestampMicroseconds}" + "}>\r\n";
         packBytes = Encoding.UTF8.GetBytes(metadata);
         // Debug.Log($"TS3 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 

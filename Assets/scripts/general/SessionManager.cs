@@ -1,5 +1,6 @@
 using UnityEngine;
 using RatVR.ExcelData;
+using System;
 /// <summary>
 /// This class manages provided a reference to session parameters from the excel sheet
 /// And it manages single trial logging
@@ -103,8 +104,17 @@ public sealed class SessionManager : MonoBehaviour
     public void logNewTrial(string packageValues) {
         trialCount++;
         trialStartTimestamp = Time.realtimeSinceStartup;
+
+        DateTime currentDateTime = DateTime.UtcNow;
+        // Calculate the Unix timestamp in milliseconds
+        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
+        // Calculate the microseconds part
+        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
+        // Combine milliseconds and microseconds
+        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
+
         trialPackage = $"N:TN,ID:{trialCount},FID:{Time.frameCount},"+
-                       $"PCT:{Time.realtimeSinceStartup}{packageValues}";
+                       $"PCT:{unixTimestampMicroseconds}{packageValues}";
 
         Debug.Log($"Calling Push with New Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
@@ -113,8 +123,17 @@ public sealed class SessionManager : MonoBehaviour
 
     public void logEndTrial(string reaachedPillar) {
         previousTrialDuration = Time.realtimeSinceStartup - trialStartTimestamp;
+
+        DateTime currentDateTime = DateTime.UtcNow;
+        // Calculate the Unix timestamp in milliseconds
+        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
+        // Calculate the microseconds part
+        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
+        // Combine milliseconds and microseconds
+        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
+
         trialPackage = $"N:TE,ID:{trialCount},FID:{Time.frameCount},"+
-                       $"PCT:{Time.realtimeSinceStartup},TD:{previousTrialDuration},"+
+                       $"PCT:{unixTimestampMicroseconds},TD:{previousTrialDuration},"+
                        $"P:{reaachedPillar}";
 
         Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
