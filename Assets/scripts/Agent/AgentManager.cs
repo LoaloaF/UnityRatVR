@@ -20,7 +20,7 @@ public class AgentManager : MonoBehaviour
 
     private GameObject experimentManager;
     private NavMeshAgent agent;
-    private bool agentHasGoal = false;
+    private bool agentHasGoal;
     
 
     private System.Random rand;

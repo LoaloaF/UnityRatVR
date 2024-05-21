@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
             stateMachine.validationSphereRenderer.enabled = true;
             stateMachine.validationSphereRenderer.material.color = Color.black;
             stateMachine._sceneController.floor.SetActive(false);
-            stateMachine._sceneController.wallzone.SetActive(false);
+            stateMachine._sceneController.wallZone.SetActive(false);
             stateMachine._playerMovement.DisableMovement();
             stateMachine._sessionManager.trialRunning = false;
         }

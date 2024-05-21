@@ -167,12 +167,16 @@ namespace Cathei.BakingSheet
             var hyperparams = pages["EnvParameters"];
 
             // Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(11,1)), int.Parse(hyperparams.GetCell(12,1)));
-            // int deathzone = int.Parse(hyperparams.GetCell(11, 3));
+            // int wallZone = int.Parse(hyperparams.GetCell(11, 3));
             // float baseLength = float.Parse(hyperparams.GetCell(11, 2), System.Globalization.CultureInfo.InvariantCulture);
             // Vector2 startLocation = new Vector2(int.Parse(hyperparams.GetCell(11, 4)), int.Parse(hyperparams.GetCell(12, 4)));
             // Vector2 agentLocation = new Vector2(int.Parse(hyperparams.GetCell(11, 5)), int.Parse(hyperparams.GetCell(12, 5)));
             // int lengthFlash = int.Parse(hyperparams.GetCell(11, 7));
             // int lengthSound = int.Parse(hyperparams.GetCell(11, 8));
+
+            Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(14,1)), int.Parse(hyperparams.GetCell(15,1)));
+            float baseLength = float.Parse(hyperparams.GetCell(14, 2), System.Globalization.CultureInfo.InvariantCulture);
+            int wallZone = int.Parse(hyperparams.GetCell(14, 3));
 
             ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 1));
             ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 2));
@@ -181,8 +185,7 @@ namespace Cathei.BakingSheet
 
             // bool cylinder = bool.Parse(hyperparams.GetCell(16, 6));
 
-            // return new ExcelSceneMetaData(size, baseLength, deathzone, startLocation, agentLocation, lengthFlash, lengthSound, topWall, rightWall, botWall, leftWall, cylinder);
-            return new ExcelSceneMetaData(topWall, rightWall, botWall, leftWall);
+            return new ExcelSceneMetaData(size, baseLength, wallZone, topWall, rightWall, botWall, leftWall);
         }
 
         public ExcelSessionMetaData GetExcelSessionMetaData()

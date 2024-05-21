@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public int firstPackID;
     public int lastPackID;
+    public float wallZoneStopDistanceRatio = 0.2f;
     private int[] XYZvelInput = new int[3];
     public Vector3 gain = new Vector3(1f, 1f, 1f);
     private float rotY = 0f;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
             MoveRat();
             RotateRat();
         }
+        // Debug.Log(controller.velocity);
     }
 
     public int[] GetBallXYZVelocities() 
@@ -121,9 +123,11 @@ public class PlayerMovement : MonoBehaviour
 
     // add Y input of ball to current forward vector (blue) and the same for right 
     private void MoveRat() {
-        Vector3 forwardVel = transform.forward*XYZvelInput[0]*ballForwardNormToCentimeter*gain.x;
-        // Debug.Log(forwardVel);
-        Vector3 rightVel = -transform.right*XYZvelInput[2]*ballSidewaysNormToCentimeter*gain.y;
+        Vector3 forwardVel = Vector3.Scale(transform.forward*XYZvelInput[0]*ballForwardNormToCentimeter, gain);
+        // Debug.Log("Velo " + controller.velocity);
+        // Debug.Log("Forward " +forwardVel);
+        Vector3 rightVel = Vector3.Scale(-transform.right*XYZvelInput[2]*ballSidewaysNormToCentimeter,gain);
+        // Debug.Log("Right " + rightVel);
         controller.Move((forwardVel+rightVel));
     }
 

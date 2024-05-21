@@ -698,7 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1666924472}
   ceiling: {fileID: 360030911}
-  wallzone: {fileID: 434591712}
+  wallZone: {fileID: 434591712}
   wallTop: {fileID: 741731471}
   wallBottom: {fileID: 245758922}
   wallRight: {fileID: 419544900}
@@ -708,8 +708,6 @@ MonoBehaviour:
   meshRight: {fileID: 1241682925}
   meshLeft: {fileID: 341669017}
   _sessionManager: {fileID: 0}
-  DeathZoneAction: 
-  deathzone: {fileID: 434591712}
   Lighting: {fileID: 863277864}
 --- !u!114 &68722536
 MonoBehaviour:
@@ -5060,7 +5058,7 @@ Transform:
   m_GameObject: {fileID: 690834431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 149.54999, y: -33.796, z: 0}
+  m_LocalPosition: {x: 193.8, y: -33.796, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7392,6 +7390,7 @@ MonoBehaviour:
   controller: {fileID: 1180528855}
   firstPackID: 0
   lastPackID: 0
+  wallZoneStopDistanceRatio: 0.2
   gain: {x: 1, y: 1, z: 1}
   enableBallInput: 1
 --- !u!114 &1180528861
@@ -7522,7 +7521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 125.561, y: 0.418}
+  m_AnchoredPosition: {x: 169.81102, y: 0.418}
   m_SizeDelta: {x: 981, y: 552}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1236976563 stripped
@@ -7766,7 +7765,7 @@ Transform:
   m_GameObject: {fileID: 1350956343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 146.9, y: -34, z: 0}
+  m_LocalPosition: {x: 191.15001, y: -34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

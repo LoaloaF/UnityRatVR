@@ -20,8 +20,8 @@ public sealed class SessionManager : MonoBehaviour
     public string trialPackageVariables;
     public int rewardedPillarsMin;
     public int rewardedPillarsMax;
-    public int pillarTransparencyMin;
-    public int pillarTransparencyMax;
+    public float pillarTransparencyMin;
+    public float pillarTransparencyMax;
     public int pillarPunishmentMin;
     public int pillarPunishmentMax;
 

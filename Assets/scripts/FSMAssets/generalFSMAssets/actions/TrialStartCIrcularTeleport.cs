@@ -28,34 +28,42 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             stateMachine._sceneController.floor.SetActive(true);
-            stateMachine._sceneController.wallzone.SetActive(true);
+            stateMachine._sceneController.wallZone.SetActive(true);
 
+            // get the first child (the only pillar)
+            Transform child = stateMachine.transform.GetChild(0);
+            Vector3 pillarPosition = child.position;
 
-            // Configure each pillar
-            pillarNumber = stateMachine.transform.childCount;
-            foreach (Transform child in stateMachine.transform)
-            {
-                child.GetComponentInChildren<PillarCollision>().PlayerDetected = false;
-                pillarTransparency = GenerateRandomValue(stateMachine._sessionManager.pillarTransparencyMin, stateMachine._sessionManager.pillarTransparencyMax);
-                Debug.Log("pillarTransparency: "+pillarTransparency);
-                pillarIsRewarded = 1;
-                pillarIsPunishment = 0;
-                Color originalColor = child.GetComponentInChildren<MeshRenderer>().material.color;
-                child.GetComponentInChildren<MeshRenderer>().material.color = new Color(originalColor.r, originalColor.g, originalColor.b, pillarTransparency);
-            }
+            // rest the collision detection
+            child.GetComponentInChildren<PillarCollision>().PlayerDetected = false;
+            
+            // set the reward and punishment value
+            pillarIsRewarded = 1;
+            pillarIsPunishment = 0;
+            
+            // setup the transparency of the pillar
+            pillarTransparency = GenerateRandomValue(stateMachine._sessionManager.pillarTransparencyMin, 
+                                                     stateMachine._sessionManager.pillarTransparencyMax);
+            Debug.Log("pillarTransparency: " + pillarTransparency);
+            Color originalColor = child.GetComponentInChildren<MeshRenderer>().material.color;
+            child.GetComponentInChildren<MeshRenderer>().material.color = new Color(originalColor.r, 
+                                                                                    originalColor.g, 
+                                                                                    originalColor.b, 
+                                                                                    pillarTransparency);
+
 
             // Teleport the rat to a new start position
-            Vector3 pillarPosition = stateMachine.transform.GetChild(0).position;
-            Debug.Log("nextTrialEndTeleportCenterDist: "+stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
 
+            Debug.Log("nextTrialEndTeleportCenterDist: " + stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
             Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
-                                                    stateMachine._sessionManager.nextTrialEndTeleportCenterDist,
-                                                    stateMachine._sessionManager.nextTrialEndTeleportCenterAngle);
+                                                              stateMachine._sessionManager.nextTrialEndTeleportCenterDist,
+                                                              stateMachine._sessionManager.nextTrialEndTeleportCenterAngle);
+            stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
             
+            // prepare the scene and playermovement for the next session
             stateMachine.validationSphereRenderer.enabled = false;
             stateMachine._playerMovement.EnableMovement();
-            stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
 
             // Prepare and log the trial

@@ -9,7 +9,7 @@ namespace RatVR.ExcelData
     {
         public Vector2 size;
         public float baseLength;
-        public int deathzone;
+        public int wallZone;
 
         public ExcelWallData wallTop;
         public ExcelWallData wallRight;
@@ -18,19 +18,17 @@ namespace RatVR.ExcelData
 
         public bool cylinder;
  
-        public string DeathZoneAction;
-
-        // public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 startLocation, Vector2 agentLocation, int lengthFlash, int lengthSound, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, bool cylinder)
-        public ExcelSceneMetaData(ExcelWallData wallTop, 
-                                  ExcelWallData wallRight, 
-                                  ExcelWallData wallBot, 
-                                  ExcelWallData wallLeft
-                                 ){
-            this.size = new Vector2(250, 250);
-            this.baseLength = 1;
-            this.deathzone = 50;
-            this.DeathZoneAction = "center_teleport";
-            
+        public ExcelSceneMetaData(  Vector2 size,
+                                    float baseLength,
+                                    int wallZone,
+                                    ExcelWallData wallTop, 
+                                    ExcelWallData wallRight, 
+                                    ExcelWallData wallBot, 
+                                    ExcelWallData wallLeft
+                                    ){
+            this.size = size;
+            this.baseLength = baseLength;
+            this.wallZone = wallZone;
             this.wallTop = wallTop;
             this.wallRight = wallRight;
             this.wallBot = wallBot;
@@ -73,7 +71,6 @@ namespace RatVR.ExcelData
         public string agentFREEVAR8;
 
 
-        // public ExcelSceneMetaData(Vector2 size, float baseLength, int deathzone, Vector2 startLocation, Vector2 agentLocation, int lengthFlash, int lengthSound, ExcelWallData wallTop, ExcelWallData wallRight, ExcelWallData wallBot, ExcelWallData wallLeft, bool cylinder)
         public ExcelSessionMetaData(int rewardPostSoundDelay, 
                                     int rewardAmount, 
                                     int punishmentLength, 
@@ -170,17 +167,6 @@ namespace RatVR.ExcelData
         public int isReward;
         public int isAirpuff;
 
-        public ExcelObjectData(string object_name, float radius, float height, float zPos, string texture, float transparency, int isReward, int isAirpuff)
-        {
-            this.object_name = object_name;
-            this.radius = radius;
-            this.height = height;
-            this.zPos = zPos;
-            this.texture = texture;
-            this.transparency = transparency;
-            this.isReward = isReward;
-            this.isAirpuff = isAirpuff;
-        }
 
         public ExcelObjectData(List<string> values)
         {
@@ -197,31 +183,6 @@ namespace RatVR.ExcelData
             this.isAirpuff = 0;
             
         }
-
-        // public class ExcelSessionParameters
-        // {
-        //     public Vector2 size;
-        //     public float baseLength;
-        //     public int deathzone;
-
-        //     public ExcelSessionParameters(float baseLength, int deathzone){
-        //         this.baseLength = baseLength;
-        //         this.deathzone = deathzone;
-        //     }
-        // }
-
-        
-        // public class ExcelDynamicSessionParameters
-        // {
-        //     public Vector2 size;
-        //     public float baseLength;
-        //     public int deathzone;
-
-        //     public ExcelDynamicSessionParameters(float baseLength, int deathzone){
-        //         this.baseLength = baseLength;
-        //         this.deathzone = deathzone;
-        //     }
-        // }
 
         public override string ToString()
         {

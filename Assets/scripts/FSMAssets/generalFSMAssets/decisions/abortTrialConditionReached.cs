@@ -13,7 +13,7 @@ namespace Experiment.ExperimentFSM
     {
         private float timer;
         private float currentTime;
-        private bool firstDecicionCall = true;
+        // private bool firstDecicionCall = true;
         public override bool Decide(BaseStateMachine stateMachine)
         {            
             if (Time.realtimeSinceStartup-stateMachine._sessionManager.trialStartTimestamp > 
