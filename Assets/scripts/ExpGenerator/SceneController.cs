@@ -26,7 +26,7 @@ namespace RatVR.Scene
         public static readonly SceneController Instance = new SceneController();
         private SceneController() { }
 
-        public GameObject floor, ceiling, wallzone;
+        public GameObject floor, ceiling, wallZone;
 
         public GameObject wallTop, wallBottom, wallRight, wallLeft;
         public GameObject meshTop, meshBottom, meshRight, meshLeft;
@@ -36,8 +36,7 @@ namespace RatVR.Scene
         public SessionManager _sessionManager;
         public ExcelSessionMetaData sessionMetaData;
         public SceneGeometryData scene;
-        public string DeathZoneAction;
-        public  GameObject deathzone;
+        // public  GameObject wallZone;
         
         public  GameObject Lighting;
 
@@ -86,33 +85,23 @@ namespace RatVR.Scene
                                           sceneMetaData.wallRight, 
                                           sceneMetaData.wallLeft, 
                                           pillars, 
-                                          sceneMetaData.deathzone);
+                                          sceneMetaData.wallZone);
             
-            DeathZoneAction = sceneMetaData.DeathZoneAction;
             LoadScene(scene);
-        }
-
-        private void LoadJSONScene(string path)
-        {
-
-            string scene = System.IO.File.ReadAllText(path, System.Text.Encoding.UTF8);
-            JSONObject sceneJSON = (JSONObject)JSON.Parse(scene);
-
-            LoadScene(new SceneGeometryData(sceneJSON));
         }
 
         private void LoadScene(SceneGeometryData sceneData)
         {
-            // deathzone size and position
-            deathzone.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
-            deathzone.transform.position = new Vector3(0, 0, 0);
+            // wallzone size and position
+            wallZone.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
+            wallZone.transform.position = new Vector3(0, 0, 0);
 
             
             // floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
             // floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.5f * sceneData.Size;
             // floor size with death zone
-            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.DeathZone, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.DeathZone);
-            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.DeathZone, scene.DeathZone)*2);
+            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone);
+            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.WallZone, scene.WallZone)*2);
             floor.transform.position = new Vector3(0, 0.01f, 0);
             
             ceiling.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);

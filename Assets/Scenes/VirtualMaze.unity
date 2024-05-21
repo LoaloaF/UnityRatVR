@@ -698,7 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1666924472}
   ceiling: {fileID: 360030911}
-  wallzone: {fileID: 434591712}
+  wallZone: {fileID: 434591712}
   wallTop: {fileID: 741731471}
   wallBottom: {fileID: 245758922}
   wallRight: {fileID: 419544900}
@@ -708,8 +708,6 @@ MonoBehaviour:
   meshRight: {fileID: 1241682925}
   meshLeft: {fileID: 341669017}
   _sessionManager: {fileID: 0}
-  DeathZoneAction: 
-  deathzone: {fileID: 434591712}
   Lighting: {fileID: 863277864}
 --- !u!114 &68722536
 MonoBehaviour:
@@ -7392,6 +7390,7 @@ MonoBehaviour:
   controller: {fileID: 1180528855}
   firstPackID: 0
   lastPackID: 0
+  wallZoneStopDistanceRatio: 0.2
   gain: {x: 1, y: 1, z: 1}
   enableBallInput: 1
 --- !u!114 &1180528861

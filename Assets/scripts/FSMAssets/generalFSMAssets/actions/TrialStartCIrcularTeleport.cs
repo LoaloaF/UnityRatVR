@@ -28,7 +28,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             stateMachine._sceneController.floor.SetActive(true);
-            stateMachine._sceneController.wallzone.SetActive(true);
+            stateMachine._sceneController.wallZone.SetActive(true);
 
             // get the first child (the only pillar)
             Transform child = stateMachine.transform.GetChild(0);

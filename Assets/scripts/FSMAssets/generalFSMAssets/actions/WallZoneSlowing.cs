@@ -13,11 +13,11 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            string DeathZoneAction = stateMachine._sceneController.DeathZoneAction;
-            if (DeathZoneAction == "slow_down")
+            string WallZoneAction = stateMachine._sessionManager.onWallZoneEntry;
+            if (WallZoneAction == "slow_down")
             {
                 Vector3 gain = CalculateGain();
-                 UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] );
+                UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] );
                 stateMachine.Player.GetComponent<PlayerMovement>().gain = gain;
             }
 
@@ -32,11 +32,16 @@ namespace Experiment.ExperimentFSM
                 CharacterController controller = stateMachine.Player.GetComponent<CharacterController>();
                 Vector3 playerVel = controller.velocity;
 
+                UnityEngine.Debug.Log("playerVel: " + playerVel.x + " " + playerVel.z);
                 if (diswall[0] < 1f)
                 {
                     if (playerVel.x >= 0)
                     {
-                        gain = new Vector3(diswall[0], diswall[0], 1f);
+                        gain = new Vector3(diswall[0], 1f, gain.z);
+                    }
+                    else
+                    {
+                        gain = new Vector3(1f, 1f, gain.z);
                     }
                 }
 
@@ -44,7 +49,11 @@ namespace Experiment.ExperimentFSM
                 {
                     if (playerVel.x <= 0)
                     {
-                        gain = new Vector3(diswall[1], diswall[1], 1f);
+                        gain = new Vector3(diswall[1], 1f, gain.z);
+                    }
+                    else
+                    {
+                        gain = new Vector3(1f, 1f, gain.z);
                     }
                 }
 
@@ -52,7 +61,11 @@ namespace Experiment.ExperimentFSM
                 {
                     if (playerVel.z >= 0)
                     {
-                         gain = new Vector3(diswall[2], diswall[2], 1f);
+                         gain = new Vector3(gain.x, 1f, diswall[2]);
+                    }
+                    else
+                    {
+                        gain = new Vector3(gain.x, 1f, 1f);
                     }
                 }
 
@@ -60,7 +73,11 @@ namespace Experiment.ExperimentFSM
                 {
                     if (playerVel.z <= 0)
                     {
-                         gain = new Vector3(diswall[3], diswall[3], 1f);
+                         gain = new Vector3(gain.x, 1f, diswall[3]);
+                    }
+                    else
+                    {
+                        gain = new Vector3(gain.x, 1f, 1f);
                     }
                     
                 }
@@ -73,17 +90,20 @@ namespace Experiment.ExperimentFSM
                 Vector3 playerpos = new Vector3(stateMachine.Player.transform.position.x,  stateMachine.Player.transform.position.z, stateMachine.Player.transform.eulerAngles.y);
                 float[] diswall = new float[4];
                 // check x and y in scene size
-                diswall[0] = playerpos.x - scenesize.x*0.5f;
-                diswall[1] = playerpos.x + scenesize.x*0.5f;
-                diswall[2] = playerpos.y - scenesize.y*0.5f;
-                diswall[3] = playerpos.y + scenesize.y*0.5f;
+                diswall[0] = playerpos.x - scenesize.x*0.5f; // to right wall
+                diswall[1] = playerpos.x + scenesize.x*0.5f; // to left wall
+                diswall[2] = playerpos.y - scenesize.y*0.5f; // to top wall
+                diswall[3] = playerpos.y + scenesize.y*0.5f; // to bottom wall
 
                 float[] diswallRatio = {1f, 1f, 1f, 1f};
                 for (int i = 0; i< diswall.Length; i++)
                 {
-                    if (Math.Abs(diswall[i]) < (stateMachine._sceneController.scene.DeathZone))
+                    if (Math.Abs(diswall[i]) < (stateMachine._sceneController.scene.WallZone))
                     {
-                        diswallRatio[i] = Math.Abs(diswall[i])/stateMachine._sceneController.scene.DeathZone;
+                        // diswallRatio[i] = Math.Abs(diswall[i])/(stateMachine._sceneController.scene.WallZone);
+                        // When approaching the wall at the distance of wallZoneStopDistanceRatio*WallZone, the gain is 0
+                        diswallRatio[i] = (Math.Abs(diswall[i]) - stateMachine._sceneController.scene.WallZone * stateMachine._playerMovement.wallZoneStopDistanceRatio)
+                                           /(stateMachine._sceneController.scene.WallZone * (1-stateMachine._playerMovement.wallZoneStopDistanceRatio));
                     }
                 }
 
