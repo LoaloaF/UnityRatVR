@@ -14,8 +14,8 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            string DeathZoneAction = stateMachine._sceneController.DeathZoneAction;
-            if (DeathZoneAction == "center_teleport")
+            if (stateMachine._sessionManager.onWallZoneEntry == "center_teleport")
+
             {
                 float x = 0f;
                 float z = 0f;
@@ -24,7 +24,7 @@ namespace Experiment.ExperimentFSM
             }
             else
             {
-                Debug.Log($"DeathZoneAction `{DeathZoneAction}` != `center_teleport`");
+                // Debug.Log($"DeathZoneAction `{DeathZoneAction}` != `center_teleport`");
             }
         }
 

@@ -16,17 +16,16 @@ namespace RatVR.Scene
         private float version = 1.0f;
         public float Version { get { return version; } set { version = value; } }
 
-        private float baseLength = 1.0f;
-        public float BaseLength { get { return baseLength; } set { baseLength = value; } }
-
-        private Vector2 size;
-        public Vector2 Size { get { return size; } set { size = value; } }
 
         private JSONArray rewardLocationPillars;
         public JSONArray RewardLocationPillars { get { return rewardLocationPillars; } set { rewardLocationPillars = value; } }
 
         private JSONArray rewardLocationGrid;
         public JSONArray RewardLocationGrid { get { return rewardLocationGrid; } set { rewardLocationGrid = value; } }
+
+
+
+
 
         private WallData topWall;
         public WallData TopWall { get { return topWall; } set { topWall = value; } }
@@ -40,14 +39,36 @@ namespace RatVR.Scene
         private WallData rightWall;
         public WallData RightWall { get { return rightWall; } set { rightWall = value; } }
 
+
+
+
+
+
+
+
         private List<PillarData> pillars;
         public List<PillarData> Pillars { get { return pillars; } set { pillars = value; } }
+
+
+
+
+
+
 
         private int deathZone;
         public int DeathZone { get { return deathZone; } set { deathZone = value; } }
 
+        private float baseLength = 1.0f;
+        public float BaseLength { get { return baseLength; } set { baseLength = value; } }
 
-    
+        private Vector2 size;
+        public Vector2 Size { get { return size; } set { size = value; } }
+
+
+
+
+
+
 
         #endregion
 

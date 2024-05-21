@@ -26,10 +26,11 @@ namespace RatVR.ExcelData
                                   ExcelWallData wallBot, 
                                   ExcelWallData wallLeft
                                  ){
-            this.size = new Vector2(210, 210);
+            this.size = new Vector2(250, 250);
             this.baseLength = 1;
-            this.deathzone = 30;
+            this.deathzone = 50;
             this.DeathZoneAction = "center_teleport";
+            
             this.wallTop = wallTop;
             this.wallRight = wallRight;
             this.wallBot = wallBot;

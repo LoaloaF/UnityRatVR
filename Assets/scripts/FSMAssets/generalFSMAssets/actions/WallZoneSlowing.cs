@@ -13,8 +13,7 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            string DeathZoneAction = stateMachine._sceneController.DeathZoneAction;
-            if (DeathZoneAction == "slow_down")
+            if (stateMachine._sessionManager.onWallZoneEntry == "slow_down")
             {
                 Vector3 gain = CalculateGain();
                  UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] );

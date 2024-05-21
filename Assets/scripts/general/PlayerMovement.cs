@@ -18,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
     // [Tooltip("Sensitivity scaler for the ball readout, higher the value, less sensitive it is")]
     //Normalize sensor inputs by multiplying: {'ballY': 0.01587624672951014, 'ballX': 0.01605927252520382, 'ballZ': 0.017359466370467733}
-    private float ballForwardNormToCentimeter = 0.001542F; //250
-    private float ballSidewaysNormToCentimeter = 0.001478F; //250
-    private float ballRotatationNormToCentimeter = 0.003806F; //350
+    private float ballForwardNormToCentimeter = 0.001542F;
+    private float ballSidewaysNormToCentimeter = 0.001478F;
+    private float ballRotatationNormToCentimeter = 0.003806F;
 
     [Tooltip("Weather to try to read the BallSensor, use WASD otherwise")]
     [SerializeField] bool enableBallInput = false;
