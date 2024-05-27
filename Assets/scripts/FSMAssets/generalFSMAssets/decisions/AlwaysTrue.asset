@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ec5749b4e5a3a46a3d21d0702841d4, type: 3}
   m_Name: AlwaysTrue
   m_EditorClassIdentifier: 
+  switchDescription: AutoTrue

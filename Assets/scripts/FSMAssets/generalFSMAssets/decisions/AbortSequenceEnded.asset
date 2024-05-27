@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319c8bb0444ab66be8808c65914d4cfa, type: 3}
   m_Name: AbortSequenceEnded
   m_EditorClassIdentifier: 
+  switchDescription: Abort time interval over?

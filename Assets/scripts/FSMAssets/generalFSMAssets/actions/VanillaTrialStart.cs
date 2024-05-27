@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
      
         public override void Execute(BaseStateMachine stateMachine)
         {
-            stateMachine._sessionManager.logNewTrial("");
+            stateMachine._sessionManager.newTrial();
         }
     }
 }

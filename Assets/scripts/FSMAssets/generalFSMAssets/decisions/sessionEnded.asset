@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9324ce7e5da417987c72887009896c, type: 3}
   m_Name: sessionEnded
   m_EditorClassIdentifier: 
+  switchDescription: Session ended user input?

@@ -18,7 +18,7 @@ namespace Experiment.ExperimentFSM
         {
             
             // which Pillar was reached
-            stateMachine._sessionManager.logEndTrial("-1");
+            stateMachine._sessionManager.logEndTrial();
             
             Color white = new Color(1, 1, 1, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797f025b8bb9bd44d9d3a2655444c334, type: 3}
   m_Name: RandomSuccessEntry
   m_EditorClassIdentifier: 
+  switchDescription: Getting reward (50% chance)?

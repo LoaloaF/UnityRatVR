@@ -46,10 +46,13 @@ public sealed class SessionManager : MonoBehaviour
     public  float nextTrialEndTeleportCenterAngle = trialEndTeleportCenterAngleMin;
     public  int[] nextTrialRewardedPillars = rewardedPillars;
     public  float[] nextTrialPillarTransparency = pillarTransparency;
-    public float trialStartTimestamp = 0f;
+    
+    public int trialStartFrameID;
+    public long trialStartTimestamp;
+    public long trialEndTimestamp;
+    private long trialDuration;
 
     // general trial logging parameters
-    private float previousTrialDuration = -1f;
     private int trialCount = 0;
     private string trialPackage = "";
 
@@ -101,29 +104,13 @@ public sealed class SessionManager : MonoBehaviour
         }
     }
 
-    public void logNewTrial(string packageValues) {
+    public void newTrial() {
         trialCount++;
-        trialStartTimestamp = Time.realtimeSinceStartup;
-
-        DateTime currentDateTime = DateTime.UtcNow;
-        // Calculate the Unix timestamp in milliseconds
-        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
-        // Calculate the microseconds part
-        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
-        // Combine milliseconds and microseconds
-        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
-
-        trialPackage = $"N:TN,ID:{trialCount},FID:{Time.frameCount},"+
-                       $"PCT:{unixTimestampMicroseconds}{packageValues}";
-
-        Debug.Log($"Calling Push with New Trial Pckg {trialPackage}");
-        GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
-        Debug.Log("Trial count " + trialCount);
+        trialStartTimestamp = getUnixTimestampMicroseconds();
+        trialStartFrameID = Time.frameCount;
     }
 
-    public void logEndTrial(string reaachedPillar) {
-        previousTrialDuration = Time.realtimeSinceStartup - trialStartTimestamp;
-
+    public long getUnixTimestampMicroseconds() {
         DateTime currentDateTime = DateTime.UtcNow;
         // Calculate the Unix timestamp in milliseconds
         long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
@@ -131,10 +118,30 @@ public sealed class SessionManager : MonoBehaviour
         long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
         // Combine milliseconds and microseconds
         long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
+        return unixTimestampMicroseconds;
+    }
 
-        trialPackage = $"N:TE,ID:{trialCount},FID:{Time.frameCount},"+
-                       $"PCT:{unixTimestampMicroseconds},TD:{previousTrialDuration},"+
-                       $"P:{reaachedPillar}";
+    public void logEndTrial(int outcome = -1, string paradigmSpecficValues="") {
+        trialEndTimestamp = getUnixTimestampMicroseconds();
+        trialDuration = trialEndTimestamp-trialStartTimestamp;
+
+        Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
+
+        // split trialPackageVariables by comma and fill by default value= "none"
+        string[] trialPackageVariablesArray = trialPackageVariables.Split(',');
+        string[] trialPackageVariablesArrayFilled = new string[trialPackageVariablesArray.Length];
+        for (int i = 0; i < trialPackageVariablesArray.Length; i++)
+        {
+            trialPackageVariablesArrayFilled[i] = "none";
+        }
+        Debug.Log($"trialPackageVariablesArray {trialPackageVariablesArray}");
+        Debug.Log($"trialPackageVariablesArrayFilled {trialPackageVariablesArrayFilled}");
+
+
+        trialPackage = $"N:T,ID:{trialCount},SFID:{trialStartFrameID},"+
+                       $"SPCT:{trialStartTimestamp},EFID:{Time.frameCount},"+
+                       "EPCT:{trialEndTimestamp},TD:{previousTrialDuration},"+
+                       $"O:{outcome}";
 
         Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");

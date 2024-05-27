@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4bfebd33575ae1d917b61d8f7b8a23, type: 3}
   m_Name: abortTrialConditionReached
   m_EditorClassIdentifier: 
+  switchDescription: Abort trial condition reached?

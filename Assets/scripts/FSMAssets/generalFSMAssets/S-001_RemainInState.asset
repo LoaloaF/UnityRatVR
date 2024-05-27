@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc7ac9608f8c6d54499f57259a7428f3, type: 3}
-  m_Name: RemainInState
+  m_Name: S-001_RemainInState
   m_EditorClassIdentifier: 
   stateID: -1
