@@ -80,7 +80,7 @@ namespace Experiment.ExperimentFSM
             pillarIsPunishmentString = pillarIsPunishment.ToString();
 
             packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparencyString},P1R:{pillarIsRewardedString},P1N:{pillarIsPunishmentString}";
-            stateMachine._sessionManager.logNewTrial(packValues);
+            stateMachine._sessionManager.newTrial();
             stateMachine._sessionManager.trialRunning = true;
 
         }

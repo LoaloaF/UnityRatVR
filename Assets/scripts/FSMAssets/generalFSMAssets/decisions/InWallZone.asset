@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b41bab9a203cc48bfa53924b8b41b3, type: 3}
   m_Name: InWallZone
   m_EditorClassIdentifier: 
+  switchDescription: Rat in wall zone (close to wall)?

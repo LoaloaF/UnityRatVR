@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8fc7d79217f664c84f7f6c9c1c6a4c, type: 3}
   m_Name: RatUnderActive Pillar
   m_EditorClassIdentifier: 
+  switchDescription: Rat under rewarded pillar?

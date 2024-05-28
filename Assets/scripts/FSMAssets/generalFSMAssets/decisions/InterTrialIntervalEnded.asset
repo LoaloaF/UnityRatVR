@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1c70449a54d3ff8a186bba3b5337e9, type: 3}
   m_Name: InterTrialIntervalEnded
   m_EditorClassIdentifier: 
+  switchDescription: Inter trial interval over?

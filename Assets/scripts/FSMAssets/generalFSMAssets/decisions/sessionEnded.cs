@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
             if (stateMachine._sessionManager.abortTrialFlag) {
                 if (stateMachine._sessionManager.trialRunning) {
                     Debug.Log("SessionEnded while trial was running");
-                    stateMachine._sessionManager.logEndTrial("-1");
+                    stateMachine._sessionManager.logEndTrial();
                     stateMachine._sessionManager.trialRunning = false;
                 } else {
                     Debug.Log("SessionEnded while in ITI");
