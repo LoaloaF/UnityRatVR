@@ -16,44 +16,26 @@ public sealed class SessionManager : MonoBehaviour
     public float interTrialIntervalLength;
     public int abortInterTrialIntervalLength;
     public float successSequenceLength;
-    public  float maximumTrialLength;
+    public float maximumTrialLength;
     public string trialPackageVariables;
-    public int rewardedPillarsMin;
-    public int rewardedPillarsMax;
-    public float pillarTransparencyMin;
-    public float pillarTransparencyMax;
-    public int pillarPunishmentMin;
-    public int pillarPunishmentMax;
-
-    public  bool sessionRunning = false;
-    public  bool trialRunning = false;
-    public  bool abortTrialFlag = false;
+    public string sessionDescription;
+    public bool sessionRunning = false;
+    public bool trialRunning = false;
+    public bool abortTrialFlag = false;
 
 
-    // TODO: needs link to excel sheet
-    // dynamicSessionParameters
-    public  static float trialEndTeleportCenterDistMin = 12f;
-    public  static float trialEndTeleportCenterDistMax = 100f;
-    public  static float trialEndTeleportCenterAngleMin = -90f;
-    public  static float trialEndTeleportCenterAngleMax = 90f;
-    public  static int[] rewardedPillars = new int[] {1};
-    public  static float[] pillarTransparency = new float[] {1};
-    // public  int[] rewardedPillars = new int[] {1, 2, 3, 4};
-    // public  float[] pillarTransparency = new float[] {1, 1, 1, 1};
-
-    // set from outside (FSM actions) not all paradigms will use all of these
-    public  float nextTrialEndTeleportCenterDist = trialEndTeleportCenterDistMin;
-    public  float nextTrialEndTeleportCenterAngle = trialEndTeleportCenterAngleMin;
-    public  int[] nextTrialRewardedPillars = rewardedPillars;
-    public  float[] nextTrialPillarTransparency = pillarTransparency;
+    # region Paradigm specific variables
+    public float nextTrialEndTeleportCenterDist = 35f; // TD
+    public float nextTrialEndTeleportCenterAngle = 0f; // TA
+    # endregion
     
-    public float trialStartTimestamp;
-    public int trialStartFrameID;
-    public long trialStartTimestampMicroseconds;
-    public long trialEndTimestampMicroseconds;
+    [HideInInspector] public float trialStartTimestamp;
+    private int trialStartFrameID;
+    private long trialStartTimestampMicroseconds;
+    private long trialEndTimestampMicroseconds;
     private long trialDuration;
 
-    // general trial logging parameters
+    // Triallogging information
     private int trialCount = 0;
     private string trialPackage = "";
 
@@ -75,34 +57,23 @@ public sealed class SessionManager : MonoBehaviour
         this.successSequenceLength = sessionMetaData.successSequenceLength;
         this.maximumTrialLength = sessionMetaData.maximumTrialLength;
         this.trialPackageVariables = sessionMetaData.trialPackageVariables;
-        this.rewardedPillarsMin = sessionMetaData.rewardedPillarsMin;
-        this.rewardedPillarsMax = sessionMetaData.rewardedPillarsMax;
-        this.pillarTransparencyMin = sessionMetaData.pillarTransparencyMin;
-        this.pillarTransparencyMax = sessionMetaData.pillarTransparencyMax;
-        this.pillarPunishmentMin = sessionMetaData.pillarPunishmentMin;
-        this.pillarPunishmentMax = sessionMetaData.pillarPunishmentMax;
+        this.sessionDescription = sessionMetaData.sessionDescription;
     }
     
     public void updateTrialEndTeleportCenterAngle(float newTrialEndTeleportCenterAngle) 
     {
-        if (newTrialEndTeleportCenterAngle > trialEndTeleportCenterAngleMin && 
-            newTrialEndTeleportCenterAngle < trialEndTeleportCenterAngleMax)
-        {
+        if (newTrialEndTeleportCenterAngle > -360 && newTrialEndTeleportCenterAngle < 360)
             nextTrialEndTeleportCenterAngle = newTrialEndTeleportCenterAngle;
-        } else {
+        else
             Debug.Log($"newTrialEndTeleportCenterAngle {newTrialEndTeleportCenterAngle} is out of bounds");
-        }
     }
 
     public void updateTrialEndTeleportCenterDist(float newTrialEndTeleportCenterDist) 
     {
-        if (newTrialEndTeleportCenterDist > trialEndTeleportCenterDistMin && 
-            newTrialEndTeleportCenterDist < trialEndTeleportCenterDistMax)
-        {
+        if (newTrialEndTeleportCenterDist >= 0 && newTrialEndTeleportCenterDist <= 100)
             nextTrialEndTeleportCenterDist = newTrialEndTeleportCenterDist;
-        } else {
+        else
             Debug.Log($"newTrialEndTeleportCenterDist {newTrialEndTeleportCenterDist} is out of bounds");
-        }
     }
 
     public void newTrial() {
@@ -126,8 +97,6 @@ public sealed class SessionManager : MonoBehaviour
     public void logEndTrial(int outcome = -1, string paradigmTrialSpecficValues="") {
         trialEndTimestampMicroseconds = getUnixTimestampMicroseconds();
         trialDuration = trialEndTimestampMicroseconds-trialStartTimestampMicroseconds;
-
-        Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
 
         trialPackage = $"N:T,ID:{trialCount},SFID:{trialStartFrameID},"+
                        $"SPCT:{trialStartTimestampMicroseconds},EFID:{Time.frameCount},"+

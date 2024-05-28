@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac68dd39e2da91613a09923884ba7c04, type: 3}
-  m_Name: P0200_TrialEndReachedPillar1
+  m_Script: {fileID: 11500000, guid: e97dc332c9cc09eb1a2ffcc24cecb3da, type: 3}
+  m_Name: P0200_TrialEndReachedPillar
   m_EditorClassIdentifier: 

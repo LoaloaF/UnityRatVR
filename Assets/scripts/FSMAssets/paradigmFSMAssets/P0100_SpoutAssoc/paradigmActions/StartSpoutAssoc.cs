@@ -15,7 +15,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {         
             // stateMachine.validationSphereRenderer.enabled = true;
-            string packValues = "";
+            // string packValues = "";
             stateMachine._sessionManager.newTrial();
             Debug.Log("session manager, log new trial");
             stateMachine._sessionManager.trialRunning = true;

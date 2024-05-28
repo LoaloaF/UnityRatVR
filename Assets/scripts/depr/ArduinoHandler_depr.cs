@@ -40,11 +40,11 @@ public class ArduinoHandler : MonoBehaviour {
                 Debug.Log("Port opened");
                 stream.DiscardInBuffer();
                 stream.DiscardOutBuffer();
-        }
-        catch (Exception e) {
-                Debug.LogError(String.Format("Could not open Port  `{0}`:\n{1}", stream.PortName, e));
             }
-        }
+            catch (Exception e) {
+                    Debug.LogError(String.Format("Could not open Port  `{0}`:\n{1}", stream.PortName, e));
+                }
+            }
 
         public void WriteLineArduino(string msg = "REWARD_MESSAGE") {
             stream.WriteLine(msg);

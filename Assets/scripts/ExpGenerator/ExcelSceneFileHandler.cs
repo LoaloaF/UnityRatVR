@@ -24,12 +24,14 @@ namespace Cathei.BakingSheet
         {
             this.path = path;
             pages = new Dictionary<string, Page>();
+
+            // load all the sheets into the pages dictionary
             LoadData();
         }
+
         private class Page
         {
             private DataTable _table;
-
             public string SubName { get; }
 
             public Page(DataTable table, string subName)
@@ -49,9 +51,6 @@ namespace Cathei.BakingSheet
 
         private void LoadData()
         {
-            // return File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            //var files = _fileSystem.GetFiles(_loadPath, _extension);
-
             pages.Clear();
 
             using (var stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
@@ -77,13 +76,12 @@ namespace Cathei.BakingSheet
                     var (sheetName, subName) = Config.ParseSheetName(tableName);
 
                     pages.Add(sheetName, new Page(table, subName));
-
                 }
             }
-
-            //return Task.FromResult(true);
         }
 
+        // From the Environment Sheet, extract the scene placement coordinates for each object
+        // The coordinates are stored in a dictionary with the object name as value and a list of Vector2 as keys
         public Dictionary<Tuple<int, int>, string> ScenePlacementCoords()
         {
             Dictionary<Tuple<int, int>, string> scenePlacement = new Dictionary<Tuple<int, int>, string>();
@@ -95,34 +93,30 @@ namespace Cathei.BakingSheet
                 for (int y = 1; y <= 200; ++y)
                 {
                     var cellContent = pages["Environment"].GetCell(x, y);
-                    if (cellContent == null) continue;
-                    if (cellContent == "x") break;
 
-                    if (cellContent != null)
-                    {
+                    if (cellContent == null) 
+                        continue;
+                    else if (cellContent == "x") 
+                        break;
+                    else
                         scenePlacement.Add(new Tuple<int, int>(x - 1, y - 1), cellContent);
-                    }
                 }
             }
             return scenePlacement;
         }
 
+        // Reverse the dictionary from ScenePlacementCoords to have the object name as key and a list of Vector2 as values
         public Dictionary<string, List<Vector2>> ScenePlacement()
         {
             Dictionary<string, List<Vector2>> result = new Dictionary<string, List<Vector2>>();
-
             Dictionary<Tuple<int, int>, string> scenePlacementCoords = ScenePlacementCoords();
 
             foreach (var pair in scenePlacementCoords)
             {
                 if (result.ContainsKey(pair.Value))
-                {
                     result[pair.Value].Add(new Vector2(pair.Key.Item1, pair.Key.Item2));
-                }
                 else
-                {
-                    result[pair.Value] = new List<Vector2> { new Vector2(pair.Key.Item1, pair.Key.Item2) };
-                }
+                    result[pair.Value] = new List<Vector2> { new Vector2(pair.Key.Item1, pair.Key.Item2)};
             }
             return result;
         }
@@ -141,18 +135,13 @@ namespace Cathei.BakingSheet
                 
                 List<string> rowValues = new List<string>();
                 
-                for (int col=0; col<7; ++col)
+                for (int col=0; col<7; ++col) // modify to real number of columns
                 {
                     cellContent = pages["EnvParameters"].GetCell(col, row);
                     if (cellContent == null)
-                    {
                         rowValues.Add("");
-                    }
                     else
-                    {
                         rowValues.Add(cellContent);
-                        //Debug.Log(cellContent);
-                    }
                 }
                 row++;
                 excelObjects.Add(new ExcelObjectData(rowValues));
@@ -160,30 +149,19 @@ namespace Cathei.BakingSheet
             return excelObjects;
         }
 
-
         public ExcelSceneMetaData GetExcelSceneMetaData()
         {
             if (!pages.ContainsKey("EnvParameters")) throw new Exception("EnvParameters table missing!!");
             var hyperparams = pages["EnvParameters"];
-
-            // Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(11,1)), int.Parse(hyperparams.GetCell(12,1)));
-            // int wallZone = int.Parse(hyperparams.GetCell(11, 3));
-            // float baseLength = float.Parse(hyperparams.GetCell(11, 2), System.Globalization.CultureInfo.InvariantCulture);
-            // Vector2 startLocation = new Vector2(int.Parse(hyperparams.GetCell(11, 4)), int.Parse(hyperparams.GetCell(12, 4)));
-            // Vector2 agentLocation = new Vector2(int.Parse(hyperparams.GetCell(11, 5)), int.Parse(hyperparams.GetCell(12, 5)));
-            // int lengthFlash = int.Parse(hyperparams.GetCell(11, 7));
-            // int lengthSound = int.Parse(hyperparams.GetCell(11, 8));
-
-            Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(14,1)), int.Parse(hyperparams.GetCell(15,1)));
-            float baseLength = float.Parse(hyperparams.GetCell(14, 2), System.Globalization.CultureInfo.InvariantCulture);
-            int wallZone = int.Parse(hyperparams.GetCell(14, 3));
 
             ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 1));
             ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 2));
             ExcelWallData botWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 3), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 3));
             ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 4));
 
-            // bool cylinder = bool.Parse(hyperparams.GetCell(16, 6));
+            Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(14,1)), int.Parse(hyperparams.GetCell(15,1)));
+            float baseLength = float.Parse(hyperparams.GetCell(14, 2), System.Globalization.CultureInfo.InvariantCulture);
+            int wallZone = int.Parse(hyperparams.GetCell(14, 3));
 
             return new ExcelSceneMetaData(size, baseLength, wallZone, topWall, rightWall, botWall, leftWall);
         }
@@ -203,15 +181,9 @@ namespace Cathei.BakingSheet
             float successSequenceLength = float.Parse(hyperparams.GetCell(1, 9));
             int maximumTrialLength = int.Parse(hyperparams.GetCell(1, 10));
             string trialPackageVariables = hyperparams.GetCell(1, 11);
-            int rewardedPillarsMin = int.Parse(hyperparams.GetCell(1, 12));
-            int rewardedPillarsMax = int.Parse(hyperparams.GetCell(1, 13));
-            int pillarTransparencyMin = int.Parse(hyperparams.GetCell(1, 14));
-            int pillarTransparencyMax = int.Parse(hyperparams.GetCell(1, 15)); 
-            int pillarPunishmentMin = int.Parse(hyperparams.GetCell(1, 16));
-            int pillarPunishmentMax = int.Parse(hyperparams.GetCell(1, 17));
             int sessionFREEVAR1 = -1;
             int sessionFREEVAR2 = -1;
-            string sessionFREEVAR3 = "";
+            string sessionDescription = hyperparams.GetCell(1, 14);
             string sessionFREEVAR4 = "";
             int agentFREEVAR1 = -1;
             int agentFREEVAR2 = -1;
@@ -225,9 +197,8 @@ namespace Cathei.BakingSheet
 
             return new ExcelSessionMetaData(rewardPostSoundDelay, rewardAmount, punishmentLength, 
             punishmentInactivationLength, onWallZoneEntry, onInterTrialInterval, interTrialIntervalLength, 
-            abortInterTrialIntervalLength, successSequenceLength, maximumTrialLength, trialPackageVariables, rewardedPillarsMin, 
-            rewardedPillarsMax, pillarTransparencyMin, pillarTransparencyMax, pillarPunishmentMin, pillarPunishmentMax,
-            sessionFREEVAR1, sessionFREEVAR2, sessionFREEVAR3, sessionFREEVAR4, agentFREEVAR1, agentFREEVAR2,
+            abortInterTrialIntervalLength, successSequenceLength, maximumTrialLength, trialPackageVariables, 
+            sessionFREEVAR1, sessionFREEVAR2, sessionDescription, sessionFREEVAR4, agentFREEVAR1, agentFREEVAR2,
             agentFREEVAR3, agentFREEVAR4, agentFREEVAR5, agentFREEVAR6, agentFREEVAR7, agentFREEVAR8);
         }
     }

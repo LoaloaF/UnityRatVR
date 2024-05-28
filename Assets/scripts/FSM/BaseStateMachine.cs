@@ -27,16 +27,19 @@ namespace FSM
         [HideInInspector] public SessionManager _sessionManager;
         public int generalCurrentStateID;
         public StateDictionary stateDictionary;
+        public BaseState CurrentState { get; set; }
 
         public void initializeBaseStateMachine(string paradigm_name) {
             
-            string projectPath = Path.GetDirectoryName(Application.dataPath);
+            // find the excel file in the project folder
             // this adjusts the path when exec from build subfolder 
+            string projectPath = Path.GetDirectoryName(Application.dataPath);
             if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) {
                 projectPath = Path.Combine(projectPath, "..");
             }
             string excelFullFileName = Path.Combine(projectPath, "Paradigms", $"{paradigm_name}.xlsx");
 
+            // load the scene from the excel file
             _sceneController.LoadExcelScene(excelFullFileName);
             
             CurrentState = stateDictionary.TryGetValue(paradigm_name);
@@ -62,7 +65,6 @@ namespace FSM
             _inputManager = GetComponent<InputManager>();
         }
 
-        public BaseState CurrentState { get; set; }
 
         private void Update()
         {
@@ -73,9 +75,7 @@ namespace FSM
                 generalCurrentStateID = CurrentState.stateID;
                 switchBlinkerColor();
             }
-
         }
-
         
         public new T GetComponent<T>() where T : Component
         {
