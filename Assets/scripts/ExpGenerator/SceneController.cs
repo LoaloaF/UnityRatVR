@@ -217,7 +217,7 @@ namespace RatVR.Scene
                     transparentMaterial.color = color;
 
                     pillar.GetComponentInChildren<MeshRenderer>().material = transparentMaterial;
-                    CylinderTransform.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(pd.Height, pd.Height);
+                    CylinderTransform.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(pd.Height/2, pd.Height/2);
 
                 }
                 else

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public int firstPackID;
     public int lastPackID;
-    public float wallZoneStopDistanceRatio = 0.2f;
+    public float wallZoneStopDistanceRatio = 0.5f;
     private int[] XYZvelInput = new int[3];
     public Vector3 gain = new Vector3(1f, 1f, 1f);
     private float rotY = 0f;
@@ -19,9 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     // [Tooltip("Sensitivity scaler for the ball readout, higher the value, less sensitive it is")]
     //Normalize sensor inputs by multiplying: {'ballY': 0.01587624672951014, 'ballX': 0.01605927252520382, 'ballZ': 0.017359466370467733}
-    private float ballForwardNormToCentimeter = 0.001542F;
-    private float ballSidewaysNormToCentimeter = 0.001478F;
-    private float ballRotatationNormToCentimeter = 0.003806F;
+    public float ballForwardNormToCentimeter = 0.001542F;
+    public float ballSidewaysNormToCentimeter = 0.001478F;
+    public float ballRotatationNormToCentimeter = 0.003806F;
 
     [Tooltip("Weather to try to read the BallSensor, use WASD otherwise")]
     [SerializeField] bool enableBallInput = false;
@@ -34,12 +34,13 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        XYZvelInput = getInput();
         if (movementEnabled) {
-            XYZvelInput = getInput();
             // Debug.Log(string.Join(", ", XYZvelInput));
             MoveRat();
             RotateRat();
         }
+
         // Debug.Log(controller.velocity);
     }
 
@@ -133,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
 
     // add Z input of ball to current y rotation
     private void RotateRat() {
-        rotY += -(XYZvelInput[1]*ballRotatationNormToCentimeter)*gain.z;
+        rotY += -(XYZvelInput[1]*ballRotatationNormToCentimeter)*gain.y;
         transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
     }
     

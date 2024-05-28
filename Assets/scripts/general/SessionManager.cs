@@ -32,8 +32,8 @@ public sealed class SessionManager : MonoBehaviour
 
     // TODO: needs link to excel sheet
     // dynamicSessionParameters
-    public  static float trialEndTeleportCenterDistMin = 7.1f;
-    public  static float trialEndTeleportCenterDistMax = 20f;
+    public  static float trialEndTeleportCenterDistMin = 12f;
+    public  static float trialEndTeleportCenterDistMax = 50f;
     public  static float trialEndTeleportCenterAngleMin = 0f;
     public  static float trialEndTeleportCenterAngleMax = 0f;
     public  static int[] rewardedPillars = new int[] {1};

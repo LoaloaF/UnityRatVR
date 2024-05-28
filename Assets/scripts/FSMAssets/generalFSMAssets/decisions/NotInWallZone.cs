@@ -7,8 +7,8 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/InWallZone")]
-    public class InWallZone : Decision
+     [CreateAssetMenu(menuName = "FSM/Decisions/NotInWallZone")]
+    public class NotInWallZone : Decision
     {
         public override bool Decide(BaseStateMachine stateMachine)
         {
@@ -18,12 +18,11 @@ namespace Experiment.ExperimentFSM
             Vector2 nonWallZone = new Vector2(stateMachine._sceneController.scene.Size.x*0.5f - stateMachine._sceneController.scene.WallZone,
                                                stateMachine._sceneController.scene.Size.y*0.5f - stateMachine._sceneController.scene.WallZone);
 
-            if (!(Math.Abs(playerPos.x) > nonWallZone.x || Math.Abs(playerPos.y) > nonWallZone.y))
-                stateMachine.Player.GetComponent<PlayerMovement>().gain = new Vector3(1f, 1f, 1f);
 
-            if ((Math.Abs(playerPos.x) > nonWallZone.x || Math.Abs(playerPos.y) > nonWallZone.y))
-                AudioManager.instance.PlayNoise();
-            return (Math.Abs(playerPos.x) > nonWallZone.x || Math.Abs(playerPos.y) > nonWallZone.y);
+            if ((Math.Abs(playerPos.x) < nonWallZone.x && Math.Abs(playerPos.y) < nonWallZone.y))
+                AudioManager.instance.StopNoise();
+
+            return (Math.Abs(playerPos.x) < nonWallZone.x && Math.Abs(playerPos.y) < nonWallZone.y);
         }
 
     }

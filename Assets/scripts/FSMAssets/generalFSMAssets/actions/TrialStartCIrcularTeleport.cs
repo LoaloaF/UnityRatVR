@@ -29,6 +29,7 @@ namespace Experiment.ExperimentFSM
         {
             stateMachine._sceneController.floor.SetActive(true);
             stateMachine._sceneController.wallZone.SetActive(true);
+            // stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);
 
             // get the first child (the only pillar)
             Transform child = stateMachine.transform.GetChild(0);
@@ -44,6 +45,7 @@ namespace Experiment.ExperimentFSM
             // setup the transparency of the pillar
             pillarTransparency = GenerateRandomValue(stateMachine._sessionManager.pillarTransparencyMin, 
                                                      stateMachine._sessionManager.pillarTransparencyMax);
+            pillarTransparency = 1;
             Debug.Log("pillarTransparency: " + pillarTransparency);
             Color originalColor = child.GetComponentInChildren<MeshRenderer>().material.color;
             child.GetComponentInChildren<MeshRenderer>().material.color = new Color(originalColor.r, 
@@ -53,7 +55,6 @@ namespace Experiment.ExperimentFSM
 
 
             // Teleport the rat to a new start position
-
             Debug.Log("nextTrialEndTeleportCenterDist: " + stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
             Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
                                                               stateMachine._sessionManager.nextTrialEndTeleportCenterDist,
@@ -63,6 +64,10 @@ namespace Experiment.ExperimentFSM
             
             // prepare the scene and playermovement for the next session
             stateMachine.validationSphereRenderer.enabled = false;
+            stateMachine._sceneController.wallTop.SetActive(true);
+            stateMachine._sceneController.wallBottom.SetActive(true);
+            stateMachine._sceneController.wallLeft.SetActive(true);
+            stateMachine._sceneController.wallRight.SetActive(true);
             stateMachine._playerMovement.EnableMovement();
 
 
@@ -84,6 +89,8 @@ namespace Experiment.ExperimentFSM
         {
             // Generate a random angle in radians
             float angle = Random.Range(0, 2 * Mathf.PI);
+            Debug.Log("Angle " + angle);
+
 
             // default to inverted anlge (pointing towrads center)
             // orientation = (angle+Mathf.PI) * Mathf.Rad2Deg;

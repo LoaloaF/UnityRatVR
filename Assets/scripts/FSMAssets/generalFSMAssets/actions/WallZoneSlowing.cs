@@ -17,7 +17,7 @@ namespace Experiment.ExperimentFSM
             if (WallZoneAction == "slow_down")
             {
                 Vector3 gain = CalculateGain();
-                UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] );
+                // UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] );
                 stateMachine.Player.GetComponent<PlayerMovement>().gain = gain;
             }
 
@@ -25,14 +25,14 @@ namespace Experiment.ExperimentFSM
             {
                 // Vector3 gain = new Vector3(0.5f, 0.5f, 0.5f);
                 float[] diswall = calculatediswallRatio();
-                UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
+                // UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
                 Vector3 gain = new Vector3(1f, 1f, 1f);
 
                
                 CharacterController controller = stateMachine.Player.GetComponent<CharacterController>();
                 Vector3 playerVel = controller.velocity;
 
-                UnityEngine.Debug.Log("playerVel: " + playerVel.x + " " + playerVel.z);
+                // UnityEngine.Debug.Log("playerVel: " + playerVel.x + " " + playerVel.z);
                 if (diswall[0] < 1f)
                 {
                     if (playerVel.x >= 0)
@@ -94,6 +94,7 @@ namespace Experiment.ExperimentFSM
                 diswall[1] = playerpos.x + scenesize.x*0.5f; // to left wall
                 diswall[2] = playerpos.y - scenesize.y*0.5f; // to top wall
                 diswall[3] = playerpos.y + scenesize.y*0.5f; // to bottom wall
+                // UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
 
                 float[] diswallRatio = {1f, 1f, 1f, 1f};
                 for (int i = 0; i< diswall.Length; i++)
@@ -103,7 +104,7 @@ namespace Experiment.ExperimentFSM
                         // diswallRatio[i] = Math.Abs(diswall[i])/(stateMachine._sceneController.scene.WallZone);
                         // When approaching the wall at the distance of wallZoneStopDistanceRatio*WallZone, the gain is 0
                         diswallRatio[i] = (Math.Abs(diswall[i]) - stateMachine._sceneController.scene.WallZone * stateMachine._playerMovement.wallZoneStopDistanceRatio)
-                                           /(stateMachine._sceneController.scene.WallZone * (1-stateMachine._playerMovement.wallZoneStopDistanceRatio));
+                                           /(stateMachine._sceneController.scene.WallZone * (1-stateMachine._playerMovement.wallZoneStopDistanceRatio))/2;
                     }
                 }
 
