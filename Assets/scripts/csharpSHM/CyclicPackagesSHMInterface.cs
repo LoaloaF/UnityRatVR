@@ -89,7 +89,7 @@ public class CyclicPackagesSHMInterface
         long readAddr = NextReadPointer();
         if (readAddr != -1)
         {
-            Debug.Log($"Popping smth, ...:ReadAddr={readAddr}, SHMWritePointer={StoredWritePointer}");
+            // Debug.Log($"Popping smth, ...:ReadAddr={readAddr}, SHMWritePointer={StoredWritePointer}");
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
             long tempRPointer = readAddr != 0 ? readAddr : (_packageNBytes * _nPackages);
             byte[] ballVelPckg = new byte[_packageNBytes];

@@ -46,7 +46,7 @@ namespace Experiment.ExperimentFSM
             pillarTransparency = GenerateRandomValue(stateMachine._sessionManager.pillarTransparencyMin, 
                                                      stateMachine._sessionManager.pillarTransparencyMax);
             pillarTransparency = 1;
-            Debug.Log("pillarTransparency: " + pillarTransparency);
+            // Debug.Log("pillarTransparency: " + pillarTransparency);
             Color originalColor = child.GetComponentInChildren<MeshRenderer>().material.color;
             child.GetComponentInChildren<MeshRenderer>().material.color = new Color(originalColor.r, 
                                                                                     originalColor.g, 
@@ -55,7 +55,7 @@ namespace Experiment.ExperimentFSM
 
 
             // Teleport the rat to a new start position
-            Debug.Log("nextTrialEndTeleportCenterDist: " + stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
+            // Debug.Log("nextTrialEndTeleportCenterDist: " + stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
             Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
                                                               stateMachine._sessionManager.nextTrialEndTeleportCenterDist,
                                                               stateMachine._sessionManager.nextTrialEndTeleportCenterAngle);
@@ -79,7 +79,7 @@ namespace Experiment.ExperimentFSM
             pillarIsRewardedString = pillarIsRewarded.ToString();
             pillarIsPunishmentString = pillarIsPunishment.ToString();
 
-            packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparencyString},P1R:{pillarIsRewardedString},P1N:{pillarIsPunishmentString}";
+            // packValues = $"PD:{pillarDist},PA:{pillarAngle},P1T:{pillarTransparencyString},P1R:{pillarIsRewardedString},P1N:{pillarIsPunishmentString}";
             stateMachine._sessionManager.newTrial();
             stateMachine._sessionManager.trialRunning = true;
 

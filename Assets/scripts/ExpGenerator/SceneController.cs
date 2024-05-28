@@ -47,7 +47,6 @@ namespace RatVR.Scene
         public void LoadExcelScene(string path)
         {
             string projectPath = Path.GetDirectoryName(Application.dataPath);
-            UnityEngine.Debug.Log("projectPath: " + System.IO.Directory.GetParent(projectPath).FullName);
             // this adjusts the path when exec from build subfolder 
             if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) {
                 projectPath = System.IO.Directory.GetParent(projectPath).FullName;
@@ -192,7 +191,7 @@ namespace RatVR.Scene
                 pillar.name = "Pillar" + pd.UID.ToString();
                 Vector2 tranformedPos = CoordinateTransform(sceneData, new Vector2(pd.Position.x, pd.Position.y));
                 pillar.transform.localPosition = new Vector3(tranformedPos.x, pd.Position.z + pd.Height, tranformedPos.y);
-                UnityEngine.Debug.Log("Postision and height" + pd.Height);
+                // UnityEngine.Debug.Log("Postision and height" + pd.Height);
                 if (pd.Height != 0)
                 {
                     Transform CylinderTransform = pillar.transform.Find("Cylinder");

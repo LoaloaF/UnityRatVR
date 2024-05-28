@@ -53,10 +53,7 @@ public class InputManager : MonoBehaviour
         unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
         termflagSHMInterface = new FlagSHMInterface("termflag_shmstruct.json");
 
-        // clear input shm from previous runs
-        // if (!showUI) {
-        //     while (unityInputSHMInterface.Popitem() != null);
-        // }
+        Debug.Log("Clearing Input SHM");
         while (unityInputSHMInterface.Popitem() != null);
 
     }

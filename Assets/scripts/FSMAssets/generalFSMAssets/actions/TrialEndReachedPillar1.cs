@@ -19,7 +19,11 @@ namespace Experiment.ExperimentFSM
             // Debug.Log("TrialEndAction");
             
             // which Pillar was reached
-            stateMachine._sessionManager.logEndTrial(1);
+            string[] trialPackageVariablesArray = stateMachine._sessionManager.trialPackageVariables.Split(',');
+            // [TD,TA]
+            // ... fill with values that were used in this trial
+            string trialPackageValuesArray = ",TD:45,TA:10";
+            stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
             
             Color white = new Color(1, 1, 1, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);

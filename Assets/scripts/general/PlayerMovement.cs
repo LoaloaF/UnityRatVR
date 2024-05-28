@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     //Normalize sensor inputs by multiplying: {'ballY': 0.01587624672951014, 'ballX': 0.01605927252520382, 'ballZ': 0.017359466370467733}
     public float ballForwardNormToCentimeter = 0.001542F;
     public float ballSidewaysNormToCentimeter = 0.001478F;
-    public float ballRotatationNormToCentimeter = 0.003806F;
+    public float ballRotatationNormToCentimeter = 0.003806F/3;
 
     [Tooltip("Weather to try to read the BallSensor, use WASD otherwise")]
     [SerializeField] bool enableBallInput = false;

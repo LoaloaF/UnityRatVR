@@ -33,9 +33,9 @@ public sealed class SessionManager : MonoBehaviour
     // TODO: needs link to excel sheet
     // dynamicSessionParameters
     public  static float trialEndTeleportCenterDistMin = 12f;
-    public  static float trialEndTeleportCenterDistMax = 50f;
-    public  static float trialEndTeleportCenterAngleMin = 0f;
-    public  static float trialEndTeleportCenterAngleMax = 0f;
+    public  static float trialEndTeleportCenterDistMax = 100f;
+    public  static float trialEndTeleportCenterAngleMin = -90f;
+    public  static float trialEndTeleportCenterAngleMax = 90f;
     public  static int[] rewardedPillars = new int[] {1};
     public  static float[] pillarTransparency = new float[] {1};
     // public  int[] rewardedPillars = new int[] {1, 2, 3, 4};
@@ -47,9 +47,10 @@ public sealed class SessionManager : MonoBehaviour
     public  int[] nextTrialRewardedPillars = rewardedPillars;
     public  float[] nextTrialPillarTransparency = pillarTransparency;
     
+    public float trialStartTimestamp;
     public int trialStartFrameID;
-    public long trialStartTimestamp;
-    public long trialEndTimestamp;
+    public long trialStartTimestampMicroseconds;
+    public long trialEndTimestampMicroseconds;
     private long trialDuration;
 
     // general trial logging parameters
@@ -106,7 +107,8 @@ public sealed class SessionManager : MonoBehaviour
 
     public void newTrial() {
         trialCount++;
-        trialStartTimestamp = getUnixTimestampMicroseconds();
+        trialStartTimestamp = Time.realtimeSinceStartup;
+        trialStartTimestampMicroseconds = getUnixTimestampMicroseconds();
         trialStartFrameID = Time.frameCount;
     }
 
@@ -121,27 +123,16 @@ public sealed class SessionManager : MonoBehaviour
         return unixTimestampMicroseconds;
     }
 
-    public void logEndTrial(int outcome = -1, string paradigmSpecficValues="") {
-        trialEndTimestamp = getUnixTimestampMicroseconds();
-        trialDuration = trialEndTimestamp-trialStartTimestamp;
+    public void logEndTrial(int outcome = -1, string paradigmTrialSpecficValues="") {
+        trialEndTimestampMicroseconds = getUnixTimestampMicroseconds();
+        trialDuration = trialEndTimestampMicroseconds-trialStartTimestampMicroseconds;
 
         Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
 
-        // split trialPackageVariables by comma and fill by default value= "none"
-        string[] trialPackageVariablesArray = trialPackageVariables.Split(',');
-        string[] trialPackageVariablesArrayFilled = new string[trialPackageVariablesArray.Length];
-        for (int i = 0; i < trialPackageVariablesArray.Length; i++)
-        {
-            trialPackageVariablesArrayFilled[i] = "none";
-        }
-        Debug.Log($"trialPackageVariablesArray {trialPackageVariablesArray}");
-        Debug.Log($"trialPackageVariablesArrayFilled {trialPackageVariablesArrayFilled}");
-
-
         trialPackage = $"N:T,ID:{trialCount},SFID:{trialStartFrameID},"+
-                       $"SPCT:{trialStartTimestamp},EFID:{Time.frameCount},"+
-                       "EPCT:{trialEndTimestamp},TD:{previousTrialDuration},"+
-                       $"O:{outcome}";
+                       $"SPCT:{trialStartTimestampMicroseconds},EFID:{Time.frameCount},"+
+                       $"EPCT:{trialEndTimestampMicroseconds},TD:{trialDuration},"+
+                       $"O:{outcome}{paradigmTrialSpecficValues}";
 
         Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
