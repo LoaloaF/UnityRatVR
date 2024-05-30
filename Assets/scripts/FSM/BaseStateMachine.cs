@@ -26,7 +26,7 @@ namespace FSM
         [HideInInspector] public SceneController _sceneController;
         [HideInInspector] public SessionManager _sessionManager;
         public int generalCurrentStateID;
-        public StateDictionary stateDictionary;
+        public StateDictionary paradigmDictionary;
         public BaseState CurrentState { get; set; }
 
         public void initializeBaseStateMachine(string paradigm_name) {
@@ -42,7 +42,7 @@ namespace FSM
             // load the scene from the excel file
             _sceneController.LoadExcelScene(excelFullFileName);
             
-            CurrentState = stateDictionary.TryGetValue(paradigm_name);
+            CurrentState = paradigmDictionary.TryGetValue(paradigm_name);
             Debug.Log($"Initial state: {CurrentState}");
             generalCurrentStateID = CurrentState.stateID;
             _sessionManager.sessionRunning = true;
