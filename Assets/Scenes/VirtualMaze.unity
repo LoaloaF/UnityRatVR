@@ -657,11 +657,11 @@ GameObject:
   m_Component:
   - component: {fileID: 68722533}
   - component: {fileID: 68722541}
-  - component: {fileID: 68722535}
   - component: {fileID: 68722537}
+  - component: {fileID: 68722540}
+  - component: {fileID: 68722535}
   - component: {fileID: 68722536}
   - component: {fileID: 68722539}
-  - component: {fileID: 68722540}
   m_Layer: 0
   m_Name: ExperimentCore
   m_TagString: ExperimentManager
@@ -742,17 +742,15 @@ MonoBehaviour:
   _sceneController: {fileID: 68722535}
   _sessionManager: {fileID: 0}
   generalCurrentStateID: -1
-  stateDictionary:
+  paradigmDictionary:
     keys:
     - P0000_AutoLickReward
     - P0100_SpoutAssoc
     - P0200_GoalDirectedMovement
-    - P----_NewFormatTemplate
     values:
     - {fileID: 11400000, guid: c8d4bd75c8fff52108547c26e2824e3e, type: 2}
     - {fileID: 11400000, guid: ae9a7e14d28bf944d80499df384f57de, type: 2}
     - {fileID: 11400000, guid: 7bf4fc9380da1639ba44312747c64876, type: 2}
-    - {fileID: 11400000, guid: ccd427f7944c12222a881a9c72711289, type: 2}
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
