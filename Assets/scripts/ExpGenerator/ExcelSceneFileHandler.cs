@@ -162,8 +162,9 @@ namespace Cathei.BakingSheet
             Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(14,1)), int.Parse(hyperparams.GetCell(15,1)));
             float baseLength = float.Parse(hyperparams.GetCell(14, 2), System.Globalization.CultureInfo.InvariantCulture);
             int wallZone = int.Parse(hyperparams.GetCell(14, 3));
+            int wallZoneCollideDistance = int.Parse(hyperparams.GetCell(14, 4));
 
-            return new ExcelSceneMetaData(size, baseLength, wallZone, topWall, rightWall, botWall, leftWall);
+            return new ExcelSceneMetaData(size, baseLength, wallZone, wallZoneCollideDistance, topWall, rightWall, botWall, leftWall);
         }
 
         public ExcelSessionMetaData GetExcelSessionMetaData()
@@ -181,7 +182,7 @@ namespace Cathei.BakingSheet
             float successSequenceLength = float.Parse(hyperparams.GetCell(1, 9));
             int maximumTrialLength = int.Parse(hyperparams.GetCell(1, 10));
             string trialPackageVariables = hyperparams.GetCell(1, 11);
-            int sessionFREEVAR1 = -1;
+            string trialPackageVariablesDefault = hyperparams.GetCell(1, 12);
             int sessionFREEVAR2 = -1;
             string sessionDescription = hyperparams.GetCell(1, 14);
             string sessionFREEVAR4 = "";
@@ -198,7 +199,7 @@ namespace Cathei.BakingSheet
             return new ExcelSessionMetaData(rewardPostSoundDelay, rewardAmount, punishmentLength, 
             punishmentInactivationLength, onWallZoneEntry, onInterTrialInterval, interTrialIntervalLength, 
             abortInterTrialIntervalLength, successSequenceLength, maximumTrialLength, trialPackageVariables, 
-            sessionFREEVAR1, sessionFREEVAR2, sessionDescription, sessionFREEVAR4, agentFREEVAR1, agentFREEVAR2,
+            trialPackageVariablesDefault, sessionFREEVAR2, sessionDescription, sessionFREEVAR4, agentFREEVAR1, agentFREEVAR2,
             agentFREEVAR3, agentFREEVAR4, agentFREEVAR5, agentFREEVAR6, agentFREEVAR7, agentFREEVAR8);
         }
     }

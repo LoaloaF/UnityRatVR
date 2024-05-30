@@ -26,6 +26,7 @@ namespace RatVR.Scene
         public static readonly SceneController Instance = new SceneController();
         private SceneController() { }
 
+
         public GameObject floor, ceiling, wallZone;
         public GameObject wallTop, wallBottom, wallRight, wallLeft;
         public GameObject meshTop, meshBottom, meshRight, meshLeft;
@@ -75,7 +76,8 @@ namespace RatVR.Scene
                                           sceneMetaData.wallRight, 
                                           sceneMetaData.wallLeft, 
                                           pillars, 
-                                          sceneMetaData.wallZone);
+                                          sceneMetaData.wallZone,
+                                          sceneMetaData.wallZoneCollideDistance);
             
             // construct the scene in Unity
             LoadScene(scene);

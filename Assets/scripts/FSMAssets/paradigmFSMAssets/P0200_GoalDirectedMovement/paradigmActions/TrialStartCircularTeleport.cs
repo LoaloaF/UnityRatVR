@@ -33,8 +33,8 @@ namespace Experiment.ExperimentFSM
 
             // Teleport the rat to a new start position
             Vector3 newStartPosition = samplenewStartPosition(pillarPosition, 
-                                                              stateMachine._sessionManager.nextTrialEndTeleportCenterDist,
-                                                              stateMachine._sessionManager.nextTrialEndTeleportCenterAngle);
+                                                              float.Parse(stateMachine._sessionManager.trialVariablesDict["TD"]),
+                                                              float.Parse(stateMachine._sessionManager.trialVariablesDict["TA"]));
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
             

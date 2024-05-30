@@ -34,9 +34,9 @@ namespace FSM
             // find the excel file in the project folder
             // this adjusts the path when exec from build subfolder 
             string projectPath = Path.GetDirectoryName(Application.dataPath);
-            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) {
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false)
                 projectPath = Path.Combine(projectPath, "..");
-            }
+
             string excelFullFileName = Path.Combine(projectPath, "Paradigms", $"{paradigm_name}.xlsx");
 
             // load the scene from the excel file

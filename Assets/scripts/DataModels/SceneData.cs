@@ -46,6 +46,9 @@ namespace RatVR.Scene
         private int wallZone;
         public int WallZone { get { return wallZone; } set { wallZone = value; } }
 
+        private int wallZoneCollideDistance;
+        public int WallZoneCollideDistance { get { return wallZoneCollideDistance; } set { wallZoneCollideDistance = value; } }
+
 
         #endregion
 
@@ -57,7 +60,8 @@ namespace RatVR.Scene
                                 WallData rightWall, 
                                 WallData leftWall, 
                                 List<PillarData> pillars, 
-                                int wallZone)
+                                int wallZone,
+                                int wallZoneCollideDistance)
         {
             this.uid = System.Guid.NewGuid().ToString();
             this.version = version;
@@ -69,6 +73,7 @@ namespace RatVR.Scene
             this.pillars = pillars;
             this.size = size;
             this.wallZone = wallZone;
+            this.wallZoneCollideDistance = wallZoneCollideDistance;
         }
     }
 

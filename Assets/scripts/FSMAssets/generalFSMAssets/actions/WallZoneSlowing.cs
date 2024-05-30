@@ -93,8 +93,8 @@ namespace Experiment.ExperimentFSM
                 if (Math.Abs(diswall[i]) < (stateMachine._sceneController.scene.WallZone * stateMachine._sceneController.scene.BaseLength))
                 {
                     // The speed ratio will be 1 at the entry of the wall zone
-                    // and decrease linearly to 0 at the stop distance (wallZoneStopDistance)
-                    diswallRatio[i] = (1 - (stateMachine._sceneController.scene.WallZone * stateMachine._sceneController.scene.BaseLength - Math.Abs(diswall[i]))/stateMachine._playerMovement.wallZoneStopDistance * stateMachine._sceneController.scene.BaseLength)/4;
+                    // and decrease linearly to 0 at the stop distance (wallZoneCollideDistance)
+                    diswallRatio[i] = (1 - (stateMachine._sceneController.scene.WallZone * stateMachine._sceneController.scene.BaseLength - Math.Abs(diswall[i]))/stateMachine._sceneController.scene.WallZoneCollideDistance * stateMachine._sceneController.scene.BaseLength)/4;
                 }
                 else
                 {

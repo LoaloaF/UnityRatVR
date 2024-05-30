@@ -37,11 +37,6 @@ namespace Experiment.ExperimentFSM
                         
                     }
                 }
-                else
-                {
-                    return false;
-                }
-                
 
             }
 

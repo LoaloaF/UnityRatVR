@@ -16,10 +16,10 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             // which Pillar was reached
-            string[] trialPackageVariablesArray = stateMachine._sessionManager.trialPackageVariables.Split(',');
+            // string[] trialPackageVariablesArray = stateMachine._sessionManager.trialPackageVariables.Split(',');
             // [TD,TA]
             // ... fill with values that were used in this trial
-            string trialPackageValuesArray = ",TD:" + stateMachine._sessionManager.nextTrialEndTeleportCenterDist.ToString() + ",TA:" + stateMachine._sessionManager.nextTrialEndTeleportCenterAngle.ToString();
+            string trialPackageValuesArray = ",TD:" + stateMachine._sessionManager.trialVariablesDict["TD"] + ",TA:" + stateMachine._sessionManager.trialVariablesDict["TA"];
             stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
             
             Color white = new Color(1, 1, 1, 1);

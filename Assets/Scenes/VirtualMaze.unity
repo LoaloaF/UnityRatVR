@@ -656,12 +656,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68722533}
+  - component: {fileID: 68722541}
   - component: {fileID: 68722535}
-  - component: {fileID: 68722536}
   - component: {fileID: 68722537}
+  - component: {fileID: 68722536}
   - component: {fileID: 68722539}
   - component: {fileID: 68722540}
-  - component: {fileID: 68722541}
   m_Layer: 0
   m_Name: ExperimentCore
   m_TagString: ExperimentManager
@@ -813,13 +813,10 @@ MonoBehaviour:
   abortInterTrialIntervalLength: 0
   successSequenceLength: 10
   maximumTrialLength: 10
-  trialPackageVariables: 
   sessionDescription: 
   sessionRunning: 1
   trialRunning: 1
   abortTrialFlag: 0
-  nextTrialEndTeleportCenterDist: 35
-  nextTrialEndTeleportCenterAngle: 0
   trialStartTimestamp: 0
 --- !u!4 &78000721 stripped
 Transform:
@@ -7555,7 +7552,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1180528855}
-  wallZoneStopDistance: 30
   gain: {x: 1, y: 1, z: 1}
   firstPackID: 0
   lastPackID: 0
@@ -7935,7 +7931,7 @@ Transform:
   m_GameObject: {fileID: 1350956343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 191.15001, y: -83.418, z: 0}
+  m_LocalPosition: {x: 191.141, y: -83.418, z: -0.004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

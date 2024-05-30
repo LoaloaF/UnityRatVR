@@ -8,8 +8,6 @@ using System.Runtime.InteropServices;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public float wallZoneStopDistance = 30f;
-
     public Vector3 gain = new Vector3(1f, 1f, 1f);
     [HideInInspector] public int firstPackID;
     [HideInInspector] public int lastPackID;

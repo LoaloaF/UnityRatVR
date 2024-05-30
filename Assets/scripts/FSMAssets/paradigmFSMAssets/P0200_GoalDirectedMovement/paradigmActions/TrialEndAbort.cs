@@ -16,8 +16,8 @@ namespace Experiment.ExperimentFSM
         {
             
             // which Pillar was reached
-            string[] trialPackageVariablesArray = stateMachine._sessionManager.trialPackageVariables.Split(',');
-            string trialPackageValuesArray = ",TD:" + stateMachine._sessionManager.nextTrialEndTeleportCenterDist.ToString() + ",TA:" + stateMachine._sessionManager.nextTrialEndTeleportCenterAngle.ToString();
+            // string[] trialPackageVariablesArray = stateMachine._sessionManager.trialPackageVariables.Split(',');
+            string trialPackageValuesArray = ",TD:" + stateMachine._sessionManager.trialVariablesDict["TD"] + ",TA:" + stateMachine._sessionManager.trialVariablesDict["TA"];
             stateMachine._sessionManager.logEndTrial(0, trialPackageValuesArray);
             
             Color white = new Color(1, 1, 1, 1);

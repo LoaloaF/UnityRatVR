@@ -1,5 +1,7 @@
-using UnityEngine;
 using RatVR.ExcelData;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using System;
 /// <summary>
 /// This class manages provided a reference to session parameters from the excel sheet
@@ -17,27 +19,25 @@ public sealed class SessionManager : MonoBehaviour
     public int abortInterTrialIntervalLength;
     public float successSequenceLength;
     public float maximumTrialLength;
-    public string trialPackageVariables;
     public string sessionDescription;
-    public bool sessionRunning = false;
-    public bool trialRunning = false;
-    public bool abortTrialFlag = false;
 
+    public Dictionary<string, string> trialVariablesDict = new Dictionary<string, string>();
+    private string[] trialVariablesNamesArray;
+    private string[] trialVariablesDefaultArray;
 
-    # region Paradigm specific variables
-    public float nextTrialEndTeleportCenterDist = 35f; // TD
-    public float nextTrialEndTeleportCenterAngle = 0f; // TA
-    # endregion
-    
+    [HideInInspector] public bool sessionRunning = false;
+    [HideInInspector] public bool trialRunning = false;
+    [HideInInspector] public bool abortTrialFlag = false;
+
+    // Triallogging information
     [HideInInspector] public float trialStartTimestamp;
     private int trialStartFrameID;
     private long trialStartTimestampMicroseconds;
     private long trialEndTimestampMicroseconds;
     private long trialDuration;
-
-    // Triallogging information
     private int trialCount = 0;
     private string trialPackage = "";
+
 
     public void Start()
     {
@@ -56,24 +56,40 @@ public sealed class SessionManager : MonoBehaviour
         this.abortInterTrialIntervalLength = sessionMetaData.abortInterTrialIntervalLength;
         this.successSequenceLength = sessionMetaData.successSequenceLength;
         this.maximumTrialLength = sessionMetaData.maximumTrialLength;
-        this.trialPackageVariables = sessionMetaData.trialPackageVariables;
         this.sessionDescription = sessionMetaData.sessionDescription;
+
+        this.trialVariablesNamesArray = sessionMetaData.trialPackageVariables.Split(',');
+        this.trialVariablesDefaultArray = sessionMetaData.trialPackageVariablesDefault.Split(',');
+
+        for (int i = 0; i < trialVariablesNamesArray.Length; i++)
+        {
+            trialVariablesDict[trialVariablesNamesArray[i]] = trialVariablesDefaultArray[i];
+            Debug.Log($"Trial Variable {trialVariablesNamesArray[i]} initialized with {trialVariablesDefaultArray[i]}");
+        }
+
     }
-    
+
+    public void UpdateTrialVariable(string variableName, string variableValue)
+    {
+        if (trialVariablesDict.ContainsKey(variableName))
+        {
+            trialVariablesDict[variableName] = variableValue;
+            Debug.Log($"Trial Variable {variableName} updated with {variableValue}");
+        }
+        else
+        {
+            Debug.Log($"Trial Variable {variableName} not found");
+        }
+    }
+
     public void updateTrialEndTeleportCenterAngle(float newTrialEndTeleportCenterAngle) 
     {
-        if (newTrialEndTeleportCenterAngle > -360 && newTrialEndTeleportCenterAngle < 360)
-            nextTrialEndTeleportCenterAngle = newTrialEndTeleportCenterAngle;
-        else
-            Debug.Log($"newTrialEndTeleportCenterAngle {newTrialEndTeleportCenterAngle} is out of bounds");
+        UpdateTrialVariable("TA", newTrialEndTeleportCenterAngle.ToString());
     }
 
     public void updateTrialEndTeleportCenterDist(float newTrialEndTeleportCenterDist) 
     {
-        if (newTrialEndTeleportCenterDist >= 0 && newTrialEndTeleportCenterDist <= 100)
-            nextTrialEndTeleportCenterDist = newTrialEndTeleportCenterDist;
-        else
-            Debug.Log($"newTrialEndTeleportCenterDist {newTrialEndTeleportCenterDist} is out of bounds");
+        UpdateTrialVariable("TD", newTrialEndTeleportCenterDist.ToString());
     }
 
     public void newTrial() {
