@@ -26,13 +26,17 @@ namespace Experiment.ExperimentFSM
             Color yellow = new Color(1, 1, 0, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
 
-            // if (stateMachine._sessionManager.nextTrialEndTeleportCenterDist < 45.0f){
-            //     stateMachine._sessionManager.nextTrialEndTeleportCenterDist = stateMachine._sessionManager.nextTrialEndTeleportCenterDist +0.5f;
+            float currentPD = float.Parse(stateMachine._sessionManager.trialVariablesDict["PD"]);
+            if (currentPD < 45.0f)
+            {
+                float newPD = currentPD + 0.5f;
+                stateMachine._sessionManager.trialVariablesDict["PD"] = newPD.ToString();
                 
-            // } else {
-            //     stateMachine._sessionManager.nextTrialEndTeleportCenterDist = 45.0f;
-            // Debug.Log("Distance: " + stateMachine._sessionManager.nextTrialEndTeleportCenterDist);
-            // }
+            } else {
+                // stateMachine._sessionManager.trialVariablesDict["PD"]  = "45";
+            }
+            Debug.Log("Distance: " + stateMachine._sessionManager.trialVariablesDict["PD"]);
+
             
             // foreach (Transform child in stateMachine._sceneController.Lighting.transform)
             // {

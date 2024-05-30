@@ -81,16 +81,16 @@ public sealed class SessionManager : MonoBehaviour
             Debug.Log($"Trial Variable {variableName} not found");
         }
     }
-
     public void updateTrialEndTeleportCenterAngle(float newTrialEndTeleportCenterAngle) 
     {
-        UpdateTrialVariable("TA", newTrialEndTeleportCenterAngle.ToString());
+        UpdateTrialVariable("PA", newTrialEndTeleportCenterAngle.ToString());
     }
 
     public void updateTrialEndTeleportCenterDist(float newTrialEndTeleportCenterDist) 
     {
-        UpdateTrialVariable("TD", newTrialEndTeleportCenterDist.ToString());
+        UpdateTrialVariable("PD", newTrialEndTeleportCenterDist.ToString());
     }
+
 
     public void newTrial() {
         trialCount++;
