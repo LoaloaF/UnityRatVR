@@ -829,6 +829,9 @@ MonoBehaviour:
   nextTrialPillarTransparency:
   - 1
   trialStartTimestamp: 0
+  trialStartFrameID: 0
+  trialStartTimestampMicroseconds: 0
+  trialEndTimestampMicroseconds: 0
 --- !u!4 &78000721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd21d5c83840bc1938634ef2ab2e53a7, type: 3}
@@ -7569,7 +7572,7 @@ MonoBehaviour:
   gain: {x: 1, y: 1, z: 1}
   ballForwardNormToCentimeter: 0.001542
   ballSidewaysNormToCentimeter: 0.001478
-  ballRotatationNormToCentimeter: 0.0012686667
+  ballRotatationNormToCentimeter: 0.001268667
   enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
