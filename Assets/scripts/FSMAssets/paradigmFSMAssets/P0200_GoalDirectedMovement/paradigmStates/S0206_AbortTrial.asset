@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S0206_AbortTrial
   m_EditorClassIdentifier: 
   stateID: 206
-  Action: []
+  Action:
+  - {fileID: 11400000, guid: cb9ae964d1848c20fa0b80a91064a41f, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: f8ceb7360c16076f69d969e56670b040, type: 2}
+  - {fileID: 11400000, guid: e7004a81351af2778915854722d8c277, type: 2}

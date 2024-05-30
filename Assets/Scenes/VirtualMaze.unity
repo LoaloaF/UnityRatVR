@@ -656,12 +656,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68722533}
+  - component: {fileID: 68722541}
   - component: {fileID: 68722535}
-  - component: {fileID: 68722536}
   - component: {fileID: 68722537}
+  - component: {fileID: 68722536}
   - component: {fileID: 68722539}
   - component: {fileID: 68722540}
-  - component: {fileID: 68722541}
   m_Layer: 0
   m_Name: ExperimentCore
   m_TagString: ExperimentManager
@@ -707,8 +707,8 @@ MonoBehaviour:
   meshBottom: {fileID: 1162499984}
   meshRight: {fileID: 1241682925}
   meshLeft: {fileID: 341669017}
-  _sessionManager: {fileID: 0}
   Lighting: {fileID: 863277864}
+  _sessionManager: {fileID: 0}
 --- !u!114 &68722536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,21 +813,10 @@ MonoBehaviour:
   abortInterTrialIntervalLength: 0
   successSequenceLength: 10
   maximumTrialLength: 10
-  trialPackageVariables: 
-  rewardedPillarsMin: 0
-  rewardedPillarsMax: 0
-  pillarTransparencyMin: 0
-  pillarTransparencyMax: 0
-  pillarPunishmentMin: 0
-  pillarPunishmentMax: 0
+  sessionDescription: 
   sessionRunning: 1
   trialRunning: 1
   abortTrialFlag: 0
-  nextTrialEndTeleportCenterDist: 35
-  nextTrialEndTeleportCenterAngle: 0
-  nextTrialRewardedPillars: 01000000
-  nextTrialPillarTransparency:
-  - 1
   trialStartTimestamp: 0
   trialStartFrameID: 0
   trialStartTimestampMicroseconds: 0
@@ -5190,7 +5179,7 @@ Transform:
   m_GameObject: {fileID: 690834431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 193.8, y: -33.796, z: 0}
+  m_LocalPosition: {x: 193.8, y: -83.214005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7566,10 +7555,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1180528855}
+  gain: {x: 1, y: 1, z: 1}
   firstPackID: 0
   lastPackID: 0
-  wallZoneStopDistanceRatio: 0.5
-  gain: {x: 1, y: 1, z: 1}
   ballForwardNormToCentimeter: 0.001542
   ballSidewaysNormToCentimeter: 0.001478
   ballRotatationNormToCentimeter: 0.001268667
@@ -7702,7 +7690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 169.81102, y: 0.418}
+  m_AnchoredPosition: {x: 169.81102, y: -49}
   m_SizeDelta: {x: 981, y: 552}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1236976563 stripped
@@ -7946,7 +7934,7 @@ Transform:
   m_GameObject: {fileID: 1350956343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 191.15001, y: -34, z: 0}
+  m_LocalPosition: {x: 191.141, y: -83.418, z: -0.004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0209_SessionEnded
+  m_Script: {fileID: 11500000, guid: 6e4bfebd33575ae1d917b61d8f7b8a23, type: 3}
+  m_Name: AbortTrialConditionReached
   m_EditorClassIdentifier: 
-  stateID: 209
-  Action:
-  - {fileID: 11400000, guid: 6b9df3e9f65b046109ce5564422eb43f, type: 2}
-  Transitions: []
+  switchDescription: Abort trial condition reached?

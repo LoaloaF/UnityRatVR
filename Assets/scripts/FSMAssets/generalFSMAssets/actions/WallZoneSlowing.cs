@@ -11,153 +11,98 @@ namespace Experiment.ExperimentFSM
     [CreateAssetMenu(menuName = "FSM/Actions/SlowDownAction")]
     public class SlowDownAction : FSMAction
     {
+        private Vector3 caculatedGain;
+        private float[] SlowRatio = new float[4] { 1f, 1f, 1f, 1f };
+
         public override void Execute(BaseStateMachine stateMachine)
         {
             string WallZoneAction = stateMachine._sessionManager.onWallZoneEntry;
             if (WallZoneAction == "slow_down")
             {
-                Vector3 gain = CalculateGain();
-                // UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] );
-                stateMachine.Player.GetComponent<PlayerMovement>().gain = gain;
+                CalculateGain(stateMachine);
+                stateMachine.Player.GetComponent<PlayerMovement>().gain = caculatedGain;
             }
-
-            Vector3 CalculateGain()
-            {
-                // Vector3 gain = new Vector3(0.5f, 0.5f, 0.5f);
-                float[] diswall = calculatediswallRatio();
-                // UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
-                Vector3 gain = new Vector3(1f, 1f, 1f);
-
-               
-                CharacterController controller = stateMachine.Player.GetComponent<CharacterController>();
-                Vector3 playerVel = controller.velocity;
-
-                // UnityEngine.Debug.Log("playerVel: " + playerVel.x + " " + playerVel.z);
-                if (diswall[0] < 1f)
-                {
-                    if (playerVel.x >= 0)
-                    {
-                        gain = new Vector3(diswall[0], 1f, gain.z);
-                    }
-                    else
-                    {
-                        gain = new Vector3(1f, 1f, gain.z);
-                    }
-                }
-
-                if (diswall[1] < 1f)
-                {
-                    if (playerVel.x <= 0)
-                    {
-                        gain = new Vector3(diswall[1], 1f, gain.z);
-                    }
-                    else
-                    {
-                        gain = new Vector3(1f, 1f, gain.z);
-                    }
-                }
-
-                if (diswall[2] < 1f)
-                {
-                    if (playerVel.z >= 0)
-                    {
-                         gain = new Vector3(gain.x, 1f, diswall[2]);
-                    }
-                    else
-                    {
-                        gain = new Vector3(gain.x, 1f, 1f);
-                    }
-                }
-
-                if (diswall[3] < 1f)
-                {
-                    if (playerVel.z <= 0)
-                    {
-                         gain = new Vector3(gain.x, 1f, diswall[3]);
-                    }
-                    else
-                    {
-                        gain = new Vector3(gain.x, 1f, 1f);
-                    }
-                    
-                }
-                return gain;
-            }
-
-            float[] calculatediswallRatio()
-            {
-                var scenesize = stateMachine._sceneController.scene.Size;
-                Vector3 playerpos = new Vector3(stateMachine.Player.transform.position.x,  stateMachine.Player.transform.position.z, stateMachine.Player.transform.eulerAngles.y);
-                float[] diswall = new float[4];
-                // check x and y in scene size
-                diswall[0] = playerpos.x - scenesize.x*0.5f; // to right wall
-                diswall[1] = playerpos.x + scenesize.x*0.5f; // to left wall
-                diswall[2] = playerpos.y - scenesize.y*0.5f; // to top wall
-                diswall[3] = playerpos.y + scenesize.y*0.5f; // to bottom wall
-                // UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
-
-                float[] diswallRatio = {1f, 1f, 1f, 1f};
-                for (int i = 0; i< diswall.Length; i++)
-                {
-                    if (Math.Abs(diswall[i]) < (stateMachine._sceneController.scene.WallZone))
-                    {
-                        // diswallRatio[i] = Math.Abs(diswall[i])/(stateMachine._sceneController.scene.WallZone);
-                        // When approaching the wall at the distance of wallZoneStopDistanceRatio*WallZone, the gain is 0
-                        diswallRatio[i] = (Math.Abs(diswall[i]) - stateMachine._sceneController.scene.WallZone * stateMachine._playerMovement.wallZoneStopDistanceRatio)
-                                           /(stateMachine._sceneController.scene.WallZone * (1-stateMachine._playerMovement.wallZoneStopDistanceRatio))/2;
-                    }
-                }
-
-                return diswallRatio;
-            }
-
-            /*
-            
-            // Player position, x, z, rotation 
-            
-            // ball input, [0]:forward, [1]: right, [2]: rotation (move relatively to the direction Player is facing)
-            // int[] XYZvelInput = stateMachine.Player.GetComponent<PlayerMovement>().XYZvelInput;
-                      
-            // distance to the 4 walls
-            float[] diswall = calculatediswallRatio();
-            // float[] gain = CalculateGain();
-
-            
-            UnityEngine.Debug.Log("Runs when in death zone state"); 
-            UnityEngine.Debug.Log("diswall: "+ diswall[0] + " " + diswall[1] + " " + diswall[2] + " " + diswall[3]);
-            // UnityEngine.Debug.Log("gain: " + gain[0] + " " + gain[1] + " " + gain[2] + " " + gain[3] );
-
-            
-            // cc.move();
-
-
-
-
-            
-            UnityEngine.Debug.Log("x: " + cc.velocity.x + " z: " + cc.velocity.z);
-            float rotation = playerpos.y;
-            UnityEngine.Debug.Log("rotation: " + rotation);
-
-
-            
-
-            
-
-            float[] CalculateGain()
-            {
-                float[] gain = {1f, 1f, 1f, 1f};
-                for (int i = 0; i< diswall.Length; i++)
-                {
-                    if (Math.Abs(diswall[i]) < (stateMachine._sceneController.scene.DeathZone))
-                    {
-                        gain[i] = Math.Abs(diswall[i])/stateMachine._sceneController.scene.DeathZone;
-                    }
-                }
-                return gain;
-            }
-            */
-
         }
- 
+
+        private void CalculateGain(BaseStateMachine stateMachine)
+        {
+            caculatedGain = new Vector3(1f, 1f, 1f);
+
+            // Calculate the slow ratio for each direction
+            SlowRatio = CalculatediswallRatio(stateMachine);
+            
+            CharacterController controller = stateMachine.Player.GetComponent<CharacterController>();
+            Vector3 playerVel = controller.velocity;
+
+            // If the player is approaching the right wall:
+            // if the player is moving towards the right wall, slow down the player in the x direction; if not, make the gain 1
+            // But keep the z direction gain as what it is (to make sure proper behavior in the corner)
+            if (SlowRatio[0] < 1f)
+            {
+                if (playerVel.x >= 0)
+                    caculatedGain = new Vector3(SlowRatio[0], 1f, caculatedGain.z);
+                else
+                    caculatedGain = new Vector3(1f, 1f, caculatedGain.z);
+            }
+
+            // same logic for the left wall
+            if (SlowRatio[1] < 1f)
+            {
+                if (playerVel.x <= 0)
+                    caculatedGain = new Vector3(SlowRatio[1], 1f, caculatedGain.z);
+                else
+                    caculatedGain = new Vector3(1f, 1f, caculatedGain.z);
+            }
+
+            // same logic for the top wall
+            if (SlowRatio[2] < 1f)
+            {
+                if (playerVel.z >= 0)
+                    caculatedGain = new Vector3(caculatedGain.x, 1f, SlowRatio[2]);
+                else
+                    caculatedGain = new Vector3(caculatedGain.x, 1f, 1f);
+            }
+
+            // same logic for the bottom wall
+            if (SlowRatio[3] < 1f)
+            {
+                if (playerVel.z <= 0)
+                    caculatedGain = new Vector3(caculatedGain.x, 1f, SlowRatio[3]);
+                else
+                    caculatedGain = new Vector3(caculatedGain.x, 1f, 1f);
+            }
+        }
+
+        private float[] CalculatediswallRatio(BaseStateMachine stateMachine)
+        {
+            var scenesize = stateMachine._sceneController.scene.Size;
+            Vector3 playerpos = new Vector3(stateMachine.Player.transform.position.x,  stateMachine.Player.transform.position.z, stateMachine.Player.transform.eulerAngles.y);
+
+            float[] diswallRatio = new float[4] { 1f, 1f, 1f, 1f };
+            float[] diswall = new float[4] { 0f, 0f, 0f, 0f };
+
+            // Calculate the distance to the walls
+            diswall[0] = playerpos.x - scenesize.x * 0.5f * stateMachine._sceneController.scene.BaseLength; // to right wall
+            diswall[1] = playerpos.x + scenesize.x * 0.5f * stateMachine._sceneController.scene.BaseLength; // to left wall
+            diswall[2] = playerpos.y - scenesize.y * 0.5f * stateMachine._sceneController.scene.BaseLength; // to top wall
+            diswall[3] = playerpos.y + scenesize.y * 0.5f * stateMachine._sceneController.scene.BaseLength; // to bottom wall
+
+
+            for (int i = 0; i< diswall.Length; i++)
+            {
+                if (Math.Abs(diswall[i]) < (stateMachine._sceneController.scene.WallZone * stateMachine._sceneController.scene.BaseLength))
+                {
+                    // The speed ratio will be 1 at the entry of the wall zone
+                    // and decrease linearly to 0 at the stop distance (wallZoneCollideDistance)
+                    diswallRatio[i] = (1 - (stateMachine._sceneController.scene.WallZone * stateMachine._sceneController.scene.BaseLength - Math.Abs(diswall[i]))/stateMachine._sceneController.scene.WallZoneCollideDistance * stateMachine._sceneController.scene.BaseLength)/4;
+                }
+                else
+                {
+                    diswallRatio[i] = 1f;
+                }
+            }
+
+            return diswallRatio;
+        }
     }
 }

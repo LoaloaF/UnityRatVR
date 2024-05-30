@@ -22,10 +22,6 @@ namespace Experiment.ExperimentFSM
                 float rot = 0f;
                 stateMachine._playerMovement.TeleportRat(x, z, rot);
             }
-            else
-            {
-                // Debug.Log($"DeathZoneAction `{DeathZoneAction}` != `center_teleport`");
-            }
         }
 
     }

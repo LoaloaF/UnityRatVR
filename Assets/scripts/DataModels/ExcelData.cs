@@ -10,7 +10,7 @@ namespace RatVR.ExcelData
         public Vector2 size;
         public float baseLength;
         public int wallZone;
-
+        public int wallZoneCollideDistance;
         public ExcelWallData wallTop;
         public ExcelWallData wallRight;
         public ExcelWallData wallBot;
@@ -21,6 +21,7 @@ namespace RatVR.ExcelData
         public ExcelSceneMetaData(  Vector2 size,
                                     float baseLength,
                                     int wallZone,
+                                    int wallZoneCollideDistance,
                                     ExcelWallData wallTop, 
                                     ExcelWallData wallRight, 
                                     ExcelWallData wallBot, 
@@ -29,6 +30,7 @@ namespace RatVR.ExcelData
             this.size = size;
             this.baseLength = baseLength;
             this.wallZone = wallZone;
+            this.wallZoneCollideDistance = wallZoneCollideDistance;
             this.wallTop = wallTop;
             this.wallRight = wallRight;
             this.wallBot = wallBot;
@@ -49,15 +51,9 @@ namespace RatVR.ExcelData
         public float successSequenceLength;
         public int maximumTrialLength;
         public string trialPackageVariables;
-        public int rewardedPillarsMin;
-        public int rewardedPillarsMax;
-        public int pillarTransparencyMin;
-        public int pillarTransparencyMax;
-        public int pillarPunishmentMin;
-        public int pillarPunishmentMax;
-        public int sessionFREEVAR1;
+        public string trialPackageVariablesDefault;
         public int sessionFREEVAR2;
-        public string sessionFREEVAR3;
+        public string sessionDescription;
         public string sessionFREEVAR4;
 
         // Agent parameters
@@ -82,15 +78,9 @@ namespace RatVR.ExcelData
                                     float successSequenceLength, 
                                     int maximumTrialLength,
                                     string trialPackageVariables, 
-                                    int rewardedPillarsMin, 
-                                    int rewardedPillarsMax, 
-                                    int pillarTransparencyMin, 
-                                    int pillarTransparencyMax, 
-                                    int pillarPunishmentMin, 
-                                    int pillarPunishmentMax,
-                                    int sessionFREEVAR1,
+                                    string trialPackageVariablesDefault,
                                     int sessionFREEVAR2,
-                                    string sessionFREEVAR3,
+                                    string sessionDescription,
                                     string sessionFREEVAR4,
                                     int agentFREEVAR1,
                                     int agentFREEVAR2,
@@ -113,15 +103,9 @@ namespace RatVR.ExcelData
             this.successSequenceLength = successSequenceLength;
             this.maximumTrialLength = maximumTrialLength;
             this.trialPackageVariables = trialPackageVariables;
-            this.rewardedPillarsMin = rewardedPillarsMin;
-            this.rewardedPillarsMax = rewardedPillarsMax;
-            this.pillarTransparencyMin = pillarTransparencyMin;
-            this.pillarTransparencyMax = pillarTransparencyMax;
-            this.pillarPunishmentMin = pillarPunishmentMin;
-            this.pillarPunishmentMax = pillarPunishmentMax;
-            this.sessionFREEVAR1 = sessionFREEVAR1;
+            this.trialPackageVariablesDefault = trialPackageVariablesDefault;
             this.sessionFREEVAR2 = sessionFREEVAR2;
-            this.sessionFREEVAR3 = sessionFREEVAR3;
+            this.sessionDescription = sessionDescription;
             this.sessionFREEVAR4 = sessionFREEVAR4;
             this.agentFREEVAR1 = agentFREEVAR1;
             this.agentFREEVAR2 = agentFREEVAR2;
@@ -131,7 +115,6 @@ namespace RatVR.ExcelData
             this.agentFREEVAR6 = agentFREEVAR6;
             this.agentFREEVAR7 = agentFREEVAR7;
             this.agentFREEVAR8 = agentFREEVAR8;
-
         }
     }
 
@@ -162,7 +145,6 @@ namespace RatVR.ExcelData
         public int rewardRadius;
         public int pillarFREEVAR1;
         public int pillarFREEVAR2;
-
         public float transparency;
         public int isReward;
         public int isAirpuff;

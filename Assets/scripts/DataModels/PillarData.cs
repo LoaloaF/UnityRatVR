@@ -46,51 +46,6 @@ namespace RatVR.Scene
         public int RewardRadius { get { return rewardRadius; } set { rewardRadius = value; } }
         
 
-        public PillarData(JSONObject data)
-        {
-            if (data.HasKey("type") && data["type"] == "pillar")
-            {
-                uid = data.HasKey("uid") ? data["uid"].Value : throw new System.Exception("Scene file has no UID");
-                version = data.HasKey("version") ? data["name"].AsFloat : throw new System.Exception("no version file specified");
-                height = data.HasKey("height") ? data["height"].AsFloat : height = 10f;
-                radius = data.HasKey("radius") ? data["radius"].AsFloat : radius = 1f;
-                textures = data.HasKey("textures") ? data["textures"].AsStringList : null;
-                if (data.HasKey("textures"))
-                {
-                    textures = data["textures"].AsStringList;
-                    texture = textures[UnityEngine.Random.Range(0, textures.Count)];
-                } 
-                if (data.HasKey("texture"))
-                {
-                    texture = data["texture"];
-                } 
-                else if (texture == null)
-                {
-                    throw new System.Exception("No texture for pillar object provided");
-                }
-
-                float x = data.HasKey("x") ? data["x"].AsFloat : throw new System.Exception("No Pillar x position specified");
-                float y = data.HasKey("y") ? data["y"].AsFloat : throw new System.Exception("No Pillar y position specified");
-                float z = data.HasKey("z") ? data["z"].AsFloat : throw new System.Exception("No Pillar z position specified");
-
-                position = new Vector3(x, y, z);
-            }
-            else
-            {
-                throw new System.Exception("Wrong PillarData format");
-            }
-        }
-
-        public PillarData(float version, float height, float radius, Vector3 pos, string texture)
-        {
-            this.uid = System.Guid.NewGuid().ToString();
-            this.version = version;
-            this.height = height;
-            this.radius = radius;
-            this.position = pos;
-            this.texture = texture;
-        }
-
         public PillarData(ExcelObjectData excelObject, Vector2 pos)
         {
             this.uid = excelObject.object_name + "_" + System.Guid.NewGuid().ToString();
@@ -100,7 +55,6 @@ namespace RatVR.Scene
             position = new Vector3(pos.x, pos.y, excelObject.zPos);
             texture = excelObject.texture;
             rewardRadius = excelObject.rewardRadius;
-
             transparency = excelObject.transparency;
             isReward = excelObject.isReward;
             isAirpuff = excelObject.isAirpuff;
@@ -111,31 +65,11 @@ namespace RatVR.Scene
             List<PillarData> pillars = new List<PillarData>();
             foreach(ExcelObjectData excelObject in objects)
             {
-                // Debug.Log("excel object: " + excelObject);
                 foreach (Vector2 pos in scenePlacement[excelObject.object_name])
-                {
-                    // Debug.Log("pos: " + pos);
                     pillars.Add(new PillarData(excelObject, pos));
-                    // Debug.Log(new PillarData(excelObject, pos).texture);
-                }
             }
             return pillars;
         }
 
-        public JSONNode PillarDataJson()
-        {
-            JSONNode data = new JSONObject();
-            data.Add("uid", uid);
-            data.Add("type", "pillar");
-            data.Add("version", version);
-            data.Add("height", height);
-            data.Add("radius", radius);
-            data.Add("texture", texture);
-            data.Add("x", position.x);
-            data.Add("y", position.y);
-            data.Add("z", position.z);
-
-            return data;
-        }
     }
 }

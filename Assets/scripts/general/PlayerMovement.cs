@@ -7,13 +7,13 @@ using System.Runtime.InteropServices;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private bool movementEnabled = false;
     public CharacterController controller;
-    public int firstPackID;
-    public int lastPackID;
-    public float wallZoneStopDistanceRatio = 0.5f;
-    private int[] XYZvelInput = new int[3];
     public Vector3 gain = new Vector3(1f, 1f, 1f);
+    [HideInInspector] public int firstPackID;
+    [HideInInspector] public int lastPackID;
+
+    private bool movementEnabled = false;
+    private int[] XYZvelInput = new int[3];
     private float rotY = 0f;
     private string log;
 
