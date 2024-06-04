@@ -15,7 +15,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             
-            # Ensure that the variable package is storing the float values as string
+            // Ensure that the variable package is storing the float values as string
             float currentPD = float.Parse(stateMachine._sessionManager.trialVariablesDict["PD"]);
             float currentPA = float.Parse(stateMachine._sessionManager.trialVariablesDict["PA"]);
 

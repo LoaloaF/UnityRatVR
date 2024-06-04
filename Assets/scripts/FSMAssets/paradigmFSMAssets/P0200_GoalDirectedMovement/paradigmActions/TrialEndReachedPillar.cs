@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
 
-            # Ensure that the variable package is storing the float values as string
+            // Ensure that the variable package is storing the float values as string
             float currentPD = float.Parse(stateMachine._sessionManager.trialVariablesDict["PD"]);
             float currentPA = float.Parse(stateMachine._sessionManager.trialVariablesDict["PA"]);
 
@@ -35,7 +35,7 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
 
             
-            # Auto increment of the pillar distance when the trial is successful
+            // Auto increment of the pillar distance when the trial is successful
             if (currentPD < 45.0f)
             {
                 float newPD = currentPD + 0.5f;
