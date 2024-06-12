@@ -88,9 +88,9 @@ namespace Cathei.BakingSheet
 
             if (!pages.ContainsKey("Environment")) throw new Exception("Environment table missing!!");
 
-            for (int x = 1; x <= 200; ++x) // TODO change to real environment size
+            for (int x = 1; x <= 300; ++x) // TODO change to real environment size
             {
-                for (int y = 1; y <= 200; ++y)
+                for (int y = 1; y <= 300; ++y)
                 {
                     var cellContent = pages["Environment"].GetCell(x, y);
 
@@ -135,7 +135,7 @@ namespace Cathei.BakingSheet
                 
                 List<string> rowValues = new List<string>();
                 
-                for (int col=0; col<7; ++col) // modify to real number of columns
+                for (int col=0; col<8; ++col) // modify to real number of columns
                 {
                     cellContent = pages["EnvParameters"].GetCell(col, row);
                     if (cellContent == null)
@@ -160,6 +160,7 @@ namespace Cathei.BakingSheet
             ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(10, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(11, 4));
 
             Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(14,1)), int.Parse(hyperparams.GetCell(15,1)));
+            
             float baseLength = float.Parse(hyperparams.GetCell(14, 2), System.Globalization.CultureInfo.InvariantCulture);
             int wallZone = int.Parse(hyperparams.GetCell(14, 3));
             int wallZoneCollideDistance = int.Parse(hyperparams.GetCell(14, 4));

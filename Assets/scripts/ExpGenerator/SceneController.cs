@@ -90,7 +90,7 @@ namespace RatVR.Scene
             wallZone.transform.position = new Vector3(0, 0, 0);
 
             floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength);
-            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.WallZone, scene.WallZone)*2);
+            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.WallZone, scene.WallZone)*2)*sceneData.BaseLength;
             floor.transform.position = new Vector3(0, 0.01f, 0);
             
             ceiling.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
@@ -139,7 +139,7 @@ namespace RatVR.Scene
                 pillar.name = "Pillar" + pd.UID.ToString();
                 Vector2 tranformedPos = CoordinateTransform(sceneData, new Vector2(pd.Position.x, pd.Position.y));
 
-                pillar.transform.localPosition = new Vector3(tranformedPos.x, pd.Position.z + pd.Height, tranformedPos.y);
+                pillar.transform.localPosition = new Vector3(tranformedPos.x * sceneData.BaseLength, pd.Position.z + pd.Height, tranformedPos.y * sceneData.BaseLength);
                 if (pd.Height != 0)
                 {
                     Transform CylinderTransform = pillar.transform.Find("Cylinder");
