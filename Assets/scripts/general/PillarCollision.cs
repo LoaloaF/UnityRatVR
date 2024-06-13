@@ -18,22 +18,22 @@ public class PillarCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerDetected = false;
-        Collider[] hitColliders = Physics.OverlapBox(transform.position, detectionBoxSize / 2);
+        // playerDetected = false;
+        // Collider[] hitColliders = Physics.OverlapBox(transform.position, detectionBoxSize / 2);
 
-        foreach (Collider collider in hitColliders)
-        {
-            if (collider.gameObject.CompareTag("Player"))
-            {
-                PlayerDetected = true;
-                playerDetected = true;
-                break;
-            }
-        }
-        if (!playerDetected)
-        {
-            PlayerDetected = false;
-        }
+        // foreach (Collider collider in hitColliders)
+        // {
+        //     if (collider.gameObject.CompareTag("Player"))
+        //     {
+        //         PlayerDetected = true;
+        //         playerDetected = true;
+        //         break;
+        //     }
+        // }
+        // if (!playerDetected)
+        // {
+        //     PlayerDetected = false;
+        // }
     }
 
     /*
@@ -52,16 +52,16 @@ public class PillarCollision : MonoBehaviour
     }
     */
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         Debug.Log("player is detected in pillar collision script");
-    //         // Debug.Log(transform.position);
-    //         PlayerDetected = true;
-    //     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("player is detected in pillar collision script");
+            // Debug.Log(transform.position);
+            PlayerDetected = true;
+        }
 
-    // }
+    }
 
     // private void OnTriggerExit(Collider other)
     // {
