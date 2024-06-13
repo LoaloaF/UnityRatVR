@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: P----_NewFormatTemplate
+  m_Script: {fileID: 11500000, guid: 1112f7436cee0c2a3997d53cf1bac032, type: 3}
+  m_Name: PillarBlinking
   m_EditorClassIdentifier: 
-  stateID: 300
-  Action: []
-  Transitions:
-  - {fileID: 11400000, guid: d60a17ebfd5ca7a6e9b62fb55a5c156a, type: 2}

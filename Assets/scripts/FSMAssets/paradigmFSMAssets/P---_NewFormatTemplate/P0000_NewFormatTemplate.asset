@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0303_SuccessEntry
+  m_Name: P0000_NewFormatTemplate
   m_EditorClassIdentifier: 
-  stateID: 303
-  Action:
-  - {fileID: 11400000, guid: ffd4a1a4549e243afa25eea913d3a2e4, type: 2}
-  - {fileID: 11400000, guid: 095b0394dd5afa14ab6a606ccc47bb4b, type: 2}
+  stateID: 300
+  Action: []
   Transitions:
-  - {fileID: 11400000, guid: 7395cb16184231897bab4b3d5eace2a0, type: 2}
+  - {fileID: 11400000, guid: d60a17ebfd5ca7a6e9b62fb55a5c156a, type: 2}

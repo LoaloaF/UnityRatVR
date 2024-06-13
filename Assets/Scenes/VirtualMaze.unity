@@ -364,8 +364,8 @@ Camera:
   m_GameObject: {fileID: 27702864}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -1913,8 +1913,8 @@ Camera:
   m_GameObject: {fileID: 290428458}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -3276,8 +3276,8 @@ Camera:
   m_GameObject: {fileID: 419199425}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -5749,8 +5749,8 @@ Camera:
   m_GameObject: {fileID: 788758770}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -5832,8 +5832,8 @@ Camera:
   m_GameObject: {fileID: 803000173}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -7556,10 +7556,10 @@ MonoBehaviour:
   gain: {x: 1, y: 1, z: 1}
   firstPackID: 0
   lastPackID: 0
-  ballForwardNormToCentimeter: 0.01542
-  ballSidewaysNormToCentimeter: 0.01478
-  ballRotatationNormToCentimeter: 0.01268667
-  enableBallInput: 0
+  ballForwardNormToCentimeter: 0.001542
+  ballSidewaysNormToCentimeter: 0.001478
+  ballRotatationNormToCentimeter: 0.001268667
+  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0

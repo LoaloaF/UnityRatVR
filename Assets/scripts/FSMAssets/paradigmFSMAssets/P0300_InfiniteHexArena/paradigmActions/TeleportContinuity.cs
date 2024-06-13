@@ -15,10 +15,9 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             hexagonVertices = InitializeVertices(stateMachine);
+            AdjustPillarTransparency(stateMachine);
 
             Vector2 position = new Vector2(stateMachine._playerMovement.transform.position.x, stateMachine._playerMovement.transform.position.z);
-
-            
 
             // Check each edge of the hexagon
             for (int i = 0; i < hexagonVertices.Length; i++)
@@ -39,19 +38,15 @@ namespace Experiment.ExperimentFSM
                     stateMachine._playerMovement.TeleportRat(stateMachine._playerMovement.transform.position.x + directionToMove.x,
                                                              stateMachine._playerMovement.transform.position.z + directionToMove.y,
                                                              stateMachine._playerMovement.transform.localRotation.eulerAngles.y);
-
-                    GameObject[] landmarks = GameObject.FindGameObjectsWithTag("Landmark");
-
-                    foreach (GameObject landmark in landmarks)
-                    {
-                        landmark.transform.position = new Vector3(landmark.transform.position.x + directionToMove.x,
-                                                                  landmark.transform.position.y,
-                                                                  landmark.transform.position.z + directionToMove.y);
-                    }
-
+                    AdjustPillarTransparency(stateMachine);
                     break;
                 }
             }
+
+
+
+
+
         }
 
         private Vector2[] InitializeVertices(BaseStateMachine stateMachine)
@@ -65,6 +60,47 @@ namespace Experiment.ExperimentFSM
             vertices[5] = new Vector2(-10f, 17.32f) * stateMachine._sceneController.scene.BaseLength;
 
             return vertices;
+        }
+
+        private void AdjustPillarTransparency(BaseStateMachine stateMachine)
+        {
+
+            MeshRenderer[] meshRenderers = stateMachine.GetComponentsInChildren<MeshRenderer>();
+            float visibleDistance = 70 * stateMachine._sceneController.scene.BaseLength;
+
+            for (int i = 0; i < meshRenderers.Length; i++)
+            {
+                Vector3 pillarPosition = meshRenderers[i].transform.position;
+                float pillarToPlayer = Vector2.Distance(new Vector2(pillarPosition.x, pillarPosition.z), new Vector2(stateMachine._playerMovement.transform.position.x, stateMachine._playerMovement.transform.position.z));
+
+                if (pillarToPlayer < visibleDistance)
+                {
+                    Color originalColor = meshRenderers[i].material.color;
+                    meshRenderers[i].material.color = new Color(originalColor.r,
+                                                                originalColor.g,
+                                                                originalColor.b,
+                                                                1);
+                }
+                else if (pillarToPlayer >= 2 * visibleDistance)
+                {
+                    Color originalColor = meshRenderers[i].material.color;
+                    meshRenderers[i].material.color = new Color(originalColor.r,
+                                                                originalColor.g,
+                                                                originalColor.b,
+                                                                0);
+                }
+                else
+                {
+                    Color originalColor = meshRenderers[i].material.color;
+                    meshRenderers[i].material.color = new Color(originalColor.r,
+                                                                originalColor.g,
+                                                                originalColor.b,
+                                                                1 - (pillarToPlayer - visibleDistance) / visibleDistance);
+                }
+
+            }
+
+
         }
 
     }

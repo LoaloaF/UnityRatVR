@@ -33,6 +33,8 @@ namespace Experiment.ExperimentFSM
             else
             {
                 Debug.Log("Maximum number of rewards reached. Not sending reward.");
+                Color white = new Color(1, 1, 1, 1);
+                stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
             }
 
         }

@@ -11,8 +11,7 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/RatLeavePillar")]
     public class RatLeavePillar : Decision
     {
-        private float timer = 0f;
-        private bool firstDecicionCall = true;
+
         public override bool Decide(BaseStateMachine stateMachine)
         {
             int childcount = stateMachine.transform.childCount;
@@ -26,7 +25,7 @@ namespace Experiment.ExperimentFSM
                     // Debug.Log("collision detected at:" + stateMachine._sceneController.scene.Pillars[i].UID);
                     if (stateMachine._sceneController.scene.Pillars[i].IsReward == 1)
                     {
-                        Debug.Log("player hits a rewarding pillar");
+                        // Debug.Log("player hits a rewarding pillar");
                         return false;
                     }
                 }
