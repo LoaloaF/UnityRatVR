@@ -28,6 +28,7 @@ public sealed class SessionManager : MonoBehaviour
     [HideInInspector] public bool sessionRunning = false;
     [HideInInspector] public bool trialRunning = false;
     [HideInInspector] public bool abortTrialFlag = false;
+    [HideInInspector] public int _currentTrialID = -1;
 
     // Triallogging information
     [HideInInspector] public float trialStartTimestamp;
@@ -67,6 +68,9 @@ public sealed class SessionManager : MonoBehaviour
             Debug.Log($"Trial Variable {trialVariablesNamesArray[i]} initialized with {trialVariablesDefaultArray[i]}");
         }
 
+        this._currentTrialID = -1;
+        trialRunning = false;
+
     }
 
     public void UpdateTrialVariable(string variableName, string variableValue)
@@ -94,6 +98,7 @@ public sealed class SessionManager : MonoBehaviour
 
     public void newTrial() {
         trialCount++;
+        this._currentTrialID = trialCount;
         trialStartTimestamp = Time.realtimeSinceStartup;
         trialStartTimestampMicroseconds = getUnixTimestampMicroseconds();
         trialStartFrameID = Time.frameCount;

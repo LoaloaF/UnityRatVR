@@ -38,6 +38,11 @@ namespace Experiment.ExperimentFSM
                 stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);
 
                 stateMachine._sessionManager.sessionRunning = false;
+
+                GameObject[] landmarks = GameObject.FindGameObjectsWithTag("Landmark");
+                foreach (GameObject landmark in landmarks) {
+                    Destroy(landmark);
+                }
                 return true;
             }
             return false;

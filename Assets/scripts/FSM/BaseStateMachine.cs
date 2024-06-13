@@ -25,6 +25,7 @@ namespace FSM
 
         [HideInInspector] public SceneController _sceneController;
         [HideInInspector] public SessionManager _sessionManager;
+
         public int generalCurrentStateID;
         public StateDictionary paradigmDictionary;
         public BaseState CurrentState { get; set; }

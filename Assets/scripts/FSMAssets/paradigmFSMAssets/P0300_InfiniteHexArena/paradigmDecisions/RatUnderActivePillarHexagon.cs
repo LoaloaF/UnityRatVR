@@ -13,8 +13,7 @@ namespace Experiment.ExperimentFSM
     public class RatUnderActivePillarHexagon : Decision
     {
 
-         private float timer = 0f;
-        private bool firstDecicionCall = true;
+        public float timer = 0f;
         public override bool Decide(BaseStateMachine stateMachine)
         {
    
@@ -31,14 +30,7 @@ namespace Experiment.ExperimentFSM
                     // Debug.Log("collision detected at:" + stateMachine._sceneController.scene.Pillars[i].UID);
                     if (stateMachine._sceneController.scene.Pillars[i].IsReward == 1)
                     {
-                        if (firstDecicionCall)
-                        {
-                            // t0 = Time.realtimeSinceStartup;
-                            firstDecicionCall = false;
-                        }
-                        
                         if (timer > stateMachine._sessionManager.successSequenceLength) {
-                            firstDecicionCall = true;
                             timer = 0f;
                             return true;
                         }
@@ -59,6 +51,11 @@ namespace Experiment.ExperimentFSM
             return false;
             // var pillarManager = stateMachine.GetComponent<PillarManager>();
             // return pillarManager.CheckPlayerPillar();
+        }
+
+        private void OnEnable() 
+        {
+            timer = 0;
         }
     }
 }

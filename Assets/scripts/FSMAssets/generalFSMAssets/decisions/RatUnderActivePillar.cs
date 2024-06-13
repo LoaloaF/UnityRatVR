@@ -18,8 +18,6 @@ namespace Experiment.ExperimentFSM
 
  
 
-
-
             int childcount = stateMachine.transform.childCount;
             // Transform child = stateMachine.transform.GetChild(childcount-1);
             // List<Transform> pillars = stateMachine.GetComponentInChildren<List<Transform>>(); 
