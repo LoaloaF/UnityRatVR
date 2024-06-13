@@ -69,6 +69,7 @@ public sealed class SessionManager : MonoBehaviour
         }
 
         this._currentTrialID = -1;
+        trialRunning = false;
 
     }
 

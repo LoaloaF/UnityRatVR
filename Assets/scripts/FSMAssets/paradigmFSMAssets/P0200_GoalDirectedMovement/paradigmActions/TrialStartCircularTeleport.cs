@@ -21,8 +21,7 @@ namespace Experiment.ExperimentFSM
             Transform child = stateMachine.transform.GetChild(0);
             Vector3 pillarPosition = child.position;
 
-            // rest the collision detection
-            child.GetComponentInChildren<PillarCollision>().PlayerDetected = false;
+
             
             // setup the pillar transparency to 1
             Color originalColor = child.GetComponentInChildren<MeshRenderer>().material.color;
@@ -39,6 +38,9 @@ namespace Experiment.ExperimentFSM
 
             
             // prepare the scene and playermovement for the next session
+            // rest the collision detection
+            
+
             stateMachine.validationSphereRenderer.enabled = false;
             stateMachine._sceneController.wallTop.SetActive(true);
             stateMachine._sceneController.wallBottom.SetActive(true);
@@ -49,6 +51,7 @@ namespace Experiment.ExperimentFSM
 
             stateMachine._sessionManager.newTrial();
             stateMachine._sessionManager.trialRunning = true;
+            child.GetComponentInChildren<PillarCollision>().PlayerDetected = false;
 
         }
 
@@ -56,8 +59,6 @@ namespace Experiment.ExperimentFSM
         {
             // Generate a random angle in radians
             float angle = Random.Range(0, 2 * Mathf.PI);
-            Debug.Log("Angle " + angle);
-
 
             // default to inverted anlge (pointing towrads center)
             // orientation = (angle+Mathf.PI) * Mathf.Rad2Deg;
@@ -66,8 +67,6 @@ namespace Experiment.ExperimentFSM
             // Calculate the x and z coordinates
             float x = radius * Mathf.Sin(angle);
             float z = radius * Mathf.Cos(angle);
-            Debug.Log("x: "+x);
-            Debug.Log("z: "+z);
 
             // Create the new point
             Vector3 point = new Vector3(center.x + x, orientation, center.z + z);

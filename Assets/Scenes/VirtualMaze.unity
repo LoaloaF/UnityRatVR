@@ -790,7 +790,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0200_GoalDirectedMovement
+  paradigm_name: P0300_InfiniteHexArena
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,7 +815,7 @@ MonoBehaviour:
   maximumTrialLength: 10
   sessionDescription: 
   sessionRunning: 1
-  trialRunning: 1
+  trialRunning: 0
   abortTrialFlag: 0
   _currentTrialID: -1
   trialStartTimestamp: 0
@@ -7581,7 +7581,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180528854}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 2.5, y: 1.095, z: 2.5}
@@ -7607,7 +7607,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 2.5
   m_Center: {x: 0, y: 0.75, z: 0}
