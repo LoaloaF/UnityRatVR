@@ -790,7 +790,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0300_InfiniteHexArena
+  paradigm_name: P0200_GoalDirectedMovement
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,6 +817,7 @@ MonoBehaviour:
   sessionRunning: 1
   trialRunning: 1
   abortTrialFlag: 0
+  _currentTrialID: -1
   trialStartTimestamp: 0
 --- !u!4 &78000721 stripped
 Transform:
@@ -7556,10 +7557,10 @@ MonoBehaviour:
   gain: {x: 1, y: 1, z: 1}
   firstPackID: 0
   lastPackID: 0
-  ballForwardNormToCentimeter: 0.001542
-  ballSidewaysNormToCentimeter: 0.001478
-  ballRotatationNormToCentimeter: 0.001268667
-  enableBallInput: 1
+  ballForwardNormToCentimeter: 0.01542
+  ballSidewaysNormToCentimeter: 0.01478
+  ballRotatationNormToCentimeter: 0.01268667
+  enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
