@@ -127,4 +127,21 @@ public sealed class SessionManager : MonoBehaviour
         Debug.Log($"Calling Push with End Trial Pckg {trialPackage}");
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
     }
+
+
+    public void ClearSession()
+    {
+        GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
+        foreach (GameObject pillar in pillars)
+        {
+            Destroy(pillar);
+        }
+
+        GameObject[] landmarks = GameObject.FindGameObjectsWithTag("Landmark");
+        foreach (GameObject landmark in landmarks)
+        {
+            Destroy(landmark);
+        }
+
+    }
 }

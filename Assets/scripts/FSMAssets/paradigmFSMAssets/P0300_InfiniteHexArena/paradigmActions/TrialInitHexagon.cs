@@ -62,47 +62,10 @@ namespace Experiment.ExperimentFSM
 
 
 
-
-            // stateMachine._sceneController.wallTop.transform.position = new Vector3(stateMachine._sceneController.wallTop.transform.position.x * scaleFactor, 
-            //                                                                        stateMachine._sceneController.wallTop.transform.position.y, 
-            //                                                                        stateMachine._sceneController.wallTop.transform.position.z);
-            
-            // stateMachine._sceneController.wallBottom.transform.position = new Vector3(stateMachine._sceneController.wallBottom.transform.position.x * scaleFactor, 
-            //                                                                           stateMachine._sceneController.wallBottom.transform.position.y, 
-            //                                                                           stateMachine._sceneController.wallBottom.transform.position.z);
-            
-            // stateMachine._sceneController.wallLeft.transform.position = new Vector3(stateMachine._sceneController.wallLeft.transform.position.x, 
-            //                                                                         stateMachine._sceneController.wallLeft.transform.position.y, 
-            //                                                                         stateMachine._sceneController.wallLeft.transform.position.z * scaleFactor);
-            
-            // stateMachine._sceneController.wallRight.transform.position = new Vector3(stateMachine._sceneController.wallRight.transform.position.x, 
-            //                                                                          stateMachine._sceneController.wallRight.transform.position.y, 
-            //                                                                          stateMachine._sceneController.wallRight.transform.position.z * scaleFactor);
-                                                    
-            // stateMachine._sceneController.wallTop.transform.localScale = new Vector3(stateMachine._sceneController.wallTop.transform.localScale.x * scaleFactor, 
-            //                                                                     stateMachine._sceneController.wallTop.transform.localScale.y, 
-            //                                                                     stateMachine._sceneController.wallTop.transform.localScale.z);
-            
-            // stateMachine._sceneController.wallBottom.transform.localScale = new Vector3(stateMachine._sceneController.wallBottom.transform.localScale.x * scaleFactor, 
-            //                                                                        stateMachine._sceneController.wallBottom.transform.localScale.y, 
-            //                                                                        stateMachine._sceneController.wallBottom.transform.localScale.z);
-            
-            // stateMachine._sceneController.wallLeft.transform.localScale = new Vector3(stateMachine._sceneController.wallLeft.transform.localScale.x * scaleFactor, 
-            //                                                                      stateMachine._sceneController.wallLeft.transform.localScale.y, 
-            //                                                                      stateMachine._sceneController.wallLeft.transform.localScale.z);
-            
-            // stateMachine._sceneController.wallRight.transform.localScale = new Vector3(stateMachine._sceneController.wallRight.transform.localScale.x * scaleFactor, 
-            //                                                                       stateMachine._sceneController.wallRight.transform.localScale.y, 
-            //                                                                       stateMachine._sceneController.wallRight.transform.localScale.z);
-
-            // stateMachine._sceneController.ceiling.transform.localScale = new Vector3(stateMachine._sceneController.ceiling.transform.localScale.x * scaleFactor, 
-            //                                                                    stateMachine._sceneController.ceiling.transform.localScale.y, 
-            //                                                                    stateMachine._sceneController.ceiling.transform.localScale.z * scaleFactor);                                                  
-
-
             stateMachine._sceneController.floor.SetActive(true);
             stateMachine._sceneController.wallZone.SetActive(true);
             stateMachine.validationSphereRenderer.enabled = false;
+            stateMachine._sceneController.ceiling.SetActive(false);
             stateMachine._sceneController.wallTop.SetActive(false);
             stateMachine._sceneController.wallBottom.SetActive(false);
             stateMachine._sceneController.wallLeft.SetActive(false);

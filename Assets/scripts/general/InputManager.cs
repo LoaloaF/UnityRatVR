@@ -163,6 +163,7 @@ public class InputManager : MonoBehaviour
 
         // Disable the start button
         _sessionManager.abortTrialFlag = true;
+        _sessionManager.ClearSession();
         startSessionButton.interactable = true;
         stopSessionButton.interactable = false;
         Debug.Log("Session stopped");
