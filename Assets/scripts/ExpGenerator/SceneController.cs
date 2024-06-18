@@ -155,7 +155,7 @@ namespace RatVR.Scene
                         GroundCylinderTransform.gameObject.SetActive(false);
 
                     if (pd.IsMoving != 1)
-                        CylinderTransform.gameObject.GetComponent<PillarMovement>().enabled = false;
+                        pillar.GetComponent<PillarMovement>().enabled = false;
 
                     GroundCylinderTransform.position = new Vector3(0, 0, 0);
 
