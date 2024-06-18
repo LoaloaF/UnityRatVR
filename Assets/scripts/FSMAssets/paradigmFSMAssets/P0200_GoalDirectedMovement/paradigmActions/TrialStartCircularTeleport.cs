@@ -19,6 +19,7 @@ namespace Experiment.ExperimentFSM
 
             // get the first child (the only pillar)
             Transform child = stateMachine.transform.GetChild(0);
+            child.gameObject.SetActive(true);
             Vector3 pillarPosition = child.position;
 
 

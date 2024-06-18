@@ -148,7 +148,17 @@ namespace RatVR.Scene
                     CylinderTransform.localScale = new Vector3(pd.Radius, pd.Height, pd.Radius);
                     Transform ColliderTransform = pillar.transform.Find("Collider");
                     ColliderTransform.localScale = new Vector3(pd.RewardRadius*1.5f, 0.2f*sceneData.Size.x, pd.RewardRadius*1.5f);
-                    
+                    Transform GroundCylinderTransform = pillar.transform.Find("GroundCylinder");
+                    GroundCylinderTransform.localScale = new Vector3(pd.RewardRadius, GroundCylinderTransform.localScale.y, pd.RewardRadius);
+
+                    if (pd.ShowGround != 1)
+                        GroundCylinderTransform.gameObject.SetActive(false);
+
+                    if (pd.IsMoving != 1)
+                        CylinderTransform.gameObject.GetComponent<PillarMovement>().enabled = false;
+
+                    GroundCylinderTransform.position = new Vector3(0, 0, 0);
+
                     if (!materials.ContainsKey(pd.Texture)) {
                         throw new Exception("Material not found: " + pd.Texture);
                     }

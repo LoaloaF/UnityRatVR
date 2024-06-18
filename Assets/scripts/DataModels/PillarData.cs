@@ -45,6 +45,11 @@ namespace RatVR.Scene
         private int rewardRadius = 0;
         public int RewardRadius { get { return rewardRadius; } set { rewardRadius = value; } }
         
+        private int showGround = 0;
+        public int ShowGround { get { return showGround; } set { showGround = value; } }
+
+        private int isMoving = 0;
+        public int IsMoving { get { return isMoving; } set { isMoving = value; } }
 
         public PillarData(ExcelObjectData excelObject, Vector2 pos)
         {
@@ -55,6 +60,8 @@ namespace RatVR.Scene
             position = new Vector3(pos.x, pos.y, excelObject.zPos);
             texture = excelObject.texture;
             rewardRadius = excelObject.rewardRadius;
+            showGround = excelObject.pillarShowGround;
+            isMoving = excelObject.pillarIsMoving;
             transparency = excelObject.transparency;
             isReward = excelObject.isReward;
             isAirpuff = excelObject.isAirpuff;
