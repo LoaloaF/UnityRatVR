@@ -7,7 +7,7 @@ namespace ExperimentFSM
     [CreateAssetMenu(menuName = "FSM/Decisions/LickDetection")]
     public class LickDetection : Decision
     {
-        public double threshold = 200;
+        public double threshold = 1;
         private CyclicPackagesSHMInterface portentaOutputSHMInterface;
         private int nChecks = 0;
         public override bool Decide(BaseStateMachine stateMachine)
@@ -17,6 +17,13 @@ namespace ExperimentFSM
             bool foundLick = false;
             while (true) {
                 var portentaPackage = portentaOutputSHMInterface.PopExtractedItem();
+                // Debug.Log(portentaPackage);
+
+                // if (portentaPackage != null && portentaPackage["N"].ToString().Trim() == "L") {
+                //     Debug.Log($"Lick a bove threshold detected, after {nChecks} checks");
+                //     return true;
+                // }
+
                 if (portentaPackage == null) {
                     nChecks = 0;
                     if (foundLick) Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
@@ -24,10 +31,10 @@ namespace ExperimentFSM
                 }
 
                 // Debug.Log(portentaPackage["N"] + " " + portentaPackage["V"] + " " + portentaPackage["ID"]);
-                if (portentaPackage["N"].ToString().Trim() == "L" && double.Parse(portentaPackage["V"].ToString()) > threshold)
+                if (portentaPackage["N"].ToString().Trim() == "L")
                 {
-                    // Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
-                    // nChecks = 0;
+                    Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
+                    nChecks = 0;
                     foundLick = true;
                 }
                 nChecks++;

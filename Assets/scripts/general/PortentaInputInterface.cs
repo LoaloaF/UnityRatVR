@@ -20,8 +20,10 @@ public class PortentaInputInterface : MonoBehaviour
         send(onoff ? s1 : s2);
         onoff = !onoff;
     }
-    public void sendSuccess(int rewardDelay, int rewardLength)
+    public void sendSuccess(int rewardDelay, int rewardAmount)
     {
+        int rewardLength = (int)((rewardAmount+10) /0.295);
+        Debug.Log($"Sending success with reward delay {rewardDelay} and reward amount {rewardAmount} -> length {rewardLength}");
         send($"S{rewardLength},{rewardDelay}\r\n");
     }
     
