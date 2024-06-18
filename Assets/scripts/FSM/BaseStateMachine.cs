@@ -37,6 +37,8 @@ namespace FSM
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false)
                 projectPath = Path.Combine(projectPath, "..");
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false)
+                projectPath = Path.Combine(projectPath, "..");
 
             string excelFullFileName = Path.Combine(projectPath, "Paradigms", $"{paradigm_name}.xlsx");
 

@@ -18,6 +18,12 @@ public class FlagSHMInterface
         if (Directory.Exists(Path.Combine(unityProjectPath, "Assets")) == false) {
             unityProjectPath = Path.Combine(unityProjectPath, "..");
         }
+
+        // run twice for the mac case
+        if (Directory.Exists(Path.Combine(unityProjectPath, "Assets")) == false) {
+            unityProjectPath = Path.Combine(unityProjectPath, "..");
+        }
+
         string shmStructureJsonFullFilename = Path.Combine(unityProjectPath, "..", "tmp_shm_structure_JSONs", shmStructureJsonFilename);
         if (!File.Exists(shmStructureJsonFullFilename)) {
             string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFullFilename}";
@@ -26,7 +32,21 @@ public class FlagSHMInterface
 
         var shmStructure = LoadShmStructureJson(shmStructureJsonFullFilename);
         _shmName = shmStructure.shm_name;
-        _memory = MemoryMappedFile.CreateFromFile("/dev/shm/termflag", System.IO.FileMode.Open);
+
+        if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
+        {
+            _memory = MemoryMappedFile.CreateFromFile("/dev/shm/termflag", System.IO.FileMode.Open);
+        }
+        else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+        {
+            _memory = MemoryMappedFile.OpenExisting("termflag");
+        }
+        else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+        {
+            _memory = MemoryMappedFile.CreateOrOpen(_shmName, 1);
+        }
+
+        // _memory = MemoryMappedFile.CreateFromFile("/dev/shm/termflag", System.IO.FileMode.Open);
         // _memory = MemoryMappedFile.OpenExisting(_shmName);
         
         _accessor = _memory.CreateViewAccessor();

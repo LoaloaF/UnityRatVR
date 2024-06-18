@@ -51,6 +51,8 @@ namespace RatVR.Scene
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) 
                 projectPath = System.IO.Directory.GetParent(projectPath).FullName;
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) 
+                projectPath = System.IO.Directory.GetParent(projectPath).FullName;
             loadMaterials(Path.Combine(projectPath, "Assets/Resources/materials"));
 
             // generate the scene object from the excel file

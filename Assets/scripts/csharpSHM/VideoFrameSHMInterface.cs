@@ -9,7 +9,7 @@ public class VideoFrameSHMInterface
     private MemoryMappedFile _memory;
     private MemoryMappedViewAccessor _accessor;
     private string _shmName;
-    private int _totalNbytes;
+    private long _totalNbytes;
     private int _packageNbytes;
     private string _frameType;
     private int _xRes;
@@ -23,6 +23,12 @@ public class VideoFrameSHMInterface
         if (Directory.Exists(Path.Combine(unityProjectPath, "Assets")) == false) {
             unityProjectPath = Path.Combine(unityProjectPath, "..");
         }
+
+        // run twice for the mac case
+        if (Directory.Exists(Path.Combine(unityProjectPath, "Assets")) == false) {
+            unityProjectPath = Path.Combine(unityProjectPath, "..");
+        }
+
         string shmStructureJsonFullFilename = Path.Combine(unityProjectPath, "..", "tmp_shm_structure_JSONs", shmStructureJsonFilename);
         if (!File.Exists(shmStructureJsonFullFilename)) {
             string errorMessage = $"Error: Shared memory has not been created. Could not find JSON file: {shmStructureJsonFullFilename}";
@@ -48,6 +54,10 @@ public class VideoFrameSHMInterface
         else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
         {
             _memory = MemoryMappedFile.OpenExisting(_shmName);
+        }
+        else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+        {
+            _memory = MemoryMappedFile.CreateOrOpen(_shmName, _totalNbytes);
         }
         _accessor = _memory.CreateViewAccessor();
     }
