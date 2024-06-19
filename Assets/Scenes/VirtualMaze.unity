@@ -790,7 +790,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0200_GoalDirectedMovement
+  paradigm_name: P0300_InfiniteHexArena
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0
