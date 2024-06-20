@@ -162,7 +162,7 @@ namespace RatVR.Scene
                     if (pd.IsMoving != 1)
                         pillar.GetComponent<PillarMovement>().enabled = false;
 
-                    GroundCylinderTransform.position = new Vector3(0, 0, 0);
+                    GroundCylinderTransform.position = new Vector3(GroundCylinderTransform.position.x, 0, GroundCylinderTransform.position.z);
 
                     if (!materials.ContainsKey(pd.Texture)) {
                         throw new Exception("Material not found: " + pd.Texture);

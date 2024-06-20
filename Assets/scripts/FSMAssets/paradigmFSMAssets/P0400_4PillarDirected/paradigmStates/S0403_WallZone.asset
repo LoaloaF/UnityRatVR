@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
+  m_Name: S0403_WallZone
+  m_EditorClassIdentifier: 
+  stateID: 403
+  Action:
+  - {fileID: 11400000, guid: 5e4b38b3964a61a429d5b5288ad0b1aa, type: 2}
+  Transitions:
+  - {fileID: 11400000, guid: c24b6efe4f9d56114b17ddd287483508, type: 2}
+  - {fileID: 11400000, guid: 0696e3e6bf24b145490bc137cdc9cdce, type: 2}
+  - {fileID: 11400000, guid: 353008c5458f8630387c6f19c6e07fdb, type: 2}
