@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0302_WIthinTrial
+  m_Name: S0407_WithinInterTrialInterval
   m_EditorClassIdentifier: 
-  stateID: 302
-  Action:
-  - {fileID: 11400000, guid: 095b0394dd5afa14ab6a606ccc47bb4b, type: 2}
+  stateID: 407
+  Action: []
   Transitions:
-  - {fileID: 11400000, guid: c9cd3eb46c7a101a39e06889bfdd47a8, type: 2}
-  - {fileID: 11400000, guid: adbd58fe4be537fc18f6e44dcf36d19e, type: 2}
+  - {fileID: 11400000, guid: 2fcdc6e9cd46b3134853531fe47a7460, type: 2}

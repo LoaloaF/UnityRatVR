@@ -33,7 +33,7 @@ namespace Experiment.ExperimentFSM
                 if (projection < 0)
                 {
 
-                    Vector2 directionToMove = new Vector2(-edge.y, edge.x).normalized * 34f * stateMachine._sceneController.scene.BaseLength;
+                    Vector2 directionToMove = new Vector2(-edge.y, edge.x).normalized * 34.64f * stateMachine._sceneController.scene.BaseLength;
                     UnityEngine.Debug.Log("directionToMove: " + directionToMove);
                     stateMachine._playerMovement.TeleportRat(stateMachine._playerMovement.transform.position.x + directionToMove.x,
                                                              stateMachine._playerMovement.transform.position.z + directionToMove.y,

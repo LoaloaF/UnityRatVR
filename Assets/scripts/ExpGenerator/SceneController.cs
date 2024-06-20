@@ -91,8 +91,13 @@ namespace RatVR.Scene
             wallZone.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
             wallZone.transform.position = new Vector3(0, 0, 0);
 
-            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength);
+            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength, 
+                                                     1, 
+                                                     sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength);
             floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.WallZone, scene.WallZone)*2)*sceneData.BaseLength;
+            floor.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(floor.GetComponent<MeshRenderer>().material.mainTextureScale.x,
+                                                                                       floor.GetComponent<MeshRenderer>().material.mainTextureScale.y * 1.732f);
+
             floor.transform.position = new Vector3(0, 0.01f, 0);
             
             ceiling.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
@@ -157,7 +162,7 @@ namespace RatVR.Scene
                     if (pd.IsMoving != 1)
                         pillar.GetComponent<PillarMovement>().enabled = false;
 
-                    GroundCylinderTransform.position = new Vector3(0, 0, 0);
+                    GroundCylinderTransform.position = new Vector3(GroundCylinderTransform.position.x, 0, GroundCylinderTransform.position.z);
 
                     if (!materials.ContainsKey(pd.Texture)) {
                         throw new Exception("Material not found: " + pd.Texture);
