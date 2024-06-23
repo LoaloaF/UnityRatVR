@@ -79,67 +79,72 @@ public class InputManager : MonoBehaviour
         // Debug.Log(termflagSHMInterface.IsSet());
         return termflagSHMInterface.IsSet();
     }
+private void processSHMInput()
+{
+    string shmUnityInput;
+    string[] splitInput;
+    string command;
+    float value1 = 0;
+    float value2 = 0;
+    float value3 = 0;
+    float value4 = 0;
 
-    private void processSHMInput()
-    {
-        string shmUnityInput;
-        string[] splitInput;
-        string command;
-        float value1 = 0;
-        float value2 = 0;
-        float value3 = 0;
+    shmUnityInput = unityInputSHMInterface.Popitem();
 
-        shmUnityInput = unityInputSHMInterface.Popitem();
-
-        if (shmUnityInput == null) return;
-        Debug.Log(shmUnityInput);
-        if (shmUnityInput == "Start") {
-            StartGame();
-        } else if (shmUnityInput == "Stop") {
-            StopGame();
-        } else if (shmUnityInput == "Failure") {
-            sendFailure();
-        } else if (shmUnityInput == "Airvalve") {
-            sendSwitchAirvalve();
-        } else if (shmUnityInput.StartsWith("Paradigm")) {
-            Debug.Log(shmUnityInput.Split(','));
-            paradigm_name = shmUnityInput.Split(',')[1];
-        } else if (shmUnityInput.StartsWith("Punishment") 
-                    || shmUnityInput.StartsWith("Success") 
-                    || shmUnityInput.StartsWith("TrialEndTeleportDistanceDelta") 
-                    || shmUnityInput.StartsWith("TrialEndTeleportAngleDelta") 
-                    || shmUnityInput.StartsWith("Teleport")){
-            try {
-                splitInput = shmUnityInput.Split(',');
-                command = splitInput[0];
-                value1 = float.Parse(splitInput[1]);
-                // more than a single value within message
-                if (command == "Success" || command == "Teleport") {
-                    value2 = float.Parse(splitInput[2]);
-                    if (command == "Teleport") {
-                        value3 = float.Parse(splitInput[3]);
-                    }
+    if (shmUnityInput == null) return;
+    Debug.Log(shmUnityInput);
+    if (shmUnityInput == "Start") {
+        StartGame();
+    } else if (shmUnityInput == "Stop") {
+        StopGame();
+    } else if (shmUnityInput == "Failure") {
+        sendFailure();
+    } else if (shmUnityInput == "Airvalve") {
+        sendSwitchAirvalve();
+    } else if (shmUnityInput.StartsWith("Paradigm")) {
+        Debug.Log(shmUnityInput.Split(','));
+        paradigm_name = shmUnityInput.Split(',')[1];
+    } else if (shmUnityInput.StartsWith("Punishment") 
+                || shmUnityInput.StartsWith("Success") 
+                || shmUnityInput.StartsWith("TrialEndTeleportDistanceDelta") 
+                || shmUnityInput.StartsWith("TrialEndTeleportAngleDelta") 
+                || shmUnityInput.StartsWith("Teleport")
+                || shmUnityInput.StartsWith("Move")){
+        try {
+            splitInput = shmUnityInput.Split(',');
+            command = splitInput[0];
+            value1 = float.Parse(splitInput[1]);
+            // more than a single value within message
+            if (command == "Success" || command == "Teleport" || command == "Move") {
+                value2 = float.Parse(splitInput[2]);
+                if (command == "Teleport" || command == "Move") {
+                    value3 = float.Parse(splitInput[3]);
                 }
-            } catch (FormatException) {
-                Debug.LogError("Invalid values in message: " + shmUnityInput);
-                return;
             }
-
-            if (command == "Punishment") {
-                _portentaInputInterface.sendPunishment((int)value1);
-            } else if (command == "Success") {
-                _portentaInputInterface.sendSuccess((int)value1, (int)value2);
-            } else if (command == "Teleport") {
-                _playerMovement.TeleportRat(value1, value2, value3);
-            } else if (command == "TrialEndTeleportDistanceDelta") {
-                _sessionManager.updateTrialEndTeleportCenterDist(value1);
-            } else if (command == "TrialEndTeleportAngleDelta") {
-                _sessionManager.updateTrialEndTeleportCenterAngle(value1);
-            }
-        } else {
-            Debug.LogError("Invalid command: " + shmUnityInput);
+        } catch (FormatException) {
+            Debug.LogError("Invalid values in message: " + shmUnityInput);
+            return;
         }
+
+        if (command == "Punishment") {
+            _portentaInputInterface.sendPunishment((int)value1);
+        } else if (command == "Success") {
+            _portentaInputInterface.sendSuccess((int)value1, (int)value2);
+        } else if (command == "Teleport") {
+            _playerMovement.TeleportRat(value1, value2, value3);
+        } else if (command == "TrialEndTeleportDistanceDelta") {
+            _sessionManager.updateTrialEndTeleportCenterDist(value1);
+        } else if (command == "TrialEndTeleportAngleDelta") {
+            _sessionManager.updateTrialEndTeleportCenterAngle(value1);
+        } else if (command == "Move") {
+            _playerMovement.XYZvelInput[0] = (int)value1;
+            _playerMovement.XYZvelInput[1] = (int)value2;
+            _playerMovement.XYZvelInput[2] = (int)value3;
+        }
+    } else {
+        Debug.LogError("Invalid command: " + shmUnityInput);
     }
+}
 
     // Function to start the game
     public void StartGame()

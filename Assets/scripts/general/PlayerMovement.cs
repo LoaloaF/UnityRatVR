@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public int lastPackID;
 
     private bool movementEnabled = false;
-    private int[] XYZvelInput = new int[3];
+    public int[] XYZvelInput = new int[3];
     private float rotY = 0f;
     private string log;
 
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool enableBallInput = false;
     CyclicPackagesSHMInterface ballVelSHMInterface;
 
+    public bool enableRemoteInput = true;
+
     void Start()
     {
         ballVelSHMInterface = new CyclicPackagesSHMInterface("ballvelocity_shmstruct.json");
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     void Update() {
         XYZvelInput = getInput();
         if (movementEnabled) {
-            // Debug.Log(string.Join(", ", XYZvelInput));
+            Debug.Log(string.Join(", ", XYZvelInput));
             MoveRat();
             RotateRat();
         }
@@ -86,9 +88,10 @@ public class PlayerMovement : MonoBehaviour
             } else {
                 Debug.Log("SHM not linked. Can't read ball velocity");
             }
-        } else {
+        } else if (!enableRemoteInput) {
             XYZvelInput = getKeyboardInput();
         }
+        Debug.Log(string.Join(", ", XYZvelInput));
         return XYZvelInput;
     }
 
