@@ -12,8 +12,12 @@ namespace Experiment.ExperimentFSM
     [CreateAssetMenu(menuName = "FSM/Decisions/RatUnderActivePillar")]
     public class RatUnderActivePillar : Decision
     {
+
         public override bool Decide(BaseStateMachine stateMachine)
         {
+
+ 
+
             int childcount = stateMachine.transform.childCount;
             // Transform child = stateMachine.transform.GetChild(childcount-1);
             // List<Transform> pillars = stateMachine.GetComponentInChildren<List<Transform>>(); 
@@ -28,7 +32,9 @@ namespace Experiment.ExperimentFSM
                     if (stateMachine._sceneController.scene.Pillars[i].IsReward == 1)
                     {
                         Debug.Log("player hits a rewarding pillar");
+
                         return true;
+
                     }
                     else
                     {

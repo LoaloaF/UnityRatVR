@@ -25,6 +25,7 @@ namespace FSM
 
         [HideInInspector] public SceneController _sceneController;
         [HideInInspector] public SessionManager _sessionManager;
+
         public int generalCurrentStateID;
         public StateDictionary paradigmDictionary;
         public BaseState CurrentState { get; set; }
@@ -34,6 +35,8 @@ namespace FSM
             // find the excel file in the project folder
             // this adjusts the path when exec from build subfolder 
             string projectPath = Path.GetDirectoryName(Application.dataPath);
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false)
+                projectPath = Path.Combine(projectPath, "..");
             if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false)
                 projectPath = Path.Combine(projectPath, "..");
 

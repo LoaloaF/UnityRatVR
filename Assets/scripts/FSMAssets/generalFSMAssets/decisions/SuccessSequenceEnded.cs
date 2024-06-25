@@ -12,17 +12,16 @@ namespace Experiment.ExperimentFSM
     public class SuccessSequenceEnded : Decision
     {
         private float timer = 0f;
-        private bool firstDecicionCall = true;
+        private int currentTrialID = -1;
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            if (firstDecicionCall)
+            if (currentTrialID != stateMachine._sessionManager._currentTrialID)
             {
-                // t0 = Time.realtimeSinceStartup;
-                firstDecicionCall = false;
+                currentTrialID = stateMachine._sessionManager._currentTrialID;
+                timer = 0f;
             }
             
             if (timer > stateMachine._sessionManager.successSequenceLength) {
-                firstDecicionCall = true;
                 timer = 0f;
                 return true;
             }
@@ -30,6 +29,14 @@ namespace Experiment.ExperimentFSM
             timer += Time.deltaTime;
             return false;
         }
+
+        private void OnEnable() 
+        {
+            timer = 0;
+            currentTrialID = -1;
+        }
+
+
 
     }
 

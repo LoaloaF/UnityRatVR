@@ -1,22 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FSM;
 
 public class PillarCollision : MonoBehaviour
 {
     public bool PlayerDetected;
+    public Vector3 detectionBoxSize;
+    private bool playerDetected;
+    public BaseStateMachine stateMachine;
     // Start is called before the first frame update
     void Start()
     {
         PlayerDetected = false;
+        Transform ColliderTransform = transform.Find("Collider");
+        detectionBoxSize = new Vector3(ColliderTransform.localScale.x / 1.5f, transform.localPosition.y*2, ColliderTransform.localScale.z / 1.5f);
+        stateMachine = GetComponentInParent<BaseStateMachine>();
     }
+
+    // void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireCube(transform.position, detectionBoxSize);
+    // }
 
     // Update is called once per frame
     void Update()
     {
+        if (!stateMachine._sessionManager.trialRunning)
+        {
+            // UnityEngine.Debug.Log("trial not running");
+            return;
+        }
         
-    }
+        playerDetected = false;
+        Collider[] hitColliders = Physics.OverlapBox(transform.position, detectionBoxSize / 2);
 
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.gameObject.CompareTag("Player"))
+            {
+                PlayerDetected = true;
+                playerDetected = true;
+                break;
+            }
+        }
+        if (!playerDetected)
+        {
+            PlayerDetected = false;
+        }
+    }
+}
     /*
     public void OnTriggerEnter(Collider other)
     {
@@ -33,19 +67,16 @@ public class PillarCollision : MonoBehaviour
     }
     */
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("player is detected in pillar collision script");
-            // Debug.Log(transform.position);
-            PlayerDetected = true;
-        }
-        else
-        {
-        }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         Debug.Log("player is detected in pillar collision script");
+    //         // Debug.Log(transform.position);
+    //         PlayerDetected = true;
+    //     }
 
-    }
+    // }
 
     // private void OnTriggerExit(Collider other)
     // {
@@ -65,11 +96,7 @@ public class PillarCollision : MonoBehaviour
     //         // Debug.Log(transform.position);
     //         PlayerDetected = true;
     //     }
-    //     else
-    //     {
-    //         PlayerDetected = false;
-    //     }
 
     // }
 
-}
+

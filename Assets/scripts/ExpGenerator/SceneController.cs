@@ -51,6 +51,8 @@ namespace RatVR.Scene
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) 
                 projectPath = System.IO.Directory.GetParent(projectPath).FullName;
+            if (Directory.Exists(Path.Combine(projectPath, "Assets")) == false) 
+                projectPath = System.IO.Directory.GetParent(projectPath).FullName;
             loadMaterials(Path.Combine(projectPath, "Assets/Resources/materials"));
 
             // generate the scene object from the excel file
@@ -61,6 +63,7 @@ namespace RatVR.Scene
 
             // get sessionMetatData from the excel and initialize the sessionManager
             sessionMetaData = excelScene.GetExcelSessionMetaData();
+            UnityEngine.Debug.Log(sessionMetaData);
             _sessionManager.InitializeSessionManager(sessionMetaData);
 
             // get excelObjects (pillarMetaData from Envparameters) from the excel and generate the pillars
@@ -89,8 +92,13 @@ namespace RatVR.Scene
             wallZone.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
             wallZone.transform.position = new Vector3(0, 0, 0);
 
-            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength);
-            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.WallZone, scene.WallZone)*2);
+            floor.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength, 
+                                                     1, 
+                                                     sceneData.Size.y * 0.1f * sceneData.BaseLength - 0.2f*scene.WallZone * sceneData.BaseLength);
+            floor.GetComponent<MeshRenderer>().material.mainTextureScale = 0.1f * (sceneData.Size - new Vector2(scene.WallZone, scene.WallZone)*2)*sceneData.BaseLength;
+            floor.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(floor.GetComponent<MeshRenderer>().material.mainTextureScale.x,
+                                                                                       floor.GetComponent<MeshRenderer>().material.mainTextureScale.y * 1.732f);
+
             floor.transform.position = new Vector3(0, 0.01f, 0);
             
             ceiling.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
@@ -139,14 +147,26 @@ namespace RatVR.Scene
                 pillar.name = "Pillar" + pd.UID.ToString();
                 Vector2 tranformedPos = CoordinateTransform(sceneData, new Vector2(pd.Position.x, pd.Position.y));
 
-                pillar.transform.localPosition = new Vector3(tranformedPos.x, pd.Position.z + pd.Height, tranformedPos.y);
+                pillar.transform.localPosition = new Vector3(tranformedPos.x * sceneData.BaseLength, pd.Position.z + pd.Height, tranformedPos.y * sceneData.BaseLength);
                 if (pd.Height != 0)
                 {
                     Transform CylinderTransform = pillar.transform.Find("Cylinder");
                     CylinderTransform.localScale = new Vector3(pd.Radius, pd.Height, pd.Radius);
                     Transform ColliderTransform = pillar.transform.Find("Collider");
                     ColliderTransform.localScale = new Vector3(pd.RewardRadius*1.5f, 0.2f*sceneData.Size.x, pd.RewardRadius*1.5f);
-                    
+                    Transform GroundCylinderTransform = pillar.transform.Find("GroundCylinder");
+                    GroundCylinderTransform.localScale = new Vector3(pd.RewardRadius, GroundCylinderTransform.localScale.y, pd.RewardRadius);
+
+                    if (pd.ShowGround != 1)
+                        GroundCylinderTransform.gameObject.SetActive(false);
+
+                    if (pd.IsMoving != 1)
+                        pillar.GetComponent<PillarMovement>().enabled = false;
+
+                    GroundCylinderTransform.position = new Vector3(GroundCylinderTransform.position.x, 0, GroundCylinderTransform.position.z);
+                    // set the texture of the GroundCylinder to gray
+                    GroundCylinderTransform.GetComponent<MeshRenderer>().material = materials["GroundCylinder"];
+
                     if (!materials.ContainsKey(pd.Texture)) {
                         throw new Exception("Material not found: " + pd.Texture);
                     }

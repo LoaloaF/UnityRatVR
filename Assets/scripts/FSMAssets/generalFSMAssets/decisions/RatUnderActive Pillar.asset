@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: RatUnderActive Pillar
   m_EditorClassIdentifier: 
   switchDescription: Rat under rewarded pillar?
+  lastRewardTime: 0
+  firstDecicionCall: 0

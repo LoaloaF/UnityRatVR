@@ -23,6 +23,15 @@ namespace Experiment.ExperimentFSM
 
             stateMachine._sceneController.floor.SetActive(false);
             stateMachine._sceneController.wallZone.SetActive(false);
+
+            if (stateMachine.transform.childCount > 0)
+            {
+                Transform child = stateMachine.transform.GetChild(0);
+                child.gameObject.SetActive(false);
+            }
+            // Transform child = stateMachine.transform.GetChild(0);
+            // child.gameObject.SetActive(false);
+
             stateMachine._playerMovement.DisableMovement();
             stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);
 
