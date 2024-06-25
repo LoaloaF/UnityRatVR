@@ -49,6 +49,18 @@ public class CyclicPackagesSHMInterface
         {
             _memory = MemoryMappedFile.OpenExisting(_shmName);
         }
+        // OSX
+        else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+        {
+            _memory = MemoryMappedFile.CreateFromFile($"/tmp/{_shmName}", System.IO.FileMode.Open);
+        }
+        
+        if (_memory == null)
+        {
+            Console.WriteLine($"Failed to create MemoryMappedFile from shmName: {_shmName}\n\n");
+            Environment.Exit(1);
+        }
+        
             
         _accessor = _memory.CreateViewAccessor();
         Log($"SHM interface created with JSON {shmStructureJsonFullFilename}");
