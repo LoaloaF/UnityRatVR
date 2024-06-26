@@ -63,6 +63,7 @@ namespace RatVR.Scene
 
             // get sessionMetatData from the excel and initialize the sessionManager
             sessionMetaData = excelScene.GetExcelSessionMetaData();
+            UnityEngine.Debug.Log(sessionMetaData);
             _sessionManager.InitializeSessionManager(sessionMetaData);
 
             // get excelObjects (pillarMetaData from Envparameters) from the excel and generate the pillars
@@ -163,6 +164,8 @@ namespace RatVR.Scene
                         pillar.GetComponent<PillarMovement>().enabled = false;
 
                     GroundCylinderTransform.position = new Vector3(GroundCylinderTransform.position.x, 0, GroundCylinderTransform.position.z);
+                    // set the texture of the GroundCylinder to gray
+                    GroundCylinderTransform.GetComponent<MeshRenderer>().material = materials["GroundCylinder"];
 
                     if (!materials.ContainsKey(pd.Texture)) {
                         throw new Exception("Material not found: " + pd.Texture);

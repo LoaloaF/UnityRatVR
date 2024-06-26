@@ -68,6 +68,7 @@ public sealed class SessionManager : MonoBehaviour
             Debug.Log($"Trial Variable {trialVariablesNamesArray[i]} initialized with {trialVariablesDefaultArray[i]}");
         }
 
+
         this._currentTrialID = -1;
         trialRunning = false;
 
