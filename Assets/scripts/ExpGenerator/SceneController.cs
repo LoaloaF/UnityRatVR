@@ -104,10 +104,10 @@ namespace RatVR.Scene
             ceiling.transform.localScale = new Vector3(sceneData.Size.x * 0.1f * sceneData.BaseLength, 1, sceneData.Size.y * 0.1f * sceneData.BaseLength);
 
             // due to different wall rotation setup, the same position could have different effects
-            wallTop.transform.rotation = Quaternion.Euler(90, 0, 90);
-            wallBottom.transform.rotation = Quaternion.Euler(90, 0, -90);
-            wallRight.transform.rotation = Quaternion.Euler(90, 90, 90);
-            wallLeft.transform.rotation = Quaternion.Euler(90, 90, -90);
+            wallTop.transform.rotation = Quaternion.Euler(90, 0, 180);
+            wallBottom.transform.rotation = Quaternion.Euler(90, 0, 0);
+            wallRight.transform.rotation = Quaternion.Euler(90, 0, 90);
+            wallLeft.transform.rotation = Quaternion.Euler(90, 0, -90);
 
             meshTop.transform.rotation = Quaternion.Euler(90, 0, 90);
             meshBottom.transform.rotation = Quaternion.Euler(90, 0, -90);
@@ -121,10 +121,14 @@ namespace RatVR.Scene
             wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.RightWall.Height);
             wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.LeftWall.Height);
             
-            wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f* sceneData.TopWall.Height, 0);
-            wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f*sceneData.BottomWall.Height, 0);
-            wallRight.transform.localPosition = new Vector3(0, 0.5f*sceneData.RightWall.Height, -0.5f * sceneData.BaseLength * sceneData.Size.y);
-            wallLeft.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
+            // wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f* sceneData.TopWall.Height, 0);
+            wallTop.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
+            // wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f*sceneData.BottomWall.Height, 0);
+            wallBottom.transform.localPosition = new Vector3(0, 0.5f*sceneData.RightWall.Height, -0.5f * sceneData.BaseLength * sceneData.Size.y);
+            // wallRight.transform.localPosition = new Vector3(0, 0.5f*sceneData.RightWall.Height, -0.5f * sceneData.BaseLength * sceneData.Size.y);
+            wallRight.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f* sceneData.TopWall.Height, 0);
+            // wallLeft.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
+            wallLeft.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f*sceneData.BottomWall.Height, 0);
 
             ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height, 0);
 
@@ -147,7 +151,7 @@ namespace RatVR.Scene
                 pillar.name = "Pillar" + pd.UID.ToString();
                 Vector2 tranformedPos = CoordinateTransform(sceneData, new Vector2(pd.Position.x, pd.Position.y));
 
-                pillar.transform.localPosition = new Vector3(tranformedPos.x * sceneData.BaseLength, pd.Position.z + pd.Height, tranformedPos.y * sceneData.BaseLength);
+                pillar.transform.localPosition = new Vector3(tranformedPos.x * sceneData.BaseLength, pd.Position.z + pd.Height, tranformedPos.y * sceneData.BaseLength * -1f);
                 if (pd.Height != 0)
                 {
                     Transform CylinderTransform = pillar.transform.Find("Cylinder");
