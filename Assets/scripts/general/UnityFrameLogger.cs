@@ -77,7 +77,7 @@ public class UnityFrameLogger : MonoBehaviour
                     $"Z:{framePositionZ.ToString("F5")},A:{frameAngle.ToString("F5")},S:{frameState},FB:{blinkerState},"+
                     $"BFP:{frameBallVelFirstPackID},BLP:{frameBallVelLastPackID}";
 
-        Debug.Log($"Calling Push with {framePackage}");
+        // Debug.Log($"Calling Push with {framePackage}");
         unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
     }
 }
