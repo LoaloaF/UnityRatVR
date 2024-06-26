@@ -73,11 +73,11 @@ public class UnityFrameLogger : MonoBehaviour
         // set blinker to 0 if frameIndicationBlinker.Color == Color.black else set it to 1
         blinkerState = frameIndicationBlinker.material.color == Color.black ? 0 : 1;
         
-        framePackage = $"N:U,ID:{frameCount},PCT:{unixTimestampMicroseconds},X:{framePositionX},"+
-                    $"Z:{framePositionZ},A:{frameAngle},S:{frameState},FB:{blinkerState},"+
+        framePackage = $"N:U,ID:{frameCount},PCT:{unixTimestampMicroseconds},X:{framePositionX.ToString("F5")},"+
+                    $"Z:{framePositionZ.ToString("F5")},A:{frameAngle.ToString("F5")},S:{frameState},FB:{blinkerState},"+
                     $"BFP:{frameBallVelFirstPackID},BLP:{frameBallVelLastPackID}";
 
-        // Debug.Log($"Calling Push with {framePackage}");
+        Debug.Log($"Calling Push with {framePackage}");
         unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
     }
 }

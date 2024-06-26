@@ -32,23 +32,27 @@ public class FlagSHMInterface
 
         var shmStructure = LoadShmStructureJson(shmStructureJsonFullFilename);
         _shmName = shmStructure.shm_name;
-
+        
         if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
         {
-            _memory = MemoryMappedFile.CreateFromFile("/dev/shm/termflag", System.IO.FileMode.Open);
+            _memory = MemoryMappedFile.CreateFromFile($"/dev/shm/{_shmName}", System.IO.FileMode.Open);
         }
         else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
         {
-            _memory = MemoryMappedFile.OpenExisting("termflag");
+            _memory = MemoryMappedFile.OpenExisting(_shmName);
         }
+        // OSX
         else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
         {
-            _memory = MemoryMappedFile.CreateOrOpen(_shmName, 1);
+            _memory = MemoryMappedFile.CreateFromFile($"/tmp/{_shmName}", System.IO.FileMode.Open);
+        }
+        
+        if (_memory == null)
+        {
+            Console.WriteLine($"Failed to create MemoryMappedFile from shmName: {_shmName}\n\n");
+            Environment.Exit(1);
         }
 
-        // _memory = MemoryMappedFile.CreateFromFile("/dev/shm/termflag", System.IO.FileMode.Open);
-        // _memory = MemoryMappedFile.OpenExisting(_shmName);
-        
         _accessor = _memory.CreateViewAccessor();
         Debug.Log($"SHM interface created with JSON {shmStructureJsonFullFilename}");
     }
