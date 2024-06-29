@@ -1,0 +1,57 @@
+{
+  "6b9df3e9f65b046109ce5564422eb43f": {
+    "path": "./generalFSMAssets/actions",
+    "name": "SessionEndedAction",
+    "assetType": "action"
+  },
+  "8025df9b346b7b84a891f9c9118c6dae": {
+    "path": "./generalFSMAssets/actions",
+    "name": "StartSpoutAssoc",
+    "assetType": "action"
+  },
+  "cb4967b7e09f2484889874cb70209169": {
+    "path": "./generalFSMAssets/actions",
+    "name": "SuccessEntryAction",
+    "assetType": "action"
+  },
+  "50f646f0221c5a24f984ce02d044c0e5": {
+    "path": "./generalFSMAssets/actions",
+    "name": "Teleport2Center",
+    "assetType": "action"
+  },
+  "8c07531059b124f1ca12d944b7cbd4bd": {
+    "path": "./generalFSMAssets/actions",
+    "name": "TrialEndReachedPillar1",
+    "assetType": "action"
+  },
+  "12460b2e7d84e889dbbd7dc90a34d9b2": {
+    "path": "./generalFSMAssets/actions",
+    "name": "TrialStartCIrcularTeleport",
+    "assetType": "action"
+  },
+  "985238260ea189292949585f206b0071": {
+    "path": "./generalFSMAssets/actions",
+    "name": "VanillaTrialEnd",
+    "assetType": "action"
+  },
+  "a3fc53b4522f5d2b6ac291588a339175": {
+    "path": "./generalFSMAssets/actions",
+    "name": "VanillaTrialStart",
+    "assetType": "action"
+  },
+  "5e4b38b3964a61a429d5b5288ad0b1aa": {
+    "path": "./generalFSMAssets/actions",
+    "name": "WallZoneSlowing",
+    "assetType": "action"
+  },
+  "9edac44aadf0b8339b98a670a3db6a59": {
+    "path": "./generalFSMAssets/actions",
+    "name": "WithinInterTrialIntervalAction",
+    "assetType": "action"
+  },
+  "e83a37ecad1a0b2439d1710f78019537": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "RewardRecieved",
+    "assetType": "action"
+  }
+}
