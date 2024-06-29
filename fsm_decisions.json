@@ -1,0 +1,68 @@
+{
+  "198375a19614c002ea8dcdcccfcf1a48": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "AbortTrialConditionReached",
+    "assetType": "decision",
+    "switchDescription": "Abort trial condition reached?"
+  },
+  "10692e8a11e8d564183739b10fe60cfd": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "AlwaysTrue",
+    "assetType": "decision",
+    "switchDescription": "AutoTrue"
+  },
+  "7c14910906e0edb4ebff0adb0022dd7b": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "InWallZone",
+    "assetType": "decision",
+    "switchDescription": "Rat in wall zone (close to wall)?"
+  },
+  "541409748de4ecb29a4f14a7fe515740": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "InterTrialIntervalEnded",
+    "assetType": "decision",
+    "switchDescription": "Inter trial interval over?"
+  },
+  "7ff235ae597582b45b28b3914a451d0a": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "Pillar",
+    "assetType": "decision",
+    "switchDescription": "Rat under rewarded pillar?"
+  },
+  "3efc4683b409d7e338f0b492a5070a89": {
+    "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
+    "name": "P0300_RatLeavePillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "ed1c5a33db048de27b33b42810a4de70": {
+    "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
+    "name": "P300_RatUnderActivePillarHexagon",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "f42e6b8d3c9af824f98321fdbd33d257": {
+    "path": "./paradigmFSMAssets/P0100_SpoutAssoc/paradigmActions",
+    "name": "P0100_RandomSuccessEntry",
+    "assetType": "decision",
+    "switchDescription": "Getting reward (50% chance)?"
+  },
+  "e9deb6185db05d04481304a7f7b2e389": {
+    "path": "./paradigmFSMAssets/P0400_4PillarDirected/paradigmDecisions",
+    "name": "P0400_RatLeavePillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "a9f041f21065c6ee7b8270c4905d7454": {
+    "path": "./paradigmFSMAssets/P0400_4PillarDirected/paradigmDecisions",
+    "name": "P400_RatUnderActivePillarHexagon",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "07fda078dc4a271b5a2ad97dfa4620c6": {
+    "path": "./paradigmFSMAssets/P0000_AutoLickReward/paradigmActions",
+    "name": "P0000_LickDetection",
+    "assetType": "decision",
+    "switchDescription": "Rat is licking?"
+  }
+}

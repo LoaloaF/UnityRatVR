@@ -81,4 +81,3 @@ public class UnityFrameLogger : MonoBehaviour
         unityOutputSHMInterface.Push("<{"+framePackage+"}>\r\n");
     }
 }
-

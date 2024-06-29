@@ -7562,7 +7562,7 @@ MonoBehaviour:
   ballForwardNormToCentimeter: 0.01542
   ballSidewaysNormToCentimeter: 0.01478
   ballRotatationNormToCentimeter: 0.01268667
-  enableBallInput: 0
+  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0

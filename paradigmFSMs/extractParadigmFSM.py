@@ -4,7 +4,6 @@ import json
 
 import numpy as np
 
-import networkx as nx
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -95,7 +94,8 @@ def extractFromFiles(assets, assetfiles, assetmetafiles, path, full_path):
         asset = processAssetFileLines(asset, all_lines)
         assets.append(asset)
             
-def extractAssets(PATH):
+def extractAssets(PATH, with_vis=False):
+    # recursively go through all the directories and extract the assets
     def procress_dir(path):
         print("procress_dir with path: ", path)
         full_path = os.path.join(PATH, path)
@@ -143,7 +143,7 @@ def extractAssets(PATH):
         json.dump(actions, f, indent=2)
     
     
-    # print("\n\nS`TATES")
+    # print("\n\n`STATES")
     # print(json.dumps(states, indent=2))
     # print("\n\nTRANSITIONS")
     # print(json.dumps(transitions, indent=2))
@@ -158,11 +158,13 @@ def extractAssets(PATH):
             which_paradigm = state["paradigm"]
             print(which_paradigm)
             if which_paradigm == -100:
+                print("which_paradigm == -100 !")
                 # TODO FIX
                 continue
             paradigm_states = {guid: state for guid, state in states.items() 
                                if state['paradigm']==which_paradigm}
-            visualizeFSM(paradigm_states, transitions, decisions, actions, paradigm=which_paradigm)
+            if with_vis:
+                visualizeFSM(paradigm_states, transitions, decisions, actions, paradigm=which_paradigm)
 
 
 def visualizeFSM(states, transitions, decisions, actions, paradigm):
@@ -216,8 +218,14 @@ def visualizeFSM(states, transitions, decisions, actions, paradigm):
     plt.show()
     
 def main():
-    PATH = "../../Assets/scripts/FSMAssets"
-    extractAssets(PATH)
+    PATH = "./Assets/scripts/FSMAssets"
+    try:
+        import networkx as nx
+        with_vis = True
+    except ImportError:
+        print("Networkx not installed. Skipping visualization")
+        with_vis = False
+    extractAssets(PATH, with_vis=with_vis)
     
 if __name__ == "__main__":
     main()
