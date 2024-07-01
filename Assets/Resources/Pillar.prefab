@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerDetected: 0
-  detectionBoxSize: {x: 0, y: 0, z: 0}
   stateMachine: {fileID: 0}
 --- !u!114 &8450681199531489726
 MonoBehaviour:
@@ -64,6 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73503552273ca213dbf91ec10ab11de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childcount: 0
+  height: 0
+  frequency: 0
   stateMachine: {fileID: 0}
 --- !u!54 &6110841756957269189
 Rigidbody:

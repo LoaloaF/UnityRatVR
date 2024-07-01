@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
   m_Name: P0400_4PillarDirected
   m_EditorClassIdentifier: 
-  stateID: 200
+  stateID: 400
   Action:
   - {fileID: 11400000, guid: 436aa0f33bf7cf2cdaf01f7002b4beee, type: 2}
   Transitions:

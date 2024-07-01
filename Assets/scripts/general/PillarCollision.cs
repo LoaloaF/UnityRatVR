@@ -6,22 +6,28 @@ using FSM;
 public class PillarCollision : MonoBehaviour
 {
     public bool PlayerDetected;
-    public Vector3 detectionBoxSize;
+    private float colliderRadius;
+    private Vector3 colliderBottomPoint;
+    private Vector3 colliderTopPoint;
     private bool playerDetected;
     public BaseStateMachine stateMachine;
-    // Start is called before the first frame update
+
     void Start()
     {
         PlayerDetected = false;
         Transform ColliderTransform = transform.Find("Collider");
-        detectionBoxSize = new Vector3(ColliderTransform.localScale.x / 1.5f, transform.localPosition.y*2, ColliderTransform.localScale.z / 1.5f);
+        colliderRadius = ColliderTransform.localScale.x / 2 / 1.5f ;
+        colliderTopPoint = new Vector3(ColliderTransform.position.x, transform.localPosition.y*2, ColliderTransform.position.z);
+        colliderBottomPoint = new Vector3(ColliderTransform.position.x, 0, ColliderTransform.position.z);
+        
         stateMachine = GetComponentInParent<BaseStateMachine>();
     }
 
     // void OnDrawGizmos()
     // {
     //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireCube(transform.position, detectionBoxSize);
+    //     Gizmos.DrawWireSphere(colliderBottomPoint, colliderRadius);
+    //     Gizmos.DrawWireSphere(colliderTopPoint, colliderRadius);
     // }
 
     // Update is called once per frame
@@ -34,7 +40,8 @@ public class PillarCollision : MonoBehaviour
         }
         
         playerDetected = false;
-        Collider[] hitColliders = Physics.OverlapBox(transform.position, detectionBoxSize / 2);
+        // Collider[] hitColliders = Physics.OverlapBox(transform.position, detectionBoxSize / 2);
+        Collider[] hitColliders = Physics.OverlapCapsule(colliderBottomPoint, colliderTopPoint, colliderRadius);
 
         foreach (Collider collider in hitColliders)
         {

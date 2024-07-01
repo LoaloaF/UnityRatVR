@@ -26,7 +26,7 @@ public class renderOutputLogger : MonoBehaviour
     {
         _stateMachine = ExperimentCore.GetComponent<BaseStateMachine>();
         unityCameraSHMInterface = new VideoFrameSHMInterface("unitycam_shmstruct.json");
-        texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
+        texture = new Texture2D(1000, 800, TextureFormat.RGB24, false, true);
     }
 
 
@@ -66,10 +66,10 @@ public class renderOutputLogger : MonoBehaviour
     {
         // Ensure the finalTexture is not null and has the correct size
         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-        texture = new Texture2D(1070, 800, TextureFormat.RGB24, false, true);
+        texture = new Texture2D(1000, 800, TextureFormat.RGB24, false, true);
         // Read RenderTexture data into the Texture2D
         RenderTexture.active = finalTexture;
-        texture.ReadPixels(new Rect(450, 250, 1000, 800), 0, 0);
+        texture.ReadPixels(new Rect(460, 250, 1000, 800), 0, 0);
         texture.Apply();
 
 

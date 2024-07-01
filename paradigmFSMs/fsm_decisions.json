@@ -1,0 +1,62 @@
+{
+  "8e3edc604172f5b41a804489fff20984": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "AbortSequenceEnded",
+    "assetType": "decision",
+    "switchDescription": "Abort time interval over?"
+  },
+  "10692e8a11e8d564183739b10fe60cfd": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "AlwaysTrue",
+    "assetType": "decision",
+    "switchDescription": "AutoTrue"
+  },
+  "7c14910906e0edb4ebff0adb0022dd7b": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "InWallZone",
+    "assetType": "decision",
+    "switchDescription": "Rat in wall zone (close to wall)?"
+  },
+  "541409748de4ecb29a4f14a7fe515740": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "InterTrialIntervalEnded",
+    "assetType": "decision",
+    "switchDescription": "Inter trial interval over?"
+  },
+  "07fda078dc4a271b5a2ad97dfa4620c6": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "LickDetection",
+    "assetType": "decision",
+    "switchDescription": "Rat is licking?"
+  },
+  "f42e6b8d3c9af824f98321fdbd33d257": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "RandomSuccessEntry",
+    "assetType": "decision",
+    "switchDescription": "Getting reward (50% chance)?"
+  },
+  "7ff235ae597582b45b28b3914a451d0a": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "Pillar",
+    "assetType": "decision",
+    "switchDescription": "Rat under rewarded pillar?"
+  },
+  "d881c58ab5d1bc12bbdd5ebce78c382a": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "SuccessSequenceEnded",
+    "assetType": "decision",
+    "switchDescription": "Success Sequence time interval over?"
+  },
+  "198375a19614c002ea8dcdcccfcf1a48": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "abortTrialConditionReached",
+    "assetType": "decision",
+    "switchDescription": "Abort trial condition reached?"
+  },
+  "eb4f01683595b76deba9b2b9f4e711a8": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "sessionEnded",
+    "assetType": "decision",
+    "switchDescription": "Session ended user input?"
+  }
+}
