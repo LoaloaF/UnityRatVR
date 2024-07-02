@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/TrialInitHexagon")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0300/TrialInitHexagon")]
 
     public class TrialInitHexagon : FSMAction
     {
@@ -29,6 +29,8 @@ namespace Experiment.ExperimentFSM
             LandmarkFollowPlayer landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
+            landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall6"];
+
 
             landmark = Instantiate(LandmarkObject);
             landmark.name = "LandmarkY";
@@ -39,6 +41,8 @@ namespace Experiment.ExperimentFSM
             landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
+                    landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall7"];
+
 
             landmark = Instantiate(LandmarkObject);
             landmark.name = "LandmarkX";
@@ -49,6 +53,8 @@ namespace Experiment.ExperimentFSM
             landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
+            landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall8"];
+
 
             landmark = Instantiate(LandmarkObject);
             landmark.name = "LandmarkX";
@@ -59,6 +65,7 @@ namespace Experiment.ExperimentFSM
             landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
+            landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall3"];
 
 
 

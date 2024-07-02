@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/CenterTeleport")]
+    [CreateAssetMenu(menuName = "FSM/Actions/General/CenterTeleport")]
 
     public class CenterTeleport : FSMAction
     {

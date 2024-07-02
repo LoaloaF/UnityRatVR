@@ -8,7 +8,7 @@ using RatVR.Scene;
 namespace Experiment.ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/WithinInterTrialIntervalAction")]
+    [CreateAssetMenu(menuName = "FSM/Actions/General/WithinInterTrialIntervalAction")]
     public class WithinInterTrialIntervalAction : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)

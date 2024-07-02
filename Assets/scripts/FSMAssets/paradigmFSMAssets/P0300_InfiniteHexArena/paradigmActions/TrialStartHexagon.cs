@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/TrialStartHexagon")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0300/TrialStartHexagon")]
 
     public class TrialStartHexagon : FSMAction
     {

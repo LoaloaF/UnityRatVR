@@ -7,7 +7,7 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/NotInWallZone")]
+     [CreateAssetMenu(menuName = "FSM/Decisions/General/NotInWallZone")]
     public class NotInWallZone : Decision
     {
         public override bool Decide(BaseStateMachine stateMachine)

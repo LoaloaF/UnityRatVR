@@ -9,7 +9,7 @@ using RatVR.Scene;
 namespace Experiment.ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/PillarBlinking")]
+    [CreateAssetMenu(menuName = "FSM/Actions/General/PillarBlinking")]
     public class PillarBlinking : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)

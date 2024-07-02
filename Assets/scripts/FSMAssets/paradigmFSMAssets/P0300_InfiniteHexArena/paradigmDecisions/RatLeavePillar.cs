@@ -8,7 +8,7 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/RatLeavePillar")]
+     [CreateAssetMenu(menuName = "FSM/Decisions/P0300/RatLeavePillar")]
     public class RatLeavePillar : Decision
     {
 

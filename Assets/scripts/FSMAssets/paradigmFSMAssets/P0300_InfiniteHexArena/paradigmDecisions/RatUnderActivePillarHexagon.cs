@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 namespace Experiment.ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/RatUnderActivePillarHexagon")]
+    [CreateAssetMenu(menuName = "FSM/Decisions/P0300/RatUnderActivePillarHexagon")]
     public class RatUnderActivePillarHexagon : Decision
     {
 

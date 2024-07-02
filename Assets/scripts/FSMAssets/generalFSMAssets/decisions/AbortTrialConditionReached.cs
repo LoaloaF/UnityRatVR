@@ -8,7 +8,7 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/AbortTrialConditionReached")]
+     [CreateAssetMenu(menuName = "FSM/Decisions/General/AbortTrialConditionReached")]
     public class AbortTrialConditionReached : Decision
     {
         private float timer;

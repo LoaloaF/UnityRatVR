@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/RandomSccessEntry")]
+    [CreateAssetMenu(menuName = "FSM/Decisions/P0100/RandomSccessEntry")]
     public class RandomSccessEntry : Decision
     {
         private float timer = 0f;
