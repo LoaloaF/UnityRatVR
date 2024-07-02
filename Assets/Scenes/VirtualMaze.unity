@@ -749,12 +749,14 @@ MonoBehaviour:
     - P0200_GoalDirectedMovement
     - P0300_InfiniteHexArena
     - P0400_4PillarDirected
+    - P0600_mlGym
     values:
     - {fileID: 11400000, guid: c8d4bd75c8fff52108547c26e2824e3e, type: 2}
     - {fileID: 11400000, guid: ae9a7e14d28bf944d80499df384f57de, type: 2}
     - {fileID: 11400000, guid: 7bf4fc9380da1639ba44312747c64876, type: 2}
     - {fileID: 11400000, guid: fae83d961fb2d29efa76976a002fb43f, type: 2}
     - {fileID: 11400000, guid: 6c05c2a23f571d126b629ce726b418f2, type: 2}
+    - {fileID: 11400000, guid: 9d88dce87923b4ad1bc94112aa030920, type: 2}
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
