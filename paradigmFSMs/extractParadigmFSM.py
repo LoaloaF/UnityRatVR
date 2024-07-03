@@ -1,6 +1,6 @@
 import os
-import glob
 import json
+from collections import OrderedDict
 
 import numpy as np
 
@@ -90,7 +90,8 @@ def extractFromFiles(assets, assetfiles, assetmetafiles, path, full_path):
         if asset["name"].endswith("RemainInState"):
             global REMAIN_IN_STATE_GUID
             REMAIN_IN_STATE_GUID = asset["guid"]
-            return {}
+            continue
+            # return {}
         asset = processAssetFileLines(asset, all_lines)
         assets.append(asset)
             
@@ -126,12 +127,17 @@ def extractAssets(PATH, with_vis=False):
             decisions.update({ass.pop("guid"): ass})
         if ass["assetType"] == "action":
             actions.update({ass.pop("guid"): ass})
+    
+    states = OrderedDict(sorted(states.items(), key=lambda k: k[1]['name']))
+    transitions = OrderedDict(sorted(transitions.items(), key=lambda x: x[1]['name']))
+    decisions = OrderedDict(sorted(decisions.items(), key=lambda x: x[1]['name']))
+    actions = OrderedDict(sorted(actions.items(), key=lambda x: x[1]['name']))
 
-    print(f"\n\nStates:\n {', '.join([v['name'] for v in list(states.values())])}"
-          f"\n\nTransitions:\n {', '.join([v['name'] for v in list(transitions.values())])}"
-          f"\n\nDecisions:\n {', '.join([v['name'] for v in list(decisions.values())])}"
-          f"\n\nActions:\n {', '.join([v['name'] for v in list(actions.values())])}"
-          )
+    print(f"\n\nStates:\n {', '.join([v['name'] for v in states.values()])}"
+        f"\n\nTransitions:\n {', '.join([v['name'] for v in transitions.values()])}"
+        f"\n\nDecisions:\n {', '.join([v['name'] for v in decisions.values()])}"
+        f"\n\nActions:\n {', '.join([v['name'] for v in actions.values()])}"
+        )
     
     with open('fsm_states.json', 'w') as f:
         json.dump(states, f, indent=2)
@@ -219,7 +225,7 @@ def visualizeFSM(states, transitions, decisions, actions, paradigm):
     plt.show()
     
 def main():
-    PATH = "./Assets/scripts/FSMAssets"
+    PATH = "../Assets/scripts/FSMAssets"
     try:
         import networkx as nx
         with_vis = True

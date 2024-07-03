@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571fc986c04dd1fe6a3895be6f0cc0ec, type: 3}
   m_Name: NotInWallZone
   m_EditorClassIdentifier: 
+  switchDescription: WTF
