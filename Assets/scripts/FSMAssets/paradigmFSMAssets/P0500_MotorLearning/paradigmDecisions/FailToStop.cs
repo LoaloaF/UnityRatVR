@@ -12,11 +12,12 @@ namespace Experiment.ExperimentFSM
     public class FailToStop : Decision
     {
         public MovementInQueue movementInQueue;
-        [SerializeField] private float stopTime;
+        private float stopTime;
         private float timer = 0f;
         private int currentTrialID = -1;
         public override bool Decide(BaseStateMachine stateMachine)
         {
+            stopTime = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
             if (currentTrialID != stateMachine._sessionManager._currentTrialID)
             {
                 currentTrialID = stateMachine._sessionManager._currentTrialID;
