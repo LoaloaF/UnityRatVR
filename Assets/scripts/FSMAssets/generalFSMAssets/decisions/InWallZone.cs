@@ -21,8 +21,8 @@ namespace Experiment.ExperimentFSM
             if (!(Math.Abs(playerPos.x) > nonWallZone.x || Math.Abs(playerPos.y) > nonWallZone.y))
                 stateMachine.Player.GetComponent<PlayerMovement>().gain = new Vector3(1f, 1f, 1f);
 
-            if ((Math.Abs(playerPos.x) > nonWallZone.x || Math.Abs(playerPos.y) > nonWallZone.y))
-                AudioManager.instance.PlayNoise();
+            // if ((Math.Abs(playerPos.x) > nonWallZone.x || Math.Abs(playerPos.y) > nonWallZone.y))
+            //     AudioManager.instance.PlayNoise();
             return (Math.Abs(playerPos.x) > nonWallZone.x || Math.Abs(playerPos.y) > nonWallZone.y);
         }
 

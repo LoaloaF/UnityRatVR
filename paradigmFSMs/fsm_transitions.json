@@ -335,6 +335,110 @@
     "truestate": "a17c8f2aff83623c687996dbf8fb3eac",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
+  "a3ed5d1c1fa35cee7879de048a79b56a": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0501_TrialStart",
+    "assetType": "transition",
+    "decision": "541409748de4ecb29a4f14a7fe515740",
+    "truestate": "b4e446d94bb3240ff9ce278b36144542",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "fe7f2c03e1d23eb85988b95113afe99e": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0502_WithinTrial",
+    "assetType": "transition",
+    "decision": "10692e8a11e8d564183739b10fe60cfd",
+    "truestate": "c0e7f903ac7870bca94d0023945dcc12",
+    "falsestate": []
+  },
+  "af3cdad19e95751f8af33fefef6c46a0": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0503_MovePhase",
+    "assetType": "transition",
+    "decision": "d71e9f680c1c8e46e98fd232707c1755",
+    "truestate": "af101f58c3e9a8e9988d65783283f3a6",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "17d92d473472735178c95f91d5a8e15a": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0504_StopPhase",
+    "assetType": "transition",
+    "decision": "a26d04fd279657afb80da813a77957db",
+    "truestate": "4fae3bd1ca390c208812f4a4c31135b3",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "6b0171263f2502012b6217de9ae3eabb": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0505_GracePeriod",
+    "assetType": "transition",
+    "decision": "c23cc47a55b86c832be9012dea1ba8fa",
+    "truestate": "b2920be31325cd8d39311ed8b9984798",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "2cc2693ec8c09c6e989dea4c43ad1079": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0506_SuccessEntry",
+    "assetType": "transition",
+    "decision": "9a287df020aecaa07bc307a520dec4c6",
+    "truestate": "70f017bddaa25e23781333cee25a95c8",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "bfbf2d0839d79e2a89cf7bcf4ca59d6c": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0507_WithinSuccessSequence",
+    "assetType": "transition",
+    "decision": "10692e8a11e8d564183739b10fe60cfd",
+    "truestate": "be517c33ab414f4b0a9cd531394a7987",
+    "falsestate": []
+  },
+  "187cff8c85c7aec189dfd32270b1f831": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0508_EarlyStop",
+    "assetType": "transition",
+    "decision": "9a287df020aecaa07bc307a520dec4c6",
+    "truestate": "78b76c264fc6eace9bc5f42073beacf8",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "9cd8c5feb2ea5bcb4af3839aa6d2e1dc": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0508_FailDirectedMove",
+    "assetType": "transition",
+    "decision": "c23cc47a55b86c832be9012dea1ba8fa",
+    "truestate": "78b76c264fc6eace9bc5f42073beacf8",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "9cb3f79145d96f02da579337cbc15a37": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0508_FailToStop",
+    "assetType": "transition",
+    "decision": "96c0f5b89f34191c6b0177eeac529cbd",
+    "truestate": "78b76c264fc6eace9bc5f42073beacf8",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "f4a74c2a18800b2c982c4757097c34c8": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0509_TrialEndSuccess",
+    "assetType": "transition",
+    "decision": "d881c58ab5d1bc12bbdd5ebce78c382a",
+    "truestate": "78d85e8d84aaab05cbc678f189b51b39",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "5ed132c70e04fec179a4de724b930c3f": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0510_WithinInterTrialInterval",
+    "assetType": "transition",
+    "decision": "10692e8a11e8d564183739b10fe60cfd",
+    "truestate": "c2ad1ab2795f65ea0b488572ae7d5897",
+    "falsestate": []
+  },
+  "1f99d848d26dccea3911fe35b9ae9313": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0511_SessionEnded",
+    "assetType": "transition",
+    "decision": "eb4f01683595b76deba9b2b9f4e711a8",
+    "truestate": "81f16af915420ad5e96d71063ba3c435",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
   "f8dcbbdd111d94c2d8a4213245d637fb": {
     "path": "./paradigmFSMAssets/P0600_mlGym/ParadigmTransitions",
     "name": "toS0602_WithinTrial",

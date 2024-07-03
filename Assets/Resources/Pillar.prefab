@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childcount: 0
-  height: 0
-  frequency: 0
+  height: 5
+  frequency: 0.5
   stateMachine: {fileID: 0}
 --- !u!54 &6110841756957269189
 Rigidbody:

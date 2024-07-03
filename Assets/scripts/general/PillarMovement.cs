@@ -14,8 +14,6 @@ public class PillarMovement : MonoBehaviour
     {
         stateMachine = GetComponentInParent<BaseStateMachine>();
         childcount = stateMachine.transform.childCount;
-        height = 5f;
-        frequency = 1f;
     }
 
     // Update is called once per frame

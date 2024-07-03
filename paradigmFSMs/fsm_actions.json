@@ -69,6 +69,36 @@
     "name": "P0400_TrialStart4Pillars",
     "assetType": "action"
   },
+  "52e5dcbe13c0b96dbb821c1aa901c1bf": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_MovementInQueue",
+    "assetType": "action"
+  },
+  "808f99f697e7db8b59a8ed5367359920": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_TrialEndFail",
+    "assetType": "action"
+  },
+  "763b4dee2933aa42c9e738a481fa79b1": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_TrialEndSuccess",
+    "assetType": "action"
+  },
+  "99c76f3dbc31d3548b7c3f6232455312": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_TrialInit",
+    "assetType": "action"
+  },
+  "3979625bbc5015e84a5bb6df2c8fe283": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_TrialStart",
+    "assetType": "action"
+  },
+  "61389b819a4aced9e87b9031da980ed1": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_WithinInterTrialStop",
+    "assetType": "action"
+  },
   "0e8b2833376afe627a325dec4bac5368": {
     "path": "./generalFSMAssets/actions",
     "name": "PillarBlinking",

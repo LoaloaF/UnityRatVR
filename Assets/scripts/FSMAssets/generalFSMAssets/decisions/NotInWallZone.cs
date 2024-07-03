@@ -19,8 +19,8 @@ namespace Experiment.ExperimentFSM
                                                stateMachine._sceneController.scene.Size.y*0.5f - stateMachine._sceneController.scene.WallZone);
 
 
-            if ((Math.Abs(playerPos.x) < nonWallZone.x && Math.Abs(playerPos.y) < nonWallZone.y))
-                AudioManager.instance.StopNoise();
+            // if ((Math.Abs(playerPos.x) < nonWallZone.x && Math.Abs(playerPos.y) < nonWallZone.y))
+            //     AudioManager.instance.StopNoise();
 
             return (Math.Abs(playerPos.x) < nonWallZone.x && Math.Abs(playerPos.y) < nonWallZone.y);
         }

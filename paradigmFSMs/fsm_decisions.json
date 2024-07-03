@@ -53,6 +53,48 @@
     "assetType": "decision",
     "switchDescription": ""
   },
+  "d71e9f680c1c8e46e98fd232707c1755": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_DirectedMovement",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "550f5b6de02a9f97d952183e888ad4d8": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_EarlyStop",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "c23cc47a55b86c832be9012dea1ba8fa": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_FailDirectedMovement",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "96c0f5b89f34191c6b0177eeac529cbd": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_FailToStop",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "a26d04fd279657afb80da813a77957db": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_MoveTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "9a287df020aecaa07bc307a520dec4c6": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_MovementStop",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "7e1c0a0ccd523af128cf3b3bbdb470ae": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_StopTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
   "ed1c5a33db048de27b33b42810a4de70": {
     "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
     "name": "P300_RatUnderActivePillarHexagon",
