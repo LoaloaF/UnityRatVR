@@ -13,7 +13,7 @@ namespace Experiment.ExperimentFSM
     {
         public MovementInQueue movementInQueue;
         public TrialStartMotorLearning trialStartMotorLearning;
-        public TimeReached stopTimeReached;
+        public TimeReached moveTimeReached;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             float moveThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["STH"]);
@@ -21,15 +21,18 @@ namespace Experiment.ExperimentFSM
 
             if (movementSum > moveThreshold)
             {
-                trialStartMotorLearning.rawMovementQueue.Clear();
-                trialStartMotorLearning.yawMovementQueue.Clear();
-                trialStartMotorLearning.pitchMovementQueue.Clear();
-                stopTimeReached.timer = 0;
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                trialStartMotorLearning.rawMovementQueue.Clear();
+                trialStartMotorLearning.yawMovementQueue.Clear();
+                trialStartMotorLearning.pitchMovementQueue.Clear();
+                trialStartMotorLearning.rawMovementQueue.Enqueue(0);
+                trialStartMotorLearning.yawMovementQueue.Enqueue(0);
+                trialStartMotorLearning.pitchMovementQueue.Enqueue(0);
+                moveTimeReached.timer = 0;
+                return true;
             }
         }
 

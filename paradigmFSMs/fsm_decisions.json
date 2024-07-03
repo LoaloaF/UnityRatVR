@@ -67,6 +67,12 @@
   },
   "c23cc47a55b86c832be9012dea1ba8fa": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_FailDirectedAndReset",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "7f7dcbad1447ee2d99171283ddf2ce46": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
     "name": "P0500_FailDirectedMovement",
     "assetType": "decision",
     "switchDescription": ""

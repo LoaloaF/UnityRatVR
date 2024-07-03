@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5610f25467ed4964dbae9879d5ca74b8, type: 3}
-  m_Name: P0500_EarlyStop
+  m_Script: {fileID: 11500000, guid: 292b7c998cf53bc1c941f62dcf4c6faa, type: 3}
+  m_Name: P0500_FailDirectedAndReset
   m_EditorClassIdentifier: 
   switchDescription: 
-  movementInQueue: {fileID: 11400000, guid: 52e5dcbe13c0b96dbb821c1aa901c1bf, type: 2}
   trialStartMotorLearning: {fileID: 11400000, guid: 3979625bbc5015e84a5bb6df2c8fe283, type: 2}
   moveTimeReached: {fileID: 11400000, guid: a26d04fd279657afb80da813a77957db, type: 2}

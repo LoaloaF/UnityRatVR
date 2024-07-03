@@ -8,12 +8,11 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/P0500/DirectedMovement")]
-    public class DirectedMovement : Decision
+     [CreateAssetMenu(menuName = "FSM/Decisions/P0500/FailDirectedAndReset")]
+    public class FailDirectedAndReset : Decision
     {
         public TrialStartMotorLearning trialStartMotorLearning;
-        public bool returnTrue;
-
+        public TimeReached moveTimeReached;
         private float rawMovementSum;
         private float yawMovementSum;
         private float pitchMovementSum;
@@ -25,36 +24,30 @@ namespace Experiment.ExperimentFSM
             int checkYaw = int.Parse(stateMachine._sessionManager.trialVariablesDict["Y"]);
             int checkPitch = int.Parse(stateMachine._sessionManager.trialVariablesDict["P"]);
 
-            if (checkRaw == 1)
-                rawMovementSum = CalculateQueueSum(trialStartMotorLearning.rawMovementQueue);
-            else
-                rawMovementSum = 0;
-            
-            if (checkYaw == 1)
-                yawMovementSum = CalculateQueueSum(trialStartMotorLearning.yawMovementQueue);
-            else
-                yawMovementSum = 0;
-            
-            if (checkPitch == 1)
-                pitchMovementSum = CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue);
-            else
-                pitchMovementSum = 0;
+            rawMovementSum = CalculateQueueSum(trialStartMotorLearning.rawMovementQueue);
+            yawMovementSum = CalculateQueueSum(trialStartMotorLearning.yawMovementQueue);
+            pitchMovementSum = CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue);
 
             float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
-            Debug.Log($"rawMovementSum: {rawMovementSum/movementSum}, yawMovementSum: {yawMovementSum/movementSum}, pitchMovementSum: {pitchMovementSum/movementSum}");
 
 
             if ((checkRaw == 1 && rawMovementSum/movementSum > moveThreshold) || 
                 (checkYaw == 1 && yawMovementSum/movementSum > moveThreshold) ||
                 (checkPitch == 1 && pitchMovementSum/movementSum > moveThreshold))
             {
-                return returnTrue;
+                return false;
             }
             else
             {
-                return !returnTrue;
+                trialStartMotorLearning.rawMovementQueue.Clear();
+                trialStartMotorLearning.yawMovementQueue.Clear();
+                trialStartMotorLearning.pitchMovementQueue.Clear();
+                trialStartMotorLearning.rawMovementQueue.Enqueue(0);
+                trialStartMotorLearning.yawMovementQueue.Enqueue(0);
+                trialStartMotorLearning.pitchMovementQueue.Enqueue(0);
+                moveTimeReached.timer = 0;
+                return true;
             }
-
         }
 
         private float CalculateQueueSum(Queue<float> queue)

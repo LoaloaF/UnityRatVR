@@ -343,6 +343,22 @@
     "truestate": "b4e446d94bb3240ff9ce278b36144542",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
+  "187cff8c85c7aec189dfd32270b1f831": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0502_EarlyStop",
+    "assetType": "transition",
+    "decision": "550f5b6de02a9f97d952183e888ad4d8",
+    "truestate": "c0e7f903ac7870bca94d0023945dcc12",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "9cd8c5feb2ea5bcb4af3839aa6d2e1dc": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
+    "name": "toS0502_FailDirectedMove",
+    "assetType": "transition",
+    "decision": "c23cc47a55b86c832be9012dea1ba8fa",
+    "truestate": "c0e7f903ac7870bca94d0023945dcc12",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
   "fe7f2c03e1d23eb85988b95113afe99e": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
     "name": "toS0502_WithinTrial",
@@ -371,7 +387,7 @@
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
     "name": "toS0505_GracePeriod",
     "assetType": "transition",
-    "decision": "c23cc47a55b86c832be9012dea1ba8fa",
+    "decision": "7f7dcbad1447ee2d99171283ddf2ce46",
     "truestate": "b2920be31325cd8d39311ed8b9984798",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
@@ -390,22 +406,6 @@
     "decision": "10692e8a11e8d564183739b10fe60cfd",
     "truestate": "be517c33ab414f4b0a9cd531394a7987",
     "falsestate": []
-  },
-  "187cff8c85c7aec189dfd32270b1f831": {
-    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
-    "name": "toS0508_EarlyStop",
-    "assetType": "transition",
-    "decision": "9a287df020aecaa07bc307a520dec4c6",
-    "truestate": "78b76c264fc6eace9bc5f42073beacf8",
-    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
-  },
-  "9cd8c5feb2ea5bcb4af3839aa6d2e1dc": {
-    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
-    "name": "toS0508_FailDirectedMove",
-    "assetType": "transition",
-    "decision": "c23cc47a55b86c832be9012dea1ba8fa",
-    "truestate": "78b76c264fc6eace9bc5f42073beacf8",
-    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
   "9cb3f79145d96f02da579337cbc15a37": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmTransitions",
