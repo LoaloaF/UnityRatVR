@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c95b6c85d4682d33bf97e5a9edfaebc, type: 3}
   m_Name: P0500_MovementInQueue
   m_EditorClassIdentifier: 
-  trialInitMotorLearning: {fileID: 11400000, guid: 99c76f3dbc31d3548b7c3f6232455312, type: 2}
+  trialStartMotorLearning: {fileID: 11400000, guid: 3979625bbc5015e84a5bb6df2c8fe283, type: 2}
+  rawMovementTemp: 0
+  yawMovementTemp: 0
+  pitchMovementTemp: 0

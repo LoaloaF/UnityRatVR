@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0504_StopPhase
+  m_Name: S0505_GracePeriod
   m_EditorClassIdentifier: 
-  stateID: 504
+  stateID: 505
   Action:
   - {fileID: 11400000, guid: 52e5dcbe13c0b96dbb821c1aa901c1bf, type: 2}
   Transitions:
   - {fileID: 11400000, guid: 2cc2693ec8c09c6e989dea4c43ad1079, type: 2}
-  - {fileID: 11400000, guid: 6b0171263f2502012b6217de9ae3eabb, type: 2}
+  - {fileID: 11400000, guid: 9cb3f79145d96f02da579337cbc15a37, type: 2}
   - {fileID: 11400000, guid: 1f99d848d26dccea3911fe35b9ae9313, type: 2}

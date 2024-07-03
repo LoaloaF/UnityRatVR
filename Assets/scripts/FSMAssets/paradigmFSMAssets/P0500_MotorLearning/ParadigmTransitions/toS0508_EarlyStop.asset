@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS0501_TrialStartAfterInit
+  m_Name: toS0508_EarlyStop
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 015f9f8ed46a4dcaa8d505a892dec0be, type: 2}
-  TrueState: {fileID: 11400000, guid: b4e446d94bb3240ff9ce278b36144542, type: 2}
+  Decision: {fileID: 11400000, guid: 9a287df020aecaa07bc307a520dec4c6, type: 2}
+  TrueState: {fileID: 11400000, guid: 78b76c264fc6eace9bc5f42073beacf8, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

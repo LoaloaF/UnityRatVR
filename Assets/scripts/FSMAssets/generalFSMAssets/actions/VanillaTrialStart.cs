@@ -11,9 +11,7 @@ namespace Experiment.ExperimentFSM
     [CreateAssetMenu(menuName = "FSM/Actions/General/VanillaTrialStart")]
 
     public class VanillaTrialStart : FSMAction
-    {
-        private float pillarAngle;
-     
+    {     
         public override void Execute(BaseStateMachine stateMachine)
         {
             stateMachine._sessionManager.newTrial();

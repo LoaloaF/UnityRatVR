@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0505_SuccessEntry
+  m_Name: S0510_WithinInterTrialInterval
   m_EditorClassIdentifier: 
-  stateID: 505
-  Action:
-  - {fileID: 11400000, guid: cb4967b7e09f2484889874cb70209169, type: 2}
+  stateID: 510
+  Action: []
   Transitions:
-  - {fileID: 11400000, guid: bfbf2d0839d79e2a89cf7bcf4ca59d6c, type: 2}
+  - {fileID: 11400000, guid: a3ed5d1c1fa35cee7879de048a79b56a, type: 2}

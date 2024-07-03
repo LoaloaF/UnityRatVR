@@ -11,16 +11,16 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/P0500/DirectedMovement")]
     public class DirectedMovement : Decision
     {
-        public TrialInitMotorLearning trialInitMotorLearning;
+        public TrialStartMotorLearning trialStartMotorLearning;
         [SerializeField] private bool returnTrue;
 
         public override bool Decide(BaseStateMachine stateMachine)
         {
             float moveThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["MTH"]);
 
-            float rawMovementSum = CalculateQueueSum(trialInitMotorLearning.rawMovementQueue);
-            float yawMovementSum = CalculateQueueSum(trialInitMotorLearning.yawMovementQueue);
-            float pitchMovementSum = CalculateQueueSum(trialInitMotorLearning.pitchMovementQueue);
+            float rawMovementSum = CalculateQueueSum(trialStartMotorLearning.rawMovementQueue);
+            float yawMovementSum = CalculateQueueSum(trialStartMotorLearning.yawMovementQueue);
+            float pitchMovementSum = CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue);
             float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
             Debug.Log($"rawMovementSum: {rawMovementSum/movementSum}, yawMovementSum: {yawMovementSum/movementSum}, pitchMovementSum: {pitchMovementSum/movementSum}");
 

@@ -12,9 +12,6 @@ namespace Experiment.ExperimentFSM
 
     public class TrialInitMotorLearning : FSMAction
     {
-        public Queue<float> rawMovementQueue;
-        public Queue<float> yawMovementQueue;
-        public Queue<float> pitchMovementQueue;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -40,21 +37,8 @@ namespace Experiment.ExperimentFSM
             stateMachine._playerMovement.DisableMovement();
             stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);
 
-
-            rawMovementQueue.Enqueue(stateMachine._playerMovement.XYZvelInput[0] * 
-                                     stateMachine._playerMovement.ballForwardNormToCentimeter);
-            yawMovementQueue.Enqueue(stateMachine._playerMovement.XYZvelInput[1] *
-                                     stateMachine._playerMovement.ballSidewaysNormToCentimeter);
-            pitchMovementQueue.Enqueue(stateMachine._playerMovement.XYZvelInput[2] *
-                                       stateMachine._playerMovement.ballRotatationNormToCentimeter);
         }
 
-        private void OnEnable() 
-        {
-            rawMovementQueue = new Queue<float>();
-            yawMovementQueue = new Queue<float>();
-            pitchMovementQueue = new Queue<float>();
-        }
 
     }
 }

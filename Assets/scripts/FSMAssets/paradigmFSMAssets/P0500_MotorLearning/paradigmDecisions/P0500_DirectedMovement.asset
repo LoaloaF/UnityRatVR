@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: P0500_DirectedMovement
   m_EditorClassIdentifier: 
   switchDescription: 
-  trialInitMotorLearning: {fileID: 11400000, guid: 99c76f3dbc31d3548b7c3f6232455312, type: 2}
+  trialStartMotorLearning: {fileID: 11400000, guid: 3979625bbc5015e84a5bb6df2c8fe283, type: 2}
   returnTrue: 1

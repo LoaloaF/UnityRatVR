@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb553bf2b1b3c0779f8b6bda0d1212d, type: 3}
-  m_Name: P0500_TrialInitMotorLearning
+  m_Script: {fileID: 11500000, guid: 1629329261fb9756cbe927e8bb54f60b, type: 3}
+  m_Name: P0500_TrialEndFail
   m_EditorClassIdentifier: 
-  movementAccumulation:
-  - 0
-  - 0
-  - 0

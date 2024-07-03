@@ -12,24 +12,24 @@ namespace Experiment.ExperimentFSM
 
     public class MovementInQueue : FSMAction
     {
-        public TrialInitMotorLearning trialInitMotorLearning;
+        public TrialStartMotorLearning trialStartMotorLearning;
         public float rawMovementTemp;
         public float yawMovementTemp;
         public float pitchMovementTemp;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            trialInitMotorLearning.rawMovementQueue.Dequeue();
-            trialInitMotorLearning.yawMovementQueue.Dequeue();
-            trialInitMotorLearning.pitchMovementQueue.Dequeue();
+            trialStartMotorLearning.rawMovementQueue.Dequeue();
+            trialStartMotorLearning.yawMovementQueue.Dequeue();
+            trialStartMotorLearning.pitchMovementQueue.Dequeue();
 
             rawMovementTemp = stateMachine._playerMovement.XYZvelInput[0] * stateMachine._playerMovement.ballForwardNormToCentimeter;
             yawMovementTemp = stateMachine._playerMovement.XYZvelInput[1] * stateMachine._playerMovement.ballSidewaysNormToCentimeter;
             pitchMovementTemp = stateMachine._playerMovement.XYZvelInput[2] * stateMachine._playerMovement.ballRotatationNormToCentimeter;
 
-            trialInitMotorLearning.rawMovementQueue.Enqueue(rawMovementTemp);
-            trialInitMotorLearning.yawMovementQueue.Enqueue(yawMovementTemp);
-            trialInitMotorLearning.pitchMovementQueue.Enqueue(pitchMovementTemp);
+            trialStartMotorLearning.rawMovementQueue.Enqueue(rawMovementTemp);
+            trialStartMotorLearning.yawMovementQueue.Enqueue(yawMovementTemp);
+            trialStartMotorLearning.pitchMovementQueue.Enqueue(pitchMovementTemp);
         }
 
     }
