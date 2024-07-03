@@ -749,12 +749,14 @@ MonoBehaviour:
     - P0200_GoalDirectedMovement
     - P0300_InfiniteHexArena
     - P0400_4PillarDirected
+    - P0500_MotorLearning
     values:
     - {fileID: 11400000, guid: c8d4bd75c8fff52108547c26e2824e3e, type: 2}
     - {fileID: 11400000, guid: ae9a7e14d28bf944d80499df384f57de, type: 2}
     - {fileID: 11400000, guid: 7bf4fc9380da1639ba44312747c64876, type: 2}
     - {fileID: 11400000, guid: fae83d961fb2d29efa76976a002fb43f, type: 2}
     - {fileID: 11400000, guid: 6c05c2a23f571d126b629ce726b418f2, type: 2}
+    - {fileID: 11400000, guid: 8e26e788de6498762a52cab213269661, type: 2}
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +794,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0400_4PillarDirected
+  paradigm_name: P0500_MotorLearning
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7559,9 +7561,10 @@ MonoBehaviour:
   gain: {x: 1, y: 1, z: 1}
   firstPackID: 0
   lastPackID: 0
-  ballForwardNormToCentimeter: 0.01542
-  ballSidewaysNormToCentimeter: 0.01478
-  ballRotatationNormToCentimeter: 0.01268667
+  XYZvelInput: 000000000000000000000000
+  ballForwardNormToCentimeter: 0.001542
+  ballSidewaysNormToCentimeter: 0.001478
+  ballRotatationNormToCentimeter: 0.001268667
   enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:

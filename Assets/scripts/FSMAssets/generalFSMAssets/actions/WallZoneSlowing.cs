@@ -8,7 +8,7 @@ using RatVR.Scene;
 namespace Experiment.ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/SlowDownAction")]
+    [CreateAssetMenu(menuName = "FSM/Actions/General/SlowDownAction")]
     public class SlowDownAction : FSMAction
     {
         private Vector3 caculatedGain;

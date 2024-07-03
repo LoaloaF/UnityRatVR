@@ -8,7 +8,7 @@ using RatVR.Scene;
 namespace Experiment.ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/SessionEndedAction")]
+    [CreateAssetMenu(menuName = "FSM/Actions/General/SessionEndedAction")]
     public class SessionEndedAction : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)

@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/TrialStartCircularTeleport")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0200/TrialStartCircularTeleport")]
 
     public class TrialStartCircularTeleport : FSMAction
     {

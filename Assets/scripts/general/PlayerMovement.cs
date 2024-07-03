@@ -11,9 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 gain = new Vector3(1f, 1f, 1f);
     [HideInInspector] public int firstPackID;
     [HideInInspector] public int lastPackID;
+    [HideInInspector] public int[] XYZvelInput = new int[3];
 
     private bool movementEnabled = false;
-    private int[] XYZvelInput = new int[3];
     private float rotY = 0f;
     private string log;
 

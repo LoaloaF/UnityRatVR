@@ -8,7 +8,7 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/SuccessSequenceEnded")]
+     [CreateAssetMenu(menuName = "FSM/Decisions/General/SuccessSequenceEnded")]
     public class SuccessSequenceEnded : Decision
     {
         private float timer = 0f;

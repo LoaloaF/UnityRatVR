@@ -8,7 +8,7 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/SessionEnded")]
+     [CreateAssetMenu(menuName = "FSM/Decisions/General/SessionEnded")]
     public class SessionEnded : Decision
     {
         public override bool Decide(BaseStateMachine stateMachine)

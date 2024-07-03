@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/LickDetection")]
+    [CreateAssetMenu(menuName = "FSM/Decisions/P0000/LickDetection")]
     public class LickDetection : Decision
     {
         public double threshold = 1;

@@ -168,6 +168,7 @@ def extractAssets(PATH, with_vis=False):
 
 
 def visualizeFSM(states, transitions, decisions, actions, paradigm):
+    import networkx as nx
     G = nx.DiGraph()
     colors = get_colors(10)
     
