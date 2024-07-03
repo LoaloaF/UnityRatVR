@@ -544,7 +544,7 @@
       "99c76f3dbc31d3548b7c3f6232455312"
     ],
     "transitions_guids": [
-      "62c3b456465d7cb17a5c1cda63fed561"
+      "5ed132c70e04fec179a4de724b930c3f"
     ]
   },
   "b4e446d94bb3240ff9ce278b36144542": {
@@ -554,7 +554,7 @@
     "stateID": 501,
     "paradigm": 500,
     "actions_guids": [
-      "a3fc53b4522f5d2b6ac291588a339175"
+      "3979625bbc5015e84a5bb6df2c8fe283"
     ],
     "transitions_guids": [
       "fe7f2c03e1d23eb85988b95113afe99e"
@@ -570,10 +570,11 @@
       "52e5dcbe13c0b96dbb821c1aa901c1bf"
     ],
     "transitions_guids": [
-      "af3cdad19e95751f8af33fefef6c46a0"
+      "af3cdad19e95751f8af33fefef6c46a0",
+      "1f99d848d26dccea3911fe35b9ae9313"
     ]
   },
-  "950c235710d47fd47a335d89ef9ffb2a": {
+  "af101f58c3e9a8e9988d65783283f3a6": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
     "name": "S0503_MovePhase",
     "assetType": "state",
@@ -583,29 +584,47 @@
       "52e5dcbe13c0b96dbb821c1aa901c1bf"
     ],
     "transitions_guids": [
-      "d754562a68981a00b8b1ee0f4771c827",
-      "ac8bcbcec312b680baf4b9ae98f4a1b3"
+      "187cff8c85c7aec189dfd32270b1f831",
+      "17d92d473472735178c95f91d5a8e15a",
+      "9cd8c5feb2ea5bcb4af3839aa6d2e1dc",
+      "1f99d848d26dccea3911fe35b9ae9313"
     ]
   },
   "4fae3bd1ca390c208812f4a4c31135b3": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
     "name": "S0504_StopPhase",
     "assetType": "state",
-    "stateID": 503,
+    "stateID": 504,
     "paradigm": 500,
     "actions_guids": [
       "52e5dcbe13c0b96dbb821c1aa901c1bf"
     ],
     "transitions_guids": [
       "2cc2693ec8c09c6e989dea4c43ad1079",
-      "9cb3f79145d96f02da579337cbc15a37"
+      "6b0171263f2502012b6217de9ae3eabb",
+      "1f99d848d26dccea3911fe35b9ae9313"
+    ]
+  },
+  "b2920be31325cd8d39311ed8b9984798": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
+    "name": "S0505_GracePeriod",
+    "assetType": "state",
+    "stateID": 505,
+    "paradigm": 500,
+    "actions_guids": [
+      "52e5dcbe13c0b96dbb821c1aa901c1bf"
+    ],
+    "transitions_guids": [
+      "2cc2693ec8c09c6e989dea4c43ad1079",
+      "9cb3f79145d96f02da579337cbc15a37",
+      "1f99d848d26dccea3911fe35b9ae9313"
     ]
   },
   "70f017bddaa25e23781333cee25a95c8": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
-    "name": "S0505_SuccessEntry",
+    "name": "S0506_SuccessEntry",
     "assetType": "state",
-    "stateID": 505,
+    "stateID": 506,
     "paradigm": 500,
     "actions_guids": [
       "cb4967b7e09f2484889874cb70209169"
@@ -616,19 +635,20 @@
   },
   "be517c33ab414f4b0a9cd531394a7987": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
-    "name": "S0506_WithinSuccessSequence",
+    "name": "S0507_WithinSuccessSequence",
     "assetType": "state",
-    "stateID": 506,
+    "stateID": 507,
     "paradigm": 500,
     "transitions_guids": [
-      "f4a74c2a18800b2c982c4757097c34c8"
+      "f4a74c2a18800b2c982c4757097c34c8",
+      "1f99d848d26dccea3911fe35b9ae9313"
     ]
   },
   "78b76c264fc6eace9bc5f42073beacf8": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
-    "name": "S0507_TrialEndFail",
+    "name": "S0508_TrialEndFail",
     "assetType": "state",
-    "stateID": 507,
+    "stateID": 508,
     "paradigm": 500,
     "actions_guids": [
       "808f99f697e7db8b59a8ed5367359920"
@@ -639,9 +659,9 @@
   },
   "78d85e8d84aaab05cbc678f189b51b39": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
-    "name": "S0508_TrialEndSuccess",
+    "name": "S0509_TrialEndSuccess",
     "assetType": "state",
-    "stateID": 508,
+    "stateID": 509,
     "paradigm": 500,
     "actions_guids": [
       "763b4dee2933aa42c9e738a481fa79b1"
@@ -652,9 +672,9 @@
   },
   "c2ad1ab2795f65ea0b488572ae7d5897": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
-    "name": "S0509_WithinInterTrialInterval",
+    "name": "S0510_WithinInterTrialInterval",
     "assetType": "state",
-    "stateID": 509,
+    "stateID": 510,
     "paradigm": 500,
     "transitions_guids": [
       "a3ed5d1c1fa35cee7879de048a79b56a"
@@ -662,9 +682,9 @@
   },
   "81f16af915420ad5e96d71063ba3c435": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/ParadigmStates",
-    "name": "S0510_SessionEnded",
+    "name": "S0511_SessionEnded",
     "assetType": "state",
-    "stateID": 510,
+    "stateID": 511,
     "paradigm": 500,
     "actions_guids": [
       "6b9df3e9f65b046109ce5564422eb43f"

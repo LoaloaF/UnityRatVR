@@ -19,9 +19,13 @@ namespace Experiment.ExperimentFSM
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            trialStartMotorLearning.rawMovementQueue.Dequeue();
-            trialStartMotorLearning.yawMovementQueue.Dequeue();
-            trialStartMotorLearning.pitchMovementQueue.Dequeue();
+            float moveTime = float.Parse(stateMachine._sessionManager.trialVariablesDict["MT"]);
+            if (trialStartMotorLearning.rawMovementQueue.Count > moveTime * 90)
+            {
+                trialStartMotorLearning.rawMovementQueue.Dequeue();
+                trialStartMotorLearning.yawMovementQueue.Dequeue();
+                trialStartMotorLearning.pitchMovementQueue.Dequeue();
+            }
 
             rawMovementTemp = stateMachine._playerMovement.XYZvelInput[0] * stateMachine._playerMovement.ballForwardNormToCentimeter;
             yawMovementTemp = stateMachine._playerMovement.XYZvelInput[1] * stateMachine._playerMovement.ballSidewaysNormToCentimeter;
