@@ -71,6 +71,12 @@
     "assetType": "decision",
     "switchDescription": ""
   },
+  "550f5b6de02a9f97d952183e888ad4d8": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_EarlyStop",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
   "c23cc47a55b86c832be9012dea1ba8fa": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
     "name": "P0500_FailDirectedMovement",
@@ -92,6 +98,12 @@
   "a26d04fd279657afb80da813a77957db": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
     "name": "P0500_MoveTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "9a287df020aecaa07bc307a520dec4c6": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_MovementStop",
     "assetType": "decision",
     "switchDescription": ""
   },

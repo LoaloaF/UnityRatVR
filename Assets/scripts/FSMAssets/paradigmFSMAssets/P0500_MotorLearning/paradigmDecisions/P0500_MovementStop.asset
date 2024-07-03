@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 230109ab8ca516f928987c66542ef70b, type: 3}
-  m_Name: P0500_FailDirectedMovement
+  m_Script: {fileID: 11500000, guid: 693e1522829cc9e1980e6c94f69e49b4, type: 3}
+  m_Name: P0500_MovementStop
   m_EditorClassIdentifier: 
   switchDescription: 
-  trialStartMotorLearning: {fileID: 11400000, guid: 3979625bbc5015e84a5bb6df2c8fe283, type: 2}
-  returnTrue: 0
+  movementInQueue: {fileID: 11400000, guid: 52e5dcbe13c0b96dbb821c1aa901c1bf, type: 2}

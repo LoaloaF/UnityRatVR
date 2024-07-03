@@ -116,17 +116,22 @@
   },
   "808f99f697e7db8b59a8ed5367359920": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
-    "name": "P0500_TrialEndMotorLearningFail",
+    "name": "P0500_TrialEndFail",
     "assetType": "action"
   },
   "763b4dee2933aa42c9e738a481fa79b1": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
-    "name": "P0500_TrialEndMotorLearningSuccess",
+    "name": "P0500_TrialEndSuccess",
     "assetType": "action"
   },
   "99c76f3dbc31d3548b7c3f6232455312": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
-    "name": "P0500_TrialInitMotorLearning",
+    "name": "P0500_TrialInit",
+    "assetType": "action"
+  },
+  "3979625bbc5015e84a5bb6df2c8fe283": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_TrialStart",
     "assetType": "action"
   },
   "61389b819a4aced9e87b9031da980ed1": {

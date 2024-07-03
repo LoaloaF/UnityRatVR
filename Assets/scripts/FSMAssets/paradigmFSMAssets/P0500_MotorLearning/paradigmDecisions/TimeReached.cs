@@ -11,7 +11,7 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/P0500/TimeReached")]
     public class TimeReached : Decision
     {
-        private float timer = 0f;
+        public float timer = 0f;
         private int currentTrialID = -1;
         [SerializeField] private string timeVariableName;
         public override bool Decide(BaseStateMachine stateMachine)

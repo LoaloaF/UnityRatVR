@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS0510_SessionEnded
+  m_Name: toS0505_GracePeriod
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: eb4f01683595b76deba9b2b9f4e711a8, type: 2}
-  TrueState: {fileID: 11400000, guid: 81f16af915420ad5e96d71063ba3c435, type: 2}
+  Decision: {fileID: 11400000, guid: c23cc47a55b86c832be9012dea1ba8fa, type: 2}
+  TrueState: {fileID: 11400000, guid: b2920be31325cd8d39311ed8b9984798, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}
