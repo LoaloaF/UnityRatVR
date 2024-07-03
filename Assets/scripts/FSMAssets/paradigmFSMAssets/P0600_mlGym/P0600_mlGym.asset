@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
   m_Name: P0600_mlGym
   m_EditorClassIdentifier: 
-  stateID: 0
+  stateID: 600
   Action:
   - {fileID: 11400000, guid: 36f6725c8c89c44f6aa49045e16354cf, type: 2}
   Transitions:

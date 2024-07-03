@@ -1,9 +1,9 @@
 {
-  "8e3edc604172f5b41a804489fff20984": {
+  "198375a19614c002ea8dcdcccfcf1a48": {
     "path": "./generalFSMAssets/decisions",
-    "name": "AbortSequenceEnded",
+    "name": "AbortTrialConditionReached",
     "assetType": "decision",
-    "switchDescription": "Abort time interval over?"
+    "switchDescription": "Abort trial condition reached?"
   },
   "10692e8a11e8d564183739b10fe60cfd": {
     "path": "./generalFSMAssets/decisions",
@@ -23,17 +23,47 @@
     "assetType": "decision",
     "switchDescription": "Inter trial interval over?"
   },
-  "07fda078dc4a271b5a2ad97dfa4620c6": {
+  "f0af9dc0bc31b0fdda46a69d02e3755c": {
     "path": "./generalFSMAssets/decisions",
-    "name": "LickDetection",
+    "name": "NotInWallZone",
+    "assetType": "decision",
+    "switchDescription": "WTF"
+  },
+  "07fda078dc4a271b5a2ad97dfa4620c6": {
+    "path": "./paradigmFSMAssets/P0000_AutoLickReward/paradigmDecisions",
+    "name": "P0000_LickDetection",
     "assetType": "decision",
     "switchDescription": "Rat is licking?"
   },
   "f42e6b8d3c9af824f98321fdbd33d257": {
-    "path": "./generalFSMAssets/decisions",
-    "name": "RandomSuccessEntry",
+    "path": "./paradigmFSMAssets/P0100_SpoutAssoc/paradigmActions",
+    "name": "P0100_RandomSuccessEntry",
     "assetType": "decision",
     "switchDescription": "Getting reward (50% chance)?"
+  },
+  "3efc4683b409d7e338f0b492a5070a89": {
+    "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
+    "name": "P0300_RatLeavePillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "e9deb6185db05d04481304a7f7b2e389": {
+    "path": "./paradigmFSMAssets/P0400_4PillarDirected/paradigmDecisions",
+    "name": "P0400_RatLeavePillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "ed1c5a33db048de27b33b42810a4de70": {
+    "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
+    "name": "P300_RatUnderActivePillarHexagon",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "a9f041f21065c6ee7b8270c4905d7454": {
+    "path": "./paradigmFSMAssets/P0400_4PillarDirected/paradigmDecisions",
+    "name": "P400_RatUnderActivePillarHexagon",
+    "assetType": "decision",
+    "switchDescription": ""
   },
   "7ff235ae597582b45b28b3914a451d0a": {
     "path": "./generalFSMAssets/decisions",
@@ -41,22 +71,16 @@
     "assetType": "decision",
     "switchDescription": "Rat under rewarded pillar?"
   },
+  "eb4f01683595b76deba9b2b9f4e711a8": {
+    "path": "./generalFSMAssets/decisions",
+    "name": "SessionEnded",
+    "assetType": "decision",
+    "switchDescription": "Session ended user input?"
+  },
   "d881c58ab5d1bc12bbdd5ebce78c382a": {
     "path": "./generalFSMAssets/decisions",
     "name": "SuccessSequenceEnded",
     "assetType": "decision",
     "switchDescription": "Success Sequence time interval over?"
-  },
-  "198375a19614c002ea8dcdcccfcf1a48": {
-    "path": "./generalFSMAssets/decisions",
-    "name": "abortTrialConditionReached",
-    "assetType": "decision",
-    "switchDescription": "Abort trial condition reached?"
-  },
-  "eb4f01683595b76deba9b2b9f4e711a8": {
-    "path": "./generalFSMAssets/decisions",
-    "name": "sessionEnded",
-    "assetType": "decision",
-    "switchDescription": "Session ended user input?"
   }
 }
