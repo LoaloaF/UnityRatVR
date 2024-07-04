@@ -53,15 +53,9 @@ public class UnityFrameLogger : MonoBehaviour
         // Debug.Log($"TestRead: {readOut}");
         // frameTime = Time.realtimeSinceStartup;
         DateTime currentDateTime = DateTime.UtcNow;
+        long ticksSinceEpoch = currentDateTime.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
+        long unixTimestampMicroseconds = ticksSinceEpoch / 10;
 
-        // Calculate the Unix timestamp in milliseconds
-        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
-
-        // Calculate the microseconds part
-        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
-
-        // Combine milliseconds and microseconds
-        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
         frameCount = Time.frameCount;
         framePositionX = Player.transform.position.x;
         framePositionZ = Player.transform.position.z;

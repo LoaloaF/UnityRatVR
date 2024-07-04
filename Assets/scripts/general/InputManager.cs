@@ -108,13 +108,20 @@ public class InputManager : MonoBehaviour
                     || shmUnityInput.StartsWith("Success") 
                     || shmUnityInput.StartsWith("TrialEndTeleportDistanceDelta") 
                     || shmUnityInput.StartsWith("TrialEndTeleportAngleDelta") 
-                    || shmUnityInput.StartsWith("Teleport")){
+                    || shmUnityInput.StartsWith("Teleport")
+                    || shmUnityInput.StartsWith("TrialVariables")){
+
             try {
                 splitInput = shmUnityInput.Split(',');
                 command = splitInput[0];
-                value1 = float.Parse(splitInput[1]);
+
+                if (command != "TrialVariables") {
+                    value1 = float.Parse(splitInput[1]);
+                }
+                
                 // more than a single value within message
-                if (command == "Success" || command == "Teleport") {
+                if (command == "Success" || command == "Teleport") 
+                {
                     value2 = float.Parse(splitInput[2]);
                     if (command == "Teleport") {
                         value3 = float.Parse(splitInput[3]);
@@ -131,10 +138,8 @@ public class InputManager : MonoBehaviour
                 _portentaInputInterface.sendSuccess((int)value1, (int)value2);
             } else if (command == "Teleport") {
                 _playerMovement.TeleportRat(value1, value2, value3);
-            } else if (command == "TrialEndTeleportDistanceDelta") {
-                _sessionManager.updateTrialEndTeleportCenterDist(value1);
-            } else if (command == "TrialEndTeleportAngleDelta") {
-                _sessionManager.updateTrialEndTeleportCenterAngle(value1);
+            } else if (command == "TrialVariables") {
+                _sessionManager.UpdateTrialVariable(shmUnityInput.Replace("TrialVariables,", ""));
             }
         } else {
             Debug.LogError("Invalid command: " + shmUnityInput);

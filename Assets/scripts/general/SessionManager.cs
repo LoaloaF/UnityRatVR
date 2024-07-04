@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Newtonsoft.Json;
 /// <summary>
 /// This class manages provided a reference to session parameters from the excel sheet
 /// And it manages single trial logging
@@ -74,27 +75,23 @@ public sealed class SessionManager : MonoBehaviour
 
     }
 
-    public void UpdateTrialVariable(string variableName, string variableValue)
+    public void UpdateTrialVariable(string variableJsonString)
     {
-        if (trialVariablesDict.ContainsKey(variableName))
+        Dictionary<string, string> tempDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(variableJsonString);
+        foreach (var item in tempDict)
         {
-            trialVariablesDict[variableName] = variableValue;
-            Debug.Log($"Trial Variable {variableName} updated with {variableValue}");
+            if (trialVariablesDict.ContainsKey(item.Key))
+            {
+                trialVariablesDict[item.Key] = item.Value;
+                Debug.Log($"Trial Variable {item.Key} updated with {item.Value}");
+            }
+            else
+            {
+                Debug.Log($"Trial Variable {item.Key} not found in updating");
+            }
         }
-        else
-        {
-            Debug.Log($"Trial Variable {variableName} not found");
-        }
-    }
-    public void updateTrialEndTeleportCenterAngle(float newTrialEndTeleportCenterAngle) 
-    {
-        UpdateTrialVariable("PA", newTrialEndTeleportCenterAngle.ToString());
     }
 
-    public void updateTrialEndTeleportCenterDist(float newTrialEndTeleportCenterDist) 
-    {
-        UpdateTrialVariable("PD", newTrialEndTeleportCenterDist.ToString());
-    }
 
 
     public void newTrial() {
@@ -107,12 +104,8 @@ public sealed class SessionManager : MonoBehaviour
 
     public long getUnixTimestampMicroseconds() {
         DateTime currentDateTime = DateTime.UtcNow;
-        // Calculate the Unix timestamp in milliseconds
-        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
-        // Calculate the microseconds part
-        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
-        // Combine milliseconds and microseconds
-        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
+        long ticksSinceEpoch = currentDateTime.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
+        long unixTimestampMicroseconds = ticksSinceEpoch / 10;
         return unixTimestampMicroseconds;
     }
 

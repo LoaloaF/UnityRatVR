@@ -87,14 +87,9 @@ public class renderOutputLogger : MonoBehaviour
         // Prepare metadata packet bytes
         float frameCount = Time.frameCount;
         // float frameTime = Time.time;
-
         DateTime currentDateTime = DateTime.UtcNow;
-        // Calculate the Unix timestamp in milliseconds
-        long unixTimestampMilliseconds = ((DateTimeOffset)currentDateTime).ToUnixTimeMilliseconds();
-        // Calculate the microseconds part
-        long microseconds = currentDateTime.Millisecond * 1000 + (DateTime.Now.Ticks % TimeSpan.TicksPerMillisecond) / 10;
-        // Combine milliseconds and microseconds
-        long unixTimestampMicroseconds = unixTimestampMilliseconds * 1000 + microseconds;
+        long ticksSinceEpoch = currentDateTime.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
+        long unixTimestampMicroseconds = ticksSinceEpoch / 10;
 
         string metadata = "<{" + $"N:I,ID:{frameCount},PCT:{unixTimestampMicroseconds}" + "}>\r\n";
         packBytes = Encoding.UTF8.GetBytes(metadata);
