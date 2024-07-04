@@ -25,23 +25,12 @@ namespace Experiment.ExperimentFSM
             int checkYaw = int.Parse(stateMachine._sessionManager.trialVariablesDict["Y"]);
             int checkPitch = int.Parse(stateMachine._sessionManager.trialVariablesDict["P"]);
 
-            if (checkRaw == 1)
-                rawMovementSum = CalculateQueueSum(trialStartMotorLearning.rawMovementQueue);
-            else
-                rawMovementSum = 0;
-            
-            if (checkYaw == 1)
-                yawMovementSum = CalculateQueueSum(trialStartMotorLearning.yawMovementQueue);
-            else
-                yawMovementSum = 0;
-            
-            if (checkPitch == 1)
-                pitchMovementSum = CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue);
-            else
-                pitchMovementSum = 0;
+            rawMovementSum = Mathf.Abs(CalculateQueueSum(trialStartMotorLearning.rawMovementQueue));
+            yawMovementSum = Mathf.Abs(CalculateQueueSum(trialStartMotorLearning.yawMovementQueue));
+            pitchMovementSum = Mathf.Abs(CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue));
 
             float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
-            Debug.Log($"rawMovementSum: {rawMovementSum/movementSum}, yawMovementSum: {yawMovementSum/movementSum}, pitchMovementSum: {pitchMovementSum/movementSum}");
+            Debug.Log($"rawMovementSum: {rawMovementSum}, yawMovementSum: {yawMovementSum}, pitchMovementSum: {pitchMovementSum}");
 
 
             if ((checkRaw == 1 && rawMovementSum/movementSum > moveThreshold) || 

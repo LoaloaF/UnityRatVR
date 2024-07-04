@@ -24,9 +24,9 @@ namespace Experiment.ExperimentFSM
             int checkYaw = int.Parse(stateMachine._sessionManager.trialVariablesDict["Y"]);
             int checkPitch = int.Parse(stateMachine._sessionManager.trialVariablesDict["P"]);
 
-            rawMovementSum = CalculateQueueSum(trialStartMotorLearning.rawMovementQueue);
-            yawMovementSum = CalculateQueueSum(trialStartMotorLearning.yawMovementQueue);
-            pitchMovementSum = CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue);
+            rawMovementSum = Mathf.Abs(CalculateQueueSum(trialStartMotorLearning.rawMovementQueue));
+            yawMovementSum = Mathf.Abs(CalculateQueueSum(trialStartMotorLearning.yawMovementQueue));
+            pitchMovementSum = Mathf.Abs(CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue));
 
             float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
 
@@ -39,12 +39,12 @@ namespace Experiment.ExperimentFSM
             }
             else
             {
-                trialStartMotorLearning.rawMovementQueue.Clear();
-                trialStartMotorLearning.yawMovementQueue.Clear();
-                trialStartMotorLearning.pitchMovementQueue.Clear();
-                trialStartMotorLearning.rawMovementQueue.Enqueue(0);
-                trialStartMotorLearning.yawMovementQueue.Enqueue(0);
-                trialStartMotorLearning.pitchMovementQueue.Enqueue(0);
+                // trialStartMotorLearning.rawMovementQueue.Clear();
+                // trialStartMotorLearning.yawMovementQueue.Clear();
+                // trialStartMotorLearning.pitchMovementQueue.Clear();
+                // trialStartMotorLearning.rawMovementQueue.Enqueue(0);
+                // trialStartMotorLearning.yawMovementQueue.Enqueue(0);
+                // trialStartMotorLearning.pitchMovementQueue.Enqueue(0);
                 moveTimeReached.timer = 0;
                 return true;
             }

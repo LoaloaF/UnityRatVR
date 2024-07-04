@@ -17,8 +17,7 @@ namespace Experiment.ExperimentFSM
         public override bool Decide(BaseStateMachine stateMachine)
         {
             float moveThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["STH"]);
-            float movementSum = movementInQueue.rawMovementTemp + movementInQueue.yawMovementTemp + movementInQueue.pitchMovementTemp;
-
+            float movementSum = Mathf.Abs(movementInQueue.rawMovementTemp) + Mathf.Abs(movementInQueue.yawMovementTemp) + Mathf.Abs(movementInQueue.pitchMovementTemp);
             if (movementSum > moveThreshold)
             {
                 return false;

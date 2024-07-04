@@ -20,7 +20,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             float moveTime = float.Parse(stateMachine._sessionManager.trialVariablesDict["MT"]);
-            if (trialStartMotorLearning.rawMovementQueue.Count > moveTime * 90)
+            if (trialStartMotorLearning.rawMovementQueue.Count > moveTime * 60)
             {
                 trialStartMotorLearning.rawMovementQueue.Dequeue();
                 trialStartMotorLearning.yawMovementQueue.Dequeue();

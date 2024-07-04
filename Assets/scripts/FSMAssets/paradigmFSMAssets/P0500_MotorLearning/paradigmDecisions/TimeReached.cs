@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
         [SerializeField] private string timeVariableName;
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            int movementTime = int.Parse(stateMachine._sessionManager.trialVariablesDict[timeVariableName]);
+            float movementTime = float.Parse(stateMachine._sessionManager.trialVariablesDict[timeVariableName]);
 
             if (currentTrialID != stateMachine._sessionManager._currentTrialID)
             {
