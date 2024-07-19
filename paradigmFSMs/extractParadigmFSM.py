@@ -162,6 +162,10 @@ def extractAssets(PATH, with_vis=False):
         print(state["name"])
         if state["name"].startswith("P"):
             which_paradigm = state["paradigm"]
+            
+            if which_paradigm == 600:
+                continue
+            
             print(which_paradigm)
             if which_paradigm == -100:
                 print("which_paradigm == -100 !")

@@ -85,7 +85,7 @@
     "path": "./paradigmFSMAssets/P0700_YMaze",
     "name": "P0700_YMaze",
     "assetType": "state",
-    "stateID": 200,
+    "stateID": 700,
     "paradigm": 700,
     "actions_guids": [
       "73ff7cb9886cc04c394fa567cf70c6e1"
@@ -800,7 +800,7 @@
     "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
     "name": "S0705_WithinSuccessSequence",
     "assetType": "state",
-    "stateID": 704,
+    "stateID": 705,
     "paradigm": 700,
     "transitions_guids": [
       "a928a1c82e6b07ffb9eb65ea685f1ff3"
@@ -810,7 +810,7 @@
     "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
     "name": "S0706_TrialEndFail",
     "assetType": "state",
-    "stateID": 705,
+    "stateID": 706,
     "paradigm": 700,
     "actions_guids": [
       "caea234cba9bfda6683ea007ea20bc73"
@@ -823,7 +823,7 @@
     "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
     "name": "S0707_TrialEndSuccess",
     "assetType": "state",
-    "stateID": 706,
+    "stateID": 707,
     "paradigm": 700,
     "actions_guids": [
       "e3113cdbeed0eed6dabebeb1085cb43f"
@@ -836,7 +836,7 @@
     "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
     "name": "S0708_WithinInterTrialInterval",
     "assetType": "state",
-    "stateID": 707,
+    "stateID": 708,
     "paradigm": 700,
     "actions_guids": [
       "9edac44aadf0b8339b98a670a3db6a59"
@@ -849,7 +849,7 @@
     "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
     "name": "S0709_SessionEnded",
     "assetType": "state",
-    "stateID": 708,
+    "stateID": 709,
     "paradigm": 700,
     "actions_guids": [
       "6b9df3e9f65b046109ce5564422eb43f"

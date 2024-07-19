@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
   m_Name: S0706_TrialEndFail
   m_EditorClassIdentifier: 
-  stateID: 705
+  stateID: 706
   Action:
   - {fileID: 11400000, guid: caea234cba9bfda6683ea007ea20bc73, type: 2}
   Transitions:
