@@ -7526,7 +7526,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1
-  m_Radius: 2
+  m_Radius: 6
   m_SlopeLimit: 45
   m_StepOffset: 0
   m_SkinWidth: 0.0001
@@ -7568,7 +7568,7 @@ MonoBehaviour:
   XYZvelInput: 000000000000000000000000
   ballForwardNormToCentimeter: 0.01542
   ballSidewaysNormToCentimeter: 0.01478
-  ballRotatationNormToCentimeter: 0.01268667
+  ballRotatationNormToCentimeter: 0.00422889
   enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:

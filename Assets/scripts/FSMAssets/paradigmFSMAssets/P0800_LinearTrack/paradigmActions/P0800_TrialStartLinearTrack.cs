@@ -66,7 +66,7 @@ namespace Experiment.ExperimentFSM
                     {
                         if (cueIndicator == 1)
                         {
-                            mesh.material = stateMachine._sceneController.materials["horistribes"];
+                            mesh.material = stateMachine._sceneController.materials["testwall3"];
                         }
                         else if (cueIndicator == 2)
                         {

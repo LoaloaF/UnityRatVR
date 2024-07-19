@@ -36,7 +36,6 @@ namespace Experiment.ExperimentFSM
                 if (pillar.name.StartsWith("Pillar1"))
                 {
                     stateMachine._sceneController.scene.Pillars[pillarCount].IsReward = 0;
-
                     Collider pillarCollider = pillar.GetComponentInChildren<CapsuleCollider>();
                     pillarCollider.isTrigger = false;
 
@@ -45,8 +44,8 @@ namespace Experiment.ExperimentFSM
             }
 
             Instantiate(clueZone, new Vector3(0, 0, -60), Quaternion.identity, stateMachine.transform);
-            Instantiate(rewardZoneNear, new Vector3(0, 0, 30), Quaternion.identity, stateMachine.transform);
-            Instantiate(rewardZoneFar, new Vector3(0, 0, 70), Quaternion.identity, stateMachine.transform);
+            // Instantiate(rewardZoneNear, new Vector3(0, 0, 30), Quaternion.identity, stateMachine.transform);
+            // Instantiate(rewardZoneFar, new Vector3(0, 0, 70), Quaternion.identity, stateMachine.transform);
         }
 
     }
