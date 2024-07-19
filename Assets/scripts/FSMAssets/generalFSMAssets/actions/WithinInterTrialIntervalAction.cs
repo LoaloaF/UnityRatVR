@@ -26,11 +26,11 @@ namespace Experiment.ExperimentFSM
 
             if (stateMachine.transform.childCount > 0)
             {
-                Transform child = stateMachine.transform.GetChild(0);
-                child.gameObject.SetActive(false);
+                foreach (Transform child in stateMachine.transform)
+                {
+                    child.gameObject.SetActive(false);
+                }
             }
-            // Transform child = stateMachine.transform.GetChild(0);
-            // child.gameObject.SetActive(false);
 
             stateMachine._playerMovement.DisableMovement();
             stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);

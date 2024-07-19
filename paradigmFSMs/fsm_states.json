@@ -81,6 +81,32 @@
       "f8dcbbdd111d94c2d8a4213245d637fb"
     ]
   },
+  "7d76610a58adcd6588c612eb8203e31d": {
+    "path": "./paradigmFSMAssets/P0700_YMaze",
+    "name": "P0700_YMaze",
+    "assetType": "state",
+    "stateID": 200,
+    "paradigm": 700,
+    "actions_guids": [
+      "73ff7cb9886cc04c394fa567cf70c6e1"
+    ],
+    "transitions_guids": [
+      "ed474cce588ad072c8bc29921e0a8fbf"
+    ]
+  },
+  "7b6aa18e8037360b1a5b796b9afb6b65": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack",
+    "name": "P0800_LinearTrack",
+    "assetType": "state",
+    "stateID": 800,
+    "paradigm": 800,
+    "actions_guids": [
+      "ea840d605c1cef8eab95dc872ea72b27"
+    ],
+    "transitions_guids": [
+      "413c1d26122df3a26b233514ec5b8c3e"
+    ]
+  },
   "3bd507281836e1589ab23f778bc54b87": {
     "path": "./paradigmFSMAssets/P0000_AutoLickReward/ParadigmStates",
     "name": "S0001_TrialStart",
@@ -716,6 +742,224 @@
     "assetType": "state",
     "stateID": 609,
     "paradigm": 600,
+    "actions_guids": [
+      "6b9df3e9f65b046109ce5564422eb43f"
+    ],
+    "transitions_guids": []
+  },
+  "27caedd3e3a43ca35a29c38c2b494539": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0701_TrialStart",
+    "assetType": "state",
+    "stateID": 701,
+    "paradigm": 700,
+    "actions_guids": [
+      "7d621f4439e81acdabcad59ff9e92d70"
+    ],
+    "transitions_guids": [
+      "f123df8b20e318d2cab2a93c2a6ef3ca"
+    ]
+  },
+  "4336c9335a14ec1d5af7ef7286c32f1d": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0702_WithinTrial",
+    "assetType": "state",
+    "stateID": 702,
+    "paradigm": 700,
+    "transitions_guids": [
+      "0fe7926da738d814eb1295d8014abb98",
+      "d44b0101a5d7eb8d7a3882dc450c6cfd",
+      "a53d9806658c56cb28cebfd42b338e90",
+      "6998b53dcbf3599dbab685c6937b7a66"
+    ]
+  },
+  "3233d583bf33d1169a7532d91a098467": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0703_SuccessEntry",
+    "assetType": "state",
+    "stateID": 703,
+    "paradigm": 700,
+    "actions_guids": [
+      "cb4967b7e09f2484889874cb70209169"
+    ],
+    "transitions_guids": [
+      "2c07fa4e49013e42b9f055af5bc13ca7"
+    ]
+  },
+  "36b1e0595a2f5499ea67aa3ba913d23b": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0704_WithinFailSequence",
+    "assetType": "state",
+    "stateID": 704,
+    "paradigm": 700,
+    "transitions_guids": [
+      "a9ee1b9b2c2a092e7978cad409ea08d2"
+    ]
+  },
+  "a2991db0fd36e009f98a82d259902fe4": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0705_WithinSuccessSequence",
+    "assetType": "state",
+    "stateID": 704,
+    "paradigm": 700,
+    "transitions_guids": [
+      "a928a1c82e6b07ffb9eb65ea685f1ff3"
+    ]
+  },
+  "1a0ddaed9cbf10af79c20fceddcfd176": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0706_TrialEndFail",
+    "assetType": "state",
+    "stateID": 705,
+    "paradigm": 700,
+    "actions_guids": [
+      "caea234cba9bfda6683ea007ea20bc73"
+    ],
+    "transitions_guids": [
+      "ed474cce588ad072c8bc29921e0a8fbf"
+    ]
+  },
+  "c1b09bb31e7c1e3e6952832529524ed3": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0707_TrialEndSuccess",
+    "assetType": "state",
+    "stateID": 706,
+    "paradigm": 700,
+    "actions_guids": [
+      "e3113cdbeed0eed6dabebeb1085cb43f"
+    ],
+    "transitions_guids": [
+      "ed474cce588ad072c8bc29921e0a8fbf"
+    ]
+  },
+  "94c234cb2632da76abea84c1c36a24dc": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0708_WithinInterTrialInterval",
+    "assetType": "state",
+    "stateID": 707,
+    "paradigm": 700,
+    "actions_guids": [
+      "9edac44aadf0b8339b98a670a3db6a59"
+    ],
+    "transitions_guids": [
+      "d9773001a4c9e48878ffdd6873cf6349"
+    ]
+  },
+  "6d6a14babeb91e594a91cf4f0ebb6e6a": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmStates",
+    "name": "S0709_SessionEnded",
+    "assetType": "state",
+    "stateID": 708,
+    "paradigm": 700,
+    "actions_guids": [
+      "6b9df3e9f65b046109ce5564422eb43f"
+    ],
+    "transitions_guids": []
+  },
+  "bb1852429dfc8da619214d440664c03a": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0801_TrialStart",
+    "assetType": "state",
+    "stateID": 801,
+    "paradigm": 800,
+    "actions_guids": [
+      "a0cb7b0e1e7efc2eb94853220a5a7712"
+    ],
+    "transitions_guids": [
+      "3d0a9b0e3cda5d78aafef1057e3a49bd"
+    ]
+  },
+  "10fe56f11fe0a5088bf221d15f0e146c": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0802_WithinTrial",
+    "assetType": "state",
+    "stateID": 802,
+    "paradigm": 800,
+    "transitions_guids": [
+      "704af4e35b4a2d95ea066728912b5258",
+      "bb5d8cb8b540a1ca8a719f67ce8efb99"
+    ]
+  },
+  "c32031d5856717c80b0f5b19a3a9efe2": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0803_EnterRewardZone",
+    "assetType": "state",
+    "stateID": 803,
+    "paradigm": 800,
+    "transitions_guids": [
+      "172e4ef8c38726ef2bfde508277fe692",
+      "b4e2ea23a7efc03a0b5f382e3b93828f"
+    ]
+  },
+  "09e6dd2cb411c92a1b9e318e310b4e10": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0804_SuccessStay",
+    "assetType": "state",
+    "stateID": 804,
+    "paradigm": 800,
+    "actions_guids": [
+      "cb4967b7e09f2484889874cb70209169",
+      "3f9004059f3024426b949e5493985f47"
+    ],
+    "transitions_guids": [
+      "3601e51cab6c4b389b835a149a8a6edf"
+    ]
+  },
+  "45678863f8f7d39d6b45b080eb6d72ff": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0805_WithinSuccessSequence",
+    "assetType": "state",
+    "stateID": 805,
+    "paradigm": 800,
+    "transitions_guids": [
+      "3980c4842bdde8fd2a5c49dff7143069"
+    ]
+  },
+  "cd86210a74e40c7fb8d3ebfed80f2fa5": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0806_PostTrial",
+    "assetType": "state",
+    "stateID": 806,
+    "paradigm": 800,
+    "actions_guids": [
+      "8335e0ecfacfb184689756cd28f0a58e"
+    ],
+    "transitions_guids": [
+      "04c0eb631216c0ccea588cf1b38002a5"
+    ]
+  },
+  "6362788e920f82bdc83e63a398deec9e": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0807_TrialEnd",
+    "assetType": "state",
+    "stateID": 807,
+    "paradigm": 800,
+    "actions_guids": [
+      "5eb4672dc143426f1a252de980adb95e"
+    ],
+    "transitions_guids": [
+      "413c1d26122df3a26b233514ec5b8c3e"
+    ]
+  },
+  "b5aad3ac5ccb3f425bbbce31fbf585f2": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0808_WithinInterTrialInterval",
+    "assetType": "state",
+    "stateID": 808,
+    "paradigm": 800,
+    "actions_guids": [
+      "9edac44aadf0b8339b98a670a3db6a59"
+    ],
+    "transitions_guids": [
+      "a8303d966aae29f21bf09ab0e5fe6837"
+    ]
+  },
+  "3c4444b913a180afabc890f1b2bf2cef": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
+    "name": "S0809_SessionEnded",
+    "assetType": "state",
+    "stateID": 809,
+    "paradigm": 800,
     "actions_guids": [
       "6b9df3e9f65b046109ce5564422eb43f"
     ],

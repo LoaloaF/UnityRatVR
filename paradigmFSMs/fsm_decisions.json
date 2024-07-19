@@ -101,6 +101,48 @@
     "assetType": "decision",
     "switchDescription": ""
   },
+  "46c18d7b6116f10888105386b21776c9": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmDecisions",
+    "name": "P0700_FailSequenceEnded",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "078b950bcd005f81dabfe40fd76e926a": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmDecisions",
+    "name": "P0700_RatUnderCorrectPillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "5f27d658feb6fac4aa64f0749065c8ef": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmDecisions",
+    "name": "P0700_RatUnderWrongPillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "6739dbd31d1cdef25971d27428eb9cae": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_EnterRewardZone",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "26c9792b1832bba679beb83e0dfd107f": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_ExitRewardZone",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "18305b514de872295848a3f5a754afd7": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_ReachEnd",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "fd14d53b80b92d5cbab06d236157f0b7": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_StayTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
   "ed1c5a33db048de27b33b42810a4de70": {
     "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
     "name": "P300_RatUnderActivePillarHexagon",
