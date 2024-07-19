@@ -83,6 +83,7 @@ namespace RatVR.Scene
                                           sceneMetaData.wallZoneCollideDistance);
             
             // construct the scene in Unity
+            UnityEngine.Debug.Log("Pillars:" + scene.Pillars);
             LoadScene(scene);
         }
 

@@ -20,8 +20,6 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
 
 
-    
-            
             Color white = new Color(1, 1, 1, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
             stateMachine._sessionManager.trialRunning = false;

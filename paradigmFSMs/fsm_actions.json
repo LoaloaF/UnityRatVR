@@ -99,6 +99,51 @@
     "name": "P0500_WithinInterTrialStop",
     "assetType": "action"
   },
+  "caea234cba9bfda6683ea007ea20bc73": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmActions",
+    "name": "P0700_TrialEndFailYMaze",
+    "assetType": "action"
+  },
+  "e3113cdbeed0eed6dabebeb1085cb43f": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmActions",
+    "name": "P0700_TrialEndSuccessYMaze",
+    "assetType": "action"
+  },
+  "73ff7cb9886cc04c394fa567cf70c6e1": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmActions",
+    "name": "P0700_TrialInitYMaze",
+    "assetType": "action"
+  },
+  "7d621f4439e81acdabcad59ff9e92d70": {
+    "path": "./paradigmFSMAssets/P0700_YMaze/paradigmActions",
+    "name": "P0700_TrialStartYMaze",
+    "assetType": "action"
+  },
+  "8335e0ecfacfb184689756cd28f0a58e": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
+    "name": "P0800_PostTrial",
+    "assetType": "action"
+  },
+  "3f9004059f3024426b949e5493985f47": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
+    "name": "P0800_RegisterSuccess",
+    "assetType": "action"
+  },
+  "5eb4672dc143426f1a252de980adb95e": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
+    "name": "P0800_TrialEndLinearTrack",
+    "assetType": "action"
+  },
+  "ea840d605c1cef8eab95dc872ea72b27": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
+    "name": "P0800_TrialInitLinearTrack",
+    "assetType": "action"
+  },
+  "a0cb7b0e1e7efc2eb94853220a5a7712": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
+    "name": "P0800_TrialStartLinearTrack",
+    "assetType": "action"
+  },
   "0e8b2833376afe627a325dec4bac5368": {
     "path": "./generalFSMAssets/actions",
     "name": "PillarBlinking",

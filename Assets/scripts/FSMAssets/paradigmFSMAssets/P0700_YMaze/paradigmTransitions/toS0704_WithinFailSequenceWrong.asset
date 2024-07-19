@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
+  m_Name: toS0704_WithinFailSequenceWrong
+  m_EditorClassIdentifier: 
+  Decision: {fileID: 11400000, guid: 5f27d658feb6fac4aa64f0749065c8ef, type: 2}
+  TrueState: {fileID: 11400000, guid: 36b1e0595a2f5499ea67aa3ba913d23b, type: 2}
+  FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}
