@@ -12,8 +12,13 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public int firstPackID;
     [HideInInspector] public int lastPackID;
 
+    public int[] XYZvelInput = new int[3];
+    [SerializeField] bool enableBallInput = false;
+    [SerializeField] bool enableKeyboardInput = false;
+    public bool enableRemoteInput = false;
+    
+
     private bool movementEnabled = false;
-    private int[] XYZvelInput = new int[3];
     private float rotY = 0f;
     private string log;
 
@@ -23,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
     public float ballSidewaysNormToCentimeter = 0.001478F;
     public float ballRotatationNormToCentimeter = 0.003806F/3;
 
-    [Tooltip("Weather to try to read the BallSensor, use WASD otherwise")]
-    [SerializeField] bool enableBallInput = false;
     CyclicPackagesSHMInterface ballVelSHMInterface;
 
     void Start()
@@ -83,11 +86,18 @@ public class PlayerMovement : MonoBehaviour
         if (enableBallInput) {
             if (!(ballVelSHMInterface == null)) {
                 XYZvelInput = GetBallXYZVelocities();
+
+                XYZvelInput[0] = (int)((float)XYZvelInput[0]*ballForwardNormToCentimeter);
+                XYZvelInput[2] = (int)((float)-XYZvelInput[2]*ballSidewaysNormToCentimeter);
+                XYZvelInput[1] = (int)((float)-XYZvelInput[1]*ballRotatationNormToCentimeter);
             } else {
                 Debug.Log("SHM not linked. Can't read ball velocity");
             }
-        } else {
+        } else  if (enableKeyboardInput) {
             XYZvelInput = getKeyboardInput();
+        } else if (enableRemoteInput) {
+            // XYZvelInput is set from Iinput mamager script
+            Debug.Log(XYZvelInput);
         }
         return XYZvelInput;
     }
@@ -124,17 +134,14 @@ public class PlayerMovement : MonoBehaviour
 
     // add Y input of ball to current forward vector (blue) and the same for right 
     private void MoveRat() {
-        Vector3 forwardVel = Vector3.Scale(transform.forward*XYZvelInput[0]*ballForwardNormToCentimeter, gain);
-        // Debug.Log("Velo " + controller.velocity);
-        // Debug.Log("Forward " +forwardVel);
-        Vector3 rightVel = Vector3.Scale(-transform.right*XYZvelInput[2]*ballSidewaysNormToCentimeter,gain);
-        // Debug.Log("Right " + rightVel);
+        Vector3 forwardVel = Vector3.Scale(transform.forward*XYZvelInput[0], gain);
+        Vector3 rightVel = Vector3.Scale(transform.right*XYZvelInput[2], gain);
         controller.Move((forwardVel+rightVel));
     }
 
     // add Z input of ball to current y rotation
     private void RotateRat() {
-        rotY += -(XYZvelInput[1]*ballRotatationNormToCentimeter)*gain.y;
+        rotY += XYZvelInput[1]*gain.y;
         transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
     }
     

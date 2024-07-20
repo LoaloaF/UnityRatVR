@@ -7561,10 +7561,13 @@ MonoBehaviour:
   gain: {x: 1, y: 1, z: 1}
   firstPackID: 0
   lastPackID: 0
+  XYZvelInput: 000000000000000000000000
+  enableBallInput: 0
+  enableKeyboardInput: 0
+  enableRemoteInput: 1
   ballForwardNormToCentimeter: 0.01542
   ballSidewaysNormToCentimeter: 0.01478
   ballRotatationNormToCentimeter: 0.01268667
-  enableBallInput: 1
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0

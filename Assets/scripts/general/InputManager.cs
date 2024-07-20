@@ -91,7 +91,14 @@ public class InputManager : MonoBehaviour
 
         shmUnityInput = unityInputSHMInterface.Popitem();
 
-        if (shmUnityInput == null) return;
+        if (shmUnityInput == null) {
+            if (_playerMovement.enableRemoteInput) {
+                // whenever no command is send, and remote input is enabled, reset the input
+                _playerMovement.XYZvelInput = new int[] {0, 0, 0};
+                }
+            return;
+        }
+
         Debug.Log(shmUnityInput);
         if (shmUnityInput == "Start") {
             StartGame();
@@ -106,6 +113,7 @@ public class InputManager : MonoBehaviour
             paradigm_name = shmUnityInput.Split(',')[1];
         } else if (shmUnityInput.StartsWith("Punishment") 
                     || shmUnityInput.StartsWith("Success") 
+                    || shmUnityInput.StartsWith("Move") 
                     || shmUnityInput.StartsWith("TrialEndTeleportDistanceDelta") 
                     || shmUnityInput.StartsWith("TrialEndTeleportAngleDelta") 
                     || shmUnityInput.StartsWith("Teleport")){
@@ -114,9 +122,9 @@ public class InputManager : MonoBehaviour
                 command = splitInput[0];
                 value1 = float.Parse(splitInput[1]);
                 // more than a single value within message
-                if (command == "Success" || command == "Teleport") {
+                if (command == "Success" || command == "Teleport" || command == "Move") {
                     value2 = float.Parse(splitInput[2]);
-                    if (command == "Teleport") {
+                    if (command == "Teleport" || command == "Move") {
                         value3 = float.Parse(splitInput[3]);
                     }
                 }
@@ -135,7 +143,10 @@ public class InputManager : MonoBehaviour
                 _sessionManager.updateTrialEndTeleportCenterDist(value1);
             } else if (command == "TrialEndTeleportAngleDelta") {
                 _sessionManager.updateTrialEndTeleportCenterAngle(value1);
+            } else if (command == "Move") {
+                _playerMovement.XYZvelInput = new int[] {(int)value1, (int)value2, (int)value3};
             }
+
         } else {
             Debug.LogError("Invalid command: " + shmUnityInput);
         }
