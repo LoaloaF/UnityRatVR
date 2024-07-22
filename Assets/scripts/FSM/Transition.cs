@@ -19,9 +19,10 @@ namespace FSM
                 Debug.Log($"Transition from {stateMachine.CurrentState} to {TrueState}");
                 stateMachine.CurrentState = TrueState;
             }
-            
-            else if(!(FalseState is RemainInState))
+            else if(!Decision.Decide(stateMachine) && !(FalseState is RemainInState)){
+                Debug.Log($"Transition from {stateMachine.CurrentState} to {FalseState}");
                 stateMachine.CurrentState = FalseState;
+            }
         }
     }
 }

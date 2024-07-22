@@ -142,10 +142,11 @@ namespace RatVR.ExcelData
         public float height;
         public float zPos;
         public string texture;
-        public int rewardRadius;
+        public float transparency;
+        public float rewardRadius;
         public int pillarShowGround;
         public int pillarIsMoving;
-        public float transparency;
+
         public int isReward;
         public int isAirpuff;
 
@@ -157,10 +158,10 @@ namespace RatVR.ExcelData
             this.height = float.Parse(values[2], System.Globalization.CultureInfo.InvariantCulture);
             this.zPos = float.Parse(values[3], System.Globalization.CultureInfo.InvariantCulture);
             this.texture = values[4];
-            this.rewardRadius = int.Parse(values[5]);
-            this.pillarShowGround = int.Parse(values[6]);
-            this.pillarIsMoving = int.Parse(values[7]);
-            this.transparency = 1;
+            this.transparency = float.Parse(values[5], System.Globalization.CultureInfo.InvariantCulture);
+            this.rewardRadius = float.Parse(values[6], System.Globalization.CultureInfo.InvariantCulture);
+            this.pillarShowGround = int.Parse(values[7]);
+            this.pillarIsMoving = int.Parse(values[8]);
             this.isReward = 1;
             this.isAirpuff = 0;
             

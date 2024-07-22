@@ -22,6 +22,8 @@ namespace FSM
         public MeshRenderer validationSphereRenderer; // MeshRenderer object that you can assign in the UI
         private Dictionary<Type, Component> _cachedComponents;
         private InputManager _inputManager;
+        private FlagSHMInterface startflagSHMInterface;
+        private bool startFlag = false;
 
         [HideInInspector] public SceneController _sceneController;
         [HideInInspector] public SessionManager _sessionManager;
@@ -66,11 +68,22 @@ namespace FSM
         private void Start()
         {
             _inputManager = GetComponent<InputManager>();
+            startflagSHMInterface = new FlagSHMInterface("paradigmflag_shmstruct.json");
+            startFlag = false;
         }
 
 
         private void Update()
         {
+            if (checkStartFlag() && !startFlag)
+            {
+                StartGame();
+            }
+            else if (!checkStartFlag() && startFlag)
+            {
+                StopGame();
+            }
+
             if (_sessionManager.sessionRunning)
             {
                 // Exectures all actions attached to the current state
@@ -80,6 +93,34 @@ namespace FSM
             }
         }
         
+        public void StartGame()
+        {
+            startFlag = true;
+            _sessionManager.abortTrialFlag = false;
+            _inputManager.startSessionButton.interactable = false;
+            _inputManager.stopSessionButton.interactable = true;
+
+            initializeBaseStateMachine(_inputManager.paradigm_name);
+            Debug.Log("Session started with paradigm_name: " + _inputManager.paradigm_name);
+
+        }
+        public void StopGame()
+        {
+            startFlag = false;
+            _sessionManager.abortTrialFlag = true;
+            _sessionManager.ClearSession();
+            _inputManager.startSessionButton.interactable = true;
+            _inputManager.stopSessionButton.interactable = false;
+            Debug.Log("Session stopped");
+        }
+
+
+        private bool checkStartFlag()
+        {
+            return startflagSHMInterface.IsSet();
+        }
+
+
         public new T GetComponent<T>() where T : Component
         {
             if(_cachedComponents.ContainsKey(typeof(T)))

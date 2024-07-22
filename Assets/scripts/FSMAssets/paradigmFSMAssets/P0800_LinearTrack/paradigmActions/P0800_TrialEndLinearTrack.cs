@@ -15,7 +15,7 @@ namespace Experiment.ExperimentFSM
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override void Execute(BaseStateMachine stateMachine)
         {
-            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"];
+            string trialPackageValuesArray = ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + ",RN:" + stateMachine._sessionManager.trialVariablesDict["RN"];
 
             if (trialStartLinearTrack.trialSuccess)
                 stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
