@@ -93,11 +93,12 @@ public class InputManager : MonoBehaviour
 
         if (shmUnityInput == null) return;
         Debug.Log(shmUnityInput);
-        if (shmUnityInput == "Start") {
-            StartGame();
-        } else if (shmUnityInput == "Stop") {
-            StopGame();
-        } else if (shmUnityInput == "Failure") {
+        // if (shmUnityInput == "Start") {
+        //     StartGame();
+        // } else if (shmUnityInput == "Stop") {
+        //     StopGame();
+
+        if (shmUnityInput == "Failure") {
             sendFailure();
         } else if (shmUnityInput == "Airvalve") {
             sendSwitchAirvalve();

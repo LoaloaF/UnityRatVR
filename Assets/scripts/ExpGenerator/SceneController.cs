@@ -156,11 +156,11 @@ namespace RatVR.Scene
                 if (pd.Height != 0)
                 {
                     Transform CylinderTransform = pillar.transform.Find("Cylinder");
-                    CylinderTransform.localScale = new Vector3(pd.Radius, pd.Height, pd.Radius);
+                    CylinderTransform.localScale = new Vector3(pd.Radius*2, pd.Height, pd.Radius*2);
                     Transform ColliderTransform = pillar.transform.Find("Collider");
-                    ColliderTransform.localScale = new Vector3(pd.RewardRadius*1.5f, 0.2f*sceneData.Size.x, pd.RewardRadius*1.5f);
+                    ColliderTransform.localScale = new Vector3(pd.RewardRadius*3f, 0.2f*sceneData.Size.x, pd.RewardRadius*3f);
                     Transform GroundCylinderTransform = pillar.transform.Find("GroundCylinder");
-                    GroundCylinderTransform.localScale = new Vector3(pd.RewardRadius, GroundCylinderTransform.localScale.y, pd.RewardRadius);
+                    GroundCylinderTransform.localScale = new Vector3(pd.RewardRadius*2, GroundCylinderTransform.localScale.y, pd.RewardRadius*2);
 
                     if (pd.ShowGround != 1)
                         GroundCylinderTransform.gameObject.SetActive(false);

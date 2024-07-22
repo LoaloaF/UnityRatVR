@@ -23,12 +23,12 @@ public class PillarCollision : MonoBehaviour
         stateMachine = GetComponentInParent<BaseStateMachine>();
     }
 
-    // void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(colliderBottomPoint, colliderRadius);
-    //     Gizmos.DrawWireSphere(colliderTopPoint, colliderRadius);
-    // }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(colliderBottomPoint, colliderRadius);
+        Gizmos.DrawWireSphere(colliderTopPoint, colliderRadius);
+    }
 
     // Update is called once per frame
     void Update()

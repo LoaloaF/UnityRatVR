@@ -29,14 +29,13 @@ namespace Experiment.ExperimentFSM
             stateMachine._playerMovement.EnableMovement();
 
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
-
+            Debug.Log("Pillar count: " + pillars.Length);
             int pillarCount = 0;
             foreach (GameObject pillar in pillars)
             {
-                if (pillar.name.StartsWith("Pillar1"))
+                if (pillar.name.StartsWith("Pillar5"))
                 {
                     stateMachine._sceneController.scene.Pillars[pillarCount].IsReward = 0;
-
                     Collider pillarCollider = pillar.GetComponentInChildren<CapsuleCollider>();
                     pillarCollider.isTrigger = false;
 
@@ -44,9 +43,12 @@ namespace Experiment.ExperimentFSM
                 pillarCount++;
             }
 
-            Instantiate(clueZone, new Vector3(0, 0, -60), Quaternion.identity, stateMachine.transform);
-            Instantiate(rewardZoneNear, new Vector3(0, 0, 30), Quaternion.identity, stateMachine.transform);
-            Instantiate(rewardZoneFar, new Vector3(0, 0, 70), Quaternion.identity, stateMachine.transform);
+            GameObject clueZone1 = Instantiate(clueZone, new Vector3(0, 0, -90), Quaternion.identity, stateMachine.transform);
+            clueZone1.name = "ClueZone1";
+            // GameObject clueZone2 = Instantiate(clueZone, new Vector3(0, 0, -10), Quaternion.identity, stateMachine.transform);
+            // clueZone2.name = "ClueZone2";
+            // Instantiate(rewardZoneNear, new Vector3(0, 0, 30), Quaternion.identity, stateMachine.transform);
+            // Instantiate(rewardZoneFar, new Vector3(0, 0, 70), Quaternion.identity, stateMachine.transform);
         }
 
     }

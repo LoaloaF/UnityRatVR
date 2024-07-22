@@ -42,8 +42,8 @@ namespace RatVR.Scene
         private int isAirpuff = 0;
         public int IsAirpuff { get { return isAirpuff; } set { isAirpuff = value; } }
 
-        private int rewardRadius = 0;
-        public int RewardRadius { get { return rewardRadius; } set { rewardRadius = value; } }
+        private float rewardRadius = 0;
+        public float RewardRadius { get { return rewardRadius; } set { rewardRadius = value; } }
         
         private int showGround = 0;
         public int ShowGround { get { return showGround; } set { showGround = value; } }
