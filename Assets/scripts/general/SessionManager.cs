@@ -78,6 +78,7 @@ public sealed class SessionManager : MonoBehaviour
 
     public void UpdateTrialVariable(string variableJsonString)
     {
+        Debug.Log($"Updating Trial Variables with {variableJsonString}");
         Dictionary<string, string> tempDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(variableJsonString);
         foreach (var item in tempDict)
         {
