@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchDescription: 
   pillarIdentifier: 3
+  returnTrue: 1

@@ -21,28 +21,6 @@ namespace Experiment.ExperimentFSM
                 } else {
                     Debug.Log("SessionEnded while in ITI");
                 }
-                
-                stateMachine.validationSphereRenderer.enabled = true;
-                stateMachine.validationSphereRenderer.material.color = Color.black;
-
-                stateMachine._sceneController.wallTop.SetActive(false);
-                stateMachine._sceneController.wallBottom.SetActive(false);
-                stateMachine._sceneController.wallLeft.SetActive(false);
-                stateMachine._sceneController.wallRight.SetActive(false);
-
-
-                stateMachine._sceneController.floor.SetActive(false);
-                stateMachine._sceneController.wallZone.SetActive(false);
-
-                stateMachine._playerMovement.DisableMovement();
-                stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);
-
-                stateMachine._sessionManager.sessionRunning = false;
-
-                GameObject[] landmarks = GameObject.FindGameObjectsWithTag("Landmark");
-                foreach (GameObject landmark in landmarks) {
-                    Destroy(landmark);
-                }
                 return true;
             }
             return false;

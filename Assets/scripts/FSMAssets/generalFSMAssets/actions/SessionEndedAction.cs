@@ -26,6 +26,15 @@ namespace Experiment.ExperimentFSM
             stateMachine._playerMovement.DisableMovement();
             stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);
             stateMachine._sessionManager.trialRunning = false;
+            stateMachine._sessionManager.sessionRunning = false;
+
+
+            for (int i = stateMachine.transform.childCount - 1; i >= 0; i--)
+            {
+                Transform child = stateMachine.transform.GetChild(i);
+                Destroy(child.gameObject);
+            }
+
         }
  
     }

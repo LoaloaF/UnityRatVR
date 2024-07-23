@@ -5,6 +5,7 @@ using UnityEngine;
 using Cathei.BakingSheet;
 using RatVR.ExcelData;
 using RatVR.Scene;
+using System.Collections;
 
 namespace FSM
 {
@@ -108,7 +109,6 @@ namespace FSM
         {
             startFlag = false;
             _sessionManager.abortTrialFlag = true;
-            _sessionManager.ClearSession();
             _inputManager.startSessionButton.interactable = true;
             _inputManager.stopSessionButton.interactable = false;
             Debug.Log("Session stopped");
@@ -142,6 +142,7 @@ namespace FSM
                 frameIndicationBlinker.material.color = Color.black;
             }
         }
+
     }
 
     [System.Serializable] public class StateDictionary
@@ -177,6 +178,6 @@ namespace FSM
             }
             return value;
         }
-    }    
+    }
 
 }

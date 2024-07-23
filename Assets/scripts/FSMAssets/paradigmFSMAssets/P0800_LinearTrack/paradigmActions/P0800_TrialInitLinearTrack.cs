@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 namespace Experiment.ExperimentFSM
 {
@@ -12,9 +13,7 @@ namespace Experiment.ExperimentFSM
 
     public class P0800_TrialInitLinearTrack : FSMAction
     {
-        public GameObject clueZone;
-        public GameObject rewardZoneNear;
-        public GameObject rewardZoneFar;
+        public GameObject trackWall;
         public override void Execute(BaseStateMachine stateMachine)
         {
 
@@ -28,27 +27,60 @@ namespace Experiment.ExperimentFSM
             stateMachine._sceneController.wallRight.SetActive(true);
             stateMachine._playerMovement.EnableMovement();
 
+
+            stateMachine._playerMovement.ballSidewaysNormToCentimeter = 0f;
+            stateMachine._playerMovement.ballRotatationNormToCentimeter = 0f;
+            stateMachine._playerMovement.zOnlyMovePositive = true;
+
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
             Debug.Log("Pillar count: " + pillars.Length);
-            int pillarCount = 0;
             foreach (GameObject pillar in pillars)
             {
-                if (pillar.name.StartsWith("Pillar5"))
+                if (pillar.name.StartsWith("Pillar11"))
                 {
-                    stateMachine._sceneController.scene.Pillars[pillarCount].IsReward = 0;
-                    Collider pillarCollider = pillar.GetComponentInChildren<CapsuleCollider>();
-                    pillarCollider.isTrigger = false;
-
+                    pillar.SetActive(false);
                 }
-                pillarCount++;
+                else if (pillar.name.StartsWith("Pillar3") || pillar.name.StartsWith("Pillar4"))
+                {
+                    MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
+                    foreach (MeshRenderer mesh in meshRenderer)
+                    {
+                        if (mesh.gameObject.name == "Cylinder")
+                        {
+                            mesh.material.mainTextureScale = new Vector2(1, 1);
+                        }
+
+                    }
+                }
             }
 
-            GameObject clueZone1 = Instantiate(clueZone, new Vector3(0, 0, -90), Quaternion.identity, stateMachine.transform);
-            clueZone1.name = "ClueZone1";
-            // GameObject clueZone2 = Instantiate(clueZone, new Vector3(0, 0, -10), Quaternion.identity, stateMachine.transform);
-            // clueZone2.name = "ClueZone2";
-            // Instantiate(rewardZoneNear, new Vector3(0, 0, 30), Quaternion.identity, stateMachine.transform);
-            // Instantiate(rewardZoneFar, new Vector3(0, 0, 70), Quaternion.identity, stateMachine.transform);
+            float xPos = 0;
+            float ySize = 0;
+            foreach (GameObject pillar in pillars)
+            {
+                if (pillar.name.StartsWith("Pillar11"))
+                {
+                    xPos = pillar.transform.position.x;
+                    ySize = pillar.transform.position.y;
+                    break;
+                }
+            }
+
+            float arenaSize = stateMachine._sceneController.scene.Size.x;
+            Vector3 leftWallPosition = new Vector3(Math.Abs(xPos) * -1f, ySize+1, 0);
+            Vector3 rightWallPosition = new Vector3(Math.Abs(xPos), ySize+1, 0);
+
+            GameObject leftWall = Instantiate(trackWall, leftWallPosition, Quaternion.identity, stateMachine.transform);
+            leftWall.name = "LeftWall";
+            leftWall.transform.localScale = new Vector3(4, ySize*2, arenaSize);
+            leftWall.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["grey"];
+
+
+            GameObject rightWall = Instantiate(trackWall, rightWallPosition, Quaternion.identity, stateMachine.transform);
+            rightWall.name = "RightWall";
+            rightWall.transform.localScale = new Vector3(4, ySize*2, arenaSize);
+            rightWall.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["grey"];
+
         }
 
     }

@@ -11,7 +11,7 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/General/InterTrialIntervalEnded")]
     public class InterTrialIntervalEnded : Decision
     {
-        private float timer = 0f;
+        public float timer = 0f;
         private int currentTrialID = -1;
         public override bool Decide(BaseStateMachine stateMachine)
         {
@@ -22,7 +22,6 @@ namespace Experiment.ExperimentFSM
             }
             
             if (timer > stateMachine._sessionManager.interTrialIntervalLength) {
-                timer = 0f;
                 return true;
             }
             

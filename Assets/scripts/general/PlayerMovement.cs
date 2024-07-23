@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public int lastPackID;
     [HideInInspector] public int[] XYZvelInput = new int[3];
 
+    // Control if the rat can move in the negative direction
+    [HideInInspector] public bool zOnlyMovePositive = false;
+    [HideInInspector] public bool xOnlyMovePositive = false;
+
     private bool movementEnabled = false;
     private float rotY = 0f;
     private string log;
@@ -30,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         ballVelSHMInterface = new CyclicPackagesSHMInterface("ballvelocity_shmstruct.json");
+        xOnlyMovePositive = false;
+        zOnlyMovePositive = false;
     }
 
     // Update is called once per frame
@@ -129,7 +135,15 @@ public class PlayerMovement : MonoBehaviour
         // Debug.Log("Forward " +forwardVel);
         Vector3 rightVel = Vector3.Scale(-transform.right*XYZvelInput[2]*ballSidewaysNormToCentimeter,gain);
         // Debug.Log("Right " + rightVel);
-        controller.Move((forwardVel+rightVel));
+        Vector3 moveDir = forwardVel + rightVel;
+
+        if (zOnlyMovePositive && moveDir.z < 0) {
+            moveDir = new Vector3(forwardVel.x, forwardVel.y, 0);
+        }
+        else if (xOnlyMovePositive && moveDir.x < 0) {
+            moveDir = new Vector3(0, rightVel.y, rightVel.z);
+        }
+        controller.Move((moveDir));
     }
 
     // add Z input of ball to current y rotation

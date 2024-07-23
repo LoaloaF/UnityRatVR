@@ -93,12 +93,12 @@ public class InputManager : MonoBehaviour
 
         if (shmUnityInput == null) return;
         Debug.Log(shmUnityInput);
-        // if (shmUnityInput == "Start") {
-        //     StartGame();
-        // } else if (shmUnityInput == "Stop") {
-        //     StopGame();
-
-        if (shmUnityInput == "Failure") {
+        if (shmUnityInput == "Start") {
+            return;
+        } else if (shmUnityInput == "Stop") {
+            return;
+        }
+        else if (shmUnityInput == "Failure") {
             sendFailure();
         } else if (shmUnityInput == "Airvalve") {
             sendSwitchAirvalve();
@@ -169,7 +169,6 @@ public class InputManager : MonoBehaviour
 
         // Disable the start button
         _sessionManager.abortTrialFlag = true;
-        _sessionManager.ClearSession();
         startSessionButton.interactable = true;
         stopSessionButton.interactable = false;
         Debug.Log("Session stopped");

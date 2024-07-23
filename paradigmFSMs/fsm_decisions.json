@@ -119,15 +119,69 @@
     "assetType": "decision",
     "switchDescription": ""
   },
-  "6739dbd31d1cdef25971d27428eb9cae": {
+  "fdf5692cb3b1826edb88cb6f8480c308": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0800_EnterRewardZone",
+    "name": "P0800_EnterCueZone1",
     "assetType": "decision",
     "switchDescription": ""
   },
-  "26c9792b1832bba679beb83e0dfd107f": {
+  "a0a6519d3a5403d9e8e1ce00646c7049": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0800_ExitRewardZone",
+    "name": "P0800_EnterCueZone2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "5f340d0e548dc935db2991f359de966b": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_EnterPostReward",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "1ad04201f14302cce81d9f090faba88b": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_EnterRewardZone1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "121e2239c13d635c1a46ead4e94ef8ef": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_EnterRewardZone2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "7798dcb8e87ad4e32abdadd48f58e4ee": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_RatLeaveCorrectPillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "d189a3d6b59e2c86485c0a769ad5f007": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_RatLeaveRewardZone1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "fbd517a207f87245ba9e3c1159f3a0d2": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_RatLeaveRewardZone2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "baed24fb2162947ed9868199094ab0a0": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_RatUnderCorrectPillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "67d145ac365a7941abcd11f57c36ea1d": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_RatUnderRewardZone1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "ed820601619ad9d1f80860252915b055": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_RatUnderRewardZone2",
     "assetType": "decision",
     "switchDescription": ""
   },
@@ -137,7 +191,7 @@
     "assetType": "decision",
     "switchDescription": ""
   },
-  "fd14d53b80b92d5cbab06d236157f0b7": {
+  "29dcbf3ce5344d792a796ac60a9ef156": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
     "name": "P0800_StayTimeReached",
     "assetType": "decision",

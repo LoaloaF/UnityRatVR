@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41727990c500f2f2ab13b585b1f47b7d, type: 3}
   m_Name: P0800_TrialInitLinearTrack
   m_EditorClassIdentifier: 
-  clueZone: {fileID: 8600296818727825049, guid: 8cb3517f7223fda39bd1d3112a580c70, type: 3}
-  rewardZoneNear: {fileID: 8600296818727825049, guid: d8201fa47a486478c8c0471b197cca5f, type: 3}
-  rewardZoneFar: {fileID: 8600296818727825049, guid: b0814bf620124a2fcaeaa1c1be6a835b, type: 3}
+  trackWall: {fileID: 8600296818727825049, guid: 8cb3517f7223fda39bd1d3112a580c70, type: 3}

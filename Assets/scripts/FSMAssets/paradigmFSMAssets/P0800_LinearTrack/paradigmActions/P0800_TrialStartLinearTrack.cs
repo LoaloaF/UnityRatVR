@@ -14,10 +14,11 @@ namespace Experiment.ExperimentFSM
     {
         public int cueIndicator = -1;
         public bool trialSuccess = false;
+        public FadeScreen fadeScreen;
         public override void Execute(BaseStateMachine stateMachine)
         {
 
-            Vector3 newStartPosition = new Vector3(0, 0, -145f);
+            Vector3 newStartPosition = new Vector3(0, 0, -235f);
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
             stateMachine._sceneController.floor.SetActive(true);
@@ -27,16 +28,18 @@ namespace Experiment.ExperimentFSM
             stateMachine._sceneController.wallBottom.SetActive(true);
             stateMachine._sceneController.wallLeft.SetActive(true);
             stateMachine._sceneController.wallRight.SetActive(true);
-            stateMachine._playerMovement.EnableMovement();
             trialSuccess = false;
 
+            fadeScreen = FindObjectOfType<FadeScreen>();
+            fadeScreen.isFadingIn = false;
+            fadeScreen.isFadingOut = false;
 
             foreach (Transform child in stateMachine.transform)
             {
-                child.gameObject.SetActive(true);
+                if (!child.name.StartsWith("Pillar11"))
+                    child.gameObject.SetActive(true);
             }
 
-            GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
             float randomValue = Random.Range(0f, 1f);
 
             if (randomValue > 0.5f)
@@ -52,24 +55,29 @@ namespace Experiment.ExperimentFSM
 
             foreach (Transform child in stateMachine.transform)
             {
-                if (child.name == "ClueZone1")
+                if (child.name.StartsWith("Pillar1") && !child.name.StartsWith("Pillar10"))
                 {
                     MeshRenderer[] meshRenderer = child.GetComponentsInChildren<MeshRenderer>();
                     foreach (MeshRenderer mesh in meshRenderer)
                     {
-                        if (cueIndicator == 3)
+                        if (mesh.gameObject.name == "Cylinder")
                         {
-                            mesh.material = stateMachine._sceneController.materials["testwall3"];
+                            if (cueIndicator == 3)
+                                mesh.material = stateMachine._sceneController.materials["blackdots"];
+                            else if (cueIndicator == 4)
+                                mesh.material = stateMachine._sceneController.materials["verticalstribes"];
+                            
+                            mesh.material.color = new Color(1, 1, 1, 0);
+
                         }
-                        else if (cueIndicator == 4)
-                        {
-                            mesh.material = stateMachine._sceneController.materials["verticalstribes"];;
-                        }
+
                     }
                 }
             }
       
             stateMachine._sessionManager.newTrial();
+            stateMachine._sessionManager.trialVariablesDict["RN"] = "0";
+
             stateMachine._sessionManager.trialRunning = true;
 
 

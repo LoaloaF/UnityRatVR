@@ -11,7 +11,7 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/General/SuccessSequenceEnded")]
     public class SuccessSequenceEnded : Decision
     {
-        private float timer = 0f;
+        public float timer = 0f;
         private int currentTrialID = -1;
         public override bool Decide(BaseStateMachine stateMachine)
         {

@@ -21,6 +21,7 @@ public sealed class SessionManager : MonoBehaviour
     public float successSequenceLength;
     public float maximumTrialLength;
     public string sessionDescription;
+    public PlayerMovement _playerMovement;
 
     public Dictionary<string, string> trialVariablesDict = new Dictionary<string, string>();
     private string[] trialVariablesNamesArray;
@@ -122,20 +123,5 @@ public sealed class SessionManager : MonoBehaviour
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
     }
 
-
-    public void ClearSession()
-    {
-        GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
-        foreach (GameObject pillar in pillars)
-        {
-            Destroy(pillar);
-        }
-
-        GameObject[] landmarks = GameObject.FindGameObjectsWithTag("Landmark");
-        foreach (GameObject landmark in landmarks)
-        {
-            Destroy(landmark);
-        }
-
-    }
+    
 }
