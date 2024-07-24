@@ -15,12 +15,14 @@ namespace Experiment.ExperimentFSM
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override void Execute(BaseStateMachine stateMachine)
         {
-            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + ",RN:" + stateMachine._sessionManager.trialVariablesDict["RN"];
+            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + ",C:" + stateMachine._sessionManager.trialVariablesDict["C"];
+
+            int outcome = int.Parse(stateMachine._sessionManager.trialVariablesDict["RN"]);
 
             if (trialStartLinearTrack.trialSuccess)
-                stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
+                stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
             else
-                stateMachine._sessionManager.logEndTrial(0, trialPackageValuesArray);
+                stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
 
             stateMachine._sessionManager.trialRunning = false;
         }

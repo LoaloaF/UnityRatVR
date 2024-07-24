@@ -46,11 +46,14 @@ namespace Experiment.ExperimentFSM
             {
                 cueIndicator = 4;
                 Debug.Log("Cue at far");
+                stateMachine._sessionManager.trialVariablesDict["C"] = "2";
+
             }
             else
             {
                 cueIndicator = 3;
                 Debug.Log("Cue at near");
+                stateMachine._sessionManager.trialVariablesDict["C"] = "1";
             }
 
             foreach (Transform child in stateMachine.transform)
@@ -63,7 +66,7 @@ namespace Experiment.ExperimentFSM
                         if (mesh.gameObject.name == "Cylinder")
                         {
                             if (cueIndicator == 3)
-                                mesh.material = stateMachine._sceneController.materials["blackdots"];
+                                mesh.material = stateMachine._sceneController.materials["whitedots"];
                             else if (cueIndicator == 4)
                                 mesh.material = stateMachine._sceneController.materials["verticalstribes"];
                             

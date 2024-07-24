@@ -131,6 +131,12 @@
     "assetType": "decision",
     "switchDescription": ""
   },
+  "3531e03da2578f6e299387f7581d16f0": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_EnterPostCue1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
   "5f340d0e548dc935db2991f359de966b": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
     "name": "P0800_EnterPostReward",
@@ -194,6 +200,12 @@
   "29dcbf3ce5344d792a796ac60a9ef156": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
     "name": "P0800_StayTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "ca19d125086f4e6cc8c13b804f8262f5": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
+    "name": "P0800_SuccessSequencyEnded",
     "assetType": "decision",
     "switchDescription": ""
   },

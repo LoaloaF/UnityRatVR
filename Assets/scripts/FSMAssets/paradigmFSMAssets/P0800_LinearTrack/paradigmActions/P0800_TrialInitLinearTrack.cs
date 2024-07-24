@@ -47,10 +47,11 @@ namespace Experiment.ExperimentFSM
                     {
                         if (mesh.gameObject.name == "Cylinder")
                         {
-                            mesh.material.mainTextureScale = new Vector2(1, 1);
+                            mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
                         }
 
                     }
+                    // continue;
                 }
             }
 
