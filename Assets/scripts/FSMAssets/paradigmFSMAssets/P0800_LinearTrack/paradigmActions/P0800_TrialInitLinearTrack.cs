@@ -50,15 +50,9 @@ namespace Experiment.ExperimentFSM
                     {
                         if (mesh.gameObject.name == "Cylinder")
                         {
-<<<<<<< HEAD
                             mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
                         }
-=======
-                            mesh.material.mainTextureScale = new Vector2(1, 1);
-                            Debug.Log("Pillar name: " + pillar.name + " Mesh transparency: " + mesh.material.color.a);
->>>>>>> 558912abf28f9a07fb592481e94e5489208b593d
 
-                        }
                     }
                 }
                 else if ((pillar.name.StartsWith("Pillar1") && !pillar.name.StartsWith("Pillar11")) || pillar.name.StartsWith("Pillar2"))
@@ -81,7 +75,6 @@ namespace Experiment.ExperimentFSM
                                 fadeInCue2.cueShouldFadeIn = false;
                         }
                     }
-                    // continue;
                 }
             }
 
