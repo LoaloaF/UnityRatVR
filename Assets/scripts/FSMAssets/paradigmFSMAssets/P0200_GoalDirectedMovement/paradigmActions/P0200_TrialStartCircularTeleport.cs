@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0200/TrialStartCircularTeleport")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0200/P0200_TrialStartCircularTeleport")]
 
-    public class TrialStartCircularTeleport : FSMAction
+    public class P0200_TrialStartCircularTeleport : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)
         {

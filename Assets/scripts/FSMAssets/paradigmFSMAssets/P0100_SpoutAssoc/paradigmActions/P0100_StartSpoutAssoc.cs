@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0100/StartSpoutAssoc")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0100/P0100_StartSpoutAssoc")]
 
-    public class StartSpoutAssoc : FSMAction
+    public class P0100_StartSpoutAssoc : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)
         {         

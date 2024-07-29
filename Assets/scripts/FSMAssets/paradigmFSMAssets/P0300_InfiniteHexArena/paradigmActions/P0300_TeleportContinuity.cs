@@ -8,8 +8,8 @@ using RatVR.Scene;
 namespace Experiment.ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0300/TeleportContinuity")]
-    public class TeleportContinuity : FSMAction
+    [CreateAssetMenu(menuName = "FSM/Actions/P0300/P0300_TeleportContinuity")]
+    public class P0300_TeleportContinuity : FSMAction
     {
         private Vector2[] hexagonVertices;
         public override void Execute(BaseStateMachine stateMachine)

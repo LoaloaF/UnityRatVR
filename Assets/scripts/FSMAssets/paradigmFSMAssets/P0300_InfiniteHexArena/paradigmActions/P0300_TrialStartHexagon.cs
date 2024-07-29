@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0300/TrialStartHexagon")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0300/P0300_TrialStartHexagon")]
 
-    public class TrialStartHexagon : FSMAction
+    public class P0300_TrialStartHexagon : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)
         {

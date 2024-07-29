@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0300/TrialInitHexagon")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0300/P0300_TrialInitHexagon")]
 
-    public class TrialInitHexagon : FSMAction
+    public class P0300_TrialInitHexagon : FSMAction
     {
         [SerializeField] private GameObject LandmarkObject;
 
@@ -26,7 +26,7 @@ namespace Experiment.ExperimentFSM
                                                         landmark.transform.localScale.y * stateMachine._sceneController.scene.BaseLength * scaleFactor, 
                                                         landmark.transform.localScale.z * stateMachine._sceneController.scene.BaseLength * scaleFactor);
             landmark.transform.position = new Vector3(0, 56, 34*stateMachine._sceneController.scene.BaseLength * scaleFactor);
-            LandmarkFollowPlayer landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
+            P0300_LandmarkFollowPlayer landmarkFollowPlayer = landmark.GetComponent<P0300_LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
             landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall6"];
@@ -38,7 +38,7 @@ namespace Experiment.ExperimentFSM
                                                         landmark.transform.localScale.y * stateMachine._sceneController.scene.BaseLength * scaleFactor, 
                                                         landmark.transform.localScale.z * stateMachine._sceneController.scene.BaseLength * scaleFactor);
             landmark.transform.position = new Vector3(0, 56, -34*stateMachine._sceneController.scene.BaseLength * scaleFactor);
-            landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
+            landmarkFollowPlayer = landmark.GetComponent<P0300_LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
                     landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall7"];
@@ -50,7 +50,7 @@ namespace Experiment.ExperimentFSM
                                                         landmark.transform.localScale.y * stateMachine._sceneController.scene.BaseLength * scaleFactor, 
                                                         landmark.transform.localScale.z * stateMachine._sceneController.scene.BaseLength * scaleFactor);
             landmark.transform.position = new Vector3(30*stateMachine._sceneController.scene.BaseLength * scaleFactor, 56, 0);
-            landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
+            landmarkFollowPlayer = landmark.GetComponent<P0300_LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
             landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall8"];
@@ -62,7 +62,7 @@ namespace Experiment.ExperimentFSM
                                                         landmark.transform.localScale.y * stateMachine._sceneController.scene.BaseLength * scaleFactor, 
                                                         landmark.transform.localScale.z * stateMachine._sceneController.scene.BaseLength * scaleFactor);
             landmark.transform.position = new Vector3(-30*stateMachine._sceneController.scene.BaseLength * scaleFactor, 56, 0);
-            landmarkFollowPlayer = landmark.GetComponent<LandmarkFollowPlayer>();
+            landmarkFollowPlayer = landmark.GetComponent<P0300_LandmarkFollowPlayer>();
             landmarkFollowPlayer.initLandmarkPosition = landmark.transform.position;
             landmarkFollowPlayer.finishInit = true;
             landmark.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["testwall3"];

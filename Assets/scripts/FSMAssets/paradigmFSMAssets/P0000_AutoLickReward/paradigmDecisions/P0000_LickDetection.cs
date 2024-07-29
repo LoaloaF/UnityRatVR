@@ -4,8 +4,8 @@ using UnityEngine;
 namespace ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/P0000/LickDetection")]
-    public class LickDetection : Decision
+    [CreateAssetMenu(menuName = "FSM/Decisions/P0000/P0000_LickDetection")]
+    public class P0000_LickDetection : Decision
     {
         public double threshold = 1;
         private CyclicPackagesSHMInterface portentaOutputSHMInterface;

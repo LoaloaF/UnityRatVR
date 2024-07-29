@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandmarkFollowPlayer : MonoBehaviour
+public class P0300_LandmarkFollowPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Transform playerPosition;

@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0300/SuccessUnderPillar")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0300/P0300_SuccessUnderPillar")]
 
-    public class SuccessUnderPillar : FSMAction
+    public class P0300_SuccessUnderPillar : FSMAction
     {
         public override void Execute(BaseStateMachine stateMachine)
         {

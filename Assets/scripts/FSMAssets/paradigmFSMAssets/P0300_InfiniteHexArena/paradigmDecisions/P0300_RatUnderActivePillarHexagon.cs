@@ -9,8 +9,8 @@ using static UnityEngine.GraphicsBuffer;
 namespace Experiment.ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/P0300/RatUnderActivePillarHexagon")]
-    public class RatUnderActivePillarHexagon : Decision
+    [CreateAssetMenu(menuName = "FSM/Decisions/P0300/P0300_RatUnderActivePillarHexagon")]
+    public class P0300_RatUnderActivePillarHexagon : Decision
     {
 
         public float timer = 0f;

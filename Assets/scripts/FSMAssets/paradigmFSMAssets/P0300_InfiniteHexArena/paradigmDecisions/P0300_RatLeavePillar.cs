@@ -8,8 +8,8 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/P0300/RatLeavePillar")]
-    public class RatLeavePillar : Decision
+     [CreateAssetMenu(menuName = "FSM/Decisions/P0300/P0300_RatLeavePillar")]
+    public class P0300_RatLeavePillar : Decision
     {
 
         public override bool Decide(BaseStateMachine stateMachine)
