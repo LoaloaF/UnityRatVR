@@ -14,6 +14,9 @@ namespace Experiment.ExperimentFSM
     public class P0800_TrialInitLinearTrack : FSMAction
     {
         public GameObject trackWall;
+        public P0800_FadeInCue fadeInCue1;
+        public P0800_FadeInCue fadeInCue2;
+
         public override void Execute(BaseStateMachine stateMachine)
         {
 
@@ -48,8 +51,30 @@ namespace Experiment.ExperimentFSM
                         if (mesh.gameObject.name == "Cylinder")
                         {
                             mesh.material.mainTextureScale = new Vector2(1, 1);
-                        }
+                            Debug.Log("Pillar name: " + pillar.name + " Mesh transparency: " + mesh.material.color.a);
 
+                        }
+                    }
+                }
+                else if ((pillar.name.StartsWith("Pillar1") && !pillar.name.StartsWith("Pillar11")) || pillar.name.StartsWith("Pillar2"))
+                {
+                    MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
+                    foreach (MeshRenderer mesh in meshRenderer)
+                    {
+                        if ((pillar.name.StartsWith("Pillar1") && !pillar.name.StartsWith("Pillar11")))
+                        {
+                            if (mesh.material.color.a == 1)
+                                fadeInCue1.cueShouldFadeIn = true;
+                            else
+                                fadeInCue1.cueShouldFadeIn = false;
+                        }
+                        else if (pillar.name.StartsWith("Pillar2"))
+                        {
+                            if (mesh.material.color.a == 1)
+                                fadeInCue2.cueShouldFadeIn = true;
+                            else
+                                fadeInCue2.cueShouldFadeIn = false;
+                        }
                     }
                 }
             }

@@ -13,8 +13,13 @@ namespace Experiment.ExperimentFSM
     public class P0800_FadeInCue : FSMAction
     {
         public string cueName;
+        public bool cueShouldFadeIn = false;
         public override void Execute(BaseStateMachine stateMachine)
         {
+
+            if (!cueShouldFadeIn)
+                return;
+
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
 
             foreach (GameObject pillar in pillars)

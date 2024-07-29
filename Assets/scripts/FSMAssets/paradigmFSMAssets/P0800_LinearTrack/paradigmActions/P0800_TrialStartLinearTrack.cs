@@ -55,7 +55,7 @@ namespace Experiment.ExperimentFSM
 
             foreach (Transform child in stateMachine.transform)
             {
-                if (child.name.StartsWith("Pillar1") && !child.name.StartsWith("Pillar10"))
+                if ((child.name.StartsWith("Pillar1") && !child.name.StartsWith("Pillar10"))|| child.name.StartsWith("Pillar2"))
                 {
                     MeshRenderer[] meshRenderer = child.GetComponentsInChildren<MeshRenderer>();
                     foreach (MeshRenderer mesh in meshRenderer)

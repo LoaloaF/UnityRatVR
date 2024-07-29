@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: P0800_TrialInitLinearTrack
   m_EditorClassIdentifier: 
   trackWall: {fileID: 8600296818727825049, guid: 8cb3517f7223fda39bd1d3112a580c70, type: 3}
+  fadeInCue1: {fileID: 11400000, guid: c9d9dd7b26b1f84439060c796053a88e, type: 2}
+  fadeInCue2: {fileID: 11400000, guid: 3fb2009ab49535f4092015d5a4bcdbb5, type: 2}
