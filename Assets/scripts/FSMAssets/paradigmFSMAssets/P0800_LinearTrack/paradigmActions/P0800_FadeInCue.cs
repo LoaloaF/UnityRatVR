@@ -34,7 +34,7 @@ namespace Experiment.ExperimentFSM
                         {
                             if (mesh.gameObject.name == "Cylinder")
                             {
-                                mesh.material.color = new Color(1, 1, 1, 1 - distance/60f);
+                                mesh.material.color = new Color(1, 1, 1, 1 - distance/120f);
                             }
                         }
                     }

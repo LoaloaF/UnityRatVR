@@ -88,9 +88,9 @@ namespace Cathei.BakingSheet
 
             if (!pages.ContainsKey("Environment")) throw new Exception("Environment table missing!!");
 
-            for (int x = 1; x <= 500; ++x) // TODO change to real environment size
+            for (int x = 1; x <= 600; ++x) // TODO change to real environment size
             {
-                for (int y = 1; y <= 500; ++y)
+                for (int y = 1; y <= 600; ++y)
                 {
                     var cellContent = pages["Environment"].GetCell(x, y);
 
