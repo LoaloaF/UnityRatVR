@@ -18,7 +18,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
 
-            Vector3 newStartPosition = new Vector3(0, 0, -235f);
+            Vector3 newStartPosition = new Vector3(0, 0, -169f);
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
             stateMachine._sceneController.floor.SetActive(true);

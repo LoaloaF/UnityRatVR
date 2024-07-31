@@ -14,7 +14,7 @@ namespace Experiment.ExperimentFSM
     {
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            if (stateMachine._playerMovement.transform.position.z > 230f)
+            if (stateMachine._playerMovement.transform.position.z > 260f)
             {
                 return true;
             }
