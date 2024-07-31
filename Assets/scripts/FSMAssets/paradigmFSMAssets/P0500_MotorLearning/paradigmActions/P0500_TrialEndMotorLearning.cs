@@ -16,10 +16,13 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
 
-            string trialPackageValuesArray = ",MT:" + stateMachine._sessionManager.trialVariablesDict["MT"] + 
-                                             ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
-                                             ",MTH:" + stateMachine._sessionManager.trialVariablesDict["MTH"] + 
-                                             ",STH:" + stateMachine._sessionManager.trialVariablesDict["STH"];
+            string trialPackageValuesArray =",MT:" + stateMachine._sessionManager.trialVariablesDict["MT"] + 
+                                            ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
+                                            ",MTH:" + stateMachine._sessionManager.trialVariablesDict["MTH"] + 
+                                            ",STH:" + stateMachine._sessionManager.trialVariablesDict["STH"] +
+                                            ",R:" + stateMachine._sessionManager.trialVariablesDict["R"] +
+                                            ",Y:" + stateMachine._sessionManager.trialVariablesDict["Y"] +
+                                            ",P:" + stateMachine._sessionManager.trialVariablesDict["P"];
             stateMachine._sessionManager.logEndTrial(successIndicator, trialPackageValuesArray);
 
         }
