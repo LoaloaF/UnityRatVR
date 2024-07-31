@@ -4,8 +4,8 @@ using UnityEngine;
 namespace ExperimentFSM
 
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/P0100/RandomSccessEntry")]
-    public class RandomSccessEntry : Decision
+    [CreateAssetMenu(menuName = "FSM/Decisions/P0100/P0100_RandomSuccessEntry")]
+    public class P0100_RandomSuccessEntry : Decision
     {
         private float timer = 0f;
         private bool decisionCall = false;
