@@ -21,7 +21,10 @@ namespace Experiment.ExperimentFSM
             else
                 stateMachine._sessionManager.trialVariablesDict["ST"] = variableST.ToString();
 
-            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + ",C:" + stateMachine._sessionManager.trialVariablesDict["C"];
+            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
+                                            ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + 
+                                            ",C:" + stateMachine._sessionManager.trialVariablesDict["C"] + 
+                                            ",LR:"+ stateMachine._sessionManager.trialVariablesDict["LR"];
 
             int outcome = int.Parse(stateMachine._sessionManager.trialVariablesDict["RN"]);
 
