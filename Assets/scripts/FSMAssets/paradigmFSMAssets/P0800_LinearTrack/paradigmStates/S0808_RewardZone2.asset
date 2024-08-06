@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: S0808_RewardZone2
   m_EditorClassIdentifier: 
   stateID: 808
-  Action: []
+  Action:
+  - {fileID: 11400000, guid: b242e5870b48dce1a82f49b81c95b679, type: 2}
   Transitions:
   - {fileID: 11400000, guid: eff9082b04147486289610f617fc5f72, type: 2}
   - {fileID: 11400000, guid: 89b34a3024d80979a8b0345014645d7a, type: 2}

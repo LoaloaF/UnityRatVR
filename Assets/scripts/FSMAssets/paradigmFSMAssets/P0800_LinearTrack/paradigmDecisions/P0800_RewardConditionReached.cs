@@ -12,8 +12,9 @@ namespace Experiment.ExperimentFSM
     public class P0800_RewardConditionReached : Decision
     {
         public float timer = 0f;
+        public float threshold = 23;
         private bool lickReward = false;
-        private CyclicPackagesSHMInterface portentaOutputSHMInterface;
+        public P0800_TrialInitLinearTrack trialInitLinearTrack;
         private int nChecks = 0;
 
         public override bool Decide(BaseStateMachine stateMachine)
@@ -31,11 +32,11 @@ namespace Experiment.ExperimentFSM
 
         private bool LickReward(BaseStateMachine stateMachine)
         {
-            if (portentaOutputSHMInterface == null) portentaOutputSHMInterface = new CyclicPackagesSHMInterface("portentaoutput_shmstruct.json");
+            
 
             bool foundLick = false;
             while (true) {
-                var portentaPackage = portentaOutputSHMInterface.PopExtractedItem();
+                var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
 
                 if (portentaPackage == null) {
                     nChecks = 0;
@@ -43,11 +44,15 @@ namespace Experiment.ExperimentFSM
                     return foundLick;
                 }
 
+                Debug.Log(portentaPackage["V"]);
                 if (portentaPackage["N"].ToString().Trim() == "L")
                 {
+                    if (int.Parse(portentaPackage["V"].ToString()) > threshold) {
                     Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
                     nChecks = 0;
                     foundLick = true;
+
+                    }
                 }
                 nChecks++;
             }

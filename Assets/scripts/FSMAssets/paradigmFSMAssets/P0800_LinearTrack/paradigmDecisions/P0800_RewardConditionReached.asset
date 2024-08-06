@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 755b63c9e7a2250eb86c8becea1b38d8, type: 3}
-  m_Name: P0800_ResetReward
+  m_Script: {fileID: 11500000, guid: e8e107826110b52b1b07bed9973aee21, type: 3}
+  m_Name: P0800_RewardConditionReached
   m_EditorClassIdentifier: 
-  rewardConditionReached: {fileID: 11400000, guid: 29dcbf3ce5344d792a796ac60a9ef156, type: 2}
-  successSequenceEnded: {fileID: 11400000, guid: ca19d125086f4e6cc8c13b804f8262f5, type: 2}
+  switchDescription: 
+  timer: 0
+  trialInitLinearTrack: {fileID: 11400000, guid: ea840d605c1cef8eab95dc872ea72b27, type: 2}
