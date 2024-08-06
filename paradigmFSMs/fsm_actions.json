@@ -69,6 +69,11 @@
     "name": "P0400_TrialStart4Pillars",
     "assetType": "action"
   },
+  "f051439f5bbda66d491710a16a6f7a73": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_ClearSHMInput",
+    "assetType": "action"
+  },
   "52e5dcbe13c0b96dbb821c1aa901c1bf": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
     "name": "P0500_MovementInQueue",
@@ -119,9 +124,19 @@
     "name": "P0700_TrialStartYMaze",
     "assetType": "action"
   },
+  "b242e5870b48dce1a82f49b81c95b679": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
+    "name": "P0800_ClearSHMInput",
+    "assetType": "action"
+  },
   "c9d9dd7b26b1f84439060c796053a88e": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
     "name": "P0800_FadeInCue1",
+    "assetType": "action"
+  },
+  "3fb2009ab49535f4092015d5a4bcdbb5": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
+    "name": "P0800_FadeInCue2",
     "assetType": "action"
   },
   "325ba1e55040557509fa30ed07790647": {

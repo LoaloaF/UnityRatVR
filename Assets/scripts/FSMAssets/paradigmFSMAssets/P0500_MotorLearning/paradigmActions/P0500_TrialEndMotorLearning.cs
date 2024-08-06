@@ -22,7 +22,8 @@ namespace Experiment.ExperimentFSM
                                             ",STH:" + stateMachine._sessionManager.trialVariablesDict["STH"] +
                                             ",R:" + stateMachine._sessionManager.trialVariablesDict["R"] +
                                             ",Y:" + stateMachine._sessionManager.trialVariablesDict["Y"] +
-                                            ",P:" + stateMachine._sessionManager.trialVariablesDict["P"];
+                                            ",P:" + stateMachine._sessionManager.trialVariablesDict["P"] +
+                                            ",LR:" + stateMachine._sessionManager.trialVariablesDict["LR"];
             stateMachine._sessionManager.logEndTrial(successIndicator, trialPackageValuesArray);
 
         }

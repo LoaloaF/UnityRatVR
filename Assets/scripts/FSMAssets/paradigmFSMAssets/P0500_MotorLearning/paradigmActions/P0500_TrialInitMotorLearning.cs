@@ -12,6 +12,7 @@ namespace Experiment.ExperimentFSM
 
     public class P0500_TrialInitMotorLearning : FSMAction
     {
+        public CyclicPackagesSHMInterface portentaOutputSHMInterface;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -25,6 +26,9 @@ namespace Experiment.ExperimentFSM
 
             stateMachine._sceneController.floor.SetActive(false);
             stateMachine._sceneController.wallZone.SetActive(false);
+
+            if (portentaOutputSHMInterface == null) portentaOutputSHMInterface = new CyclicPackagesSHMInterface("portentaoutput_shmstruct.json");
+
 
             if (stateMachine.transform.childCount > 0)
             {

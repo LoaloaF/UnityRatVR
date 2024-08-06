@@ -798,7 +798,7 @@ MonoBehaviour:
   Player: {fileID: 1180528854}
   UIObject: {fileID: 1185421911}
   showUI: 1
-  paradigm_name: P0800_LinearTrack
+  paradigm_name: P0500_MotorLearning
 --- !u!114 &68722541
 MonoBehaviour:
   m_ObjectHideFlags: 0

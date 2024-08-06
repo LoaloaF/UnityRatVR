@@ -12,9 +12,18 @@ namespace Experiment.ExperimentFSM
     public class P0500_RewardConditionReached : Decision
     {
         public P0500_MovementInQueue movementInQueue;
+        public P0500_TrialInitMotorLearning trialInitMotorLearning;
+        private int nChecks = 0;
         public override bool Decide(BaseStateMachine stateMachine)
         {
+            int lickRewardCheck = int.Parse(stateMachine._sessionManager.trialVariablesDict["LR"]);
 
+            if (lickRewardCheck == 1)
+            {
+                return LickReward(stateMachine) && CheckStop(stateMachine);
+            }
+            else
+                return CheckStop(stateMachine);
         }
 
 
@@ -32,26 +41,27 @@ namespace Experiment.ExperimentFSM
                 return true;
             }
         }
-
         private bool LickReward(BaseStateMachine stateMachine)
         {
-            if (portentaOutputSHMInterface == null) portentaOutputSHMInterface = new CyclicPackagesSHMInterface("portentaoutput_shmstruct.json");
-
             bool foundLick = false;
             while (true) {
-                var portentaPackage = portentaOutputSHMInterface.PopExtractedItem();
+                var portentaPackage = trialInitMotorLearning.portentaOutputSHMInterface.PopExtractedItem();
 
                 if (portentaPackage == null) {
                     nChecks = 0;
-                    if (foundLick) Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
+                    if (foundLick) Debug.Log($"Lick above threshold detected, after {nChecks} checks");
                     return foundLick;
                 }
 
+                Debug.Log(portentaPackage["V"]);
                 if (portentaPackage["N"].ToString().Trim() == "L")
                 {
-                    Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
+                    // if (int.Parse(portentaPackage["V"].ToString()) > threshold) {
+                    Debug.Log($"Lick above threshold detected, after {nChecks} checks");
                     nChecks = 0;
                     foundLick = true;
+
+                    // }
                 }
                 nChecks++;
             }

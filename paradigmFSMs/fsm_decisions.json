@@ -91,7 +91,7 @@
   },
   "9a287df020aecaa07bc307a520dec4c6": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
-    "name": "P0500_MovementStop",
+    "name": "P0500_RewardConditionReached",
     "assetType": "decision",
     "switchDescription": ""
   },
@@ -199,7 +199,7 @@
   },
   "29dcbf3ce5344d792a796ac60a9ef156": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0800_StayTimeReached",
+    "name": "P0800_RewardConditionReached",
     "assetType": "decision",
     "switchDescription": ""
   },

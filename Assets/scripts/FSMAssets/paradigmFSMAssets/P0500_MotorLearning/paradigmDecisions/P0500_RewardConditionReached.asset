@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 693e1522829cc9e1980e6c94f69e49b4, type: 3}
-  m_Name: P0500_MovementStop
+  m_Name: P0500_RewardConditionReached
   m_EditorClassIdentifier: 
   switchDescription: 
   movementInQueue: {fileID: 11400000, guid: 52e5dcbe13c0b96dbb821c1aa901c1bf, type: 2}
+  trialInitMotorLearning: {fileID: 11400000, guid: 99c76f3dbc31d3548b7c3f6232455312, type: 2}

@@ -13,7 +13,6 @@ namespace Experiment.ExperimentFSM
     {
         public float timer = 0f;
         public float threshold = 23;
-        private bool lickReward = false;
         public P0800_TrialInitLinearTrack trialInitLinearTrack;
         private int nChecks = 0;
 

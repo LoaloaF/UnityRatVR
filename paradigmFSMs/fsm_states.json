@@ -620,7 +620,8 @@
     "stateID": 503,
     "paradigm": 500,
     "actions_guids": [
-      "52e5dcbe13c0b96dbb821c1aa901c1bf"
+      "52e5dcbe13c0b96dbb821c1aa901c1bf",
+      "f051439f5bbda66d491710a16a6f7a73"
     ],
     "transitions_guids": [
       "17d92d473472735178c95f91d5a8e15a",
@@ -914,6 +915,9 @@
     "assetType": "state",
     "stateID": 805,
     "paradigm": 800,
+    "actions_guids": [
+      "3fb2009ab49535f4092015d5a4bcdbb5"
+    ],
     "transitions_guids": [
       "784412da8acef97b6a2e2402aef229d7",
       "bb5d8cb8b540a1ca8a719f67ce8efb99"
@@ -926,7 +930,8 @@
     "stateID": 806,
     "paradigm": 800,
     "actions_guids": [
-      "8335e0ecfacfb184689756cd28f0a58e"
+      "8335e0ecfacfb184689756cd28f0a58e",
+      "b242e5870b48dce1a82f49b81c95b679"
     ],
     "transitions_guids": [
       "4c0c3278dd25b5ddab223de6d06d7ae3",
@@ -951,6 +956,9 @@
     "assetType": "state",
     "stateID": 808,
     "paradigm": 800,
+    "actions_guids": [
+      "b242e5870b48dce1a82f49b81c95b679"
+    ],
     "transitions_guids": [
       "eff9082b04147486289610f617fc5f72",
       "89b34a3024d80979a8b0345014645d7a",
