@@ -16,6 +16,7 @@ namespace Experiment.ExperimentFSM
         public GameObject trackWall;
         public P0800_FadeInCue fadeInCue1;
         public P0800_FadeInCue fadeInCue2;
+        public CyclicPackagesSHMInterface portentaOutputSHMInterface;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -30,6 +31,7 @@ namespace Experiment.ExperimentFSM
             stateMachine._sceneController.wallRight.SetActive(true);
             stateMachine._playerMovement.EnableMovement();
 
+            if (portentaOutputSHMInterface == null) portentaOutputSHMInterface = new CyclicPackagesSHMInterface("portentaoutput_shmstruct.json");
 
             stateMachine._playerMovement.ballSidewaysNormToCentimeter = 0f;
             stateMachine._playerMovement.ballRotatationNormToCentimeter = 0f;
