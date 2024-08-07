@@ -34,27 +34,32 @@ namespace Experiment.ExperimentFSM
             
 
             bool foundLick = false;
-            while (true) {
-                var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
+            // while (true) {
+            //     var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
 
-                if (portentaPackage == null) {
-                    nChecks = 0;
-                    if (foundLick) Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
-                    return foundLick;
-                }
+            //     if (portentaPackage == null) {
+            //         nChecks = 0;
+            //         if (foundLick) Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
+            //         return foundLick;
+            //     }
 
-                Debug.Log(portentaPackage["V"]);
-                if (portentaPackage["N"].ToString().Trim() == "L")
-                {
-                    if (int.Parse(portentaPackage["V"].ToString()) > threshold) {
-                    Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
-                    nChecks = 0;
-                    foundLick = true;
+            //     Debug.Log(portentaPackage["V"]);
+            //     if (portentaPackage["N"].ToString().Trim() == "L")
+            //     {
+            //         // if (int.Parse(portentaPackage["V"].ToString()) > threshold) {
+            //         Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
+            //         nChecks = 0;
+            //         foundLick = true;
+            //         }
+            //     }
+            //     nChecks++;
+            // }
 
-                    }
-                }
-                nChecks++;
-            }
+            var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
+            if (portentaPackage != null && portentaPackage["N"].ToString().Trim() == "L") 
+                return true;
+            else 
+                return false;
         }
 
 

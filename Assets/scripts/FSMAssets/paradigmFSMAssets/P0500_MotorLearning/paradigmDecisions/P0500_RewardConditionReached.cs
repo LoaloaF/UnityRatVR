@@ -44,27 +44,33 @@ namespace Experiment.ExperimentFSM
         private bool LickReward(BaseStateMachine stateMachine)
         {
             bool foundLick = false;
-            while (true) {
-                var portentaPackage = trialInitMotorLearning.portentaOutputSHMInterface.PopExtractedItem();
+            // while (true) {
+            //     var portentaPackage = trialInitMotorLearning.portentaOutputSHMInterface.PopExtractedItem();
 
-                if (portentaPackage == null) {
-                    nChecks = 0;
-                    if (foundLick) Debug.Log($"Lick above threshold detected, after {nChecks} checks");
-                    return foundLick;
-                }
+            //     if (portentaPackage == null) {
+            //         nChecks = 0;
+            //         if (foundLick) Debug.Log($"Lick above threshold detected, after {nChecks} checks");
+            //         return foundLick;
+            //     }
 
-                Debug.Log(portentaPackage["V"]);
-                if (portentaPackage["N"].ToString().Trim() == "L")
-                {
-                    // if (int.Parse(portentaPackage["V"].ToString()) > threshold) {
-                    Debug.Log($"Lick above threshold detected, after {nChecks} checks");
-                    nChecks = 0;
-                    foundLick = true;
+            //     Debug.Log(portentaPackage["V"]);
+            //     if (portentaPackage["N"].ToString().Trim() == "L")
+            //     {
+            //         // if (int.Parse(portentaPackage["V"].ToString()) > threshold) {
+            //         Debug.Log($"Lick above threshold detected, after {nChecks} checks");
+            //         nChecks = 0;
+            //         foundLick = true;
 
-                    // }
-                }
-                nChecks++;
-            }
+            //         // }
+            //     }
+            //     nChecks++;
+            // }
+
+            var portentaPackage = trialInitMotorLearning.portentaOutputSHMInterface.PopExtractedItem();
+            if (portentaPackage != null && portentaPackage["N"].ToString().Trim() == "L") 
+                return true;
+            else 
+                return false;
         }
 
     }

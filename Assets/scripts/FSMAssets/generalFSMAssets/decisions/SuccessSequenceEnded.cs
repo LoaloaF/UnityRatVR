@@ -22,7 +22,6 @@ namespace Experiment.ExperimentFSM
             }
             
             if (timer > stateMachine._sessionManager.successSequenceLength) {
-                timer = 0f;
                 return true;
             }
             

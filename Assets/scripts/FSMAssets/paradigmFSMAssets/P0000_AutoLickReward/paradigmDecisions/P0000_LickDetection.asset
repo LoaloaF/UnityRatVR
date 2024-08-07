@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchDescription: Rat is licking?
   threshold: 110
+  trialInitAutoLickReward: {fileID: 11400000, guid: b152554bc8ae14b80bf7300a1883de75, type: 2}
