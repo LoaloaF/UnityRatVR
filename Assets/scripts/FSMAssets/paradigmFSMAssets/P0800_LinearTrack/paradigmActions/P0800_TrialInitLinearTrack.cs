@@ -41,11 +41,11 @@ namespace Experiment.ExperimentFSM
             Debug.Log("Pillar count: " + pillars.Length);
             foreach (GameObject pillar in pillars)
             {
-                if (pillar.name.StartsWith("Pillar11"))
+                if (pillar.name.StartsWith("Pillar0_"))
                 {
                     pillar.SetActive(false);
                 }
-                else if (pillar.name.StartsWith("Pillar3") || pillar.name.StartsWith("Pillar4"))
+                else if (pillar.name.StartsWith("Pillar3_") || pillar.name.StartsWith("Pillar4_"))
                 {
                     MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
                     foreach (MeshRenderer mesh in meshRenderer)
@@ -57,19 +57,19 @@ namespace Experiment.ExperimentFSM
 
                     }
                 }
-                else if ((pillar.name.StartsWith("Pillar1") && !pillar.name.StartsWith("Pillar11")) || pillar.name.StartsWith("Pillar2"))
+                else if (pillar.name.StartsWith("Pillar1_")|| pillar.name.StartsWith("Pillar2_"))
                 {
                     MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
                     foreach (MeshRenderer mesh in meshRenderer)
                     {
-                        if ((pillar.name.StartsWith("Pillar1") && !pillar.name.StartsWith("Pillar11")))
+                        if (pillar.name.StartsWith("Pillar1_"))
                         {
                             if (mesh.material.color.a == 1)
                                 fadeInCue1.cueShouldFadeIn = true;
                             else
                                 fadeInCue1.cueShouldFadeIn = false;
                         }
-                        else if (pillar.name.StartsWith("Pillar2"))
+                        else if (pillar.name.StartsWith("Pillar2_"))
                         {
                             if (mesh.material.color.a == 1)
                                 fadeInCue2.cueShouldFadeIn = true;
@@ -84,7 +84,7 @@ namespace Experiment.ExperimentFSM
             float ySize = 0;
             foreach (GameObject pillar in pillars)
             {
-                if (pillar.name.StartsWith("Pillar11"))
+                if (pillar.name.StartsWith("Pillar0_"))
                 {
                     xPos = pillar.transform.position.x;
                     ySize = pillar.transform.position.y;
@@ -93,8 +93,8 @@ namespace Experiment.ExperimentFSM
             }
 
             float arenaSize = stateMachine._sceneController.scene.Size.x;
-            Vector3 leftWallPosition = new Vector3(Math.Abs(xPos) * -1f, ySize+1, 0);
-            Vector3 rightWallPosition = new Vector3(Math.Abs(xPos), ySize+1, 0);
+            Vector3 leftWallPosition = new Vector3(Math.Abs(xPos) * -1f, ySize+1, -1);
+            Vector3 rightWallPosition = new Vector3(Math.Abs(xPos), ySize+1, -1);
 
             GameObject leftWall = Instantiate(trackWall, leftWallPosition, Quaternion.identity, stateMachine.transform);
             leftWall.name = "LeftWall";

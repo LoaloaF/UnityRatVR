@@ -18,7 +18,7 @@ namespace Experiment.ExperimentFSM
             {
                 Transform child = stateMachine.transform.GetChild(i);
 
-                if (child.name.StartsWith("Pillar" + trialStartLinearTrack.cueIndicator.ToString()) && child.GetComponentInChildren<PillarCollision>().PlayerDetected)
+                if (child.name.StartsWith("Pillar" + trialStartLinearTrack.cueIndicator.ToString() + "_") && child.GetComponentInChildren<PillarCollision>().PlayerDetected)
                 {
                     // Debug.Log("Rat under correct pillar " + child.name);
                     return returnTrue;

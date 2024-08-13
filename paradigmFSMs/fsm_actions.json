@@ -1,4 +1,14 @@
 {
+  "74558e49fade8fac387e19fe60e34a94": {
+    "path": "./paradigmFSMAssets/P0000_AutoLickReward/paradigmActions",
+    "name": "P0000_ClearSHMInput",
+    "assetType": "action"
+  },
+  "b152554bc8ae14b80bf7300a1883de75": {
+    "path": "./paradigmFSMAssets/P0000_AutoLickReward/paradigmActions",
+    "name": "P0000_TrialInitAutoLickReward",
+    "assetType": "action"
+  },
   "36f6725c8c89c44f6aa49045e16354cf": {
     "path": "./paradigmFSMAssets/P0600_mlGym/paradigmActions",
     "name": "P00600_Start",

@@ -14,6 +14,7 @@ namespace Experiment.ExperimentFSM
     {
         public string cueName;
         public bool cueShouldFadeIn = false;
+        public float fadeDistance = 100f;
         public override void Execute(BaseStateMachine stateMachine)
         {
 
@@ -24,7 +25,7 @@ namespace Experiment.ExperimentFSM
 
             foreach (GameObject pillar in pillars)
             {
-                if (pillar.name.StartsWith("Pillar" + cueName) && !pillar.name.StartsWith("Pillar10"))
+                if (pillar.name.StartsWith("Pillar" + cueName + "_"))
                 {
                     if (stateMachine._playerMovement.transform.position.z < pillar.transform.position.z)
                     {
@@ -34,7 +35,7 @@ namespace Experiment.ExperimentFSM
                         {
                             if (mesh.gameObject.name == "Cylinder")
                             {
-                                mesh.material.color = new Color(1, 1, 1, 1 - distance/120f);
+                                mesh.material.color = new Color(1, 1, 1, 1 - (distance-20)/fadeDistance);
                             }
                         }
                     }

@@ -36,7 +36,7 @@ namespace Experiment.ExperimentFSM
 
             foreach (Transform child in stateMachine.transform)
             {
-                if (!child.name.StartsWith("Pillar11"))
+                if (!child.name.StartsWith("Pillar0_"))
                     child.gameObject.SetActive(true);
             }
 
@@ -56,9 +56,10 @@ namespace Experiment.ExperimentFSM
                 stateMachine._sessionManager.trialVariablesDict["C"] = "1";
             }
 
+            // configure the cue
             foreach (Transform child in stateMachine.transform)
             {
-                if ((child.name.StartsWith("Pillar1") && !child.name.StartsWith("Pillar10"))|| child.name.StartsWith("Pillar2"))
+                if (child.name.StartsWith("Pillar1_") || child.name.StartsWith("Pillar2_"))
                 {
                     MeshRenderer[] meshRenderer = child.GetComponentsInChildren<MeshRenderer>();
                     foreach (MeshRenderer mesh in meshRenderer)
@@ -80,7 +81,6 @@ namespace Experiment.ExperimentFSM
       
             stateMachine._sessionManager.newTrial();
             stateMachine._sessionManager.trialVariablesDict["RN"] = "0";
-
             stateMachine._sessionManager.trialRunning = true;
 
 

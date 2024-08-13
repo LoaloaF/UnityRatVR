@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: P0800_FadeInCue1
   m_EditorClassIdentifier: 
   cueName: 1
+  cueShouldFadeIn: 0
+  fadeDistance: 100

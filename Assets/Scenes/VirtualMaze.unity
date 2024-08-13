@@ -7670,10 +7670,10 @@ MonoBehaviour:
   XYZvelInput: 000000000000000000000000
   zOnlyMovePositive: 0
   xOnlyMovePositive: 0
-  ballForwardNormToCentimeter: 0.001542
+  ballForwardNormToCentimeter: 0.01542
   ballSidewaysNormToCentimeter: 0.001478
   ballRotatationNormToCentimeter: 0.001268667
-  enableBallInput: 1
+  enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0

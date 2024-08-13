@@ -22,7 +22,7 @@ namespace Experiment.ExperimentFSM
             {
                 Transform child = stateMachine.transform.GetChild(i);
 
-                if (!child.name.StartsWith("Pillar" + pillarIdentifier))
+                if (!child.name.StartsWith("Pillar" + pillarIdentifier + "_"))
                     continue;
 
                 if (child.position.z < stateMachine._playerMovement.transform.position.z)
