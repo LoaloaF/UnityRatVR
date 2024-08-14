@@ -12,7 +12,6 @@ namespace Experiment.ExperimentFSM
     public class P0500_StopAttempt : Decision
     {
         public P0500_MovementInQueue movementInQueue;
-        public P0500_TrialInitMotorLearning trialInitMotorLearning;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             float moveThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["STH"]);
