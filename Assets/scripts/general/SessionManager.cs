@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Newtonsoft.Json;
+using FSM;
 /// <summary>
 /// This class manages provided a reference to session parameters from the excel sheet
 /// And it manages single trial logging
@@ -124,5 +125,13 @@ public sealed class SessionManager : MonoBehaviour
         GetComponent<UnityFrameLogger>().unityOutputSHMInterface.Push("<{"+trialPackage+"}>\r\n");
     }
 
+    public void Add_Decimal(BaseStateMachine stateMachine, string variableName)
+    {
+        float variable = float.Parse(stateMachine._sessionManager.trialVariablesDict[variableName]);
+        if (variable % 1 == 0)
+            stateMachine._sessionManager.trialVariablesDict[variableName] = variable.ToString() + ".0";
+        else
+            stateMachine._sessionManager.trialVariablesDict[variableName] = variable.ToString();
+    }
     
 }

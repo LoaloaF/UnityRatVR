@@ -15,9 +15,16 @@ namespace Experiment.ExperimentFSM
         [SerializeField] int successIndicator;
         public override void Execute(BaseStateMachine stateMachine)
         {
+            
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "MT");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "GPT");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "MTH");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "STH");
 
             string trialPackageValuesArray =",MT:" + stateMachine._sessionManager.trialVariablesDict["MT"] + 
-                                            ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
+                                            ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] +
+                                            ",GPT:" + stateMachine._sessionManager.trialVariablesDict["GPT"] +
                                             ",MTH:" + stateMachine._sessionManager.trialVariablesDict["MTH"] + 
                                             ",STH:" + stateMachine._sessionManager.trialVariablesDict["STH"] +
                                             ",R:" + stateMachine._sessionManager.trialVariablesDict["R"] +
@@ -27,6 +34,7 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.logEndTrial(successIndicator, trialPackageValuesArray);
 
         }
+
 
     }
 }

@@ -17,24 +17,16 @@ namespace Experiment.ExperimentFSM
         {
 
             // Ensure that the variable package is storing the float values as string
-            float currentPD = float.Parse(stateMachine._sessionManager.trialVariablesDict["PD"]);
-            float currentPA = float.Parse(stateMachine._sessionManager.trialVariablesDict["PA"]);
-
-            if (currentPD % 1 == 0)
-                stateMachine._sessionManager.trialVariablesDict["PD"] = currentPD.ToString() + ".0";
-            else
-                stateMachine._sessionManager.trialVariablesDict["PD"] = currentPD.ToString();
-
-            if (currentPA % 1 == 0)
-                stateMachine._sessionManager.trialVariablesDict["PA"] = currentPA.ToString() + ".0";
-            else
-                stateMachine._sessionManager.trialVariablesDict["PA"] = currentPA.ToString();
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "PA");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "PD");
 
 
-            string trialPackageValuesArray = ",PD:" + stateMachine._sessionManager.trialVariablesDict["PD"] + ",PA:" + stateMachine._sessionManager.trialVariablesDict["PA"];
+            string trialPackageValuesArray = ",PD:" + stateMachine._sessionManager.trialVariablesDict["PD"] + 
+                                             ",PA:" + stateMachine._sessionManager.trialVariablesDict["PA"];
             stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
 
             
+            float currentPD = float.Parse(stateMachine._sessionManager.trialVariablesDict["PD"]);
             // Auto increment of the pillar distance when the trial is successful
             if (currentPD < 45.0f)
             {

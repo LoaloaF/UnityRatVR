@@ -15,13 +15,11 @@ namespace Experiment.ExperimentFSM
         public double threshold = 1;
         // private CyclicPackagesSHMInterface portentaOutputSHMInterface;
         public P0000_TrialInitAutoLickReward trialInitAutoLickReward;
-
-        private int nChecks = 0;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             // if (portentaOutputSHMInterface == null) portentaOutputSHMInterface = new CyclicPackagesSHMInterface("portentaoutput_shmstruct.json");
 
-            bool foundLick = false;
+            // bool foundLick = false;
             // while (true) {
             //     var portentaPackage = trialInitAutoLickReward.portentaOutputSHMInterface.PopExtractedItem();
             //     // Debug.Log(portentaPackage);
