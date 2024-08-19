@@ -109,11 +109,6 @@
     "name": "P0500_TrialStart",
     "assetType": "action"
   },
-  "61389b819a4aced9e87b9031da980ed1": {
-    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
-    "name": "P0500_WithinInterTrialStop",
-    "assetType": "action"
-  },
   "caea234cba9bfda6683ea007ea20bc73": {
     "path": "./paradigmFSMAssets/P0700_YMaze/paradigmActions",
     "name": "P0700_TrialEndFailYMaze",

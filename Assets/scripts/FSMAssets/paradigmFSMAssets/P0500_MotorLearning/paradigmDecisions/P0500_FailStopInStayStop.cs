@@ -15,11 +15,13 @@ namespace Experiment.ExperimentFSM
         public override bool Decide(BaseStateMachine stateMachine)
         {
 
-            float moveThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["STH"]);
-            float movementSum = Mathf.Abs(movementInQueue.rawMovementTemp) + Mathf.Abs(movementInQueue.yawMovementTemp) + Mathf.Abs(movementInQueue.pitchMovementTemp);
+            float moveThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["SSTH"]);
+            // float movementSum = Mathf.Abs(movementInQueue.rawMovementTemp) + Mathf.Abs(movementInQueue.yawMovementTemp) + Mathf.Abs(movementInQueue.pitchMovementTemp);
+            float movementSum = Mathf.Abs(movementInQueue.rawMovementTemp);
 
             if (movementSum > moveThreshold)
             {
+                Debug.Log("FailStopInStayStop");
                 return true;
             }
             else

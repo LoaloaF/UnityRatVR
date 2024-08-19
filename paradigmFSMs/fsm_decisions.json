@@ -79,7 +79,13 @@
   },
   "96c0f5b89f34191c6b0177eeac529cbd": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
-    "name": "P0500_FailToStop",
+    "name": "P0500_FailStopInGracePeriod",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "4261798f528e1e6c993053c6ee14a510": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_FailStopInStayStop",
     "assetType": "decision",
     "switchDescription": ""
   },
@@ -92,6 +98,12 @@
   "9a287df020aecaa07bc307a520dec4c6": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
     "name": "P0500_RewardConditionReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "eb0c50ba994fb9af882e3f71a4b19396": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_StopAttempt",
     "assetType": "decision",
     "switchDescription": ""
   },

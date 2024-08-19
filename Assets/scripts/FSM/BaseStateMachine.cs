@@ -78,6 +78,7 @@ namespace FSM
         {
             if (checkStartFlag() && !startFlag)
             {
+                System.Threading.Thread.Sleep(1200);
                 StartGame();
             }
             else if (!checkStartFlag() && startFlag)

@@ -30,7 +30,7 @@ namespace Experiment.ExperimentFSM
             pitchMovementSum = Mathf.Abs(CalculateQueueSum(trialStartMotorLearning.pitchMovementQueue));
 
             float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
-            Debug.Log($"rawMovementSum: {rawMovementSum}, yawMovementSum: {yawMovementSum}, pitchMovementSum: {pitchMovementSum}");
+            // Debug.Log($"rawMovementSum: {rawMovementSum}, yawMovementSum: {yawMovementSum}, pitchMovementSum: {pitchMovementSum}");
 
 
             if ((checkRaw == 1 && rawMovementSum/movementSum > moveThreshold) || 

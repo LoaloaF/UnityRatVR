@@ -18,8 +18,10 @@ namespace Experiment.ExperimentFSM
 
             string trialPackageValuesArray =",MT:" + stateMachine._sessionManager.trialVariablesDict["MT"] + 
                                             ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
+                                            ",GPT:" + stateMachine._sessionManager.trialVariablesDict["GPT"] + 
                                             ",MTH:" + stateMachine._sessionManager.trialVariablesDict["MTH"] + 
                                             ",STH:" + stateMachine._sessionManager.trialVariablesDict["STH"] +
+                                            ",SSTH:" + stateMachine._sessionManager.trialVariablesDict["SSTH"] +
                                             ",R:" + stateMachine._sessionManager.trialVariablesDict["R"] +
                                             ",Y:" + stateMachine._sessionManager.trialVariablesDict["Y"] +
                                             ",P:" + stateMachine._sessionManager.trialVariablesDict["P"] +
