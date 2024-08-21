@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4651d03b9c1e3ae9fac1aafbe14dd82b, type: 3}
-  m_Name: P0500_MoveTimeReached
+  m_Script: {fileID: 11500000, guid: dac59bce61c4d673b828615e2e2f763a, type: 3}
+  m_Name: P0500_ResetReward
   m_EditorClassIdentifier: 
-  switchDescription: 
-  timer: 0
-  timeVariableName: MT
+  successSequenceEnded: {fileID: 11400000, guid: d881c58ab5d1bc12bbdd5ebce78c382a, type: 2}

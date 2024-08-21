@@ -15,11 +15,8 @@ namespace Experiment.ExperimentFSM
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override void Execute(BaseStateMachine stateMachine)
         {
-            float variableST = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
-            if (variableST % 1 == 0)
-                stateMachine._sessionManager.trialVariablesDict["ST"] = variableST.ToString() + ".0";
-            else
-                stateMachine._sessionManager.trialVariablesDict["ST"] = variableST.ToString();
+
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST");
 
             string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
                                             ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + 

@@ -13,7 +13,7 @@ namespace Experiment.ExperimentFSM
     {
         public P0500_MovementInQueue movementInQueue;
         public P0500_TrialStartMotorLearning trialStartMotorLearning;
-        public TimeReached moveTimeReached;
+        public P0500_TimeReached moveTimeReached;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             float moveThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["STH"]);

@@ -12,9 +12,16 @@ namespace Experiment.ExperimentFSM
 
     public class P0500_TrialEndMotorLearning: FSMAction
     {
-        [SerializeField] int successIndicator;
+        public P0500_TrialStartMotorLearning trialStartMotorLearning;
         public override void Execute(BaseStateMachine stateMachine)
         {
+            
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "MT");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "GPT");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "MTH");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "STH");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "SSTH");
 
             string trialPackageValuesArray =",MT:" + stateMachine._sessionManager.trialVariablesDict["MT"] + 
                                             ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
@@ -22,13 +29,15 @@ namespace Experiment.ExperimentFSM
                                             ",MTH:" + stateMachine._sessionManager.trialVariablesDict["MTH"] + 
                                             ",STH:" + stateMachine._sessionManager.trialVariablesDict["STH"] +
                                             ",SSTH:" + stateMachine._sessionManager.trialVariablesDict["SSTH"] +
+                                            ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] +
                                             ",R:" + stateMachine._sessionManager.trialVariablesDict["R"] +
                                             ",Y:" + stateMachine._sessionManager.trialVariablesDict["Y"] +
                                             ",P:" + stateMachine._sessionManager.trialVariablesDict["P"] +
                                             ",LR:" + stateMachine._sessionManager.trialVariablesDict["LR"];
-            stateMachine._sessionManager.logEndTrial(successIndicator, trialPackageValuesArray);
+            stateMachine._sessionManager.logEndTrial(trialStartMotorLearning.currentRewardNumber, trialPackageValuesArray);
 
         }
+
 
     }
 }

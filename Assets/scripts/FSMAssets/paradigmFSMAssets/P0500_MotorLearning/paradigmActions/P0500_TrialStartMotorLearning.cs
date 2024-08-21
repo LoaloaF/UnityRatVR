@@ -15,6 +15,7 @@ namespace Experiment.ExperimentFSM
         public Queue<float> rawMovementQueue;
         public Queue<float> yawMovementQueue;
         public Queue<float> pitchMovementQueue;
+        public int currentRewardNumber;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -26,6 +27,7 @@ namespace Experiment.ExperimentFSM
             yawMovementQueue.Enqueue(0);
             pitchMovementQueue.Enqueue(0);
 
+            currentRewardNumber = 0;
             stateMachine._sessionManager.newTrial();
             Debug.Log("New trial started");
         }

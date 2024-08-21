@@ -14,7 +14,6 @@ namespace Experiment.ExperimentFSM
         public float timer = 0f;
         public float threshold = 23;
         public P0800_TrialInitLinearTrack trialInitLinearTrack;
-        private int nChecks = 0;
 
         public override bool Decide(BaseStateMachine stateMachine)
         {
@@ -33,7 +32,7 @@ namespace Experiment.ExperimentFSM
         {
             
 
-            bool foundLick = false;
+            // bool foundLick = false;
             // while (true) {
             //     var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
 

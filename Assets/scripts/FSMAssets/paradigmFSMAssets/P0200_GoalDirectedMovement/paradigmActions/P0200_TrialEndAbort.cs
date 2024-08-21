@@ -15,19 +15,8 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             
-            // Ensure that the variable package is storing the float values as string
-            float currentPD = float.Parse(stateMachine._sessionManager.trialVariablesDict["PD"]);
-            float currentPA = float.Parse(stateMachine._sessionManager.trialVariablesDict["PA"]);
-
-            if (currentPD % 1 == 0)
-                stateMachine._sessionManager.trialVariablesDict["PD"] = currentPD.ToString() + ".0";
-            else
-                stateMachine._sessionManager.trialVariablesDict["PD"] = currentPD.ToString();
-
-            if (currentPA % 1 == 0)
-                stateMachine._sessionManager.trialVariablesDict["PA"] = currentPA.ToString() + ".0";
-            else
-                stateMachine._sessionManager.trialVariablesDict["PA"] = currentPA.ToString();
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "PA");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "PD");
 
 
             string trialPackageValuesArray = ",PD:" + stateMachine._sessionManager.trialVariablesDict["PD"] + ",PA:" + stateMachine._sessionManager.trialVariablesDict["PA"];

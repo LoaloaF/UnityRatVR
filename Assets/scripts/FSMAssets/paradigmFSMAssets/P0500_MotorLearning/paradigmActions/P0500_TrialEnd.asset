@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0509_TrialEndFail
+  m_Script: {fileID: 11500000, guid: 1629329261fb9756cbe927e8bb54f60b, type: 3}
+  m_Name: P0500_TrialEnd
   m_EditorClassIdentifier: 
-  stateID: 509
-  Action:
-  - {fileID: 11400000, guid: 808f99f697e7db8b59a8ed5367359920, type: 2}
-  Transitions:
-  - {fileID: 11400000, guid: 5ed132c70e04fec179a4de724b930c3f, type: 2}
+  trialStartMotorLearning: {fileID: 11400000, guid: 3979625bbc5015e84a5bb6df2c8fe283, type: 2}

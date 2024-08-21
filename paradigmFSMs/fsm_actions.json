@@ -89,14 +89,19 @@
     "name": "P0500_MovementInQueue",
     "assetType": "action"
   },
-  "808f99f697e7db8b59a8ed5367359920": {
+  "7042c050b141b73459a2ca5598a934e9": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
-    "name": "P0500_TrialEndFail",
+    "name": "P0500_ResetReward",
     "assetType": "action"
   },
-  "763b4dee2933aa42c9e738a481fa79b1": {
+  "2eaa3d8de34fc5e63af7d5bc72bb8688": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
-    "name": "P0500_TrialEndSuccess",
+    "name": "P0500_SuccessUnderPillar",
+    "assetType": "action"
+  },
+  "808f99f697e7db8b59a8ed5367359920": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_TrialEnd",
     "assetType": "action"
   },
   "99c76f3dbc31d3548b7c3f6232455312": {

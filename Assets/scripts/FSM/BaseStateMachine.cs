@@ -137,7 +137,7 @@ namespace FSM
 
         private void switchBlinkerColor()
         {
-            if ( Time.frameCount%2 == 1) {
+            if ( Time.frameCount%4 < 2) {
                     frameIndicationBlinker.material.color = Color.white;
             } else {
                 frameIndicationBlinker.material.color = Color.black;

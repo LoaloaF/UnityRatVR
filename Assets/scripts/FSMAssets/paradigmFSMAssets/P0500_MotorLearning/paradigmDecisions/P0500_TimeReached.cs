@@ -9,7 +9,7 @@ using System;
 namespace Experiment.ExperimentFSM
 {
      [CreateAssetMenu(menuName = "FSM/Decisions/P0500/TimeReached")]
-    public class TimeReached : Decision
+    public class P0500_TimeReached : Decision
     {
         public float timer = 0f;
         private int currentTrialID = -1;
@@ -25,7 +25,6 @@ namespace Experiment.ExperimentFSM
             }
             
             if (timer > movementTime) {
-                timer = 0f;
                 return true;
             }
             

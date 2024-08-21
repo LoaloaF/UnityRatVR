@@ -12,7 +12,7 @@ namespace Experiment.ExperimentFSM
     public class P0500_FailDirectedAndReset : Decision
     {
         public P0500_TrialStartMotorLearning trialStartMotorLearning;
-        public TimeReached moveTimeReached;
+        public P0500_TimeReached moveTimeReached;
         private float rawMovementSum;
         private float yawMovementSum;
         private float pitchMovementSum;

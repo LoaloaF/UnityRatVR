@@ -89,6 +89,12 @@
     "assetType": "decision",
     "switchDescription": ""
   },
+  "964af0548e417a899b37dfea4e7252b1": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
+    "name": "P0500_MaxRewardReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
   "a26d04fd279657afb80da813a77957db": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmDecisions",
     "name": "P0500_MoveTimeReached",

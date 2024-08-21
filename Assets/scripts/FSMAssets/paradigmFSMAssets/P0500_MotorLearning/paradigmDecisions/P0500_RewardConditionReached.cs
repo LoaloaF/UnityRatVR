@@ -13,7 +13,6 @@ namespace Experiment.ExperimentFSM
     {
         public P0500_MovementInQueue movementInQueue;
         public P0500_TrialInitMotorLearning trialInitMotorLearning;
-        private int nChecks = 0;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             int lickRewardCheck = int.Parse(stateMachine._sessionManager.trialVariablesDict["LR"]);
@@ -43,7 +42,7 @@ namespace Experiment.ExperimentFSM
         }
         private bool LickReward(BaseStateMachine stateMachine)
         {
-            bool foundLick = false;
+            // bool foundLick = false;
             // while (true) {
             //     var portentaPackage = trialInitMotorLearning.portentaOutputSHMInterface.PopExtractedItem();
 
