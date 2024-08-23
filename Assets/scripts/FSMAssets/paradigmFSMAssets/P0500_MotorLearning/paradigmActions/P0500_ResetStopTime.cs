@@ -15,8 +15,8 @@ namespace Experiment.ExperimentFSM
         public P0500_TimeReached timeReached;
         public override void Execute(BaseStateMachine stateMachine)
         {
-            Color white = new Color(1, 1, 1, 1);
-            stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
+            // Color white = new Color(1, 1, 1, 1);
+            // stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
             timeReached.timer = 0;
         }
     }
