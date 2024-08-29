@@ -94,6 +94,11 @@
     "name": "P0500_ResetReward",
     "assetType": "action"
   },
+  "1ecb607d64eb24507928e8539f0f2739": {
+    "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
+    "name": "P0500_ResetStopTime",
+    "assetType": "action"
+  },
   "2eaa3d8de34fc5e63af7d5bc72bb8688": {
     "path": "./paradigmFSMAssets/P0500_MotorLearning/paradigmActions",
     "name": "P0500_SuccessUnderPillar",

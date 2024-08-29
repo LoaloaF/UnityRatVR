@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0802_GapInit
+  m_Name: S0804_Cue1
   m_EditorClassIdentifier: 
-  stateID: 802
-  Action:
-  - {fileID: 11400000, guid: e0d78d8f155dcb300b22f152d28e8465, type: 2}
+  stateID: 804
+  Action: []
   Transitions:
-  - {fileID: 11400000, guid: 32eeed8a9ab8b4c8eb5646c45c09692d, type: 2}
+  - {fileID: 11400000, guid: cdcefe58ae04cd64f94f16be1e74e92a, type: 2}

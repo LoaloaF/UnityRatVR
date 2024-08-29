@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0806_PostCue1
+  m_Name: S0810_BeforeReward1
   m_EditorClassIdentifier: 
-  stateID: 806
+  stateID: 810
   Action: []
   Transitions:
-  - {fileID: 11400000, guid: 9aa7c90b6bb9475ef8ef5ee95ae1d289, type: 2}
+  - {fileID: 11400000, guid: 784412da8acef97b6a2e2402aef229d7, type: 2}

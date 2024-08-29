@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS0809_Cue2_After
+  m_Name: toS0809_Cue2Passed
   m_EditorClassIdentifier: 
   Decision: {fileID: 11400000, guid: 16c206f31071299b795c2869026866f3, type: 2}
   TrueState: {fileID: 11400000, guid: 244e24d198f901cb99dbc900cc27fc6c, type: 2}

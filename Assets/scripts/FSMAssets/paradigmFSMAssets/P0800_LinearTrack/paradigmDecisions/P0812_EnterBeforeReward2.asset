@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0812_GapReward2
+  m_Script: {fileID: 11500000, guid: ff0e4729d278d2b04b6247de0fc773ac, type: 3}
+  m_Name: P0812_EnterBeforeReward2
   m_EditorClassIdentifier: 
-  stateID: 812
-  Action: []
-  Transitions:
-  - {fileID: 11400000, guid: 4c0c3278dd25b5ddab223de6d06d7ae3, type: 2}
+  switchDescription: 
+  pillarIdentifier: 14

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS0803_Cue1_Before
+  m_Name: toS0804_Cue1
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: fdf5692cb3b1826edb88cb6f8480c308, type: 2}
-  TrueState: {fileID: 11400000, guid: 5a9a684360016d157b36e036b324a40f, type: 2}
+  Decision: {fileID: 11400000, guid: 06e12a81c1462653bae3db07c0ba7a6e, type: 2}
+  TrueState: {fileID: 11400000, guid: b34ccc9f76b709ea5ab33a5ebbea1ac0, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

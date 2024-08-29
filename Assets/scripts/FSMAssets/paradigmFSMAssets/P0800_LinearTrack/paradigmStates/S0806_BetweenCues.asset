@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff0e4729d278d2b04b6247de0fc773ac, type: 3}
-  m_Name: P0809_EnterCue2After
+  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
+  m_Name: S0806_BetweenCues
   m_EditorClassIdentifier: 
-  switchDescription: 
-  pillarIdentifier: 11
+  stateID: 806
+  Action: []
+  Transitions:
+  - {fileID: 11400000, guid: 9aa7c90b6bb9475ef8ef5ee95ae1d289, type: 2}

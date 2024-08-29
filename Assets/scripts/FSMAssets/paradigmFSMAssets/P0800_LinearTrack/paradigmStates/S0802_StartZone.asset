@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS0802_GapInit
+  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
+  m_Name: S0802_StartZone
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 10692e8a11e8d564183739b10fe60cfd, type: 2}
-  TrueState: {fileID: 11400000, guid: 25f0ff0444bb57e12b6c4ce440e83eba, type: 2}
-  FalseState: {fileID: 0}
+  stateID: 802
+  Action:
+  - {fileID: 11400000, guid: e0d78d8f155dcb300b22f152d28e8465, type: 2}
+  Transitions:
+  - {fileID: 11400000, guid: 32eeed8a9ab8b4c8eb5646c45c09692d, type: 2}

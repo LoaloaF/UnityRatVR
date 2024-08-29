@@ -698,6 +698,9 @@
     "assetType": "state",
     "stateID": 508,
     "paradigm": 500,
+    "actions_guids": [
+      "1ecb607d64eb24507928e8539f0f2739"
+    ],
     "transitions_guids": [
       "f4a74c2a18800b2c982c4757097c34c8"
     ]
@@ -881,7 +884,7 @@
   },
   "25f0ff0444bb57e12b6c4ce440e83eba": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0802_GapInit",
+    "name": "S0802_StartZone",
     "assetType": "state",
     "stateID": 802,
     "paradigm": 800,
@@ -894,7 +897,7 @@
   },
   "5a9a684360016d157b36e036b324a40f": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0803_Cue1Before",
+    "name": "S0803_Cue1Visible",
     "assetType": "state",
     "stateID": 803,
     "paradigm": 800,
@@ -907,7 +910,7 @@
   },
   "b34ccc9f76b709ea5ab33a5ebbea1ac0": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0804_Cue1Center",
+    "name": "S0804_Cue1",
     "assetType": "state",
     "stateID": 804,
     "paradigm": 800,
@@ -917,7 +920,7 @@
   },
   "f189b95c5ada9a167a37b239b4d1857c": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0805_Cue1After",
+    "name": "S0805_Cue1Passed",
     "assetType": "state",
     "stateID": 805,
     "paradigm": 800,
@@ -927,7 +930,7 @@
   },
   "0aff5c394077fe9b8a4f5298c016ecf4": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0806_PostCue1",
+    "name": "S0806_BetweenCues",
     "assetType": "state",
     "stateID": 806,
     "paradigm": 800,
@@ -937,7 +940,7 @@
   },
   "6e1dbcf8fd852594798ef44a81752aac": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0807_Cue2Before",
+    "name": "S0807_Cue2Visible",
     "assetType": "state",
     "stateID": 807,
     "paradigm": 800,
@@ -950,7 +953,7 @@
   },
   "51f60792ef7f388a299aec13b09673e0": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0808_Cue2Center",
+    "name": "S0808_Cue2",
     "assetType": "state",
     "stateID": 808,
     "paradigm": 800,
@@ -960,7 +963,7 @@
   },
   "244e24d198f901cb99dbc900cc27fc6c": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0809_Cue2After",
+    "name": "S0809_Cue2Passed",
     "assetType": "state",
     "stateID": 809,
     "paradigm": 800,
@@ -970,7 +973,7 @@
   },
   "6626b561ef5966bb1a78605a43094e3a": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0810_GapReward1",
+    "name": "S0810_BeforeReward1",
     "assetType": "state",
     "stateID": 810,
     "paradigm": 800,
@@ -995,7 +998,7 @@
   },
   "f27d7bfccf71d6768946b62a5a252a35": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmStates",
-    "name": "S0812_GapReward2",
+    "name": "S0812_BeforeReward2",
     "assetType": "state",
     "stateID": 812,
     "paradigm": 800,

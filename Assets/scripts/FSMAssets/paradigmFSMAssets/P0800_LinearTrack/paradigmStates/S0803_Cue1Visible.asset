@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff0e4729d278d2b04b6247de0fc773ac, type: 3}
-  m_Name: P0810_EnterGapReward1
+  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
+  m_Name: S0803_Cue1Visible
   m_EditorClassIdentifier: 
-  switchDescription: 
-  pillarIdentifier: 12
+  stateID: 803
+  Action:
+  - {fileID: 11400000, guid: c9d9dd7b26b1f84439060c796053a88e, type: 2}
+  Transitions:
+  - {fileID: 11400000, guid: 2d66b5c6b27e7477f89b3c785c91f746, type: 2}

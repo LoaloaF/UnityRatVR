@@ -193,49 +193,49 @@
   },
   "fdf5692cb3b1826edb88cb6f8480c308": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0803_EnterCue1Before",
+    "name": "P0803_EnterCue1Visible",
     "assetType": "decision",
     "switchDescription": ""
   },
   "06e12a81c1462653bae3db07c0ba7a6e": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0804_EnterCue1Center",
+    "name": "P0804_EnterCue1",
     "assetType": "decision",
     "switchDescription": ""
   },
   "1432ab739c7f4ddeb9a863627d97608c": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0805_EnterCue1After",
+    "name": "P0805_EnterCue1Passed",
     "assetType": "decision",
     "switchDescription": ""
   },
   "3531e03da2578f6e299387f7581d16f0": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0806_EnterPostCue1",
+    "name": "P0806_EnterBetweenCues",
     "assetType": "decision",
     "switchDescription": ""
   },
   "a0a6519d3a5403d9e8e1ce00646c7049": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0807_EnterCue2Before",
+    "name": "P0807_EnterCue2Visible",
     "assetType": "decision",
     "switchDescription": ""
   },
   "3905fa2f6768ff017981495ab430f665": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0808_EnterCue2Center",
+    "name": "P0808_EnterCue2",
     "assetType": "decision",
     "switchDescription": ""
   },
   "16c206f31071299b795c2869026866f3": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0809_EnterCue2After",
+    "name": "P0809_EnterCue2Passed",
     "assetType": "decision",
     "switchDescription": ""
   },
   "1314ea5a3f46895e08ec0263b1f69945": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0810_EnterGapReward1",
+    "name": "P0810_EnterBeforeReward1",
     "assetType": "decision",
     "switchDescription": ""
   },
@@ -247,7 +247,7 @@
   },
   "65cdc8c3cfb280b9dbbbdd18fea3ae8a": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0812_EnterGapReward2",
+    "name": "P0812_EnterBeforeReward2",
     "assetType": "decision",
     "switchDescription": ""
   },

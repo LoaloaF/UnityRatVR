@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0805_Cue1After
+  m_Script: {fileID: 11500000, guid: ff0e4729d278d2b04b6247de0fc773ac, type: 3}
+  m_Name: P0810_EnterBeforeReward1
   m_EditorClassIdentifier: 
-  stateID: 805
-  Action: []
-  Transitions:
-  - {fileID: 11400000, guid: 48f91a010672289bba0ad2f00cfc0db7, type: 2}
+  switchDescription: 
+  pillarIdentifier: 12

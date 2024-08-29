@@ -569,7 +569,7 @@
   },
   "3d0a9b0e3cda5d78aafef1057e3a49bd": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0802_GapInit",
+    "name": "toS0802_StartZone",
     "assetType": "transition",
     "decision": "10692e8a11e8d564183739b10fe60cfd",
     "truestate": "25f0ff0444bb57e12b6c4ce440e83eba",
@@ -577,7 +577,7 @@
   },
   "32eeed8a9ab8b4c8eb5646c45c09692d": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0803_Cue1_Before",
+    "name": "toS0803_Cue1Visible",
     "assetType": "transition",
     "decision": "fdf5692cb3b1826edb88cb6f8480c308",
     "truestate": "5a9a684360016d157b36e036b324a40f",
@@ -585,7 +585,7 @@
   },
   "2d66b5c6b27e7477f89b3c785c91f746": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0804_Cue1_Center",
+    "name": "toS0804_Cue1",
     "assetType": "transition",
     "decision": "06e12a81c1462653bae3db07c0ba7a6e",
     "truestate": "b34ccc9f76b709ea5ab33a5ebbea1ac0",
@@ -593,7 +593,7 @@
   },
   "cdcefe58ae04cd64f94f16be1e74e92a": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0805_Cue1_After",
+    "name": "toS0805_Cue1Passed",
     "assetType": "transition",
     "decision": "1432ab739c7f4ddeb9a863627d97608c",
     "truestate": "f189b95c5ada9a167a37b239b4d1857c",
@@ -601,7 +601,7 @@
   },
   "48f91a010672289bba0ad2f00cfc0db7": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0806_PostCue1",
+    "name": "toS0806_BetweenCues",
     "assetType": "transition",
     "decision": "3531e03da2578f6e299387f7581d16f0",
     "truestate": "0aff5c394077fe9b8a4f5298c016ecf4",
@@ -609,7 +609,7 @@
   },
   "9aa7c90b6bb9475ef8ef5ee95ae1d289": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0807_Cue2_Before",
+    "name": "toS0807_Cue2Visible",
     "assetType": "transition",
     "decision": "a0a6519d3a5403d9e8e1ce00646c7049",
     "truestate": "6e1dbcf8fd852594798ef44a81752aac",
@@ -617,7 +617,7 @@
   },
   "a13cba2168a3e9d82b26a23422a53b8a": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0808_Cue2_Center",
+    "name": "toS0808_Cue2",
     "assetType": "transition",
     "decision": "3905fa2f6768ff017981495ab430f665",
     "truestate": "51f60792ef7f388a299aec13b09673e0",
@@ -625,7 +625,7 @@
   },
   "aeba4801395ec0984973ae38375a2f3e": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0809_Cue2_After",
+    "name": "toS0809_Cue2Passed",
     "assetType": "transition",
     "decision": "16c206f31071299b795c2869026866f3",
     "truestate": "244e24d198f901cb99dbc900cc27fc6c",
@@ -639,19 +639,19 @@
     "truestate": "6626b561ef5966bb1a78605a43094e3a",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
+  "6f3a8dd2911fc2206be9d0fd895fd7fd": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
+    "name": "toS0810_BeforeReward1",
+    "assetType": "transition",
+    "decision": "1314ea5a3f46895e08ec0263b1f69945",
+    "truestate": "6626b561ef5966bb1a78605a43094e3a",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
   "bdfd83ec6f0732f1fa687ed606e4fe5e": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
     "name": "toS0810_FailStay",
     "assetType": "transition",
     "decision": "7798dcb8e87ad4e32abdadd48f58e4ee",
-    "truestate": "6626b561ef5966bb1a78605a43094e3a",
-    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
-  },
-  "6f3a8dd2911fc2206be9d0fd895fd7fd": {
-    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0810_GapReward1",
-    "assetType": "transition",
-    "decision": "1314ea5a3f46895e08ec0263b1f69945",
     "truestate": "6626b561ef5966bb1a78605a43094e3a",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
@@ -665,7 +665,7 @@
   },
   "33c602462993bb09eb3b31aad60e7647": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0812_Gap_Reward2",
+    "name": "toS0812_BeforeReward2",
     "assetType": "transition",
     "decision": "65cdc8c3cfb280b9dbbbdd18fea3ae8a",
     "truestate": "f27d7bfccf71d6768946b62a5a252a35",
