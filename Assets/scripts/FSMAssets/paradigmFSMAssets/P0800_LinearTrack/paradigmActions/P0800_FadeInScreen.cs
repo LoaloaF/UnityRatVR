@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             fadeScreen = FindObjectOfType<FadeScreen>();
-            fadeScreen.StartFadeInScreen(1f);
+            fadeScreen.StartFadeInScreen(0.5f);
         }
     }
 

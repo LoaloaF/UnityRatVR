@@ -8,6 +8,7 @@ namespace FSM
         public Decision Decision;
         public BaseState TrueState;
         public BaseState FalseState;
+        private bool _isTrueState;
 
         public void Execute(BaseStateMachine stateMachine)
         {
@@ -15,13 +16,19 @@ namespace FSM
             {
                 stateMachine.CurrentState = TrueState;
             }
-            else if(Decision.Decide(stateMachine) && !(TrueState is RemainInState)) {
-                Debug.Log($"Transition from {stateMachine.CurrentState} to {TrueState}");
-                stateMachine.CurrentState = TrueState;
-            }
-            else if(!Decision.Decide(stateMachine) && !(FalseState is RemainInState)){
-                Debug.Log($"Transition from {stateMachine.CurrentState} to {FalseState}");
-                stateMachine.CurrentState = FalseState;
+            else
+            {
+                _isTrueState = Decision.Decide(stateMachine);
+                if (_isTrueState && !(TrueState is RemainInState))
+                {
+                    stateMachine.CurrentState = TrueState;
+                    Debug.Log($"Transition from {stateMachine.CurrentState} to {TrueState}");
+                }
+                else if (!_isTrueState && !(FalseState is RemainInState))
+                {
+                    stateMachine.CurrentState = FalseState;
+                    Debug.Log($"Transition from {stateMachine.CurrentState} to {FalseState}");
+                }
             }
         }
     }

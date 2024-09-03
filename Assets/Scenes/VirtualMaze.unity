@@ -7749,7 +7749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16da666e6f1274d48a8728c143a6c5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fps: 120
+  fps: 50
 --- !u!208 &1180528863
 NavMeshObstacle:
   m_ObjectHideFlags: 0

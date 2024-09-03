@@ -52,6 +52,7 @@ namespace FSM
             Debug.Log($"Initial state: {CurrentState}");
             generalCurrentStateID = CurrentState.stateID;
             _sessionManager.sessionRunning = true;
+            // StartCoroutine(DelayFrameLogging(5f));
 
             Time.timeScale = 1;
             _playerMovement.EnableMovement();
@@ -101,7 +102,6 @@ namespace FSM
             _sessionManager.abortTrialFlag = false;
             _inputManager.startSessionButton.interactable = false;
             _inputManager.stopSessionButton.interactable = true;
-
             initializeBaseStateMachine(_inputManager.paradigm_name);
             Debug.Log("Session started with paradigm_name: " + _inputManager.paradigm_name);
 
@@ -112,8 +112,16 @@ namespace FSM
             _sessionManager.abortTrialFlag = true;
             _inputManager.startSessionButton.interactable = true;
             _inputManager.stopSessionButton.interactable = false;
+            _sessionManager.sessionRunning = false;
+            _sessionManager.frameLoggerFlag = false;
             Debug.Log("Session stopped");
         }
+
+        // public IEnumerator DelayFrameLogging(float delayDuration)
+        // {
+        //     yield return new WaitForSeconds(delayDuration);
+        //     _sessionManager.frameLoggerFlag = true;
+        // }
 
 
         private bool checkStartFlag()

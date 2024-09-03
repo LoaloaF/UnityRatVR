@@ -33,7 +33,7 @@ public class renderOutputLogger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_stateMachine._sessionManager.sessionRunning)
+        if (_stateMachine._sessionManager.frameLoggerFlag)
         {
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
             SaveFinalTextureToImage();

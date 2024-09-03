@@ -51,7 +51,12 @@ public class UnityFrameLogger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_stateMachine._sessionManager.sessionRunning)
+        if (Time.frameCount >= 100 && !_stateMachine._sessionManager.frameLoggerFlag)
+        {
+            _stateMachine._sessionManager.frameLoggerFlag = true;
+        }
+
+        if (_stateMachine._sessionManager.frameLoggerFlag)
         {
             LogFrame();
         }
