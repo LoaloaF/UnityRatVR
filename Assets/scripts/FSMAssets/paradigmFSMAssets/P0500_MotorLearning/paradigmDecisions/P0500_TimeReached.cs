@@ -25,6 +25,7 @@ namespace Experiment.ExperimentFSM
             }
             
             if (timer > movementTime) {
+                timer = 0f;
                 return true;
             }
             

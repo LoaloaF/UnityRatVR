@@ -753,6 +753,7 @@ MonoBehaviour:
     - P0500_MotorLearning
     - P0700_YMaze
     - P0800_LinearTrack
+    - P0900_MotorLickLearning
     values:
     - {fileID: 11400000, guid: c8d4bd75c8fff52108547c26e2824e3e, type: 2}
     - {fileID: 11400000, guid: ae9a7e14d28bf944d80499df384f57de, type: 2}
@@ -762,6 +763,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8e26e788de6498762a52cab213269661, type: 2}
     - {fileID: 11400000, guid: 7d76610a58adcd6588c612eb8203e31d, type: 2}
     - {fileID: 11400000, guid: 7b6aa18e8037360b1a5b796b9afb6b65, type: 2}
+    - {fileID: 11400000, guid: 3516adec5072cd2e0b897e3f8ae3c2e0, type: 2}
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
