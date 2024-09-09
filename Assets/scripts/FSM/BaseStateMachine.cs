@@ -72,6 +72,7 @@ namespace FSM
             _inputManager = GetComponent<InputManager>();
             startflagSHMInterface = new FlagSHMInterface("paradigmflag_shmstruct.json");
             startFlag = false;
+            // frameIndicationBlinker.material.color = Color.black;
         }
 
 
@@ -100,6 +101,7 @@ namespace FSM
         {
             startFlag = true;
             _sessionManager.abortTrialFlag = false;
+            _sessionManager.startFrameID = Time.frameCount;
             _inputManager.startSessionButton.interactable = false;
             _inputManager.stopSessionButton.interactable = true;
             initializeBaseStateMachine(_inputManager.paradigm_name);
@@ -113,15 +115,9 @@ namespace FSM
             _inputManager.startSessionButton.interactable = true;
             _inputManager.stopSessionButton.interactable = false;
             _sessionManager.sessionRunning = false;
-            _sessionManager.frameLoggerFlag = false;
             Debug.Log("Session stopped");
         }
 
-        // public IEnumerator DelayFrameLogging(float delayDuration)
-        // {
-        //     yield return new WaitForSeconds(delayDuration);
-        //     _sessionManager.frameLoggerFlag = true;
-        // }
 
 
         private bool checkStartFlag()
@@ -145,9 +141,11 @@ namespace FSM
 
         private void switchBlinkerColor()
         {
-            // if ( Time.frameCount%4 < 2) {
-            //         frameIndicationBlinker.material.color = Color.white;
-            // } else {
+            // if ((Time.frameCount - _sessionManager.startFrameID) % 2 == 0) 
+            // {
+            //     frameIndicationBlinker.material.color = Color.white;
+            // } else 
+            // {
             //     frameIndicationBlinker.material.color = Color.black;
             // }
         }

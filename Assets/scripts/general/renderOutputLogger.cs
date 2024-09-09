@@ -33,12 +33,17 @@ public class renderOutputLogger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_stateMachine._sessionManager.frameLoggerFlag)
+        if (!_stateMachine._sessionManager.sessionRunning)
         {
-            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            return;
+        }
+
+        else if (Time.frameCount - _stateMachine._sessionManager.startFrameID >= 120)
+        {
+            // var stopwatch = System.Diagnostics.Stopwatch.StartNew();
             SaveFinalTextureToImage();
             // Debug.Log($"Saving frame in {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
-            stopwatch.Stop();
+            // stopwatch.Stop();
         }
     }
 
@@ -65,7 +70,7 @@ public class renderOutputLogger : MonoBehaviour
     void SaveFinalTextureToImage()
     {
         // Ensure the finalTexture is not null and has the correct size
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+        // var stopwatch = System.Diagnostics.Stopwatch.StartNew();
         texture = new Texture2D(1000, 800, TextureFormat.RGB24, false, true);
         // Read RenderTexture data into the Texture2D
         RenderTexture.active = finalTexture;

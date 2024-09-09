@@ -27,7 +27,6 @@ namespace Experiment.ExperimentFSM
             stateMachine._playerMovement.gain = new Vector3(1f, 1f, 1f);
             stateMachine._sessionManager.trialRunning = false;
             stateMachine._sessionManager.sessionRunning = false;
-            stateMachine._sessionManager.frameLoggerFlag = false;
 
 
             for (int i = stateMachine.transform.childCount - 1; i >= 0; i--)

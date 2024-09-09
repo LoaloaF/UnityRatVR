@@ -51,12 +51,11 @@ public class UnityFrameLogger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount >= 100 && !_stateMachine._sessionManager.frameLoggerFlag)
+        if (!_stateMachine._sessionManager.sessionRunning)
         {
-            _stateMachine._sessionManager.frameLoggerFlag = true;
+            return;
         }
-
-        if (_stateMachine._sessionManager.frameLoggerFlag)
+        else if (Time.frameCount - _stateMachine._sessionManager.startFrameID >= 120)
         {
             LogFrame();
         }
@@ -64,6 +63,7 @@ public class UnityFrameLogger : MonoBehaviour
 
     void LogFrame() {
         // var readOut = ReadUnityOutputSHMInterface.Popitem();
+
         // Debug.Log($"TestRead: {readOut}");
         // frameTime = Time.realtimeSinceStartup;
         DateTime currentDateTime = DateTime.UtcNow;

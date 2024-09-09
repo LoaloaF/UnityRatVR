@@ -824,6 +824,7 @@ MonoBehaviour:
   maximumTrialLength: 10
   sessionDescription: 
   _playerMovement: {fileID: 1180528859}
+  startFrameID: 0
   sessionRunning: 1
   trialRunning: 0
   abortTrialFlag: 0
@@ -7749,7 +7750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16da666e6f1274d48a8728c143a6c5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fps: 50
+  fps: 60
 --- !u!208 &1180528863
 NavMeshObstacle:
   m_ObjectHideFlags: 0
