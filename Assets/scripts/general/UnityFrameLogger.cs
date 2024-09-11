@@ -29,8 +29,8 @@ public class UnityFrameLogger : MonoBehaviour
     public CyclicPackagesSHMInterface unityOutputSHMInterface;
     private CyclicPackagesSHMInterface ReadUnityOutputSHMInterface;
 
-    public MeshRenderer frameBlinkerWhite;
-    public MeshRenderer frameBlinkerBlack;
+    public MeshRenderer frameBlinkIndicator;
+    // public MeshRenderer frameBlinkerBlack;
     
 
 
@@ -41,11 +41,11 @@ public class UnityFrameLogger : MonoBehaviour
         _playerMovement = Player.GetComponent<PlayerMovement>();
         unityOutputSHMInterface = new CyclicPackagesSHMInterface("unityoutput_shmstruct.json");
 
-        frameBlinkerWhite.material.color = Color.black;
-        // frameBlinkerBlack.material.color = Color.black;
-        frameBlinkerWhite.gameObject.SetActive(true);
-        frameBlinkerBlack.gameObject.SetActive(false);
-        isWhiteActive = false;
+        // frameBlinkerWhite.material.color = Color.black;
+        // // frameBlinkerBlack.material.color = Color.black;
+        // frameBlinkerWhite.gameObject.SetActive(true);
+        // frameBlinkerBlack.gameObject.SetActive(false);
+        // isWhiteActive = false;
     }
 
     // Update is called once per frame
@@ -89,20 +89,20 @@ public class UnityFrameLogger : MonoBehaviour
         //     blinkerState = 1;
         // }
 
-        if (isWhiteActive) {
-            frameBlinkerWhite.material.color = Color.black;
-            // frameBlinkerBlack.gameObject.SetActive(true);
-            // blinkerState = 0;
-            isWhiteActive = false;
-        } else {
-            frameBlinkerWhite.material.color = Color.white;
-            // frameBlinkerBlack.gameObject.SetActive(false);
-            // blinkerState = 1;
-            isWhiteActive = true;
-        }
+        // if (isWhiteActive) {
+        //     frameBlinkerWhite.material.color = Color.black;
+        //     // frameBlinkerBlack.gameObject.SetActive(true);
+        //     // blinkerState = 0;
+        //     isWhiteActive = false;
+        // } else {
+        //     frameBlinkerWhite.material.color = Color.white;
+        //     // frameBlinkerBlack.gameObject.SetActive(false);
+        //     // blinkerState = 1;
+        //     isWhiteActive = true;
+        // }
 
         // set blinker to 0 if frameIndicationBlinker.Color == Color.black else set it to 1
-        blinkerState = frameBlinkerWhite.material.color == Color.black ? 0 : 1;
+        blinkerState = frameBlinkIndicator.material.color == Color.black ? 0 : 1;
         
         framePackage = $"N:U,ID:{frameCount},PCT:{unixTimestampMicroseconds},X:{framePositionX.ToString("F5")},"+
                     $"Z:{framePositionZ.ToString("F5")},A:{frameAngle.ToString("F5")},S:{frameState},FB:{blinkerState},"+

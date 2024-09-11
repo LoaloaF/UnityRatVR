@@ -263,6 +263,66 @@
     "assetType": "decision",
     "switchDescription": ""
   },
+  "663ae96e6970c7ecab02646c6a1f9ef2": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_DirectedMovement",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "d4c94eae9942c1f2ca4589357f5a16a2": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_EarlyStop",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "49e6fd27147560c8cb450786bc158170": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_FailDirectedAndReset",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "18f9730b41d09d8528afae945cd4f53a": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_FailDirectedMovement",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "2e44ba1a78d77d40d874f0a4a3d91968": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_GraceTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "2351ff3027e67bd7db9b827ff08d8626": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_MaxRewardReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "f9104223f8ebf809095e681e0836e3d7": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_MoveTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "17473ca57402cad05bc31faccd44e156": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_RewardConditionReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "9ceca2e5f99a8a4508dbfabcf3c25491": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_StayLickTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "352f8064089631cd9ac26641c7b9c999": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmDecisions",
+    "name": "P0900_StopTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
   "ed1c5a33db048de27b33b42810a4de70": {
     "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
     "name": "P300_RatUnderActivePillarHexagon",

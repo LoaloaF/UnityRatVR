@@ -20,6 +20,7 @@ namespace FSM
         [HideInInspector] public PlayerMovement _playerMovement;
 
         public MeshRenderer frameIndicationBlinker;
+        private bool isWhiteActive;
         public MeshRenderer validationSphereRenderer; // MeshRenderer object that you can assign in the UI
         private Dictionary<Type, Component> _cachedComponents;
         private InputManager _inputManager;
@@ -72,7 +73,9 @@ namespace FSM
             _inputManager = GetComponent<InputManager>();
             startflagSHMInterface = new FlagSHMInterface("paradigmflag_shmstruct.json");
             startFlag = false;
-            // frameIndicationBlinker.material.color = Color.black;
+            frameIndicationBlinker.material.color = Color.black;
+            isWhiteActive = false;
+            frameIndicationBlinker.gameObject.SetActive(true);
         }
 
 
@@ -93,7 +96,8 @@ namespace FSM
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
                 generalCurrentStateID = CurrentState.stateID;
-                switchBlinkerColor();
+                if (Time.frameCount - _sessionManager.startFrameID >= 120)
+                    switchBlinkerColor();
             }
         }
         
@@ -141,13 +145,16 @@ namespace FSM
 
         private void switchBlinkerColor()
         {
-            // if ((Time.frameCount - _sessionManager.startFrameID) % 2 == 0) 
-            // {
-            //     frameIndicationBlinker.material.color = Color.white;
-            // } else 
-            // {
-            //     frameIndicationBlinker.material.color = Color.black;
-            // }
+            if (isWhiteActive)
+            {
+                frameIndicationBlinker.material.color = Color.black;
+                isWhiteActive = false;
+            }
+            else
+            {
+                frameIndicationBlinker.material.color = Color.white;
+                isWhiteActive = true;
+            }
         }
 
     }

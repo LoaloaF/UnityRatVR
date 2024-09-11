@@ -194,6 +194,41 @@
     "name": "P0800_TrialStartLinearTrack",
     "assetType": "action"
   },
+  "e807dff16317d82ce99f8971c08bbf2e": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmActions",
+    "name": "P0900_ClearSHMInput",
+    "assetType": "action"
+  },
+  "cb4c34c55022af1dcbf598eb2347fbd9": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmActions",
+    "name": "P0900_MovementInQueue",
+    "assetType": "action"
+  },
+  "6e8e0c6d18de727dfbe24615dac48167": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmActions",
+    "name": "P0900_ResetReward",
+    "assetType": "action"
+  },
+  "cb43dd59f7fb9b7108c45c37bfae8ba8": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmActions",
+    "name": "P0900_SuccessUnderPillar",
+    "assetType": "action"
+  },
+  "35f5e19ae4c591878b8310c41546a371": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmActions",
+    "name": "P0900_TrialEnd",
+    "assetType": "action"
+  },
+  "d630e6c2fd7552222862a4283e937497": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmActions",
+    "name": "P0900_TrialInit",
+    "assetType": "action"
+  },
+  "d1704d57ef282959fa09df2674e0e953": {
+    "path": "./paradigmFSMAssets/P0900_MotorLickLearning/paradigmActions",
+    "name": "P0900_TrialStart",
+    "assetType": "action"
+  },
   "0e8b2833376afe627a325dec4bac5368": {
     "path": "./generalFSMAssets/actions",
     "name": "PillarBlinking",
