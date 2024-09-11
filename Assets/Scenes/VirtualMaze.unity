@@ -722,7 +722,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1180528854}
-  frameBlinkIndicator: {fileID: 91614425}
+  frameBlinkerWhite: {fileID: 91614425}
+  frameBlinkerBlack: {fileID: 1203896430}
 --- !u!114 &68722537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,7 +738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1180528854}
   _playerMovement: {fileID: 1180528859}
-  frameIndicationBlinker: {fileID: 91614425}
+  frameBlinkerWhite: {fileID: 91614425}
+  frameBlinkerBlack: {fileID: 1203896430}
+  isWhiteActive: 0
   validationSphereRenderer: {fileID: 186109822}
   _sceneController: {fileID: 68722535}
   _sessionManager: {fileID: 0}
@@ -848,7 +851,7 @@ GameObject:
   - component: {fileID: 91614426}
   - component: {fileID: 91614425}
   m_Layer: 6
-  m_Name: BlinkIndicator
+  m_Name: BlinkIndicatorWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5279,6 +5282,7 @@ Transform:
   - {fileID: 1074566179}
   - {fileID: 11688574}
   - {fileID: 91614423}
+  - {fileID: 1203896429}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &690834433
@@ -7649,10 +7653,10 @@ MonoBehaviour:
   XYZvelInput: 000000000000000000000000
   zOnlyMovePositive: 0
   xOnlyMovePositive: 0
-  ballForwardNormToCentimeter: 0.001542
+  ballForwardNormToCentimeter: 0.01542
   ballSidewaysNormToCentimeter: 0.001478
   ballRotatationNormToCentimeter: 0.001268667
-  enableBallInput: 1
+  enableBallInput: 0
 --- !u!114 &1180528861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7805,6 +7809,91 @@ RectTransform:
   m_AnchoredPosition: {x: 169.81102, y: -49}
   m_SizeDelta: {x: 981, y: 552}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1203896428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203896429}
+  - component: {fileID: 1203896431}
+  - component: {fileID: 1203896430}
+  m_Layer: 6
+  m_Name: BlinkIndicatorBlack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203896429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203896428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071064, y: -0, z: -0, w: 0.7071072}
+  m_LocalPosition: {x: -24.174, y: 34.0821, z: -0.026}
+  m_LocalScale: {x: 0.07, y: 0.00220388, z: 0.07}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 690834432}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!23 &1203896430
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203896428}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1203896431
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203896428}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1236976563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e2ffabadc690e2c38cef28321443112, type: 3}

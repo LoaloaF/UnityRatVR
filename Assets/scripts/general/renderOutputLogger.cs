@@ -38,7 +38,7 @@ public class renderOutputLogger : MonoBehaviour
             return;
         }
 
-        else if (Time.frameCount - _stateMachine._sessionManager.startFrameID >= 120)
+        else if (Time.frameCount - _stateMachine._sessionManager.startFrameID > 120)
         {
             // var stopwatch = System.Diagnostics.Stopwatch.StartNew();
             SaveFinalTextureToImage();
