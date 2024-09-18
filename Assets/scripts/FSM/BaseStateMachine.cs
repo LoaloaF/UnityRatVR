@@ -99,7 +99,7 @@ namespace FSM
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
                 generalCurrentStateID = CurrentState.stateID;
-                if (Time.frameCount - _sessionManager.startFrameID >= 120)
+                if (Time.frameCount - _sessionManager.startFrameID > 120)
                     switchBlinkerColor();
             }
         }
@@ -122,6 +122,7 @@ namespace FSM
             _inputManager.startSessionButton.interactable = true;
             _inputManager.stopSessionButton.interactable = false;
             _sessionManager.sessionRunning = false;
+            frameBlinkerBlack.material.color = Color.black;
             Debug.Log("Session stopped");
         }
 

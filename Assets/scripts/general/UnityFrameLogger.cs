@@ -65,7 +65,7 @@ public class UnityFrameLogger : MonoBehaviour
             firstFrameStartPCTMicroseconds = (ulong)(ticksSinceEpoch / 10);
 
             uint numFrames = FrameTimingManager.GetLatestTimings(1, frameTimings);
-            ulong firstFrameStartTimestampNanoseconds = frameTimings[0].frameStartTimestamp;
+            ulong firstFrameStartTimestampNanoseconds = frameTimings[0].cpuTimePresentCalled;
             firstFrameStartTimestampMicroseconds = firstFrameStartTimestampNanoseconds/1000;
         }
         else if (Time.frameCount - _stateMachine._sessionManager.startFrameID > 120)
@@ -95,13 +95,11 @@ public class UnityFrameLogger : MonoBehaviour
 
         uint numFrames = FrameTimingManager.GetLatestTimings(1, frameTimings);
         
-        if (numFrames > 0)
-        {
-            // Get the CPU start and GPU start times from the FrameTiming struct
-            unixTimestampNanoseconds = frameTimings[0].frameStartTimestamp;
-            unixTimestampMicroseconds = unixTimestampNanoseconds/1000;
-            unixTimestampMicroseconds = unixTimestampMicroseconds - firstFrameStartTimestampMicroseconds + firstFrameStartPCTMicroseconds;
-        }
+
+        // Get the CPU start and GPU start times from the FrameTiming struct
+        unixTimestampNanoseconds = frameTimings[0].cpuTimePresentCalled;
+        unixTimestampMicroseconds = unixTimestampNanoseconds/1000;
+        unixTimestampMicroseconds = unixTimestampMicroseconds - firstFrameStartTimestampMicroseconds + firstFrameStartPCTMicroseconds;
         
         // if ( Time.frameCount %2 == 1) {
         //     frameBlinkerWhite.gameObject.SetActive(false);
