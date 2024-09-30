@@ -18,7 +18,7 @@ namespace Experiment.ExperimentFSM
         {
             Color white = new Color(1, 1, 1, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
-            rewardConditionReached.timer = 0;
+            // rewardConditionReached.timer = 0;
             successSequenceEnded.timer = 0;
         }
     }

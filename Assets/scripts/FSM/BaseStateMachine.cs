@@ -85,6 +85,11 @@ namespace FSM
             frameBlinkerWhite.gameObject.SetActive(false);
             startFrameID = -1;
             currentFrameID = -1;
+
+
+
+
+            
         }
 
 

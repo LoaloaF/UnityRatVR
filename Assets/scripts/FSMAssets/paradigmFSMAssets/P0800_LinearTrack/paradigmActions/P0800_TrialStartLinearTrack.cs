@@ -15,6 +15,7 @@ namespace Experiment.ExperimentFSM
         public int cueIndicator = -1;
         public bool trialSuccess = false;
         public FadeScreen fadeScreen;
+        public P0800_RewardConditionReached rewardConditionReached;
         public override void Execute(BaseStateMachine stateMachine)
         {
 
@@ -29,6 +30,7 @@ namespace Experiment.ExperimentFSM
             stateMachine._sceneController.wallLeft.SetActive(true);
             stateMachine._sceneController.wallRight.SetActive(true);
             trialSuccess = false;
+            rewardConditionReached.timer = 0;
 
             fadeScreen = FindObjectOfType<FadeScreen>();
             fadeScreen.isFadingIn = false;
