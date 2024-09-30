@@ -12,30 +12,29 @@ namespace Experiment.ExperimentFSM
 
     public class P0800_SuckReward : FSMAction
     {
-        public P0800_TrialInitLinearTrack trialInitLinearTrack;
         private bool isSucking = false;
         private float suckTimer = 0f;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            // if (!trialInitLinearTrack.pumpOpened)
-            // {
-            //     return;
-            // }
-            // if (isSucking)
-            // {
-            //     suckTimer += Time.deltaTime;
-            //     if (suckTimer >= 0.5f)
-            //     {
-            //         suckTimer = 0;
-            //         isSucking = false;
-            //     }
-            // }
-            // else
-            // {
-            //     trialInitLinearTrack.serialPort.Write("run\n");
-            //     isSucking = true;
-            // }
+            if (!stateMachine.pumpOpened)
+            {
+                return;
+            }
+            if (isSucking)
+            {
+                suckTimer += Time.deltaTime;
+                if (suckTimer >= 0.5f)
+                {
+                    suckTimer = 0;
+                    isSucking = false;
+                }
+            }
+            else
+            {
+                stateMachine.serialPort.Write("run\n");
+                isSucking = true;
+            }
         }
 
     }

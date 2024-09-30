@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a3850a6bd985694bd7b0a651f1d7b9, type: 3}
   m_Name: P0800_SuckReward
   m_EditorClassIdentifier: 
-  trialInitLinearTrack: {fileID: 0}

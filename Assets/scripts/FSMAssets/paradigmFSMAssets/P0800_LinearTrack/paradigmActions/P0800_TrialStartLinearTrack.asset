@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2e413dda4417eaca2564d90c34b485, type: 3}
   m_Name: P0800_TrialStartLinearTrack
   m_EditorClassIdentifier: 
-  cueIndicator: -1
+  cueIndicator: 4
+  trialSuccess: 0
+  fadeScreen: {fileID: 0}
+  rewardConditionReached: {fileID: 11400000, guid: 29dcbf3ce5344d792a796ac60a9ef156, type: 2}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S0810_BeforeReward1
   m_EditorClassIdentifier: 
   stateID: 810
-  Action: []
+  Action:
+  - {fileID: 11400000, guid: 167ed0e1953172cf687a71f7bd50b5bd, type: 2}
   Transitions:
   - {fileID: 11400000, guid: 784412da8acef97b6a2e2402aef229d7, type: 2}

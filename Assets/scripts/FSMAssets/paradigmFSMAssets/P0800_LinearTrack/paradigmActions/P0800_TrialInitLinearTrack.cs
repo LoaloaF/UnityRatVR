@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
-using System.IO.Ports;
-using System.Text;
 
 namespace Experiment.ExperimentFSM
 {
@@ -21,44 +19,8 @@ namespace Experiment.ExperimentFSM
         public CyclicPackagesSHMInterface portentaOutputSHMInterface;
         public Dictionary<string, MeshRenderer> pillarCylinderMeshes = new Dictionary<string, MeshRenderer>();
 
-
-        public SerialPort serialPort;
-        public bool pumpOpened = false;
-
-
         public override void Execute(BaseStateMachine stateMachine)
         {
-            // initialize the syringe pump
-            // Serial port settings
-            string portName = "COM3";  // Replace with your serial port name (e.g., "COM3" for Windows)
-            int baudRate = 115200;
-            float velocity = 70.0f; // ml/min maximum velocity
-            int withdrawalAmount = 100; // uL
-
-            try
-            {
-                // Initialize and open the serial port
-                serialPort = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
-                serialPort.Encoding = Encoding.UTF8;
-                serialPort.ReadTimeout = 1000; // 1 second timeout for read/write operations
-                serialPort.Open();
-                if (serialPort.IsOpen)
-                {
-                    Debug.Log("Serial port is open.");
-                    pumpOpened = true;
-                    // Create withdrawal command
-                    string withdrawalCommand = string.Format("wit {0:0.0}ml/min {1}ul\n", velocity, withdrawalAmount);
-                    // Send the withdrawal command
-                    serialPort.Write(withdrawalCommand);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Error opening serial port: " + e.Message);
-                pumpOpened = false;
-            }
-
-
             stateMachine._sceneController.floor.SetActive(true);
             stateMachine._sceneController.wallZone.SetActive(true);
             stateMachine.validationSphereRenderer.enabled = false;
