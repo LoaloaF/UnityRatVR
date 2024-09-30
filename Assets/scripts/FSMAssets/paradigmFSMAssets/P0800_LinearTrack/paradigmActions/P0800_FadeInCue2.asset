@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cueName: 2
   cueShouldFadeIn: 0
+  fadeDistance: 100
+  trialInitLinearTrack: {fileID: 11400000, guid: ea840d605c1cef8eab95dc872ea72b27, type: 2}

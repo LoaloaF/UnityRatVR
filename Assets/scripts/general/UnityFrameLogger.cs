@@ -58,17 +58,17 @@ public class UnityFrameLogger : MonoBehaviour
         {
             return;
         }
-        else if (Time.frameCount - _stateMachine._sessionManager.startFrameID  == 120)
+        else if (_stateMachine.currentFrameID - _stateMachine.startFrameID  == 120)
         {
             DateTime currentDateTime = DateTime.UtcNow;
             long ticksSinceEpoch = currentDateTime.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
             firstFrameStartPCTMicroseconds = (ulong)(ticksSinceEpoch / 10);
 
             uint numFrames = FrameTimingManager.GetLatestTimings(1, frameTimings);
-            ulong firstFrameStartTimestampNanoseconds = frameTimings[0].cpuTimePresentCalled;
+            ulong firstFrameStartTimestampNanoseconds = frameTimings[0].frameStartTimestamp;
             firstFrameStartTimestampMicroseconds = firstFrameStartTimestampNanoseconds/1000;
         }
-        else if (Time.frameCount - _stateMachine._sessionManager.startFrameID > 120)
+        else if (_stateMachine.currentFrameID - _stateMachine.startFrameID > 120)
         {
             LogFrame();
         }
@@ -85,7 +85,7 @@ public class UnityFrameLogger : MonoBehaviour
         ulong unixTimestampNanoseconds = 0;
         ulong unixTimestampMicroseconds = 0;
 
-        frameCount = Time.frameCount;
+        frameCount = _stateMachine.currentFrameID;
         framePositionX = Player.transform.position.x;
         framePositionZ = Player.transform.position.z;
         frameAngle = Player.transform.rotation.eulerAngles.y;
@@ -97,7 +97,7 @@ public class UnityFrameLogger : MonoBehaviour
         
 
         // Get the CPU start and GPU start times from the FrameTiming struct
-        unixTimestampNanoseconds = frameTimings[0].cpuTimePresentCalled;
+        unixTimestampNanoseconds = frameTimings[0].frameStartTimestamp;
         unixTimestampMicroseconds = unixTimestampNanoseconds/1000;
         unixTimestampMicroseconds = unixTimestampMicroseconds - firstFrameStartTimestampMicroseconds + firstFrameStartPCTMicroseconds;
         
