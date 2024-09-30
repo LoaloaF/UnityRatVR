@@ -34,6 +34,8 @@ namespace FSM
         public int generalCurrentStateID;
         public StateDictionary paradigmDictionary;
         public BaseState CurrentState { get; set; }
+        public int startFrameID;
+        public int currentFrameID;
 
         public void initializeBaseStateMachine(string paradigm_name) {
             
@@ -79,6 +81,8 @@ namespace FSM
             isWhiteActive = false;
             frameBlinkerBlack.gameObject.SetActive(true);
             frameBlinkerWhite.gameObject.SetActive(false);
+            startFrameID = -1;
+            currentFrameID = -1;
         }
 
 
@@ -99,7 +103,7 @@ namespace FSM
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
                 generalCurrentStateID = CurrentState.stateID;
-                if (Time.frameCount - _sessionManager.startFrameID >= 120)
+                if (currentFrameID - startFrameID > 120)
                     switchBlinkerColor();
             }
         }
@@ -108,7 +112,7 @@ namespace FSM
         {
             startFlag = true;
             _sessionManager.abortTrialFlag = false;
-            _sessionManager.startFrameID = Time.frameCount;
+            startFrameID = Time.frameCount;
             _inputManager.startSessionButton.interactable = false;
             _inputManager.stopSessionButton.interactable = true;
             initializeBaseStateMachine(_inputManager.paradigm_name);

@@ -23,7 +23,6 @@ public sealed class SessionManager : MonoBehaviour
     public float maximumTrialLength;
     public string sessionDescription;
     public PlayerMovement _playerMovement;
-    public int startFrameID;
 
     public Dictionary<string, string> trialVariablesDict = new Dictionary<string, string>();
     private string[] trialVariablesNamesArray;
@@ -47,7 +46,6 @@ public sealed class SessionManager : MonoBehaviour
     public void Start()
     {
         sessionRunning = false;
-        startFrameID = -1;
     }
 
     public void InitializeSessionManager(ExcelSessionMetaData sessionMetaData)
