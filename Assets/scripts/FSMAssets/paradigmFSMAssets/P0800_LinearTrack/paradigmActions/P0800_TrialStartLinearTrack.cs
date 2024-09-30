@@ -72,6 +72,9 @@ namespace Experiment.ExperimentFSM
                                 mesh.material = stateMachine._sceneController.materials["verticalstribes"];
                             
                             mesh.material.color = new Color(1, 1, 1, 0);
+                            float scaleOriginal = mesh.transform.localScale.y;
+                            Debug.Log("Scale original: " + scaleOriginal);
+                            mesh.material.mainTextureScale = new Vector2(scaleOriginal/25f*3f, scaleOriginal/25f);
 
                         }
 

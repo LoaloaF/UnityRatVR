@@ -17,6 +17,7 @@ namespace Experiment.ExperimentFSM
         public P0800_FadeInCue fadeInCue1;
         public P0800_FadeInCue fadeInCue2;
         public CyclicPackagesSHMInterface portentaOutputSHMInterface;
+        public Dictionary<string, MeshRenderer> pillarCylinderMeshes = new Dictionary<string, MeshRenderer>();
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -39,24 +40,42 @@ namespace Experiment.ExperimentFSM
 
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
             Debug.Log("Pillar count: " + pillars.Length);
+
+            for (int pillarIdx = 1; pillarIdx < 17; pillarIdx++)
+            {
+                foreach (GameObject pillar in pillars)
+                {   
+                    if (pillar.name.StartsWith("Pillar" + pillarIdx.ToString() + "_"))
+                    {
+                        MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
+                        foreach (MeshRenderer mesh in meshRenderer)
+                        {
+                            if (mesh.gameObject.name == "Cylinder")
+                            {
+                                pillarCylinderMeshes.Add(pillarIdx.ToString() , mesh);
+                            }
+
+                        }
+                        break;
+                    }
+                    
+                }
+            }
+ 
+
+            MeshRenderer pillar3Mesh = pillarCylinderMeshes["3"];
+            MeshRenderer pillar4Mesh = pillarCylinderMeshes["4"];
+            pillar3Mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
+            pillar4Mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
+
+
             foreach (GameObject pillar in pillars)
             {
                 if (pillar.name.StartsWith("Pillar0_"))
                 {
                     pillar.SetActive(false);
                 }
-                else if (pillar.name.StartsWith("Pillar3_") || pillar.name.StartsWith("Pillar4_"))
-                {
-                    MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
-                    foreach (MeshRenderer mesh in meshRenderer)
-                    {
-                        if (mesh.gameObject.name == "Cylinder")
-                        {
-                            mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
-                        }
 
-                    }
-                }
                 else if (pillar.name.StartsWith("Pillar1_")|| pillar.name.StartsWith("Pillar2_"))
                 {
                     MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
@@ -67,7 +86,7 @@ namespace Experiment.ExperimentFSM
                             if (mesh.material.color.a == 1)
                                 fadeInCue1.cueShouldFadeIn = true;
                             else
-                                fadeInCue1.cueShouldFadeIn = false;
+                                fadeInCue1.cueShouldFadeIn = false;  
                         }
                         else if (pillar.name.StartsWith("Pillar2_"))
                         {
@@ -98,13 +117,13 @@ namespace Experiment.ExperimentFSM
 
             GameObject leftWall = Instantiate(trackWall, leftWallPosition, Quaternion.identity, stateMachine.transform);
             leftWall.name = "LeftWall";
-            leftWall.transform.localScale = new Vector3(4, ySize*2, arenaSize);
+            leftWall.transform.localScale = new Vector3(4, ySize*4, arenaSize);
             leftWall.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["grey"];
 
 
             GameObject rightWall = Instantiate(trackWall, rightWallPosition, Quaternion.identity, stateMachine.transform);
             rightWall.name = "RightWall";
-            rightWall.transform.localScale = new Vector3(4, ySize*2, arenaSize);
+            rightWall.transform.localScale = new Vector3(4, ySize*4, arenaSize);
             rightWall.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["grey"];
 
         }

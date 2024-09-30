@@ -76,6 +76,8 @@ namespace FSM
             _inputManager = GetComponent<InputManager>();
             startflagSHMInterface = new FlagSHMInterface("paradigmflag_shmstruct.json");
             startFlag = false;
+            startFrameID = -1;
+            currentFrameID = -1;
             frameBlinkerWhite.material.color = Color.white;
             frameBlinkerBlack.material.color = Color.black;
             isWhiteActive = false;
@@ -88,6 +90,7 @@ namespace FSM
 
         private void Update()
         {
+            currentFrameID = Time.frameCount;
             if (checkStartFlag() && !startFlag)
             {
                 System.Threading.Thread.Sleep(1200);
@@ -104,6 +107,7 @@ namespace FSM
                 CurrentState.Execute(this);
                 generalCurrentStateID = CurrentState.stateID;
                 if (currentFrameID - startFrameID > 120)
+                if (currentFrameID - startFrameID > 120)
                     switchBlinkerColor();
             }
         }
@@ -111,6 +115,8 @@ namespace FSM
         public void StartGame()
         {
             startFlag = true;
+            startFrameID = Time.frameCount;
+            Debug.Log("Start flag set at frame: " + startFrameID);
             _sessionManager.abortTrialFlag = false;
             startFrameID = Time.frameCount;
             _inputManager.startSessionButton.interactable = false;
@@ -126,6 +132,7 @@ namespace FSM
             _inputManager.startSessionButton.interactable = true;
             _inputManager.stopSessionButton.interactable = false;
             _sessionManager.sessionRunning = false;
+            frameBlinkerBlack.material.color = Color.black;
             Debug.Log("Session stopped");
         }
 

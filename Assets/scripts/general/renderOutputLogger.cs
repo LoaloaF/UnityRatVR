@@ -38,7 +38,7 @@ public class renderOutputLogger : MonoBehaviour
             return;
         }
 
-        else if (Time.frameCount - _stateMachine._sessionManager.startFrameID > 120)
+        else if (_stateMachine.currentFrameID - _stateMachine.startFrameID > 120)
         {
             // var stopwatch = System.Diagnostics.Stopwatch.StartNew();
             SaveFinalTextureToImage();
@@ -90,7 +90,7 @@ public class renderOutputLogger : MonoBehaviour
         // Debug.Log($"TS2 {stopwatch.ElapsedTicks / (System.TimeSpan.TicksPerMillisecond / 1000)} μs");
 
         // Prepare metadata packet bytes
-        float frameCount = Time.frameCount;
+        float frameCount = _stateMachine.currentFrameID;
         // float frameTime = Time.time;
         DateTime currentDateTime = DateTime.UtcNow;
         long ticksSinceEpoch = currentDateTime.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
