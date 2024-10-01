@@ -29,6 +29,7 @@ namespace Experiment.ExperimentFSM
                 stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
                 Color yellow = new Color(1, 1, 0, 1);
                 stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
+                stateMachine.rewardPresent = true;
             }
             else
             {

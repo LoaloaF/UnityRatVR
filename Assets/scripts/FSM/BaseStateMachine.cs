@@ -40,6 +40,7 @@ namespace FSM
         public int currentFrameID;
         public SerialPort serialPort;
         public bool pumpOpened = false;
+        public bool rewardPresent = false;
 
         public void initializeBaseStateMachine(string paradigm_name) {
             
@@ -90,7 +91,8 @@ namespace FSM
             startFrameID = -1;
             currentFrameID = -1;
 
-
+            pumpOpened = false;
+            rewardPresent = false;
             string portName = "COM3";  // Replace with your serial port name (e.g., "COM3" for Windows)
             int baudRate = 115200;
             float velocity = 70.0f; // ml/min maximum velocity
