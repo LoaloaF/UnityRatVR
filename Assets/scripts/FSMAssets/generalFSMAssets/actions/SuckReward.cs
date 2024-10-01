@@ -14,6 +14,10 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
+            if (!stateMachine.pumpOpened)
+            {
+                return;
+            }
             if (stateMachine.rewardPresent)
             {
                 stateMachine.serialPort.Write("run\n");

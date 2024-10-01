@@ -175,7 +175,7 @@ namespace FSM
             {
                 // Close the serial port
                 serialPort.Close();
-                Debug.Log("Serial port closed.");
+                Debug.Log("Syringe pump serial port closed.");
             }
 
         }
