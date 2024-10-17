@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: P0800_ResetReward
   m_EditorClassIdentifier: 
   rewardConditionReached: {fileID: 11400000, guid: 29dcbf3ce5344d792a796ac60a9ef156, type: 2}
-  successSequenceEnded: {fileID: 11400000, guid: ca19d125086f4e6cc8c13b804f8262f5, type: 2}
+  successReward1: {fileID: 11400000, guid: 754b2654a709349e89163172ca9dc25d, type: 2}
+  successReward2: {fileID: 11400000, guid: 14fc060b03ca60d028b701a4a23b9e47, type: 2}

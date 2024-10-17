@@ -57,7 +57,10 @@ namespace FSM
             // load the scene from the excel file
             _sceneController.LoadExcelScene(excelFullFileName);
             
-            CurrentState = paradigmDictionary.TryGetValue(paradigm_name);
+            if (paradigm_name.StartsWith("P0800_"))
+                CurrentState = paradigmDictionary.TryGetValue("P0800_LinearTrack");
+            else
+                CurrentState = paradigmDictionary.TryGetValue(paradigm_name);
             Debug.Log($"Initial state: {CurrentState}");
             generalCurrentStateID = CurrentState.stateID;
             _sessionManager.sessionRunning = true;
@@ -93,9 +96,9 @@ namespace FSM
 
             pumpOpened = false;
             rewardPresent = false;
-            string portName = "COM3";  // Replace with your serial port name (e.g., "COM3" for Windows)
+            string portName = "/dev/ttyUSB0";  
             int baudRate = 115200;
-            float velocity = 70.0f; // ml/min maximum velocity
+            float velocity = 46.0f; // ml/min maximum velocity
             int withdrawalAmount = 100; // uL
 
             try

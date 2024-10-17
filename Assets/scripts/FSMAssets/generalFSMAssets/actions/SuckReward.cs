@@ -14,14 +14,20 @@ namespace Experiment.ExperimentFSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            if (!stateMachine.pumpOpened)
-            {
-                return;
-            }
+ 
             if (stateMachine.rewardPresent)
             {
-                stateMachine.serialPort.Write("run\n");
-                stateMachine.rewardPresent = false;
+                try
+                {
+                    stateMachine.serialPort.Write("run\n");
+                    Debug.Log("Sucking reward");
+                    stateMachine.rewardPresent = false;
+                }
+                catch (System.Exception e)
+                {
+                    Debug.Log("Error: " + e);
+                }
+
             }
         }
 

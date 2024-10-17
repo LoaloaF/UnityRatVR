@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateID: 509
   Action:
+  - {fileID: 11400000, guid: 167ed0e1953172cf687a71f7bd50b5bd, type: 2}
   - {fileID: 11400000, guid: 808f99f697e7db8b59a8ed5367359920, type: 2}
   Transitions:
   - {fileID: 11400000, guid: 5ed132c70e04fec179a4de724b930c3f, type: 2}

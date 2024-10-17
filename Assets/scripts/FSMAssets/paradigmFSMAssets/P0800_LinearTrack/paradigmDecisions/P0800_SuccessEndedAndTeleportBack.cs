@@ -8,13 +8,17 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-     [CreateAssetMenu(menuName = "FSM/Decisions/P0800/P0800_SuccessSequenceEnded")]
-    public class P0800_SuccessSequenceEnded : Decision
+     [CreateAssetMenu(menuName = "FSM/Decisions/P0800/P0800_SuccessEndedAndTeleportBack")]
+    public class P0800_SuccessEndedAndTeleportBack : Decision
     {
         public float timer = 0f;
+        public P0800_TrialStartLinearTrack trialStartLinearTrack;
+        public int rewardIndicator;
         public override bool Decide(BaseStateMachine stateMachine)
         {            
-            if (timer > stateMachine._sessionManager.successSequenceLength) {
+            int cueIndicator = trialStartLinearTrack.cueIndicator;
+
+            if (timer > stateMachine._sessionManager.successSequenceLength && rewardIndicator == cueIndicator) {
                 return true;
             }
             

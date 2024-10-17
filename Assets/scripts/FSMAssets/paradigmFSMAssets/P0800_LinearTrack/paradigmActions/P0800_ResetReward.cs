@@ -13,13 +13,15 @@ namespace Experiment.ExperimentFSM
     public class P0800_ResetReward : FSMAction
     {
         public P0800_RewardConditionReached rewardConditionReached;
-        public P0800_SuccessSequenceEnded successSequenceEnded;
+        public P0800_SuccessEndedAndTeleportBack successReward1;
+        public P0800_SuccessEndedAndTeleportBack successReward2;
         public override void Execute(BaseStateMachine stateMachine)
         {
             Color white = new Color(1, 1, 1, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
             // rewardConditionReached.timer = 0;
-            successSequenceEnded.timer = 0;
+            successReward1.timer = 0;
+            successReward2.timer = 0;
         }
     }
 }

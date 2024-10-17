@@ -244,6 +244,11 @@
     "name": "SuccessEntryAction",
     "assetType": "action"
   },
+  "167ed0e1953172cf687a71f7bd50b5bd": {
+    "path": "./generalFSMAssets/actions",
+    "name": "SuckReward",
+    "assetType": "action"
+  },
   "50f646f0221c5a24f984ce02d044c0e5": {
     "path": "./generalFSMAssets/actions",
     "name": "Teleport2Center",
