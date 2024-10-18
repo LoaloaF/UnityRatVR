@@ -58,7 +58,7 @@ public class UnityFrameLogger : MonoBehaviour
         {
             return;
         }
-        else if (_stateMachine.currentFrameID - _stateMachine.startFrameID  == 120)
+        else if (_stateMachine.currentFrameID - _stateMachine.startFrameID  == 10)
         {
             DateTime currentDateTime = DateTime.UtcNow;
             long ticksSinceEpoch = currentDateTime.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
@@ -68,7 +68,7 @@ public class UnityFrameLogger : MonoBehaviour
             ulong firstFrameStartTimestampNanoseconds = frameTimings[0].frameStartTimestamp;
             firstFrameStartTimestampMicroseconds = firstFrameStartTimestampNanoseconds/1000;
         }
-        else if (_stateMachine.currentFrameID - _stateMachine.startFrameID > 120)
+        else if (_stateMachine.currentFrameID - _stateMachine.startFrameID > 10)
         {
             LogFrame();
         }

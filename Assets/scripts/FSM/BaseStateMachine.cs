@@ -145,8 +145,7 @@ namespace FSM
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
                 generalCurrentStateID = CurrentState.stateID;
-                if (currentFrameID - startFrameID > 120)
-                if (currentFrameID - startFrameID > 120)
+                if (currentFrameID - startFrameID > 10)
                     switchBlinkerColor();
             }
         }
