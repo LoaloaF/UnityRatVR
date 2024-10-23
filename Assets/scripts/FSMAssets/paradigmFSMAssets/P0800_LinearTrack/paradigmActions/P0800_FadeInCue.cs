@@ -16,13 +16,21 @@ namespace Experiment.ExperimentFSM
         public bool cueShouldFadeIn = false;
         public float fadeDistance = 100f;
         public P0800_TrialInitLinearTrack trialInitLinearTrack;
-
+        private int doubleReward;
         private MeshRenderer cueEnterPillarMesh;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
+            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("DR"))
+            {
+                doubleReward = int.Parse(stateMachine._sessionManager.trialVariablesDict["DR"]);
+            }
+            else
+            {
+                doubleReward = 0;
+            }
 
-            if (!cueShouldFadeIn)
+            if (!cueShouldFadeIn || doubleReward == 1)
                 return;
 
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");

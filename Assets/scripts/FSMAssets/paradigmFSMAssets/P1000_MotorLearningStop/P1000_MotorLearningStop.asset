@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0506_StayStop
+  m_Name: P1000_MotorLearningStop
   m_EditorClassIdentifier: 
-  stateID: 506
+  stateID: 1000
   Action:
-  - {fileID: 11400000, guid: 52e5dcbe13c0b96dbb821c1aa901c1bf, type: 2}
-  - {fileID: 11400000, guid: 7042c050b141b73459a2ca5598a934e9, type: 2}
+  - {fileID: 11400000, guid: 42515cedd100ce800a96a8c95b33778d, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 3ad223d7980eea98795ecbd03b479ae5, type: 2}
-  - {fileID: 11400000, guid: 2cc2693ec8c09c6e989dea4c43ad1079, type: 2}
-  - {fileID: 11400000, guid: 5ca2609963d5862848ed84d6f71beceb, type: 2}
+  - {fileID: 11400000, guid: e3dcde3e931986fda83cd61ee0a1a934, type: 2}
