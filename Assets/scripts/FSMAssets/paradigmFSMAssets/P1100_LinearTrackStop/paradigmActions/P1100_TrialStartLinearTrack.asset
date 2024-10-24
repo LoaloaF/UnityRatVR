@@ -15,4 +15,4 @@ MonoBehaviour:
   cueIndicator: 4
   trialSuccess: 0
   fadeScreen: {fileID: 0}
-  rewardConditionReached: {fileID: 11400000, guid: 030e030a28113703cab98ff74b1f94c3, type: 2}
+  rewardConditionReached: {fileID: 11400000, guid: 0dbece4feccb052878007ab1f885c362, type: 2}

@@ -13,12 +13,20 @@ namespace Experiment.ExperimentFSM
     {
         public P0500_MovementInQueue movementInQueue;
         public P0500_TrialInitMotorLearning trialInitMotorLearning;
+        public P0500_TrialStartMotorLearning trialStartMotorLearning;
         public float timer = 0f;
         private int currentTrialID = -1;
 
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            return LickReward(stateMachine) && TimeReached(stateMachine);
+
+            if (trialStartMotorLearning.currentRewardNumber == 0)
+            {
+                return TimeReached(stateMachine);
+            }
+            else
+                return TimeReached(stateMachine) && LickReward(stateMachine);
+
         }
 
         private bool LickReward(BaseStateMachine stateMachine)

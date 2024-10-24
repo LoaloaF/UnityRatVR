@@ -15,4 +15,5 @@ MonoBehaviour:
   switchDescription: 
   movementInQueue: {fileID: 11400000, guid: 0b5d9147b44f302afbee56cb90d888d6, type: 2}
   trialInitMotorLearning: {fileID: 11400000, guid: 42515cedd100ce800a96a8c95b33778d, type: 2}
+  trialStartMotorLearning: {fileID: 11400000, guid: 053d59e678a876bbf99351a555383677, type: 2}
   timer: 0

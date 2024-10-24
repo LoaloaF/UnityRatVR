@@ -98,10 +98,10 @@ namespace FSM
             rewardPresent = false;
             string portName = "/dev/ttyUSB0";  
             int baudRate = 115200;
-            float velocity = 46.0f; // ml/min maximum velocity
-            int withdrawalAmount = 100; // uL
+            float velocity = 70f; // ml/min maximum velocity
+            int withdrawalAmount = 135; // uL
 
-            try
+            try 
             {
                 // Initialize and open the serial port
                 serialPort = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);

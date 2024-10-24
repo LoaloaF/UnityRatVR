@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
   m_Name: toS1115_RewardStay
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 030e030a28113703cab98ff74b1f94c3, type: 2}
+  Decision: {fileID: 11400000, guid: 0dbece4feccb052878007ab1f885c362, type: 2}
   TrueState: {fileID: 11400000, guid: 5e9a6878d1cc9ae78b2adce8d3d8a54c, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}
