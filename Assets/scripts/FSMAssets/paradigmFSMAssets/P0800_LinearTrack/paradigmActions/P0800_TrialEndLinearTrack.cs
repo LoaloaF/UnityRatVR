@@ -23,12 +23,18 @@ namespace Experiment.ExperimentFSM
                                             ",C:" + stateMachine._sessionManager.trialVariablesDict["C"] + 
                                             ",LR:"+ stateMachine._sessionManager.trialVariablesDict["LR"];
 
-            int outcome = int.Parse(stateMachine._sessionManager.trialVariablesDict["RN"]);
+            int outcome = stateMachine._sessionManager.currentRewardNum;
 
-            if (trialStartLinearTrack.trialSuccess)
-                stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
-            else
-                stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
+            if (outcome == 0)
+            {
+                outcome = -1;
+            }
+            else if (stateMachine._sessionManager.rewardPresent)
+            {
+                outcome = outcome - 1;
+            }
+
+            stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
 
             stateMachine._sessionManager.trialRunning = false;
         }

@@ -10,7 +10,6 @@ namespace Experiment.ExperimentFSM
     public class P1100_RatUnderCorrectPillar : Decision
     {
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
-        public bool returnTrue;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             int doubleReward = int.Parse(stateMachine._sessionManager.trialVariablesDict["DR"]);
@@ -24,17 +23,17 @@ namespace Experiment.ExperimentFSM
                 {
                     if ((child.name.StartsWith("Pillar3_") || child.name.StartsWith("Pillar4_")) && child.GetComponentInChildren<PillarCollision>().PlayerDetected)
                     {
-                        return returnTrue;
+                        return true;
                     }
                 }
                 else if (child.name.StartsWith("Pillar" + trialStartLinearTrack.cueIndicator.ToString() + "_") && child.GetComponentInChildren<PillarCollision>().PlayerDetected)
                 {
-                    return returnTrue;
+                    return true;
                 }
 
             }
 
-            return !returnTrue;
+            return false;
         }
 
     }

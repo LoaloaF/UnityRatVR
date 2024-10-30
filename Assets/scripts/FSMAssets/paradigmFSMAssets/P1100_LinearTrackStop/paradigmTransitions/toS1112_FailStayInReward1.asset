@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS1110_FailStay
+  m_Name: toS1112_FailStayInReward1
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 4dd397f10c4c5550ca3811e984580248, type: 2}
-  TrueState: {fileID: 11400000, guid: 0c60eb9cbc3479044933c3ede09bde97, type: 2}
+  Decision: {fileID: 11400000, guid: 3bd9e580e1c1686648b6586e054ccbb3, type: 2}
+  TrueState: {fileID: 11400000, guid: 11148bf0be0a07c2dbfd547399906b17, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

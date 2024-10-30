@@ -12,7 +12,6 @@ namespace Experiment.ExperimentFSM
 
     public class P0900_TrialEndMotorLickLearning: FSMAction
     {
-        public P0500_TrialStartMotorLearning trialStartMotorLearning;
         public override void Execute(BaseStateMachine stateMachine)
         {
             
@@ -31,7 +30,8 @@ namespace Experiment.ExperimentFSM
                                             ",R:" + stateMachine._sessionManager.trialVariablesDict["R"] +
                                             ",Y:" + stateMachine._sessionManager.trialVariablesDict["Y"] +
                                             ",P:" + stateMachine._sessionManager.trialVariablesDict["P"];
-            stateMachine._sessionManager.logEndTrial(trialStartMotorLearning.currentRewardNumber, trialPackageValuesArray);
+
+            stateMachine._sessionManager.logEndTrial(stateMachine._sessionManager.currentRewardNum, trialPackageValuesArray);
 
         }
 

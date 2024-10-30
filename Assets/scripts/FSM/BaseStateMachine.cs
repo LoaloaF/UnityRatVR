@@ -40,7 +40,6 @@ namespace FSM
         public int currentFrameID;
         public SerialPort serialPort;
         public bool pumpOpened = false;
-        public bool rewardPresent = false;
 
         public void initializeBaseStateMachine(string paradigm_name) {
             
@@ -95,7 +94,6 @@ namespace FSM
             currentFrameID = -1;
 
             pumpOpened = false;
-            rewardPresent = false;
             string portName = "/dev/ttyUSB0";  
             int baudRate = 115200;
             float velocity = 70f; // ml/min maximum velocity

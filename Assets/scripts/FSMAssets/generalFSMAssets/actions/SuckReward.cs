@@ -15,14 +15,14 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
  
-            if (stateMachine.rewardPresent)
+            if (stateMachine._sessionManager.rewardPresent)
             {
                 try
                 {
                     stateMachine.serialPort.Write("run\n");
                     stateMachine.GetComponent<PortentaInputInterface>().sendPunishment(12);
                     Debug.Log("Sucking reward");
-                    stateMachine.rewardPresent = false;
+                    stateMachine._sessionManager.rewardPresent = false;
                 }
                 catch (System.Exception e)
                 {

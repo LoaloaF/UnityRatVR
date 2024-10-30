@@ -33,14 +33,16 @@ namespace Experiment.ExperimentFSM
             }
             else if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("DR"))
             {
-                int currentRewardNum = int.Parse(stateMachine._sessionManager.trialVariablesDict["RN"]);
+                int stayReward = int.Parse(stateMachine._sessionManager.trialVariablesDict["SR"]);
 
-                if (currentRewardNum == 0)
+                if (stateMachine._sessionManager.currentRewardNum == 0)
                 {
                     return StopMovement(stateMachine);
                 }
-                else
+                else if (stayReward == 1)
                     return StopMovement(stateMachine) && LickReward(stateMachine);
+                else
+                    return LickReward(stateMachine);
             }
             else
                 return false;
@@ -52,7 +54,10 @@ namespace Experiment.ExperimentFSM
         {
             var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
             if (portentaPackage != null && portentaPackage["N"].ToString().Trim() == "L") 
+            {
+                stateMachine._sessionManager.rewardPresent = false;
                 return true;
+            }
             else 
                 return false;
         }
