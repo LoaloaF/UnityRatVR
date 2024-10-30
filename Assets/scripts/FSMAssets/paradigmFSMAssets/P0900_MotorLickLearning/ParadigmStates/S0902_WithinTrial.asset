@@ -15,6 +15,7 @@ MonoBehaviour:
   stateID: 902
   Action:
   - {fileID: 11400000, guid: cb4c34c55022af1dcbf598eb2347fbd9, type: 2}
+  - {fileID: 11400000, guid: e807dff16317d82ce99f8971c08bbf2e, type: 2}
   Transitions:
   - {fileID: 11400000, guid: b96947a2985a1da52a26a8262778ce20, type: 2}
   - {fileID: 11400000, guid: 36cfeb1de194503a9bc1e643b42f0de9, type: 2}
