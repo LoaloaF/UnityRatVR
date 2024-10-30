@@ -15,4 +15,4 @@ MonoBehaviour:
   switchDescription: 
   timer: 0
   trialStartLinearTrack: {fileID: 11400000, guid: a0cb7b0e1e7efc2eb94853220a5a7712, type: 2}
-  rewardIndicator: 4
+  rewardStateID: 813

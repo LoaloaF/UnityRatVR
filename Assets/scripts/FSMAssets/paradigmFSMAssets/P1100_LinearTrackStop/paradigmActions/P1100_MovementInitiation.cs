@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0500/P0500_TrialStartMotorLearning")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P1100/P1100_MovementInitiation")]
 
-    public class P0500_TrialStartMotorLearning : FSMAction
+    public class P1100_MovementInitiation : FSMAction
     {
         public Queue<float> rawMovementQueue;
         public Queue<float> yawMovementQueue;
@@ -25,11 +25,6 @@ namespace Experiment.ExperimentFSM
             rawMovementQueue.Enqueue(0);
             yawMovementQueue.Enqueue(0);
             pitchMovementQueue.Enqueue(0);
-
-            stateMachine._sessionManager.currentRewardNum = 0;
-            stateMachine._sessionManager.rewardSucked = false;
-            stateMachine._sessionManager.newTrial();
-            Debug.Log("New trial started");
         }
 
     }

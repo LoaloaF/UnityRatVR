@@ -23,6 +23,7 @@ namespace Experiment.ExperimentFSM
                     stateMachine.GetComponent<PortentaInputInterface>().sendPunishment(12);
                     Debug.Log("Sucking reward");
                     stateMachine._sessionManager.rewardPresent = false;
+                    stateMachine._sessionManager.rewardSucked = true;
                 }
                 catch (System.Exception e)
                 {

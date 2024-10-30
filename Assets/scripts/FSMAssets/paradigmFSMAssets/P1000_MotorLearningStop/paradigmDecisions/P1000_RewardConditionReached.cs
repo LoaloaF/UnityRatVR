@@ -32,7 +32,10 @@ namespace Experiment.ExperimentFSM
         {
             var portentaPackage = trialInitMotorLearning.portentaOutputSHMInterface.PopExtractedItem();
             if (portentaPackage != null && portentaPackage["N"].ToString().Trim() == "L") 
+            {
+                stateMachine._sessionManager.rewardPresent = false;
                 return true;
+            }
             else 
                 return false;
         }

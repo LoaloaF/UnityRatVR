@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
   m_Name: toS0812_FailStayInReward1
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: d189a3d6b59e2c86485c0a769ad5f007, type: 2}
+  Decision: {fileID: 11400000, guid: 0057315f302521038a270c07406286ae, type: 2}
   TrueState: {fileID: 11400000, guid: f27d7bfccf71d6768946b62a5a252a35, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

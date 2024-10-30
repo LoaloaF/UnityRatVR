@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad584d7b581680cf8d27eba26121d20, type: 3}
-  m_Name: P1100_RatLeaveRewardZone1
+  m_Script: {fileID: 11500000, guid: 7225da1d4a5722452b5196adb80c1525, type: 3}
+  m_Name: P1100_RatLeaveRewardPillar1
   m_EditorClassIdentifier: 
   switchDescription: 
   pillarIdentifier: 3
-  returnTrue: 0
+  lastRewardState: 1111

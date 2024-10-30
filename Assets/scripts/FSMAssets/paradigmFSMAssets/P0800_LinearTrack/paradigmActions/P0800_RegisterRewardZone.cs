@@ -8,14 +8,14 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P0800/P0800_RegisterSuccess")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P0800/P0800_RegisterRewardZone")]
 
-    public class P0800_RegisterSuccess : FSMAction
+    public class P0800_RegisterRewardZone : FSMAction
     {
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override void Execute(BaseStateMachine stateMachine)
         {
-            trialStartLinearTrack.trialSuccess = true;
+            trialStartLinearTrack.currentRewardStateID = stateMachine.LastState.stateID;
         }
     }
 }

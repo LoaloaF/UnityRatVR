@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f5f2a08c34ba240a0f773189abc67e, type: 3}
   m_Name: P1100_ResetCurrentRewardInDR
   m_EditorClassIdentifier: 
+  trialStartLinearTrack: {fileID: 11400000, guid: b844ad406ea16979a952be9e53865475, type: 2}

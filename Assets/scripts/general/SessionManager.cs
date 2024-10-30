@@ -34,6 +34,7 @@ public sealed class SessionManager : MonoBehaviour
     [HideInInspector] public int _currentTrialID = -1;
     [HideInInspector] public int currentRewardNum = 0;
     [HideInInspector] public bool rewardPresent = false;
+    [HideInInspector] public bool rewardSucked = false;
 
     // Triallogging information
     [HideInInspector] public float trialStartTimestamp;
@@ -50,6 +51,7 @@ public sealed class SessionManager : MonoBehaviour
         sessionRunning = false;
         rewardPresent = false;
         currentRewardNum = 0;
+        rewardSucked = false;
     }
 
     public void InitializeSessionManager(ExcelSessionMetaData sessionMetaData)

@@ -30,8 +30,14 @@ namespace Experiment.ExperimentFSM
                                             ",R:" + stateMachine._sessionManager.trialVariablesDict["R"] +
                                             ",Y:" + stateMachine._sessionManager.trialVariablesDict["Y"] +
                                             ",P:" + stateMachine._sessionManager.trialVariablesDict["P"];
+                                            
+            int outcome = stateMachine._sessionManager.currentRewardNum;
 
-            stateMachine._sessionManager.logEndTrial(stateMachine._sessionManager.currentRewardNum, trialPackageValuesArray);
+            if (stateMachine._sessionManager.rewardSucked)
+            {
+                outcome = outcome - 1;
+            }
+            stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
 
         }
 

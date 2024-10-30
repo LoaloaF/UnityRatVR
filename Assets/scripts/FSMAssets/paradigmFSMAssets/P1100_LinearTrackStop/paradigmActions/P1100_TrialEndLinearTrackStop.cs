@@ -25,14 +25,13 @@ namespace Experiment.ExperimentFSM
 
             int outcome = stateMachine._sessionManager.currentRewardNum;
 
-            if (outcome == 0)
-            {
-                outcome = -1;
-            }
-            else if (stateMachine._sessionManager.rewardPresent)
+
+            if (stateMachine._sessionManager.rewardSucked)
             {
                 outcome = outcome - 1;
             }
+
+            outcome = trialStartLinearTrack.firstRewardNum * 10 + outcome;
 
             stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
 

@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S0815_RewardStay
+  m_Script: {fileID: 11500000, guid: 45397c2b65e3676d88a6b950e6af08a6, type: 3}
+  m_Name: P1100_MovementInitiation
   m_EditorClassIdentifier: 
-  stateID: 815
-  Action:
-  - {fileID: 11400000, guid: bdf721ac8f668e0bcbec7c9bd52bccc2, type: 2}
-  Transitions:
-  - {fileID: 11400000, guid: 3601e51cab6c4b389b835a149a8a6edf, type: 2}

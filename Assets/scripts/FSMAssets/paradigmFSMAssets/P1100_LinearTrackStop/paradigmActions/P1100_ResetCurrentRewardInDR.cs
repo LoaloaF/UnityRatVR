@@ -19,13 +19,10 @@ namespace Experiment.ExperimentFSM
             int currentRewardNum = stateMachine._sessionManager.currentRewardNum;
             if (doubleReward == 1)
             {
-                if (currentRewardNum == 0)
-                {
-                    trialStartLinearTrack.firstRewardNum = -1;
-                }
-                else if (stateMachine._sessionManager.rewardPresent)
+                if (stateMachine._sessionManager.rewardSucked)
                 {
                     trialStartLinearTrack.firstRewardNum = currentRewardNum - 1;
+                    stateMachine._sessionManager.rewardSucked = false;
                 }
                 else
                 {
