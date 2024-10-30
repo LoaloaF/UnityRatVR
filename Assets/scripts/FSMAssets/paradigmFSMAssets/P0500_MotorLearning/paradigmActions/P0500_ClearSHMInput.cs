@@ -16,7 +16,10 @@ namespace Experiment.ExperimentFSM
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            while (trialInitMotorLearning.portentaOutputSHMInterface.Popitem() != null);
+            while (trialInitMotorLearning.portentaOutputSHMInterface.Popitem() != null)
+            {
+                Debug.Log("Clearing SHM input");
+            }
         }
     }
 }
