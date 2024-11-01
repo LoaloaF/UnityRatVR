@@ -773,7 +773,6 @@ MonoBehaviour:
   startFrameID: 0
   currentFrameID: 0
   pumpOpened: 0
-  rewardPresent: 0
 --- !u!114 &68722539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,6 +839,9 @@ MonoBehaviour:
   trialRunning: 0
   abortTrialFlag: 0
   _currentTrialID: -1
+  currentRewardNum: 0
+  rewardPresent: 0
+  rewardSucked: 0
   trialStartTimestamp: 0
 --- !u!4 &78000721 stripped
 Transform:

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchDescription: 
   trialInitLinearTrack: {fileID: 11400000, guid: 74af4cf5c4eaa9ce38b09a8216947dca, type: 2}
+  movementInitiation: {fileID: 11400000, guid: 98d0d9b375669c9b38d78bb057598bc7, type: 2}
   timer: 0

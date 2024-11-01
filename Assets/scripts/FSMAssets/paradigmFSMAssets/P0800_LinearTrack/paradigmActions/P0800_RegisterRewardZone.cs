@@ -15,7 +15,7 @@ namespace Experiment.ExperimentFSM
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override void Execute(BaseStateMachine stateMachine)
         {
-            trialStartLinearTrack.currentRewardStateID = stateMachine.LastState.stateID;
+            trialStartLinearTrack.currentRewardStateID = stateMachine.CurrentState.stateID;
         }
     }
 }

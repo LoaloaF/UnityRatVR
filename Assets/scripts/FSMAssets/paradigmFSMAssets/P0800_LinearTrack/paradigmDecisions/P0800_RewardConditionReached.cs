@@ -41,7 +41,7 @@ namespace Experiment.ExperimentFSM
                     return StopMovement(stateMachine);
                 }
                 else if (stayReward == 1)
-                    return StopMovement(stateMachine) && LickReward(stateMachine);
+                    return LickReward(stateMachine) && StopMovement(stateMachine);
                 else
                     return LickReward(stateMachine);
             }
@@ -106,7 +106,7 @@ namespace Experiment.ExperimentFSM
 
             float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
             float stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
-
+            // Debug.Log(" yaw Movement Sum: " + yawMovementSum);
             if (movementSum < stopThreshold)
                 return true;
             else

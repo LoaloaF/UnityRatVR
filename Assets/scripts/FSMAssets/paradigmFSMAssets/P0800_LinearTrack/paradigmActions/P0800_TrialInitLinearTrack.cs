@@ -18,6 +18,8 @@ namespace Experiment.ExperimentFSM
         public P0800_FadeInCue fadeInCue2;
         public CyclicPackagesSHMInterface portentaOutputSHMInterface;
         public Dictionary<string, MeshRenderer> pillarCylinderMeshes = new Dictionary<string, MeshRenderer>();
+        public float ballSidewaysNormToCentimeter;
+        public float ballRotatationNormToCentimeter;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -33,6 +35,8 @@ namespace Experiment.ExperimentFSM
 
             if (portentaOutputSHMInterface == null) portentaOutputSHMInterface = new CyclicPackagesSHMInterface("portentaoutput_shmstruct.json");
 
+            ballSidewaysNormToCentimeter = stateMachine._playerMovement.ballSidewaysNormToCentimeter;
+            ballRotatationNormToCentimeter = stateMachine._playerMovement.ballRotatationNormToCentimeter;
             stateMachine._playerMovement.ballSidewaysNormToCentimeter = 0f;
             stateMachine._playerMovement.ballRotatationNormToCentimeter = 0f;
             stateMachine._playerMovement.zOnlyMovePositive = true;

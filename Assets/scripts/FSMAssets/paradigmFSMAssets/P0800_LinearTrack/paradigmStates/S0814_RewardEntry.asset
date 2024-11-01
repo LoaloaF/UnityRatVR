@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: S0814_RewardEntry
   m_EditorClassIdentifier: 
   stateID: 814
-  Action:
-  - {fileID: 11400000, guid: 3f9004059f3024426b949e5493985f47, type: 2}
+  Action: []
   Transitions:
   - {fileID: 11400000, guid: bdfd83ec6f0732f1fa687ed606e4fe5e, type: 2}
   - {fileID: 11400000, guid: 7069e4df088c91e658ce9ea43cff4b49, type: 2}

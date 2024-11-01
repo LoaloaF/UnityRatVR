@@ -13,11 +13,19 @@ namespace Experiment.ExperimentFSM
     public class P1100_ResetCurrentRewardInDR : FSMAction
     {
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
+        private int currentTrialID = -1;
+        private bool needReset = false;
         public override void Execute(BaseStateMachine stateMachine)
         {
+            if (currentTrialID != stateMachine._sessionManager._currentTrialID)
+            {
+                currentTrialID = stateMachine._sessionManager._currentTrialID;
+                needReset = true;
+            }
+
             int doubleReward = int.Parse(stateMachine._sessionManager.trialVariablesDict["DR"]);
             int currentRewardNum = stateMachine._sessionManager.currentRewardNum;
-            if (doubleReward == 1)
+            if (doubleReward == 1 && needReset) 
             {
                 if (stateMachine._sessionManager.rewardSucked)
                 {
@@ -30,6 +38,8 @@ namespace Experiment.ExperimentFSM
                 }
 
                 stateMachine._sessionManager.currentRewardNum = 0;
+                Debug.Log("first Reward Number: " + trialStartLinearTrack.firstRewardNum);
+                needReset = false;
             }
 
         }

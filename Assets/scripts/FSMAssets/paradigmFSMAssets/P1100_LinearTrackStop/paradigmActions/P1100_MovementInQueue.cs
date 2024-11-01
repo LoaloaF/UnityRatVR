@@ -16,6 +16,7 @@ namespace Experiment.ExperimentFSM
         public float rawMovementTemp;
         public float yawMovementTemp;
         public float pitchMovementTemp;
+        public P0800_TrialInitLinearTrack trialInitLinearTrack;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -28,12 +29,12 @@ namespace Experiment.ExperimentFSM
             }
 
             rawMovementTemp = stateMachine._playerMovement.XYZvelInput[0] * stateMachine._playerMovement.ballForwardNormToCentimeter / queueSize;
-            yawMovementTemp = stateMachine._playerMovement.XYZvelInput[1] * stateMachine._playerMovement.ballSidewaysNormToCentimeter / queueSize;
-            pitchMovementTemp = stateMachine._playerMovement.XYZvelInput[2] * stateMachine._playerMovement.ballRotatationNormToCentimeter / queueSize;
+            yawMovementTemp = stateMachine._playerMovement.XYZvelInput[1] * trialInitLinearTrack.ballSidewaysNormToCentimeter / queueSize;
+            pitchMovementTemp = stateMachine._playerMovement.XYZvelInput[2] * trialInitLinearTrack.ballRotatationNormToCentimeter / queueSize;
 
-            movementInitiation.rawMovementQueue.Enqueue(rawMovementTemp);
-            movementInitiation.yawMovementQueue.Enqueue(yawMovementTemp);
-            movementInitiation.pitchMovementQueue.Enqueue(pitchMovementTemp);
+            movementInitiation.rawMovementQueue.Enqueue(Mathf.Abs(rawMovementTemp));
+            movementInitiation.yawMovementQueue.Enqueue(Mathf.Abs(yawMovementTemp));
+            movementInitiation.pitchMovementQueue.Enqueue(Mathf.Abs(pitchMovementTemp));
         }
 
     }
