@@ -36,11 +36,11 @@ namespace FSM
         public int generalCurrentStateID;
         public StateDictionary paradigmDictionary;
         public BaseState CurrentState { get; set; }
+        public BaseState LastState { get; set; }
         public int startFrameID;
         public int currentFrameID;
         public SerialPort serialPort;
         public bool pumpOpened = false;
-        public bool rewardPresent = false;
 
         public void initializeBaseStateMachine(string paradigm_name) {
             
@@ -61,6 +61,7 @@ namespace FSM
                 CurrentState = paradigmDictionary.TryGetValue("P0800_LinearTrack");
             else
                 CurrentState = paradigmDictionary.TryGetValue(paradigm_name);
+            LastState = CurrentState;
             Debug.Log($"Initial state: {CurrentState}");
             generalCurrentStateID = CurrentState.stateID;
             _sessionManager.sessionRunning = true;
@@ -95,13 +96,12 @@ namespace FSM
             currentFrameID = -1;
 
             pumpOpened = false;
-            rewardPresent = false;
             string portName = "/dev/ttyUSB0";  
             int baudRate = 115200;
-            float velocity = 46.0f; // ml/min maximum velocity
-            int withdrawalAmount = 100; // uL
+            float velocity = 70f; // ml/min maximum velocity
+            int withdrawalAmount = 135; // uL
 
-            try
+            try 
             {
                 // Initialize and open the serial port
                 serialPort = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
@@ -145,8 +145,7 @@ namespace FSM
                 // Exectures all actions attached to the current state
                 CurrentState.Execute(this);
                 generalCurrentStateID = CurrentState.stateID;
-                if (currentFrameID - startFrameID > 120)
-                if (currentFrameID - startFrameID > 120)
+                if (currentFrameID - startFrameID > 10)
                     switchBlinkerColor();
             }
         }

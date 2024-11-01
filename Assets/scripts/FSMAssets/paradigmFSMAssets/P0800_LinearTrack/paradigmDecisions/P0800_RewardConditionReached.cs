@@ -11,52 +11,54 @@ namespace Experiment.ExperimentFSM
      [CreateAssetMenu(menuName = "FSM/Decisions/P0800/P0800_RewardConditionReached")]
     public class P0800_RewardConditionReached : Decision
     {
-        public float timer = 0f;
-        public float threshold = 23;
+        private float rawMovementTemp;
+        private float yawMovementTemp;
+        private float pitchMovementTemp;
+        private float movementSummation;
         public P0800_TrialInitLinearTrack trialInitLinearTrack;
+        public P1100_MovementInitiation movementInitiation;
+        public float timer = 0f;
 
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            int lickRewardCheck = int.Parse(stateMachine._sessionManager.trialVariablesDict["LR"]);
 
-            if (lickRewardCheck == 1)
+            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("LR"))
             {
-                return LickReward(stateMachine);
+                int lickRewardCheck = int.Parse(stateMachine._sessionManager.trialVariablesDict["LR"]);
+                if (lickRewardCheck == 1)
+                {
+                    return LickReward(stateMachine);
+                }
+                else
+                    return StayTimeReached(stateMachine);
+            }
+            else if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("DR"))
+            {
+                int stayReward = int.Parse(stateMachine._sessionManager.trialVariablesDict["SR"]);
+
+                if (stateMachine._sessionManager.currentRewardNum == 0)
+                {
+                    return StopMovement(stateMachine);
+                }
+                else if (stayReward == 1)
+                    return LickReward(stateMachine) && StopMovement(stateMachine);
+                else
+                    return LickReward(stateMachine);
             }
             else
-                return StayTimeReached(stateMachine);
+                return false;
+
 
         }
 
         private bool LickReward(BaseStateMachine stateMachine)
         {
-            
-
-            // bool foundLick = false;
-            // while (true) {
-            //     var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
-
-            //     if (portentaPackage == null) {
-            //         nChecks = 0;
-            //         if (foundLick) Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
-            //         return foundLick;
-            //     }
-
-            //     Debug.Log(portentaPackage["V"]);
-            //     if (portentaPackage["N"].ToString().Trim() == "L")
-            //     {
-            //         // if (int.Parse(portentaPackage["V"].ToString()) > threshold) {
-            //         Debug.Log($"Lick a  bove threshold detected, after {nChecks} checks");
-            //         nChecks = 0;
-            //         foundLick = true;
-            //         }
-            //     }
-            //     nChecks++;
-            // }
-
             var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
             if (portentaPackage != null && portentaPackage["N"].ToString().Trim() == "L") 
+            {
+                stateMachine._sessionManager.rewardPresent = false;
                 return true;
+            }
             else 
                 return false;
         }
@@ -79,7 +81,47 @@ namespace Experiment.ExperimentFSM
             timer = 0;
         }
 
+        // private bool StopMovement(BaseStateMachine stateMachine)
+        // {
+        //     float stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
+            
+        //     rawMovementTemp = stateMachine._playerMovement.XYZvelInput[0] * stateMachine._playerMovement.ballForwardNormToCentimeter;
+        //     yawMovementTemp = stateMachine._playerMovement.XYZvelInput[1] * stateMachine._playerMovement.ballSidewaysNormToCentimeter;
+        //     pitchMovementTemp = stateMachine._playerMovement.XYZvelInput[2] * stateMachine._playerMovement.ballRotatationNormToCentimeter;
 
+        //     movementSummation = Math.Abs(rawMovementTemp) + Math.Abs(yawMovementTemp) + Math.Abs(pitchMovementTemp);
+
+        //     if (movementSummation < stopThreshold)
+        //         return true;
+        //     else
+        //         return false;
+        
+        // }
+
+        private bool StopMovement(BaseStateMachine stateMachine)
+        {
+            float rawMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.rawMovementQueue));
+            float yawMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.yawMovementQueue));
+            float pitchMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.pitchMovementQueue));
+
+            float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
+            float stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
+            // Debug.Log(" yaw Movement Sum: " + yawMovementSum);
+            if (movementSum < stopThreshold)
+                return true;
+            else
+                return false;
+        }
+
+        private float CalculateQueueSum(Queue<float> queue)
+        {
+            float sum = 0;
+            foreach (float item in queue)
+            {
+                sum += item;
+            }
+            return sum;
+        }
 
     }
 

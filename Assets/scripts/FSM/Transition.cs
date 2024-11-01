@@ -14,6 +14,7 @@ namespace FSM
         {
             if (Decision == null)
             {
+                stateMachine.LastState = stateMachine.CurrentState;
                 stateMachine.CurrentState = TrueState;
             }
             else
@@ -21,13 +22,15 @@ namespace FSM
                 _isTrueState = Decision.Decide(stateMachine);
                 if (_isTrueState && !(TrueState is RemainInState))
                 {
-                    stateMachine.CurrentState = TrueState;
                     Debug.Log($"Transition from {stateMachine.CurrentState} to {TrueState}");
+                    stateMachine.LastState = stateMachine.CurrentState;
+                    stateMachine.CurrentState = TrueState;
                 }
                 else if (!_isTrueState && !(FalseState is RemainInState))
                 {
-                    stateMachine.CurrentState = FalseState;
                     Debug.Log($"Transition from {stateMachine.CurrentState} to {FalseState}");
+                    stateMachine.LastState = stateMachine.CurrentState;
+                    stateMachine.CurrentState = FalseState;
                 }
             }
         }

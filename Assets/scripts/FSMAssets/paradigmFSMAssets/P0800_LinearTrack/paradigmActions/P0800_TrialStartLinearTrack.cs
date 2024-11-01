@@ -16,6 +16,8 @@ namespace Experiment.ExperimentFSM
         public bool trialSuccess = false;
         public FadeScreen fadeScreen;
         public P0800_RewardConditionReached rewardConditionReached;
+        public int firstRewardNum = 0;
+        public int currentRewardStateID = 0;
         public override void Execute(BaseStateMachine stateMachine)
         {
 
@@ -31,10 +33,12 @@ namespace Experiment.ExperimentFSM
             stateMachine._sceneController.wallRight.SetActive(true);
             trialSuccess = false;
             rewardConditionReached.timer = 0;
+            firstRewardNum = 0;
 
             fadeScreen = FindObjectOfType<FadeScreen>();
             fadeScreen.isFadingIn = false;
             fadeScreen.isFadingOut = false;
+            currentRewardStateID = 0;
 
             foreach (Transform child in stateMachine.transform)
             {
@@ -85,8 +89,9 @@ namespace Experiment.ExperimentFSM
             }
       
             stateMachine._sessionManager.newTrial();
-            stateMachine._sessionManager.trialVariablesDict["RN"] = "0";
+            stateMachine._sessionManager.currentRewardNum = 0;
             stateMachine._sessionManager.trialRunning = true;
+            stateMachine._sessionManager.rewardSucked = false;
 
 
         }

@@ -15,7 +15,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             stateMachine._sessionManager.newTrial();
-            stateMachine._sessionManager.trialVariablesDict["RN"] = "0";
+            stateMachine._sessionManager.currentRewardNum= 0;
             stateMachine._sessionManager.trialRunning = true;
 
         }

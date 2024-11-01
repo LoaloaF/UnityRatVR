@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
+  m_Name: S1004_StopPhase
+  m_EditorClassIdentifier: 
+  stateID: 1004
+  Action:
+  - {fileID: 11400000, guid: 0b5d9147b44f302afbee56cb90d888d6, type: 2}
+  - {fileID: 11400000, guid: 9b80622653ff23a89bb4b5cc37d23794, type: 2}
+  Transitions:
+  - {fileID: 11400000, guid: 5839fca8dabad1950b1a8b94b8b2016d, type: 2}
+  - {fileID: 11400000, guid: 7e7c684f81475038194e9c6ed246a95f, type: 2}

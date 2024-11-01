@@ -10,7 +10,6 @@ namespace Experiment.ExperimentFSM
     public class P0800_RatUnderCorrectPillar : Decision
     {
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
-        public bool returnTrue;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             int childcount = stateMachine.transform.childCount;
@@ -21,11 +20,11 @@ namespace Experiment.ExperimentFSM
                 if (child.name.StartsWith("Pillar" + trialStartLinearTrack.cueIndicator.ToString() + "_") && child.GetComponentInChildren<PillarCollision>().PlayerDetected)
                 {
                     // Debug.Log("Rat under correct pillar " + child.name);
-                    return returnTrue;
+                    return true;
                 }
 
             }
-            return !returnTrue;
+            return false;
         }
 
     }

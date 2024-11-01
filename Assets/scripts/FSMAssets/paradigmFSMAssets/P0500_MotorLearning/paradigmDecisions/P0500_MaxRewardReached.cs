@@ -12,12 +12,11 @@ namespace Experiment.ExperimentFSM
     public class P0500_MaxRewardReached : Decision
     {
         public P0500_MovementInQueue movementInQueue;
-        public P0500_TrialStartMotorLearning trialStartMotorLearning;
         public override bool Decide(BaseStateMachine stateMachine)
         {
             int maxRewardNum = int.Parse(stateMachine._sessionManager.trialVariablesDict["MRN"]);
 
-            if (trialStartMotorLearning.currentRewardNumber < maxRewardNum)
+            if (stateMachine._sessionManager.currentRewardNum < maxRewardNum)
             {
                 return false;
             }

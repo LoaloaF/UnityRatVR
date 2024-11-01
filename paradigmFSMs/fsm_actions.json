@@ -229,6 +229,101 @@
     "name": "P0900_TrialStart",
     "assetType": "action"
   },
+  "9b80622653ff23a89bb4b5cc37d23794": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmActions",
+    "name": "P1000_ClearSHMInput",
+    "assetType": "action"
+  },
+  "0b5d9147b44f302afbee56cb90d888d6": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmActions",
+    "name": "P1000_MovementInQueue",
+    "assetType": "action"
+  },
+  "db103e09cbfceb071b4016f41c0600ef": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmActions",
+    "name": "P1000_ResetReward",
+    "assetType": "action"
+  },
+  "2ef80ae7998704485892b7a301a01d09": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmActions",
+    "name": "P1000_SuccessUnderPillar",
+    "assetType": "action"
+  },
+  "012d28be932d007d7966e901ce04d21f": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmActions",
+    "name": "P1000_TrialEnd",
+    "assetType": "action"
+  },
+  "42515cedd100ce800a96a8c95b33778d": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmActions",
+    "name": "P1000_TrialInit",
+    "assetType": "action"
+  },
+  "053d59e678a876bbf99351a555383677": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmActions",
+    "name": "P1000_TrialStart",
+    "assetType": "action"
+  },
+  "dfeb13261816aa750820a57abe6c58c7": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_ClearSHMInput",
+    "assetType": "action"
+  },
+  "f8d3b740916b32c9688b8b9fe1a42faa": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_FadeInCue1",
+    "assetType": "action"
+  },
+  "b18a2aa86f2392ae3ae83ca258c460b3": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_FadeInCue2",
+    "assetType": "action"
+  },
+  "2a13776ee7f51636995ffccd62405e38": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_FadeInScreen",
+    "assetType": "action"
+  },
+  "1e4ca85830f0a6e2fb785c92ebfb2b82": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_FadeOutSceen",
+    "assetType": "action"
+  },
+  "87c582098628b4712a323cb3afda5c5f": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_RegisterSuccess",
+    "assetType": "action"
+  },
+  "cb0e9a95f83e743da921747164c7942c": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_ResetCurrentRewardInDR",
+    "assetType": "action"
+  },
+  "05088a0afe4107b4c8d594cc1e860b74": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_ResetReward",
+    "assetType": "action"
+  },
+  "766d0c8ca7b24cfc283fe37089411991": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_SuccessUnderPillar",
+    "assetType": "action"
+  },
+  "3440c3c994cd5511dace21d0e947aeb9": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_TrialEndLinearTrackStop",
+    "assetType": "action"
+  },
+  "74af4cf5c4eaa9ce38b09a8216947dca": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_TrialInitLinearTrack",
+    "assetType": "action"
+  },
+  "b844ad406ea16979a952be9e53865475": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_TrialStartLinearTrack",
+    "assetType": "action"
+  },
   "0e8b2833376afe627a325dec4bac5368": {
     "path": "./generalFSMAssets/actions",
     "name": "PillarBlinking",

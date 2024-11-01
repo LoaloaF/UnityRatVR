@@ -12,18 +12,17 @@ namespace Experiment.ExperimentFSM
 
     public class P0500_SuccessUnderPillar : FSMAction
     {
-        public P0500_TrialStartMotorLearning trialStartMotorLearning;
         public override void Execute(BaseStateMachine stateMachine)
         {
             int rewardDelay = stateMachine._sessionManager.rewardPostSoundDelay;
             int rewardLength = stateMachine._sessionManager.rewardAmount;
 
-            trialStartMotorLearning.currentRewardNumber++;
+            stateMachine._sessionManager.currentRewardNum++;
             Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
             stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
             Color yellow = new Color(1, 1, 0, 1);
             stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
-            stateMachine.rewardPresent = true;
+            stateMachine._sessionManager.rewardPresent = true;
             
         }
 

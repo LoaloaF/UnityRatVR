@@ -329,6 +329,204 @@
     "assetType": "decision",
     "switchDescription": ""
   },
+  "a1ca8d25e0bb5c76a8a8d5ccde2dfbb7": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_DirectedMovement",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "21aefcda9427f20aca55d7721d99e9a9": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_EarlyStop",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "04126d976939f0b86b72daae03754b27": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_FailDirectedAndReset",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "b12f391c00d7cbf5986aad18fbe1ec1d": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_FailDirectedMovement",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "611e9bcbc9b62d223819497b8b2edf2a": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_FailStopInGracePeriod",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "3b4283c6a82378ab3a5c14b6044ae9fe": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_FailStopInStayStop",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "1d6f7659f986530ba9fbafeb03717b03": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_MaxRewardReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "748495b649f5af223aa6735e6b44c05c": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_MoveTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "efe21a4e6d16229e78418736ea37e6a2": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_RewardConditionReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "e65cb60a2fda1bbaf84e0401c92790f7": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_StopAttempt",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "483327f6b46e8b7f090a90115c198ee1": {
+    "path": "./paradigmFSMAssets/P1000_MotorLearningStop/paradigmDecisions",
+    "name": "P1000_StopTimeReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "4dd397f10c4c5550ca3811e984580248": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_RatLeaveCorrectPillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "3bd9e580e1c1686648b6586e054ccbb3": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_RatLeaveRewardZone1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "fa95eee2d2bf79aea954479acbfea387": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_RatLeaveRewardZone2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "efef2fc3b4c441239a9989d39a9fb6d7": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_RatUnderCorrectPillar",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "4cea56be3208c4d3d92c7698b516d9b8": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_RatUnderRewardZone1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "8c162eceba459e6f9850a1bf8dc0f7f0": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_RatUnderRewardZone2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "b54b25a22ed9ac09fa4bf8f2e8d2f388": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_ReachEnd",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "0dbece4feccb052878007ab1f885c362": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_RewardConditionReached",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "3dfc55729745af974b1315861b530d9c": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_SuccessAndTeleportToReward1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "a29088d8e7acae21fa356eac001ec095": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1100_SuccessAndTeleportToReward2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "4422cb1e568aa84f7aaf3e35b8523280": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1103_EnterCue1Visible",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "73a3e75aff2b09199890ba2af569eaef": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1104_EnterCue1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "882ea9d9951742ae492b2065075cf136": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1105_EnterCue1Passed",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "4672d0f738a59b4048d6915dca3608c5": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1106_EnterBetweenCues",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "ace213022c43a05b581e216314ab6a31": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1107_EnterCue2Visible",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "9de1e3cc74f042b2fa3e86ee7f507a88": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1108_EnterCue2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "e836d7f79ea1c9071b42e5e0a207fae2": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1109_EnterCue2Passed",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "bce68ef2856e3f4faa9c2b8baf6b00ca": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1110_EnterBeforeReward1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "87036d938afa536ae8740825599874e1": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1111_EnterReward1",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "14f1fe54ce0f179ce8e473cebef77340": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1112_EnterBeforeReward2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "8856db0336f8447f782c6c6c65f2d0c6": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1113_EnterReward2",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
+  "740b9ae68603d66d8b7d3592338fd249": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
+    "name": "P1117_EnterPostReward",
+    "assetType": "decision",
+    "switchDescription": ""
+  },
   "ed1c5a33db048de27b33b42810a4de70": {
     "path": "./paradigmFSMAssets/P0300_InfiniteHexArena/paradigmDecisions",
     "name": "P300_RatUnderActivePillarHexagon",

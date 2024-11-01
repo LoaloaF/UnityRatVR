@@ -18,18 +18,15 @@ namespace Experiment.ExperimentFSM
             int rewardLength = stateMachine._sessionManager.rewardAmount;
 
             int maxRewardNum = int.Parse(stateMachine._sessionManager.trialVariablesDict["MRN"]);
-            int currentRewardNum = int.Parse(stateMachine._sessionManager.trialVariablesDict["RN"]);
 
-
-            if (currentRewardNum < maxRewardNum)
+            if (stateMachine._sessionManager.currentRewardNum < maxRewardNum)
             {
-                currentRewardNum++;
-                stateMachine._sessionManager.trialVariablesDict["RN"] = currentRewardNum.ToString();
+                stateMachine._sessionManager.currentRewardNum++;
                 Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
                 stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
                 Color yellow = new Color(1, 1, 0, 1);
                 stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
-                stateMachine.rewardPresent = true;
+                stateMachine._sessionManager.rewardPresent = true;
             }
             else
             {

@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
 
-            string trialPackageValuesArray = ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + ",RN:" + stateMachine._sessionManager.trialVariablesDict["RN"];
+            string trialPackageValuesArray = ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + ",RN:" + stateMachine._sessionManager.currentRewardNum;
             stateMachine._sessionManager.logEndTrial(1, trialPackageValuesArray);
 
 
