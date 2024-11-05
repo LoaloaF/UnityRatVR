@@ -34,7 +34,16 @@ namespace Experiment.ExperimentFSM
                                             ",P:" + stateMachine._sessionManager.trialVariablesDict["P"] +
                                             ",LR:" + stateMachine._sessionManager.trialVariablesDict["LR"];
 
-            stateMachine._sessionManager.logEndTrial(stateMachine._sessionManager.currentRewardNum, trialPackageValuesArray);
+            int outcome = stateMachine._sessionManager.currentRewardNum;
+
+
+            if (stateMachine._sessionManager.rewardSucked)
+            {
+                outcome = outcome - 1;
+            }
+
+            stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
+            stateMachine._sessionManager.trialRunning = false;
 
         }
 
