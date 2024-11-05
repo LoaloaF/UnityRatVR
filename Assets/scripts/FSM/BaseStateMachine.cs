@@ -36,7 +36,6 @@ namespace FSM
         public int generalCurrentStateID;
         public StateDictionary paradigmDictionary;
         public BaseState CurrentState { get; set; }
-        public BaseState LastState { get; set; }
         public int startFrameID;
         public int currentFrameID;
         public SerialPort serialPort;
@@ -61,7 +60,6 @@ namespace FSM
                 CurrentState = paradigmDictionary.TryGetValue("P0800_LinearTrack");
             else
                 CurrentState = paradigmDictionary.TryGetValue(paradigm_name);
-            LastState = CurrentState;
             Debug.Log($"Initial state: {CurrentState}");
             generalCurrentStateID = CurrentState.stateID;
             _sessionManager.sessionRunning = true;

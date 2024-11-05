@@ -15,3 +15,4 @@ MonoBehaviour:
   switchDescription: 
   pillarIdentifier: 4
   lastRewardState: 1113
+  trialStartLinearTrack: {fileID: 11400000, guid: b844ad406ea16979a952be9e53865475, type: 2}
