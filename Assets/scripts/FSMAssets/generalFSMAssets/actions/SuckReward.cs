@@ -20,7 +20,7 @@ namespace Experiment.ExperimentFSM
                 try
                 {
                     stateMachine.serialPort.Write("run\n");
-                    stateMachine.GetComponent<PortentaInputInterface>().sendPunishment(12);
+                    stateMachine.GetComponent<PortentaInputInterface>().sendRewardSuction(20);
                     Debug.Log("Sucking reward");
                     stateMachine._sessionManager.rewardPresent = false;
                     stateMachine._sessionManager.rewardSucked = true;

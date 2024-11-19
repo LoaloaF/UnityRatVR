@@ -36,6 +36,11 @@ public class PortentaInputInterface : MonoBehaviour
     {
         send($"P{punishmentLength}\r\n");
     }
+    
+    public void sendRewardSuction(int suctionLength)
+    {
+        send($"V{suctionLength}\r\n");
+    }
 
     private void send(string cmd)
     {
