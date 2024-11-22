@@ -106,6 +106,7 @@ public class InputManager : MonoBehaviour
             Debug.Log(shmUnityInput.Split(','));
             paradigm_name = shmUnityInput.Split(',')[1];
         } else if (shmUnityInput.StartsWith("Punishment") 
+                    || shmUnityInput.StartsWith("Vacuum") 
                     || shmUnityInput.StartsWith("Success") 
                     || shmUnityInput.StartsWith("TrialEndTeleportDistanceDelta") 
                     || shmUnityInput.StartsWith("TrialEndTeleportAngleDelta") 
