@@ -135,6 +135,8 @@ public class InputManager : MonoBehaviour
 
             if (command == "Punishment") {
                 _portentaInputInterface.sendPunishment((int)value1);
+            } else if (command == "Vacuum") {
+                _portentaInputInterface.sendRewardSuction((int)value1);
             } else if (command == "Success") {
                 _portentaInputInterface.sendSuccess((int)value1, (int)value2);
             } else if (command == "Teleport") {
