@@ -100,6 +100,9 @@ public class InputManager : MonoBehaviour
         }
         else if (shmUnityInput == "Failure") {
             sendFailure();
+        }
+        else if (shmUnityInput == "Mute") {
+            sendMute();
         } else if (shmUnityInput == "Airvalve") {
             sendSwitchAirvalve();
         } else if (shmUnityInput.StartsWith("Paradigm")) {
@@ -204,6 +207,11 @@ public class InputManager : MonoBehaviour
     public void sendFailure() 
     {
         _portentaInputInterface.sendFailure();
+    }
+    
+    public void sendMute() 
+    {
+        _portentaInputInterface.sendMute();
     }
     
     public void sendPunishment() 

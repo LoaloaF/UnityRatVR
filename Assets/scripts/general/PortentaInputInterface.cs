@@ -32,6 +32,11 @@ public class PortentaInputInterface : MonoBehaviour
         send("F\r\n");
     }
     
+    public void sendMute()
+    {
+        send($"M\r\n");
+    }
+    
     public void sendPunishment(int punishmentLength)
     {
         send($"P{punishmentLength}\r\n");
