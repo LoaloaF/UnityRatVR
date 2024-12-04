@@ -39,6 +39,8 @@ namespace Experiment.ExperimentFSM
             ballRotatationNormToCentimeter = stateMachine._playerMovement.ballRotatationNormToCentimeter;
             stateMachine._playerMovement.ballSidewaysNormToCentimeter = 0f;
             stateMachine._playerMovement.ballRotatationNormToCentimeter = 0f;
+
+
             stateMachine._playerMovement.zOnlyMovePositive = true;
 
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");

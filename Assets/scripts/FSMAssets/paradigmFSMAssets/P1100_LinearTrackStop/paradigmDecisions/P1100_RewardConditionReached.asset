@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchDescription: 
   trialInitLinearTrack: {fileID: 11400000, guid: 74af4cf5c4eaa9ce38b09a8216947dca, type: 2}
+  trialStartLinearTrack: {fileID: 11400000, guid: b844ad406ea16979a952be9e53865475, type: 2}
   movementInitiation: {fileID: 11400000, guid: 98d0d9b375669c9b38d78bb057598bc7, type: 2}
   timer: 0
+  reward1StateID: 1111
+  reward2StateID: 1113

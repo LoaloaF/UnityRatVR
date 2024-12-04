@@ -19,9 +19,14 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.Add_Decimal(stateMachine, "ST");
 
             string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
+                                             ",ST_2:" + stateMachine._sessionManager.trialVariablesDict["ST_2"] +     
                                             ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + 
                                             ",C:" + stateMachine._sessionManager.trialVariablesDict["C"] + 
-                                            ",DR:"+ stateMachine._sessionManager.trialVariablesDict["DR"];
+                                            ",SR:"+ stateMachine._sessionManager.trialVariablesDict["SR"] +
+                                            ",DR:"+ stateMachine._sessionManager.trialVariablesDict["DR"] + 
+                                            ",RF:"+ stateMachine._sessionManager.trialVariablesDict["RF"] +
+                                            ",TP:"+ stateMachine._sessionManager.trialVariablesDict["TP"] + 
+                                            ",GF:"+ stateMachine._sessionManager.trialVariablesDict["GF"];
 
             int outcome = stateMachine._sessionManager.currentRewardNum;
 

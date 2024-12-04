@@ -15,9 +15,13 @@ namespace Experiment.ExperimentFSM
         private float yawMovementTemp;
         private float pitchMovementTemp;
         private float movementSummation;
+        private float stopThreshold;
         public P0800_TrialInitLinearTrack trialInitLinearTrack;
+        public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public P1100_MovementInitiation movementInitiation;
         public float timer = 0f;
+        public int reward1StateID = 0;
+        public int reward2StateID = 0;
 
         public override bool Decide(BaseStateMachine stateMachine)
         {
@@ -81,23 +85,6 @@ namespace Experiment.ExperimentFSM
             timer = 0;
         }
 
-        // private bool StopMovement(BaseStateMachine stateMachine)
-        // {
-        //     float stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
-            
-        //     rawMovementTemp = stateMachine._playerMovement.XYZvelInput[0] * stateMachine._playerMovement.ballForwardNormToCentimeter;
-        //     yawMovementTemp = stateMachine._playerMovement.XYZvelInput[1] * stateMachine._playerMovement.ballSidewaysNormToCentimeter;
-        //     pitchMovementTemp = stateMachine._playerMovement.XYZvelInput[2] * stateMachine._playerMovement.ballRotatationNormToCentimeter;
-
-        //     movementSummation = Math.Abs(rawMovementTemp) + Math.Abs(yawMovementTemp) + Math.Abs(pitchMovementTemp);
-
-        //     if (movementSummation < stopThreshold)
-        //         return true;
-        //     else
-        //         return false;
-        
-        // }
-
         private bool StopMovement(BaseStateMachine stateMachine)
         {
             float rawMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.rawMovementQueue));
@@ -105,8 +92,18 @@ namespace Experiment.ExperimentFSM
             float pitchMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.pitchMovementQueue));
 
             float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
-            float stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
-            // Debug.Log(" yaw Movement Sum: " + yawMovementSum);
+
+            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("ST_2"))
+            {
+                if(trialStartLinearTrack.currentRewardStateID == reward1StateID)
+                    stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
+                else
+                    stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST_2"]);
+            }
+            else
+                stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
+
+            
             if (movementSum < stopThreshold)
                 return true;
             else
