@@ -25,7 +25,7 @@ namespace Experiment.ExperimentFSM
                                             ",SR:"+ stateMachine._sessionManager.trialVariablesDict["SR"] +
                                             ",DR:"+ stateMachine._sessionManager.trialVariablesDict["DR"] + 
                                             ",RF:"+ stateMachine._sessionManager.trialVariablesDict["RF"] +
-                                            ",TP:"+ stateMachine._sessionManager.trialVariablesDict["TP"] + 
+                                            ",NP:"+ stateMachine._sessionManager.trialVariablesDict["NP"] + 
                                             ",GF:"+ stateMachine._sessionManager.trialVariablesDict["GF"];
 
             int outcome = stateMachine._sessionManager.currentRewardNum;

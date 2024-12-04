@@ -58,8 +58,8 @@ namespace Experiment.ExperimentFSM
 
             float randomValue = Random.Range(0f, 1f);
             float trialPortion = 0.5f;
-            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("TP"))
-                trialPortion = float.Parse(stateMachine._sessionManager.trialVariablesDict["TP"]);
+            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("NP"))
+                trialPortion = float.Parse(stateMachine._sessionManager.trialVariablesDict["NP"]);
 
             if (randomValue > trialPortion)
             {
