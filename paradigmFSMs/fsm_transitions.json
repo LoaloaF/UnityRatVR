@@ -639,14 +639,6 @@
     "truestate": "6626b561ef5966bb1a78605a43094e3a",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
-  "bdfd83ec6f0732f1fa687ed606e4fe5e": {
-    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
-    "name": "toS0810_FailStay",
-    "assetType": "transition",
-    "decision": "7798dcb8e87ad4e32abdadd48f58e4ee",
-    "truestate": "6626b561ef5966bb1a78605a43094e3a",
-    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
-  },
   "7d1fe8e5838b12dcd943db437da7d07f": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
     "name": "toS0811_AfterSuccessToReward1",
@@ -668,6 +660,14 @@
     "name": "toS0812_BeforeReward2",
     "assetType": "transition",
     "decision": "65cdc8c3cfb280b9dbbbdd18fea3ae8a",
+    "truestate": "f27d7bfccf71d6768946b62a5a252a35",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "bdfd83ec6f0732f1fa687ed606e4fe5e": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
+    "name": "toS0812_FailStayInReward1",
+    "assetType": "transition",
+    "decision": "0057315f302521038a270c07406286ae",
     "truestate": "f27d7bfccf71d6768946b62a5a252a35",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
@@ -710,6 +710,14 @@
     "decision": "10692e8a11e8d564183739b10fe60cfd",
     "truestate": "45678863f8f7d39d6b45b080eb6d72ff",
     "falsestate": []
+  },
+  "7069e4df088c91e658ce9ea43cff4b49": {
+    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
+    "name": "toS0817_FailStayInReward2",
+    "assetType": "transition",
+    "decision": "7b29e7ad5eeab143d9bfc8b1577e789d",
+    "truestate": "c518aec5f9799cae99e2769ba934ecdb",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
   "89b34a3024d80979a8b0345014645d7a": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmTransitions",
@@ -995,7 +1003,7 @@
     "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmTransitions",
     "name": "toS1101_TrialStart",
     "assetType": "transition",
-    "decision": "541409748de4ecb29a4f14a7fe515740",
+    "decision": "718d671e77f65aeee9b01f4997e9edaf",
     "truestate": "4fcdb6c7250e8f01f8b3589c9f540bf4",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
@@ -1071,14 +1079,6 @@
     "truestate": "0c60eb9cbc3479044933c3ede09bde97",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
-  "599ba5c444bdc9c65b847cecb539cfd5": {
-    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmTransitions",
-    "name": "toS1110_FailStay",
-    "assetType": "transition",
-    "decision": "4dd397f10c4c5550ca3811e984580248",
-    "truestate": "0c60eb9cbc3479044933c3ede09bde97",
-    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
-  },
   "733dc026fb9c79915a41127fdeb43087": {
     "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmTransitions",
     "name": "toS1111_AfterSuccessToReward1",
@@ -1100,6 +1100,14 @@
     "name": "toS1112_BeforeReward2",
     "assetType": "transition",
     "decision": "14f1fe54ce0f179ce8e473cebef77340",
+    "truestate": "11148bf0be0a07c2dbfd547399906b17",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
+  },
+  "71e67d050368bfe9bb938397c7c53609": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmTransitions",
+    "name": "toS1112_FailStayInReward1",
+    "assetType": "transition",
+    "decision": "a3ffe704c8ba4763ea52b7437ef42105",
     "truestate": "11148bf0be0a07c2dbfd547399906b17",
     "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
@@ -1142,6 +1150,14 @@
     "decision": "10692e8a11e8d564183739b10fe60cfd",
     "truestate": "dd7cbf45a1db0b359a80189b592b0935",
     "falsestate": []
+  },
+  "44c07331d1cf0bae1a05378e6efe7b08": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmTransitions",
+    "name": "toS1117_FailStayInReward2",
+    "assetType": "transition",
+    "decision": "dd2269649cb5e860699b01e428a583bd",
+    "truestate": "6315c4f9eab7aae338dd8b8b3624c184",
+    "falsestate": "da5de4176efc130acbcbc8a7513855ee"
   },
   "d79b4050359385434938038cad2d3656": {
     "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmTransitions",

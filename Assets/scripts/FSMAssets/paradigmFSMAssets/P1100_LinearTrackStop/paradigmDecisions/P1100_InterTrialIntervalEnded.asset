@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7c86287ac372126a3e67f9a0370444, type: 3}
-  m_Name: P1100_FadeInCue2
+  m_Script: {fileID: 11500000, guid: b91f1657bbabd5c81ae39ae8896298b4, type: 3}
+  m_Name: P1100_InterTrialIntervalEnded
   m_EditorClassIdentifier: 
-  cueName: 2
-  cueShouldFadeIn: 0
-  fadeDistance: 70
-  trialInitLinearTrack: {fileID: 11400000, guid: 74af4cf5c4eaa9ce38b09a8216947dca, type: 2}
+  switchDescription: 
+  timer: 0

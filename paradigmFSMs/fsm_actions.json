@@ -166,7 +166,7 @@
   },
   "3f9004059f3024426b949e5493985f47": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmActions",
-    "name": "P0800_RegisterSuccess",
+    "name": "P0800_RegisterRewardZone",
     "assetType": "action"
   },
   "8335e0ecfacfb184689756cd28f0a58e": {
@@ -289,9 +289,19 @@
     "name": "P1100_FadeOutSceen",
     "assetType": "action"
   },
+  "f3c6f0c1df311a1329f81ff138300ede": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_MovementInQueue",
+    "assetType": "action"
+  },
+  "98d0d9b375669c9b38d78bb057598bc7": {
+    "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
+    "name": "P1100_MovementInitiation",
+    "assetType": "action"
+  },
   "87c582098628b4712a323cb3afda5c5f": {
     "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmActions",
-    "name": "P1100_RegisterSuccess",
+    "name": "P1100_RegisterRewardZone",
     "assetType": "action"
   },
   "cb0e9a95f83e743da921747164c7942c": {
