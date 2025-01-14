@@ -20,7 +20,7 @@ namespace Experiment.ExperimentFSM
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            int queueSize = 10;
+            int queueSize = 1;
             if (movementInitiation.rawMovementQueue.Count > queueSize)
             {
                 movementInitiation.rawMovementQueue.Dequeue();

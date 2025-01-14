@@ -103,7 +103,7 @@ namespace Experiment.ExperimentFSM
             else
                 stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
 
-            Debug.Log("Movement Sum: " + movementSum);
+            // Debug.Log("Movement Sum: " + movementSum);
             if (movementSum < stopThreshold)
                 return true;
             else

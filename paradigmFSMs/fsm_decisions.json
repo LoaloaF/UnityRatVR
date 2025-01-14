@@ -137,21 +137,15 @@
     "assetType": "decision",
     "switchDescription": ""
   },
-  "7798dcb8e87ad4e32abdadd48f58e4ee": {
+  "0057315f302521038a270c07406286ae": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0800_RatLeaveCorrectPillar",
+    "name": "P0800_RatLeaveRewardPillar1",
     "assetType": "decision",
     "switchDescription": ""
   },
-  "d189a3d6b59e2c86485c0a769ad5f007": {
+  "7b29e7ad5eeab143d9bfc8b1577e789d": {
     "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0800_RatLeaveRewardZone1",
-    "assetType": "decision",
-    "switchDescription": ""
-  },
-  "fbd517a207f87245ba9e3c1159f3a0d2": {
-    "path": "./paradigmFSMAssets/P0800_LinearTrack/paradigmDecisions",
-    "name": "P0800_RatLeaveRewardZone2",
+    "name": "P0800_RatLeaveRewardPillar2",
     "assetType": "decision",
     "switchDescription": ""
   },
@@ -395,21 +389,21 @@
     "assetType": "decision",
     "switchDescription": ""
   },
-  "4dd397f10c4c5550ca3811e984580248": {
+  "718d671e77f65aeee9b01f4997e9edaf": {
     "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
-    "name": "P1100_RatLeaveCorrectPillar",
+    "name": "P1100_InterTrialIntervalEnded",
     "assetType": "decision",
     "switchDescription": ""
   },
-  "3bd9e580e1c1686648b6586e054ccbb3": {
+  "a3ffe704c8ba4763ea52b7437ef42105": {
     "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
-    "name": "P1100_RatLeaveRewardZone1",
+    "name": "P1100_RatLeaveRewardPillar1",
     "assetType": "decision",
     "switchDescription": ""
   },
-  "fa95eee2d2bf79aea954479acbfea387": {
+  "dd2269649cb5e860699b01e428a583bd": {
     "path": "./paradigmFSMAssets/P1100_LinearTrackStop/paradigmDecisions",
-    "name": "P1100_RatLeaveRewardZone2",
+    "name": "P1100_RatLeaveRewardPillar2",
     "assetType": "decision",
     "switchDescription": ""
   },

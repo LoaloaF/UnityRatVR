@@ -40,6 +40,9 @@ namespace Experiment.ExperimentFSM
 
             stateMachine._sessionManager.logEndTrial(outcome, trialPackageValuesArray);
 
+            // write it back with real reward number
+            stateMachine._sessionManager.currentRewardNum = outcome;
+
             stateMachine._sessionManager.trialRunning = false;
         }
     }
