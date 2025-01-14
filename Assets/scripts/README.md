@@ -181,6 +181,7 @@ This paradigm rewards the animal when she is licking at the correct rewarding lo
 
 - Actions
     - P0800_TrialEndLinearTrack
+        - Based on Action P0800_TrialEndLinearTrack
         - Collect all trialVariablesDict information and send it to logger. Notice that if the variable has decimal points, run Add_Decimal first on this variable.
         - Log the outcome. Notice that if rewardPresent is true (meaning there is still one reward unconsumed), the outcome will -1.
 
@@ -207,7 +208,7 @@ This paradigm rewards the animal when she is licking at the correct rewarding lo
 
 ## P0900_MotorLickLearning
 
-This paradigm rewards the animal when she is licking after producing a clean forward movement for certain time. It has 11 states, and serves as the template also for paradigm 1000.
+This paradigm rewards the animal when she is licking after producing a clean forward movement for certain time. It has 11 states, and serves as the template also for paradigm 1000. Notice most functions (actions and decision) are scriptableObjects from 500 paradigms, so in the following dicussion we will refer to their original functions.
 
 ### P0900_MotorLickLearning
 
@@ -245,6 +246,7 @@ This paradigm rewards the animal when she is licking after producing a clean for
         - Based on Decision P0500_DirectedMovement, check if the animal is moving only in the desired direction.
         - We calculate the ratio between each dimensional movement and the sum of 3 dimensions. If the ratio of the desired dimension is greater the "MTH" ("movement threshold" from the trialVariablesDict), then return true.
         - The "desire dimenstion" is determined by "R" (raw), "Y" (yaw), and "P" (pitch) variables from the trialVariablesDict. Set any one of it to 1 will add the corresponding dimension to the decision.
+        - Additional parameter "Return True" is used to decide whether to return True or False when the animal is moving in the desired direction. Could be useful to re-use this function elsewhere.
     - To [S0911_SessionEnded](#S0911_SessionEnded)
         - Switch when manually terminate the session.
 
@@ -257,62 +259,92 @@ This paradigm rewards the animal when she is licking after producing a clean for
         - Same as before
 - Transitions
     - To [S0904_WaitLick](#S0904_WaitLick)
-        - Based on Decision P0500_DirectedMovement
+        - Based on Decision P0500_TimeReached. This decision will return true when the time in this state has exceed the threshold identified by the parameter "Time Variable Name" 
+        - Here the parameter is set to "MT", which is the movement time. It means the animal has move in the desired direction for enough time, therefore we continue to detect its lick thereafter.
     - To [S0902_EarlyStop](#S0902_WithinTrial)   
+        - Based on Decision P0500_Early stop. This decisin will return true if the summation of temporal 3 dimensional movements exceed the threshold defined by "STH" ("stop threshold" from the trialVariablesDict). It means the animal almost stops at the particular timestamp.
     - To [S0902_FailDirectedMove](#S0902_WithinTrial)  
+        - Based on Decision P0500_FailDirectedAndReset. It acts very similar as P0500_DirectedMovement (See [S0902_WithinTrial](#S0902_WithinTrial)), but return true if the animal is not only moving in the desired direction. Also it will set the timer in "To S0904_WaitLick" as 0, so that it will re-count the time when re-enter this state.
 
 ### S0904_WaitLick
 
 - Actions
     - P0900_MovementInQueue
+        - Same as before
 - Transitions
     - To [S0907_SuccessEntry](#S0907_SuccessEntry)
+        - Based on Decision P0900_RewardConditionReached. This decision will return true if there is lick packages detected from the SHM, otherwise keep poping out the packages.
+        - It will also change the rewardPresent variable to be false, indicating the reward has been consumed.
     - To [S0905_GracePeriod](#S0905_GracePeriod)
+        - Based on Decision P0500_DirectedMovement. Similar as in [S0902_WithinTrial](#S0902_WithinTrial), but only return true if it fails to produce directed movement.
+        - It means if the animal fails to move in the desired direction, we switch into grace period to still allow it to have another try.
 
 ### S0905_GracePeriod
 
 - Actions
     - P0900_MovementInQueue
+        - Same as before
 - Transitions
     - To [S0907_SuccessEntry](#S0907_SuccessEntry)
+        - Same as before
     - To [S0909_GraceTimeReached](#S0909_TrialEnd)
+        - Based on Decision P0500_TimeReached. This decision will return true when the time in this state has exceed the threshold identified by the parameter "Time Variable Name" 
+        - Here the parameter is set to "GPT", which is the grace period time. It means the animal has stayed in the grace period for too long without licking, so that we have to fail her.
 
 ### S0906_StayLick
 
 - Actions
     - P0900_MovementInQueue
+        - Same as before
     - P0900_ResetRewawrd
+        - Based on Action P0500_ResetReward. Reset the scene back to white and reset the timer for success sequence.
 - Transitions
     - To [S0907_SuccessEntry](#S0907_SuccessEntry)
+        - Same as before
     - To [S0909_StayLickTimeReached](#S0909_TrialEnd)
-    - To [S0909_MaxRewardReached](#S0909_TrialEnd)    
+        - Based on Decision P0500_TimeReached. This decision will return true when the time in this state has exceed the threshold identified by the parameter "Time Variable Name" 
+        - Here the parameter is set to "SLT", which is the stay lick time. It means the animal has stayed in the lick detection state for too long, so that we have to end this trial.
+        - This is only useful when we allow multiple rewards, which is not by default in this paradigm.
+    - To [S0909_MaxRewardReached](#S0909_TrialEnd)
+        - Based on Decision P0500_MaxRewardReached. This decision will return true if the animal has consumed rewards more than the maximum. Since by default the "MRN" (maximum reward number) is set to 1, it will just skip through.
 
 ### S0907_SuccessEntry
 
 - Actions
     - P0900_SuccessUnderPillar
+        - Based on Action P0500_SuccessUnderPillar, deliver the reward, setup the environment, and set the rewardPresent variable to be true (meaning the reward is present and not consumed yet).
 - Transitions
     - To [S0908_WithinSuccessSequence](#S0908_WithinSuccessSequence)
+        - Always true
 
 ### S0908_WithinSuccessSequence
 
 - Actions
     - P0900_ClearSHMInput
+        - Same as before
 - Transitions
     - To [S0906_RewardFinished](#S0906_StayLick)
+        - Switch when InterTrialInterval has reached.
 
 ### S0909_TrialEnd
 
 - Actions
     - SuckReward
-    - P0900_TrialEnd
+        - Based on Action SuckReward, suck out the unconsumed reward (if there is any) and set the rewardSucked parameter to be true for later logging.
+   - P0900_TrialEnd
+        - Based on Action P0900_TrialENdMotorLickLearning
+        - Collect all trialVariablesDict information and send it to logger. Notice that if the variable has decimal points, run Add_Decimal first on this variable.
+        - Log the outcome. Notice that if rewardSucked is true (meaning there is still one reward unconsumed), the outcome will -1.
+
 - Transitions
     - To [S0910_WithinInterTrialInterval](#S0910_WithinInterTrialInterval)
+        - Always true
 
 ### S0910_WithinInterTrialInterval
 
 - Transitions
     - To [S0901_TrialStart](#S0901_TrialStart)
+        - Switch when InterTrialInterval has reached.
 
 ### S0911_SessionEnded
 
@@ -321,192 +353,52 @@ This paradigm rewards the animal when she is licking after producing a clean for
 
 ## P1000_MotorLearningStop
 
-### S1001_TrialStart
-
-- This state
-- Actions
-- Transitions
-
-### S1002_WithinTrial
-
-- This state
-- Actions
-- Transitions
-
-### S1003_MovePhase
-
-- This state
-- Actions
-- Transitions
-
-### S1004_StopPhase
-
-- This state
-- Actions
-- Transitions
+This paradigm rewards the animal when she stops after producing a clean forward movement for certain time. It is mostly inherented from paradigm P0900, so here we will introduce only the differences. For unexplained Actions and Transitions, please refer to P0900.
 
 ### S1005_GracePeriod
 
-- This state
-- Actions
 - Transitions
+    - To [S1006_StayStop](#S1006_StayStop)
+    - To [S1009_FailStopInGracePeriod](#S1009_TrialEnd)   
 
 ### S1006_StayStop
 
-- This state
-- Actions
 - Transitions
-
-### S1007_SuccessEntry
-
-- This state
-- Actions
-- Transitions
-
-### S1008_WithinSuccessSequence
-
-- This state
-- Actions
-- Transitions
-
-### S1009_TrialEnd
-
-- This state
-- Actions
-- Transitions
-
-### S1010_WithinInterTrialInterval
-
-- This state
-- Actions
-- Transitions
-
-### S1011_SessionEnded
-
-- This state
-- Actions
-- Transitions
+    - To [S1007_SuccessEntry](#S1007_SuccessEntry)
+    - To [S1009_FailStopInStapStop](#S1009_TrialEnd)      
 
 ## P1100_LinearTrackStop
 
+This paradigm rewards the animal when she stops (and licks) at the correct rewarding location. It is mostly inherented from paradigm P1100, so here we will introduce only the differences. For unexplained Actions and Transitions, please refer to P1100.
+
 ### S1101_TrialStart
 
-- This state
 - Actions
-- Transitions
-
-### S1102_StartZone
-
-- This state
-- Actions
-- Transitions
-
-### S1103_Cue1Visible
-
-- This state
-- Actions
-- Transitions
-
-### S1104_Cue1
-
-- This state
-- Actions
-- Transitions
-
-### S1105_Cue1Passed
-
-- This state
-- Actions
-- Transitions
-
-### S1106_BetweenCues
-
-- This state
-- Actions
-- Transitions
-
-### S1107_Cue2Visible
-
-- This state
-- Actions
-- Transitions
-
-### S1108_Cue2
-
-- This state
-- Actions
-- Transitions
-
-### S1109_Cue2Passed
-
-- This state
-- Actions
-- Transitions
+    - P1100_MovementInitiation
+        - Based on Action P1100_MovementInitiation
 
 ### S1110_BeforeReward1
 
-- This state
 - Actions
+    - P1100_MovementInQueue
+        - Based on Action P1100_MovementInQueue
+
+### S1112_Reward1
+
 - Transitions
-
-### S1111_Reward1
-
-- This state
-- Actions
-- Transitions
-
-### S1112_BeforeReward2
-
-- This state
-- Actions
-- Transitions
-
-### S1113_Reward2
-
-- This state
-- Actions
-- Transitions
-
-### S1114_RewardEntry
-
-- This state
-- Actions
-- Transitions
-
-### S1115_RewardStay
-
-- This state
-- Actions
-- Transitions
-
-### S1116_WithinSuccessSequence
-
-- This state
-- Actions
-- Transitions
-
-### S1117_PostReward
-
-- This state
-- Actions
-- Transitions
+    - To S1114_RewardEntry
+        - Based on Decision P1100_RatUnderCorrectPillar
 
 ### S1118_TrialEnd
 
-- This state
 - Actions
-- Transitions
+    - P1100_TrialEndLinearTrackStop
+        - Based on Action P1100_TrialEndLinearTrackStop
 
 ### S1119_WithinInterTrialInterval
 
-- This state
-- Actions
 - Transitions
-
-### S1120_SessionEnded
-
-- This state
-- Actions
-- Transitions
+    - To [S1101_TrialStart](#S1101_TrialStart)
+        - Based on Decision P1100_InterTrialIntervalEnded
 
 ## FAQs
