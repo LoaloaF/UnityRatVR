@@ -15,8 +15,9 @@ namespace Experiment.ExperimentFSM
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override void Execute(BaseStateMachine stateMachine)
         {
-
+            // Add_Decimal if the variable is float or at least with decimal points
             stateMachine._sessionManager.Add_Decimal(stateMachine, "ST");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST_2");
 
             string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
                                              ",ST_2:" + stateMachine._sessionManager.trialVariablesDict["ST_2"] +     

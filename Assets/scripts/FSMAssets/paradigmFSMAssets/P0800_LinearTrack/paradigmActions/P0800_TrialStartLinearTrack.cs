@@ -13,7 +13,6 @@ namespace Experiment.ExperimentFSM
     public class P0800_TrialStartLinearTrack : FSMAction
     {
         public int cueIndicator = -1;
-        public bool trialSuccess = false;
         public FadeScreen fadeScreen;
         public P0800_RewardConditionReached rewardConditionReached;
         public int firstRewardNum = 0;
@@ -33,7 +32,6 @@ namespace Experiment.ExperimentFSM
             stateMachine._sceneController.wallBottom.SetActive(true);
             stateMachine._sceneController.wallLeft.SetActive(true);
             stateMachine._sceneController.wallRight.SetActive(true);
-            trialSuccess = false;
             rewardConditionReached.timer = 0;
             firstRewardNum = 0;
 
