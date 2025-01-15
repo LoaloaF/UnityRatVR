@@ -440,5 +440,13 @@ This paradigm rewards the animal when she stops (and licks) at the correct rewar
     - As mentioned before, basically the pillarRewardRadius is detached from the pillar position in the excel sheets. It means if you want to increase the reward radius, please not only change the pillarRewardRadius in the parameters, but change the position of the involved pillars.
     - For visibility of cues, cue_1_visible (for example) will be the starting point of the cue fading in, and cue_1 will be the point of cue completely visible (transparency 100%). Therefore, the parameter Fade Distance in P0800_FadeInCue (see [P0800_FadeInCue1](#P0800_FadeInCue1)) should be the distance between the pillar standing cue_1_visible and cue_1.
 
-- If I want to add a trialVariable
+- If I want to add a trial variable
+    - Add it in SessionParameters in the excel sheet. Modify 3 columns:
+        - trialPackageVariables: add the short name for the variable (no space between variables)
+        - trialPackageVariablesDefault: add the default value for the variable (no space between variables)
+        - trialPackageVariablesFullNames: add the full name for the variable (no space between variables)
+    - If you want to log this trial variable at the end of each trial, add it in the corresponding trialEnd function (for example, P1100_TrialEndLinearTrackStop). Notice that it has decimal points, you need to run Add_Decimal to the variable first.
 
+- If I want to replace old functions
+    - Pay attention to the public variables in this function and which functions are refering to this specific function. For example, if you want to create a new paradigm based on 1100 and a new trialStart function, it could be very tedious to complete since many functions/scriptableObjects in this paradigm need to refer to this specific function.
+    - In that case, I would recommend only modify the script but not create a new one. You can use trial variables or other public variables to set the condition that it is only enabled in this paradigm, therefore not hurting the old paradigms.
