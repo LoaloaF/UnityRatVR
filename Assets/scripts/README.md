@@ -21,7 +21,7 @@ This paradigm rewards the animal when she is licking at the correct rewarding lo
 
 - Actions
     - P0800_TrialStartLinearTrack
-        - Reset most indicators: timers, successIndicator, currentRewardNum, rewardSuckedIndicator, etc
+        - Reset most indicators: timers, successIndicator, currentRewardNum, rewardSuckedIndicator, etc. firstRewardNum records the number of rewards the animal received in the first rewarding location (only used when "DR"/double reward is switched on)
         - Manipulate the forward gain if "GF" is in trialVariablesDict
         - Randomly choose which texture to display on cue zone, or affected if "NP" is in trialVariablesDict
         - Flip the cue and reward matching if "RF" is in trialVariablesDict
@@ -112,7 +112,7 @@ This paradigm rewards the animal when she is licking at the correct rewarding lo
     - To [S0812_BeforeReward2](#S0812_BeforeReward2)
         - Based on the Decision P0800_RatPassCertainPillar, switch when the rat passes pillarIdx 14.
     - To [S0814_RewardEntry](#S0814_RewardEntry)
-        - Based on the Decision P0800_UnderCorrectPillar, switch when the rat is at the correct reward zone.
+        - Based on the Decision P0800_RatUnderCorrectPillar, switch when the rat is at the correct reward zone.
 
 ### S0812_BeforeReward2
 
@@ -131,7 +131,7 @@ This paradigm rewards the animal when she is licking at the correct rewarding lo
         - Refer to [S0811_Reward1](#S0811_Reward1)
 - Transitions
     - To [S0814_RewardEntry](#S0814_RewardEntry)
-        - Based on the Decision P0800_UnderCorrectPillar, switch when the rat is at the correct reward zone.
+        - Based on the Decision P0800_RatUnderCorrectPillar, switch when the rat is at the correct reward zone.
     - To [S0817_PostReward](#S0817_PostReward)
         - Based on the Decision P0800_RatPassCertainPillar, switch when the rat passes pillarIdx 16.
 
@@ -355,17 +355,32 @@ This paradigm rewards the animal when she is licking after producing a clean for
 
 This paradigm rewards the animal when she stops after producing a clean forward movement for certain time. It is mostly inherented from paradigm P0900, so here we will introduce only the differences. For unexplained Actions and Transitions, please refer to P0900.
 
+### S1004_StopPhase
+- Transitions
+    - To [S1006_StayStop](#S1006_StayStop)
+        - Based on Decision P0500_StopAttempt, return true if the summation of 3 dimensional movement (temporally at this frame) exceeds the threshold definend by "STH" ("stop threshold" from the trialVariablesDict)
+        - Return true doesn't mean the animal will get the reward right after. It just mean the animal starts to slow down. It has to go through S1006_StayStop to make sure it really slows down but not just "stepping"
+
 ### S1005_GracePeriod
 
 - Transitions
     - To [S1006_StayStop](#S1006_StayStop)
+        - Same as before
     - To [S1009_FailStopInGracePeriod](#S1009_TrialEnd)   
+        - Basd on Decision P0500_FailStopInGracePeriod, return true if after the timer exceeds "GPT" ("grace period time" from the trialVariablesDict), the summation of 3 dimensional movement (temporally at this frame) still exceeds the threshold definend by "STH" ("stop threshold" from the trialVariablesDict).
+        - It means the animal failed to start slowing down for the entire grace period, therefore failed the trial. 
 
 ### S1006_StayStop
 
 - Transitions
     - To [S1007_SuccessEntry](#S1007_SuccessEntry)
-    - To [S1009_FailStopInStapStop](#S1009_TrialEnd)      
+        - Based on Decision P1000_RewardConditionReached, reward true:
+            - When before the first reward, the animal has to stop for at least "ST" ("stop time" from the trialVariablesDict). 
+            - After the first reward, the animal has to stop AND lick the reward
+    - To [S1009_FailStopInStayStop](#S1009_TrialEnd)    
+        - Based on Decision P0500_FailStopInStayStop, return true if the animal doesn't steadily slow down after the first time the velocity drop down the "STH" as in [S1004_StopPhase](#S1004_StopPhase).    
+        - Since the animal steps forward on the ball, we could witness momentary slowing down which shouldn't be viewed as "stopping", but actually pass the To S1006_StayStop From S1004_StopPhase. Therefore we need to keep confirming that the movement is constanly below certain value for real stopping.
+        - Here we leverage another variable "SSTH" ("stay stop threshold"), which should be always slightly higher than "STH" (in default "STH" is 0.2, and "SSTH" is 0.3), acts as a softer condition to confirm the stopping.
 
 ## P1100_LinearTrackStop
 
@@ -375,30 +390,55 @@ This paradigm rewards the animal when she stops (and licks) at the correct rewar
 
 - Actions
     - P1100_MovementInitiation
-        - Based on Action P1100_MovementInitiation
+        - Based on Action P1100_MovementInitiation, create an empty queue to store the ball sensor data later
 
 ### S1110_BeforeReward1
 
 - Actions
     - P1100_MovementInQueue
-        - Based on Action P1100_MovementInQueue
+        - Based on Action P1100_MovementInQueue, store the normalized ball sensor data in the queue. 
+        - The length of the storage (hardcoded as "queueSize", in default is 1) could be modified to include averaging across past time window.  
 
-### S1112_Reward1
+### S1111_Reward1
 
 - Transitions
     - To S1114_RewardEntry
         - Based on Decision P1100_RatUnderCorrectPillar
+        - Similar to P0800_RatUnderCorrectPillar in [S0811_Reward1](#S0811_Reward1), return true when the rat is at the correct reward zone. However, if the "DR" ("double reward" from the trialVariablesDict) is set to 1, then return true when rat is at any one of the reward zone.
+
+### S1112_BeforeReward2
+
+- Actions
+    - P1100_ResetCurentRewardInDR
+        - Based on Action P1100_ResetCurentRewardInDR, this action register the number of rewards received in the first rewarding location to firstRewardNum, and reset the currentRewardNum in SessionManager for properly logging for the second rewarding location. It only happens when the double reward mode is on ("DR" from trialVariablesDict is 1).
 
 ### S1118_TrialEnd
 
 - Actions
     - P1100_TrialEndLinearTrackStop
-        - Based on Action P1100_TrialEndLinearTrackStop
+        - Based on Action P1100_TrialEndLinearTrackStop, similar to P0800_TrialEndLinearTrack in [S0818_TrialEnd](#S0818_TrialEnd) to log the trialVariablesDict and rewards. 
+        - Since we could have 2 reward numbers for a trial (considering "DR"), then we use 2 digits to record the outcome. For example, if the animal received 5 rewards in the first location and 3 in the second, then the final outcome will be "53".
 
 ### S1119_WithinInterTrialInterval
 
 - Transitions
     - To [S1101_TrialStart](#S1101_TrialStart)
-        - Based on Decision P1100_InterTrialIntervalEnded
+        - Based on Decision P1100_InterTrialIntervalEnded, return ture after the inter trial interval time has reached. For success trials (outcome > 0), the time has set to interTrialIntervalLength. For failed trials (outcome <= 0), this time has to abortInterTrialIntervalLength (usually longer than interTrialIntervalLength for punishing the animal for failing). 
 
 ## FAQs
+
+- If I want to create a new paradigm, can I just copy-paste the one we have?
+    - Yes, but there are a few things needed to be changed:
+        - Delete the redundant scripts in the new folder to avoid error/duplicates
+        - Change the names for all the scriptableObjects to match the new paradigm ID
+        - For actions/transitions, you have to link to the newly created one (in default the copy-pasted objects will have its components still refer to the objects in the old paradigm)
+        - For some objects, some of its parameters should also change according to new paradigm ID (for example, P0800_RatLeaveRewardPillar). In general, I suggest go through the action and decision folders again to check if there are specific fields to modify (most of them are numbers so should be rather easy to identify)
+        - Add the corresponding name of the paradigm excel to BaseStateMachine in the ExperimentCore in Unity Scene
+
+- If I want to modify the excel sheet, what needs to pay attention?
+    - Notice that we treat pillars in 2 ways: either they are used as a boundary (for example, separating the before_reward_1 to the reward_1), or as a landmark (like all the cues and rewards pillars). For the former one, we use its coordinates on the track and check if the animal's coordinate passes it. For the later one, we use the pillarRewardRadius field in EnvParmaters in the excel sheet to decide the detection radius for the animal to go under it. Pay attention if you want to change the ID of certain pillarIdx as you need change the same thing in Unity scriptableObjects
+    - As mentioned before, basically the pillarRewardRadius is detached from the pillar position in the excel sheets. It means if you want to increase the reward radius, please not only change the pillarRewardRadius in the parameters, but change the position of the involved pillars.
+    - For visibility of cues, cue_1_visible (for example) will be the starting point of the cue fading in, and cue_1 will be the point of cue completely visible (transparency 100%). Therefore, the parameter Fade Distance in P0800_FadeInCue (see [P0800_FadeInCue1](#P0800_FadeInCue1)) should be the distance between the pillar standing cue_1_visible and cue_1.
+
+- If I want to add a trialVariable
+
