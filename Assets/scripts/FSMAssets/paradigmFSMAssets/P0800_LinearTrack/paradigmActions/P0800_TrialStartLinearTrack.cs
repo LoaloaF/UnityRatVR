@@ -19,6 +19,8 @@ namespace Experiment.ExperimentFSM
         public int currentRewardStateID = 0;
         private float forwardGainDefault = -1;
         private int rewardFlip = 0;
+        // init an array that will keep track of the last 3 shown cues (1 or 2)
+        private int[] last3Cues = new int[3] { -1, -1, -1 };
         public override void Execute(BaseStateMachine stateMachine)
         {
 
@@ -72,6 +74,24 @@ namespace Experiment.ExperimentFSM
                 Debug.Log("Cue at near");
                 stateMachine._sessionManager.trialVariablesDict["C"] = "1";
             }
+
+            // Check if the same cue has appeared three times in a row
+            if (last3Cues[0] == last3Cues[1] && last3Cues[1] == last3Cues[2] && last3Cues[0] != -1)
+            {
+                // Override the RNG and present the other cue
+                cueIndicator = (last3Cues[0] == 3) ? 4 : 3;
+                stateMachine._sessionManager.trialVariablesDict["C"] = (cueIndicator == 3) ? "1" : "2";
+                Debug.Log("Overriding cue to avoid repetition");
+            } 
+            else 
+            {
+                Debug.Log("Cue order ok, current last three cues: " + last3Cues[0] + " " + last3Cues[1] + " " + last3Cues[2]);
+            }
+
+            // Update the list of last three cues
+            last3Cues[0] = last3Cues[1];
+            last3Cues[1] = last3Cues[2];
+            last3Cues[2] = cueIndicator;
 
             // if rewardFlip = 0, the near reward texture is whitedots and far reward texture is verticalstribes
             rewardFlip = 0;
