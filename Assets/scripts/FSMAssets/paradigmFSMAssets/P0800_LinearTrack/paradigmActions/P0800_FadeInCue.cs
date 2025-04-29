@@ -60,7 +60,8 @@ namespace Experiment.ExperimentFSM
                                 if (1 - (distance-enterToCueDistance)/fadeDistance < 0)
                                     mesh.material.color = new Color(1, 1, 1, 0);
                                 else
-                                    mesh.material.color = new Color(1, 1, 1, 1 - (distance-enterToCueDistance)/fadeDistance);
+                                    mesh.material.color = new Color(1, 1, 1, 1);
+                                    // mesh.material.color = new Color(1, 1, 1, 1 - (distance-enterToCueDistance)/fadeDistance);
                             }
                         }
                     }
