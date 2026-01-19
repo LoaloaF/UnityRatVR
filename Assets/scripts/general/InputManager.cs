@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using FSM;
+using System.IO;
 
 public class InputManager : MonoBehaviour
 {
@@ -43,15 +44,29 @@ public class InputManager : MonoBehaviour
     
     // Start is called before the first frame update
     void Start()
+    
     {
         // Pause the game at the start
         Time.timeScale = 0;
 
+        Debug.Log($"Exists: {File.Exists("/dev/shm/termflag")}");
+        Debug.Log($"Can list /dev/shm: {Directory.Exists("/dev/shm")}");
+        try
+        {
+            File.WriteAllText("/dev/shm/unity_test", "hello");
+            Debug.Log("Unity wrote /dev/shm/unity_test");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Unity failed to write: {e}");
+        }
+
+
         _playerMovement = Player.GetComponent<PlayerMovement>();
         _sessionManager = GetComponent<SessionManager>();
         _portentaInputInterface = GetComponent<PortentaInputInterface>();
-        unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
         termflagSHMInterface = new FlagSHMInterface("termflag_shmstruct.json");
+        unityInputSHMInterface = new CyclicPackagesSHMInterface("unityinput_shmstruct.json");
 
         Debug.Log("Clearing Input SHM");
         while (unityInputSHMInterface.Popitem() != null);

@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             i++;
         }
         stopwatch.Stop();
-        // Debug.Log($"Got {i} BVs ({firstPackID}-{lastPackID}) in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
+        // Debug.Log($"Got {i} BVs ({frameBallVel[0]}, {frameBallVel[1]}, {frameBallVel[2]}) in {stopwatch.ElapsedTicks / (TimeSpan.TicksPerMillisecond / 1000)} μs: {frameBallVel}");
         return frameBallVel;
     }
     
@@ -101,27 +101,27 @@ public class PlayerMovement : MonoBehaviour
     private int[] getKeyboardInput() {
         // mimic X input dimension/ forward rotation
         if (Input.GetKey(KeyCode.A)) {
-            XYZvelInput[0] = 50;
+            XYZvelInput[0] = 5000;
         } else if (Input.GetKey(KeyCode.D)) {
-            XYZvelInput[0] = -50;
+            XYZvelInput[0] = -5000;
         } else {
             XYZvelInput[0] = 0;
         }
         
         // mimic Y input dimension/ sideway rotation
         if (Input.GetKey(KeyCode.W)) {
-            XYZvelInput[1] = 50;
+            XYZvelInput[1] = 5000;
         } else if (Input.GetKey(KeyCode.S)) {
-            XYZvelInput[1] = -50;
+            XYZvelInput[1] = -5000;
         } else {
             XYZvelInput[1] = 0;
         }
 
         // mimic Z input dimension/ stationary/self rotation
         if (Input.GetKey(KeyCode.Q)) {
-            XYZvelInput[2] = 50;
+            XYZvelInput[2] = 5000;
         } else if (Input.GetKey(KeyCode.E)) {
-            XYZvelInput[2] = -50;
+            XYZvelInput[2] = -5000;
         } else {
             XYZvelInput[2] = 0;
         }
@@ -131,8 +131,10 @@ public class PlayerMovement : MonoBehaviour
     // add Y input of ball to current forward vector (blue) and the same for right 
     private void MoveRat() {
         Vector3 forwardVel = Vector3.Scale(transform.forward*XYZvelInput[0]*ballForwardNormToCentimeter, gain);
-        // Debug.Log("Velo " + controller.velocity);
-        // Debug.Log("Forward " +forwardVel);
+        Debug.Log("RawInput " +XYZvelInput[0]);
+        Debug.Log("Forward " +forwardVel);
+        Debug.Log("Velo " + controller.velocity);
+        
         Vector3 rightVel = Vector3.Scale(-transform.right*XYZvelInput[2]*ballSidewaysNormToCentimeter,gain);
         // Debug.Log("Right " + rightVel);
         Vector3 moveDir = forwardVel + rightVel;

@@ -758,6 +758,7 @@ MonoBehaviour:
     - P0900_MotorLickLearning
     - P1000_MotorLearningStop
     - P1100_LinearTrackStop
+    - P1200_LinearTrack_SingleRZone
     values:
     - {fileID: 11400000, guid: c8d4bd75c8fff52108547c26e2824e3e, type: 2}
     - {fileID: 11400000, guid: ae9a7e14d28bf944d80499df384f57de, type: 2}
@@ -770,6 +771,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3516adec5072cd2e0b897e3f8ae3c2e0, type: 2}
     - {fileID: 11400000, guid: f2fa4e7967cc8c4308d7ed647cb5f9a9, type: 2}
     - {fileID: 11400000, guid: 4c1a9f8e0eca8b477b4f040301ca2f4f, type: 2}
+    - {fileID: 11400000, guid: cd1582839daedd5838bd417730f2ff2f, type: 2}
   startFrameID: 0
   currentFrameID: 0
   pumpOpened: 0

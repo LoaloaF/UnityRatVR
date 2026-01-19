@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
+  m_Name: S1111_Reward1
+  m_EditorClassIdentifier: 
+  stateID: 1111
+  Action:
+  - {fileID: 11400000, guid: 05088a0afe4107b4c8d594cc1e860b74, type: 2}
+  - {fileID: 11400000, guid: dfeb13261816aa750820a57abe6c58c7, type: 2}
+  - {fileID: 11400000, guid: f3c6f0c1df311a1329f81ff138300ede, type: 2}
+  - {fileID: 11400000, guid: 87c582098628b4712a323cb3afda5c5f, type: 2}
+  Transitions:
+  - {fileID: 11400000, guid: 4d27c506276a41afb965f278c50252ee, type: 2}
+  - {fileID: 11400000, guid: 46f71960cfe265ea3ad3ed6d0f9f6ff2, type: 2}
