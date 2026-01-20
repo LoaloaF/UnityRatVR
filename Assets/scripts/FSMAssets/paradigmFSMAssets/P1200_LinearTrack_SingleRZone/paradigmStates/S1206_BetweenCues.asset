@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1106_BetweenCues
+  m_Name: S1206_BetweenCues
   m_EditorClassIdentifier: 
-  stateID: 1106
+  stateID: 1206
   Action: []
   Transitions:
-  - {fileID: 11400000, guid: 43a03aa76e588c78f89fa7dd4b714f6d, type: 2}
+  - {fileID: 11400000, guid: 74c7c4d78538e145c8147e482e5a78fc, type: 2}

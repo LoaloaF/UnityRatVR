@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1111_Reward1
+  m_Name: S1211_Reward1
   m_EditorClassIdentifier: 
-  stateID: 1111
+  stateID: 1211
   Action:
-  - {fileID: 11400000, guid: 05088a0afe4107b4c8d594cc1e860b74, type: 2}
-  - {fileID: 11400000, guid: dfeb13261816aa750820a57abe6c58c7, type: 2}
-  - {fileID: 11400000, guid: f3c6f0c1df311a1329f81ff138300ede, type: 2}
-  - {fileID: 11400000, guid: 87c582098628b4712a323cb3afda5c5f, type: 2}
+  - {fileID: 11400000, guid: b4ab0cf7092a01a6ca35fd0c4460e0a2, type: 2}
+  - {fileID: 11400000, guid: c8080d9a69f421f5f9cc86098f6a2413, type: 2}
+  - {fileID: 11400000, guid: d50d0bb79e465a5f1902c5164782ce70, type: 2}
+  - {fileID: 11400000, guid: 0183bb121b32789f7a801867a431af6d, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 4d27c506276a41afb965f278c50252ee, type: 2}
-  - {fileID: 11400000, guid: 46f71960cfe265ea3ad3ed6d0f9f6ff2, type: 2}
+  - {fileID: 11400000, guid: 87b891833af6d6f92ac27910722ffe5f, type: 2}
+  - {fileID: 11400000, guid: 56e3df81f4d808bbab49f0d37fa8b18a, type: 2}

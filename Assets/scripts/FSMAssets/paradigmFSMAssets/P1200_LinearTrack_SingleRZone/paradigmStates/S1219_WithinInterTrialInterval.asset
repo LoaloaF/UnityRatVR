@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1119_WithinInterTrialInterval
+  m_Name: S1219_WithinInterTrialInterval
   m_EditorClassIdentifier: 
-  stateID: 1119
+  stateID: 1219
   Action:
-  - {fileID: 11400000, guid: 2a13776ee7f51636995ffccd62405e38, type: 2}
+  - {fileID: 11400000, guid: 981d817f4e576e698867a14596be56ea, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 9a600ebb776163c0c888cabe42751472, type: 2}
-  - {fileID: 11400000, guid: 90bf2dae8758d91d9acf55d938c3a9e0, type: 2}
+  - {fileID: 11400000, guid: 382bb40dd16857d8f8b64f8b32d70c92, type: 2}
+  - {fileID: 11400000, guid: 342aedde47e8d2237baf2ebd6d154ac8, type: 2}

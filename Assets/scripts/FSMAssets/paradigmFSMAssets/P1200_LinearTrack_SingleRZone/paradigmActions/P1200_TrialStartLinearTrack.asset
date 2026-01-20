@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb2e413dda4417eaca2564d90c34b485, type: 3}
-  m_Name: P1100_TrialStartLinearTrack
+  m_Name: P1200_TrialStartLinearTrack
   m_EditorClassIdentifier: 
   cueIndicator: 4
   fadeScreen: {fileID: 0}
-  rewardConditionReached: {fileID: 11400000, guid: 0dbece4feccb052878007ab1f885c362, type: 2}
+  rewardConditionReached: {fileID: 11400000, guid: b059128300cdbe1ff8debe51f8240e94, type: 2}
   firstRewardNum: 0
   currentRewardStateID: 0

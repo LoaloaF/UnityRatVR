@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff0e4729d278d2b04b6247de0fc773ac, type: 3}
-  m_Name: P1106_EnterBetweenCues
+  m_Name: P1206_EnterBetweenCues
   m_EditorClassIdentifier: 
   switchDescription: 
   pillarIdentifier: 8

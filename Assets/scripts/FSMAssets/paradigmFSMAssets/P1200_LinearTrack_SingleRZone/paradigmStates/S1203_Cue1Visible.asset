@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1103_Cue1Visible
+  m_Name: S1203_Cue1Visible
   m_EditorClassIdentifier: 
-  stateID: 1103
+  stateID: 1203
   Action:
-  - {fileID: 11400000, guid: f8d3b740916b32c9688b8b9fe1a42faa, type: 2}
+  - {fileID: 11400000, guid: cb49bbc12460811da8026c70c2337932, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: dd7a897309926c7efa3ac5b7927a0119, type: 2}
+  - {fileID: 11400000, guid: e73d0e96a1aa3061caaf0ce38b3a5bf0, type: 2}

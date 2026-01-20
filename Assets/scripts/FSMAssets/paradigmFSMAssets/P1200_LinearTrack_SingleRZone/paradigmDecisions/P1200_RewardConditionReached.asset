@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8e107826110b52b1b07bed9973aee21, type: 3}
-  m_Name: P1100_RewardConditionReached
+  m_Name: P1200_RewardConditionReached
   m_EditorClassIdentifier: 
   switchDescription: 
-  trialInitLinearTrack: {fileID: 11400000, guid: 74af4cf5c4eaa9ce38b09a8216947dca, type: 2}
-  trialStartLinearTrack: {fileID: 11400000, guid: b844ad406ea16979a952be9e53865475, type: 2}
-  movementInitiation: {fileID: 11400000, guid: 98d0d9b375669c9b38d78bb057598bc7, type: 2}
+  trialInitLinearTrack: {fileID: 11400000, guid: 00a9e9deb3761974b94a0f12cfb4826b, type: 2}
+  trialStartLinearTrack: {fileID: 11400000, guid: 3a98f7fa8cb8b136c8b2f67c67fece33, type: 2}
+  movementInitiation: {fileID: 11400000, guid: 45aed74ab392be9f892606f7a5f0a748, type: 2}
   timer: 0
-  reward1StateID: 1111
-  reward2StateID: 1113
+  reward1StateID: 1211
+  reward2StateID: 1213

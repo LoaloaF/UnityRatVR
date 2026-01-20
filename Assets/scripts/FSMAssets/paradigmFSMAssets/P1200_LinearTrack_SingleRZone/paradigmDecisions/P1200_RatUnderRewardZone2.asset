@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dad584d7b581680cf8d27eba26121d20, type: 3}
-  m_Name: P1100_RatUnderRewardZone2
+  m_Name: P1200_RatUnderRewardZone2
   m_EditorClassIdentifier: 
   switchDescription: 
   pillarIdentifier: 4

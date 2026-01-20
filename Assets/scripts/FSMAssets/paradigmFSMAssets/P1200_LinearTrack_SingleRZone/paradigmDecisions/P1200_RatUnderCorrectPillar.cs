@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/P1100/P1100_RatUnderCorrectPillar")]
+    [CreateAssetMenu(menuName = "FSM/Decisions/P1200/P1200_RatUnderCorrectPillar")]
 
-    public class P1100_RatUnderCorrectPillar : Decision
+    public class P1200_RatUnderCorrectPillar : Decision
     {
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override bool Decide(BaseStateMachine stateMachine)

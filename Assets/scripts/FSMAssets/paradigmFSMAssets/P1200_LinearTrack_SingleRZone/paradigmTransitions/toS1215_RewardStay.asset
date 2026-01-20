@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS1115_RewardStay
+  m_Name: toS1215_RewardStay
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 0dbece4feccb052878007ab1f885c362, type: 2}
-  TrueState: {fileID: 11400000, guid: 5e9a6878d1cc9ae78b2adce8d3d8a54c, type: 2}
+  Decision: {fileID: 11400000, guid: b059128300cdbe1ff8debe51f8240e94, type: 2}
+  TrueState: {fileID: 11400000, guid: d2e45c0264b324058903a32ac729a0fe, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

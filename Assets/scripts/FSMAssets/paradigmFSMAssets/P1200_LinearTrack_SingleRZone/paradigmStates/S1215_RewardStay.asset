@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1115_RewardStay
+  m_Name: S1215_RewardStay
   m_EditorClassIdentifier: 
-  stateID: 1115
+  stateID: 1215
   Action:
-  - {fileID: 11400000, guid: 766d0c8ca7b24cfc283fe37089411991, type: 2}
+  - {fileID: 11400000, guid: ca3f660521fdd8fbcbdb1f58027b79fd, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: af72dfc135b864ad4b624ea4e09f8397, type: 2}
+  - {fileID: 11400000, guid: 84a2db90b16bb001b8e5897cf979a3f3, type: 2}

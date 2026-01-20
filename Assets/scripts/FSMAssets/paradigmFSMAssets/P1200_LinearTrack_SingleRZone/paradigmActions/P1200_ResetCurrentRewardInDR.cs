@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P1100/P1100_ResetCurrentRewardInDR")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P1200/P1200_ResetCurrentRewardInDR")]
 
-    public class P1100_ResetCurrentRewardInDR : FSMAction
+    public class P1200_ResetCurrentRewardInDR : FSMAction
     {
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         private int currentTrialID = -1;

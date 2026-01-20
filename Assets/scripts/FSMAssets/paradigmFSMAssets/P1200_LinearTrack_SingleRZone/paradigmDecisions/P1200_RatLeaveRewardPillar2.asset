@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7225da1d4a5722452b5196adb80c1525, type: 3}
-  m_Name: P1100_RatLeaveRewardPillar2
+  m_Name: P1200_RatLeaveRewardPillar2
   m_EditorClassIdentifier: 
   switchDescription: 
   pillarIdentifier: 4
-  lastRewardState: 1113
-  trialStartLinearTrack: {fileID: 11400000, guid: b844ad406ea16979a952be9e53865475, type: 2}
+  lastRewardState: 1213
+  trialStartLinearTrack: {fileID: 11400000, guid: 3a98f7fa8cb8b136c8b2f67c67fece33, type: 2}

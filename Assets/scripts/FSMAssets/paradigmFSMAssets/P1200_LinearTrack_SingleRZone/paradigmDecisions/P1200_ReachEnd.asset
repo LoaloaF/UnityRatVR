@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cd681c88b7146098ac8983536635cf1, type: 3}
-  m_Name: P1100_ReachEnd
+  m_Name: P1200_ReachEnd
   m_EditorClassIdentifier: 
   switchDescription: 
-  trialStartLinearTrack: {fileID: 0}

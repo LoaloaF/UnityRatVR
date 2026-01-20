@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1116_WithinSuccessSequence
+  m_Name: S1216_WithinSuccessSequence
   m_EditorClassIdentifier: 
-  stateID: 1116
+  stateID: 1216
   Action:
-  - {fileID: 11400000, guid: f3c6f0c1df311a1329f81ff138300ede, type: 2}
+  - {fileID: 11400000, guid: d50d0bb79e465a5f1902c5164782ce70, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 733dc026fb9c79915a41127fdeb43087, type: 2}
-  - {fileID: 11400000, guid: 7500578dfe0b26c9592c92223a19cece, type: 2}
+  - {fileID: 11400000, guid: 42b7a092214aaed7c986573475fc7249, type: 2}
+  - {fileID: 11400000, guid: 35677cea111d484c183b3a0b1acaa537, type: 2}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec7c86287ac372126a3e67f9a0370444, type: 3}
-  m_Name: P1100_FadeInCue2
+  m_Name: P1200_FadeInCue2
   m_EditorClassIdentifier: 
   cueName: 2
-  cueShouldFadeIn: 0
+  cueShouldFadeIn: 1
   fadeDistance: 70
-  trialInitLinearTrack: {fileID: 11400000, guid: 74af4cf5c4eaa9ce38b09a8216947dca, type: 2}
+  trialInitLinearTrack: {fileID: 11400000, guid: 00a9e9deb3761974b94a0f12cfb4826b, type: 2}

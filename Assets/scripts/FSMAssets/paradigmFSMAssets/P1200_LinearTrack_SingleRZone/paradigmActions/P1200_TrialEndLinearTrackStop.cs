@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P1100/P1100_TrialEndLinearTrackStop")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P1200/P1200_TrialEndLinearTrackStop")]
 
-    public class P1100_TrialEndLinearTrack : FSMAction
+    public class P1200_TrialEndLinearTrack : FSMAction
     {
         public P0800_TrialStartLinearTrack trialStartLinearTrack;
         public override void Execute(BaseStateMachine stateMachine)

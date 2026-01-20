@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1112_BeforeReward2
+  m_Name: S1212_BeforeReward2
   m_EditorClassIdentifier: 
-  stateID: 1112
+  stateID: 1212
   Action:
   - {fileID: 11400000, guid: 167ed0e1953172cf687a71f7bd50b5bd, type: 2}
-  - {fileID: 11400000, guid: cb0e9a95f83e743da921747164c7942c, type: 2}
-  - {fileID: 11400000, guid: f3c6f0c1df311a1329f81ff138300ede, type: 2}
+  - {fileID: 11400000, guid: d3ac97e28eef32eebb7199091a62ff69, type: 2}
+  - {fileID: 11400000, guid: d50d0bb79e465a5f1902c5164782ce70, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 6e86a78a1e91b35f4997a88d18db8d5f, type: 2}
+  - {fileID: 11400000, guid: 7793ab6e8e074540894f6c9a56a7f5f0, type: 2}

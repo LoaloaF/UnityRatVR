@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1120_SessionEnded
+  m_Name: S1220_SessionEnded
   m_EditorClassIdentifier: 
-  stateID: 1120
+  stateID: 1220
   Action:
   - {fileID: 11400000, guid: 6b9df3e9f65b046109ce5564422eb43f, type: 2}
   Transitions: []

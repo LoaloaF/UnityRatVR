@@ -8,11 +8,11 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P1100/P1100_MovementInQueue")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P1200/P1200_MovementInQueue")]
 
-    public class P1100_MovementInQueue : FSMAction
+    public class P1200_MovementInQueue : FSMAction
     {
-        public P1100_MovementInitiation movementInitiation;
+        public P1200_MovementInitiation movementInitiation;
         public float rawMovementTemp;
         public float yawMovementTemp;
         public float pitchMovementTemp;

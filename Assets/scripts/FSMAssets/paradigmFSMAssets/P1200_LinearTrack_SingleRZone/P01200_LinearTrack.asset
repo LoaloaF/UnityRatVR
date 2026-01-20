@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: P01100_LinearTrack
+  m_Name: P01200_LinearTrack
   m_EditorClassIdentifier: 
-  stateID: 1100
+  stateID: 1200
   Action:
-  - {fileID: 11400000, guid: 74af4cf5c4eaa9ce38b09a8216947dca, type: 2}
+  - {fileID: 11400000, guid: 00a9e9deb3761974b94a0f12cfb4826b, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 34b2ff7556965102a94e50dcbd41fcde, type: 2}
+  - {fileID: 11400000, guid: 36763b3d195908bd294c20ffcf14e15a, type: 2}

@@ -10,5 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1bbfc468d2991939a1f3207a5ff8c84, type: 3}
-  m_Name: P1100_FadeInScreen
+  m_Name: P1200_FadeInScreen
   m_EditorClassIdentifier: 
+  fadeScreen: {fileID: 0}

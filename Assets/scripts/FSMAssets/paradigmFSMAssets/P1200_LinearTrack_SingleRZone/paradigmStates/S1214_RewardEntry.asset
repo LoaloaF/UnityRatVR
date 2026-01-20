@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1114_RewardEntry
+  m_Name: S1214_RewardEntry
   m_EditorClassIdentifier: 
-  stateID: 1114
+  stateID: 1214
   Action:
-  - {fileID: 11400000, guid: f3c6f0c1df311a1329f81ff138300ede, type: 2}
+  - {fileID: 11400000, guid: d50d0bb79e465a5f1902c5164782ce70, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 71e67d050368bfe9bb938397c7c53609, type: 2}
-  - {fileID: 11400000, guid: 44c07331d1cf0bae1a05378e6efe7b08, type: 2}
-  - {fileID: 11400000, guid: a37487a9672f342b8be8a208957c9623, type: 2}
+  - {fileID: 11400000, guid: 78784e9510391b6e9a16a57a70b0263d, type: 2}
+  - {fileID: 11400000, guid: a55153fd9cbd3c29c95aca799de51cc7, type: 2}
+  - {fileID: 11400000, guid: 9a5e95106528db5ffb653fd4cabe707c, type: 2}

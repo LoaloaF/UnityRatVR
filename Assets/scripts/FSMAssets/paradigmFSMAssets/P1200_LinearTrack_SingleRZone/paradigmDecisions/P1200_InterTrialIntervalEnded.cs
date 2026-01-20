@@ -8,8 +8,8 @@ using System;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Decisions/P1100/P1100_InterTrialIntervalEnded")]
-    public class P1100_InterTrialIntervalEnded: Decision
+    [CreateAssetMenu(menuName = "FSM/Decisions/P1200/P1200_InterTrialIntervalEnded")]
+    public class P1200_InterTrialIntervalEnded: Decision
     {
         public float timer = 0f;
         private int currentTrialID = -1;

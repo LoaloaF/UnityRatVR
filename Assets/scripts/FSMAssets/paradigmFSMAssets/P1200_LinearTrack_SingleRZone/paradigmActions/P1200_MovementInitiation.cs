@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P1100/P1100_MovementInitiation")]
+    [CreateAssetMenu(menuName = "FSM/Actions/P1200/P1200_MovementInitiation")]
 
-    public class P1100_MovementInitiation : FSMAction
+    public class P1200_MovementInitiation : FSMAction
     {
         public Queue<float> rawMovementQueue;
         public Queue<float> yawMovementQueue;
