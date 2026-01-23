@@ -25,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     //Normalize sensor inputs by multiplying: {'ballY': 0.01587624672951014, 'ballX': 0.01605927252520382, 'ballZ': 0.017359466370467733}
     public float ballForwardNormToCentimeter = 0.001542F;
     public float ballSidewaysNormToCentimeter = 0.001478F;
-    public float ballRotatationNormToCentimeter = 0.003806F;
+    // public float ballRotatationNormToCentimeter = 0.003806F;
+    public float ballRotatationNormToCentimeter = 0.00126866F;
 
     [Tooltip("Weather to try to read the BallSensor, use WASD otherwise")]
     [SerializeField] bool enableBallInput = false;
@@ -131,9 +132,9 @@ public class PlayerMovement : MonoBehaviour
     // add Y input of ball to current forward vector (blue) and the same for right 
     private void MoveRat() {
         Vector3 forwardVel = Vector3.Scale(transform.forward*XYZvelInput[0]*ballForwardNormToCentimeter, gain);
-        Debug.Log("RawInput " +XYZvelInput[0]);
-        Debug.Log("Forward " +forwardVel);
-        Debug.Log("Velo " + controller.velocity);
+        // Debug.Log("RawInput " +XYZvelInput[0]);
+        // Debug.Log("Forward " +forwardVel);
+        // Debug.Log("Velo " + controller.velocity);
         
         Vector3 rightVel = Vector3.Scale(-transform.right*XYZvelInput[2]*ballSidewaysNormToCentimeter,gain);
         // Debug.Log("Right " + rightVel);

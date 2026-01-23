@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41727990c500f2f2ab13b585b1f47b7d, type: 3}
   m_Name: P1200_TrialInitLinearTrack
   m_EditorClassIdentifier: 
-  trackWall: {fileID: 8600296818727825049, guid: 8cb3517f7223fda39bd1d3112a580c70, type: 3}
-  fadeInCue1: {fileID: 11400000, guid: f8d3b740916b32c9688b8b9fe1a42faa, type: 2}
-  fadeInCue2: {fileID: 11400000, guid: b18a2aa86f2392ae3ae83ca258c460b3, type: 2}
-  ballSidewaysNormToCentimeter: 0
-  ballRotatationNormToCentimeter: 0
+  trackWall: {fileID: 8600296818727825049, guid: bb630749f64507ac49a39860271fd08a, type: 3}
+  fadeInCue1: {fileID: 11400000, guid: cb49bbc12460811da8026c70c2337932, type: 2}
+  fadeInCue2: {fileID: 11400000, guid: 69d5943ebad7272ff97d084c032941e5, type: 2}
+  ballSidewaysNormToCentimeter: 0.001478
+  ballRotatationNormToCentimeter: 0.001268667

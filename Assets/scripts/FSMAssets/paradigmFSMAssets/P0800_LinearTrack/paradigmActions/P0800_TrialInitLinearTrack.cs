@@ -89,7 +89,7 @@ namespace Experiment.ExperimentFSM
                         if (pillar.name.StartsWith("Pillar1_"))
                         {
                             if (mesh.material.color.a == 1)
-                                fadeInCue1.cueShouldFadeIn = true;
+                                fadeInCue1.cueShouldFadeIn = false;
                             else
                                 fadeInCue1.cueShouldFadeIn = false;  
                         }
