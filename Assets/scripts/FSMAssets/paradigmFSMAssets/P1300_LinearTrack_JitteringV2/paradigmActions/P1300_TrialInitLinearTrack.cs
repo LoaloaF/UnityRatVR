@@ -131,22 +131,6 @@ namespace Experiment.ExperimentFSM
             rightWall.transform.localScale = new Vector3(4, ySize*4 - 45f, arenaSize);
             rightWall.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["grey"];
 
-            // Black end cap: back wall + ceiling to hide pillars beyond the track end
-            float endZ = arenaSize / 2f;
-            float capWidth = Math.Abs(xPos) * 2f + 10f;
-
-            // GameObject endWall = Instantiate(trackWall, new Vector3(0, ySize -1, endZ), Quaternion.identity, stateMachine.transform);
-            // endWall.name = "EndWall";
-            // endWall.transform.localScale = new Vector3(capWidth, ySize * 4, 4);
-            // MeshRenderer endWallRenderer = endWall.GetComponentInChildren<MeshRenderer>();
-            // endWallRenderer.material = stateMachine._sceneController.materials["grey"];
-            // endWallRenderer.material.color = new Color(0, 0, 0, 1);
-            // Collider endWallCollider = endWall.GetComponentInChildren<Collider>();
-            // if (endWallCollider != null)
-            // {
-            //     endWallCollider.enabled = false;
-            // }
-
             // Tree landmark outside left wall
             GameObject tree = Instantiate(Resources.Load<GameObject>("Tree Type4 03"), stateMachine.transform);
             tree.name = "TreeLandmark";
