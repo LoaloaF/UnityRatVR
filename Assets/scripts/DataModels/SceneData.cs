@@ -42,7 +42,7 @@ namespace RatVR.Scene
 
         private List<PillarData> pillars;
         public List<PillarData> Pillars { get { return pillars; } set { pillars = value; } }
-
+        
         private int wallZone;
         public int WallZone { get { return wallZone; } set { wallZone = value; } }
 

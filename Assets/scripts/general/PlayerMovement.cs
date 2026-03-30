@@ -102,27 +102,27 @@ public class PlayerMovement : MonoBehaviour
     private int[] getKeyboardInput() {
         // mimic X input dimension/ forward rotation
         if (Input.GetKey(KeyCode.A)) {
-            XYZvelInput[0] = 5000;
+            XYZvelInput[0] = 2000;
         } else if (Input.GetKey(KeyCode.D)) {
-            XYZvelInput[0] = -5000;
+            XYZvelInput[0] = -2000;
         } else {
             XYZvelInput[0] = 0;
         }
         
         // mimic Y input dimension/ sideway rotation
         if (Input.GetKey(KeyCode.W)) {
-            XYZvelInput[1] = 5000;
+            XYZvelInput[1] = 2000;
         } else if (Input.GetKey(KeyCode.S)) {
-            XYZvelInput[1] = -5000;
+            XYZvelInput[1] = -2000;
         } else {
             XYZvelInput[1] = 0;
         }
 
         // mimic Z input dimension/ stationary/self rotation
         if (Input.GetKey(KeyCode.Q)) {
-            XYZvelInput[2] = 5000;
+            XYZvelInput[2] = 2000;
         } else if (Input.GetKey(KeyCode.E)) {
-            XYZvelInput[2] = -5000;
+            XYZvelInput[2] = -2000;
         } else {
             XYZvelInput[2] = 0;
         }

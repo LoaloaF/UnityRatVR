@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5c41a3fb0d349adbd6e8c06143fe16, type: 3}
+  m_Name: P1300_ResetReward
+  m_EditorClassIdentifier: 
+  rewardConditionReached: {fileID: 11400000, guid: 2a6af0a5fca42429383050f0953e82c3, type: 2}
+  successReward1: {fileID: 11400000, guid: 3f88694d7045a4524be8fe163f6ba753, type: 2}
+  successReward2: {fileID: 11400000, guid: 3cd06aa73a25445e38f6d7ed06dc3cb2, type: 2}

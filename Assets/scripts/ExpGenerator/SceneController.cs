@@ -122,6 +122,7 @@ namespace RatVR.Scene
             wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.RightWall.Height);
             wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.LeftWall.Height);
             
+            
             // wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f* sceneData.TopWall.Height, 0);
             wallTop.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
             // wallBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f*sceneData.BottomWall.Height, 0);
@@ -131,7 +132,9 @@ namespace RatVR.Scene
             // wallLeft.transform.localPosition = new Vector3(0, 0.5f*sceneData.LeftWall.Height, 0.5f * sceneData.BaseLength * sceneData.Size.y);
             wallLeft.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f*sceneData.BottomWall.Height, 0);
 
-            ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height, 0);
+            
+            //Adjusted ceiling position for the tree
+            ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height + 180f, 0);
 
             meshTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x -5f, 0.5f* sceneData.TopWall.Height, 0);
             meshBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x +5f, 0.5f*sceneData.BottomWall.Height, 0);
@@ -187,6 +190,15 @@ namespace RatVR.Scene
 
                     pillar.GetComponentInChildren<MeshRenderer>().material = transparentMaterial;
                     CylinderTransform.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(pd.Height/2, pd.Height/2);
+
+                    // for the visible pillars, we use cube mesh instead of cylinder (only for paradigm 1300)
+                    if (pillar.name.StartsWith("Pillar2_") || pillar.name.StartsWith("Pillar104_"))
+                    {
+                        GameObject tempCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        CylinderTransform.GetComponent<MeshFilter>().mesh = tempCube.GetComponent<MeshFilter>().mesh;
+                        Destroy(tempCube);
+                        CylinderTransform.localScale = new Vector3(pd.Radius * 2, pd.Height * 2, pd.Radius * 2);
+                    }
                 }
                 else
                 {
