@@ -110,7 +110,7 @@ namespace Experiment.ExperimentFSM
 
             foreach (Transform child in stateMachine.transform)
             {
-                if (child.name.StartsWith("Pillar1_") || child.name.StartsWith("Pillar2_") || child.name.StartsWith("Pillar104_"))
+                if (child.name.StartsWith("Pillar1_") || child.name.StartsWith("Pillar2_") || child.name.StartsWith("Pillar104_") || child.name.StartsWith("Pillar10_") || child.name.StartsWith("Pillar4_"))
                 {
                     MeshRenderer[] meshRenderer = child.GetComponentsInChildren<MeshRenderer>();
                     foreach (MeshRenderer mesh in meshRenderer)
@@ -119,7 +119,7 @@ namespace Experiment.ExperimentFSM
                         {
 
                             // Check if it's Pillar104_ and always set it to whitedots
-                            if (child.name.StartsWith("Pillar104_"))
+                            if (child.name.StartsWith("Pillar104_") || child.name.StartsWith("Pillar4_"))
                             {
                                 mesh.material = stateMachine._sceneController.materials["blackandwhitedots"];
                             }

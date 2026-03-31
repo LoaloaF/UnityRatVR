@@ -40,7 +40,7 @@ namespace Experiment.ExperimentFSM
                 cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["6"];
             else if (cueName == "2")
                 cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["10"];
-            if (cueName == "104")
+            if (cueName == "104" || cueName == "4" || cueName == "10")
                 cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["10"];
 
             foreach (GameObject pillar in pillars)

@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1307_BeforeReward1
+  m_Script: {fileID: 11500000, guid: d01e7427660b04f51b4fa368711bb2b9, type: 3}
+  m_Name: P1300_FadeInRewardCeiling
   m_EditorClassIdentifier: 
-  stateID: 1310
-  Action:
-  - {fileID: 11400000, guid: d63753726a1cf4d969f945895908d2f0, type: 2}
-  Transitions:
-  - {fileID: 11400000, guid: bcbe46a4a4fe54989874ae41857214a9, type: 2}
+  cueName: 4
+  cueShouldFadeIn: 1
+  fadeDistance: 70
+  trialInitLinearTrack: {fileID: 11400000, guid: 645fcd409e4f04fc2905939a899f2dfd, type: 2}
