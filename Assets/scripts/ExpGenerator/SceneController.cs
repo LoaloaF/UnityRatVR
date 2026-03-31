@@ -119,8 +119,8 @@ namespace RatVR.Scene
             // also remember the ceiling height
             wallTop.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.TopWall.Height);          
             wallBottom.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.BottomWall.Height);
-            wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.RightWall.Height);
-            wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.LeftWall.Height);
+            wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.RightWall.Height);
+            wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.LeftWall.Height);
             
             
             // wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f* sceneData.TopWall.Height, 0);

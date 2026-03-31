@@ -115,8 +115,8 @@ namespace Experiment.ExperimentFSM
                     break;
                 }
             }
-
-            float arenaSize = stateMachine._sceneController.scene.Size.x;
+            //changed Size.x to Size.y, for the length of the walls 
+            float arenaSize = stateMachine._sceneController.scene.Size.y;
             Vector3 leftWallPosition = new Vector3(Math.Abs(xPos) * -1f, ySize+1, -1);
             Vector3 rightWallPosition = new Vector3(Math.Abs(xPos), ySize+1, -1);
 

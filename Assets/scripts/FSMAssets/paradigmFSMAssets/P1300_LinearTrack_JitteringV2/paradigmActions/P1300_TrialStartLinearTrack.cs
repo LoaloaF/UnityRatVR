@@ -23,8 +23,8 @@ namespace Experiment.ExperimentFSM
         private int[] last3Cues = new int[3] { -1, -1, -1 };
 
         // Scenarios: 3 cue positions x 3 cue-reward distances = 9 scenarios
-        private static readonly float[] cueOffsets = { -60f, 0f, 60f };
-        private static readonly float[] cueRewardDistances = { 120f, 150f, 180f };
+        private static readonly float[] cueOffsets = { -70f, 0f, 70f };
+        private static readonly float[] cueRewardDistances = {140f, 175f, 210f };
         public float cueOffset = 0f;
         public float rewardOffset = 0f;
 
@@ -37,7 +37,7 @@ namespace Experiment.ExperimentFSM
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            Vector3 newStartPosition = new Vector3(0, 0, -250f);
+            Vector3 newStartPosition = new Vector3(0, 0, -300f);
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
             stateMachine._sceneController.floor.SetActive(true);
