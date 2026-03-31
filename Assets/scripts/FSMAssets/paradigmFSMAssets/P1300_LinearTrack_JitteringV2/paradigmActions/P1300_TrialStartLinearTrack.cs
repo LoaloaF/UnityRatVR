@@ -121,14 +121,14 @@ namespace Experiment.ExperimentFSM
                             // Check if it's Pillar104_ and always set it to whitedots
                             if (child.name.StartsWith("Pillar104_"))
                             {
-                                mesh.material = stateMachine._sceneController.materials["whitedots"];
+                                mesh.material = stateMachine._sceneController.materials["blackandwhitedots"];
                             }
                             else
                             {
                                 if ((cueIndicator == 3 && rewardFlip == 0) || (cueIndicator == 4 && rewardFlip == 1))
-                                    mesh.material = stateMachine._sceneController.materials["whitedots"];
+                                    mesh.material = stateMachine._sceneController.materials["blackandwhitedots"];
                                 else if ((cueIndicator == 3 && rewardFlip == 1) || (cueIndicator == 4 && rewardFlip == 0))
-                                    mesh.material = stateMachine._sceneController.materials["verticalstribes"];
+                                    mesh.material = stateMachine._sceneController.materials["blackandwhitelines"];
                             }
                                 mesh.material.color = new Color(1, 1, 1, 0);
                                 float scaleOriginal = mesh.transform.localScale.y;
