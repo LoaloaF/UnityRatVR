@@ -35,6 +35,8 @@ public sealed class SessionManager : MonoBehaviour
     [HideInInspector] public int currentRewardNum = 0;
     [HideInInspector] public bool rewardPresent = false;
     [HideInInspector] public bool rewardSucked = false;
+    [HideInInspector] public int successfulTrials = 0; //only in P1300 
+    [HideInInspector] public int failedTrials = 0; //only in P1300
 
     // Triallogging information
     [HideInInspector] public float trialStartTimestamp;

@@ -135,7 +135,7 @@ namespace Cathei.BakingSheet
                 
                 List<string> rowValues = new List<string>();
                 
-                for (int col=0; col<9; ++col) // modify to real number of columns
+                for (int col=0; col<10; ++col) // modify to real number of columns
                 {
                     cellContent = pages["EnvParameters"].GetCell(col, row);
                     if (cellContent == null)
@@ -154,18 +154,20 @@ namespace Cathei.BakingSheet
             if (!pages.ContainsKey("EnvParameters")) throw new Exception("EnvParameters table missing!!");
             var hyperparams = pages["EnvParameters"];
 
-            ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(11, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(12, 1));
-            ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(11, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(12, 2));
-            ExcelWallData botWall = new ExcelWallData(float.Parse(hyperparams.GetCell(11, 3), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(12, 3));
-            ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(11, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(12, 4));
+            ExcelWallData topWall = new ExcelWallData(float.Parse(hyperparams.GetCell(15, 1), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(16, 1));
+            ExcelWallData rightWall = new ExcelWallData(float.Parse(hyperparams.GetCell(15, 2), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(16, 2));
+            ExcelWallData botWall = new ExcelWallData(float.Parse(hyperparams.GetCell(15, 3), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(16, 3));
+            ExcelWallData leftWall = new ExcelWallData(float.Parse(hyperparams.GetCell(15, 4), System.Globalization.CultureInfo.InvariantCulture.NumberFormat), hyperparams.GetCell(16, 4));
 
-            Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(15,1)), int.Parse(hyperparams.GetCell(16,1)));
+            Vector2 size = new Vector2(int.Parse(hyperparams.GetCell(19,1)), int.Parse(hyperparams.GetCell(20,1)));
             
-            float baseLength = float.Parse(hyperparams.GetCell(15, 2), System.Globalization.CultureInfo.InvariantCulture);
-            int wallZone = int.Parse(hyperparams.GetCell(15, 3));
-            int wallZoneCollideDistance = int.Parse(hyperparams.GetCell(15, 4));
-
-            return new ExcelSceneMetaData(size, baseLength, wallZone, wallZoneCollideDistance, topWall, rightWall, botWall, leftWall);
+            float baseLength = float.Parse(hyperparams.GetCell(19, 2), System.Globalization.CultureInfo.InvariantCulture);
+            int wallZone = int.Parse(hyperparams.GetCell(19, 3));
+            int wallZoneCollideDistance = int.Parse(hyperparams.GetCell(19, 4));
+            string cue1Texture = hyperparams.GetCell(19, 5);
+            string cue2Texture = hyperparams.GetCell(19, 6);
+            string distance_cue_reward = hyperparams.GetCell(19, 7);
+            return new ExcelSceneMetaData(size, baseLength, wallZone, wallZoneCollideDistance, topWall, rightWall, botWall, leftWall, cue1Texture, cue2Texture,distance_cue_reward);
         }
 
         public ExcelSessionMetaData GetExcelSessionMetaData()

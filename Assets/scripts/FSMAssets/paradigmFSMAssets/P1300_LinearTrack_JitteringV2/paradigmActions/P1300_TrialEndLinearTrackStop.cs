@@ -19,15 +19,17 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.Add_Decimal(stateMachine, "ST");
             stateMachine._sessionManager.Add_Decimal(stateMachine, "ST_2");
 
-            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] + 
-                                             ",ST_2:" + stateMachine._sessionManager.trialVariablesDict["ST_2"] +     
-                                            ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] + 
-                                            ",C:" + stateMachine._sessionManager.trialVariablesDict["C"] + 
+            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] +
+                                             ",ST_2:" + stateMachine._sessionManager.trialVariablesDict["ST_2"] +
+                                            ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] +
+                                            ",C:" + stateMachine._sessionManager.trialVariablesDict["C"] +
                                             ",SR:"+ stateMachine._sessionManager.trialVariablesDict["SR"] +
-                                            ",DR:"+ stateMachine._sessionManager.trialVariablesDict["DR"] + 
+                                            ",DR:"+ stateMachine._sessionManager.trialVariablesDict["DR"] +
                                             ",RF:"+ stateMachine._sessionManager.trialVariablesDict["RF"] +
-                                            ",NP:"+ stateMachine._sessionManager.trialVariablesDict["NP"] + 
-                                            ",GF:"+ stateMachine._sessionManager.trialVariablesDict["GF"];
+                                            ",NP:"+ stateMachine._sessionManager.trialVariablesDict["NP"] +
+                                            ",GF:"+ stateMachine._sessionManager.trialVariablesDict["GF"] +
+                                            ",CO:" + stateMachine._sessionManager.trialVariablesDict["CO"] +
+                                            ",RO:" + stateMachine._sessionManager.trialVariablesDict["RO"];
 
             int outcome = stateMachine._sessionManager.currentRewardNum;
 

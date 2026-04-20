@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: toS1311_RewardEntry
   m_EditorClassIdentifier: 
   Decision: {fileID: 11400000, guid: b36c45247c0484389a225f54bd861ddc, type: 2}
-  TrueState: {fileID: 11400000, guid: af135880c99e8456797e102c4773afa1, type: 2}
+  TrueState: {fileID: 11400000, guid: c3487fddaa8d24e2997269c471ac02e2, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

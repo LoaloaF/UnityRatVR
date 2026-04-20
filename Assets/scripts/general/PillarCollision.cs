@@ -11,16 +11,22 @@ public class PillarCollision : MonoBehaviour
     private Vector3 colliderTopPoint;
     private bool playerDetected;
     public BaseStateMachine stateMachine;
+    private Transform colliderTransform;
 
     void Start()
     {
         PlayerDetected = false;
-        Transform ColliderTransform = transform.Find("Collider");
-        colliderRadius = ColliderTransform.localScale.x / 2 / 1.5f ;
-        colliderTopPoint = new Vector3(ColliderTransform.position.x, transform.localPosition.y*2, ColliderTransform.position.z);
-        colliderBottomPoint = new Vector3(ColliderTransform.position.x, 0, ColliderTransform.position.z);
-        
+        colliderTransform = transform.Find("Collider");
+        RecomputeColliderParameters();
+
         stateMachine = GetComponentInParent<BaseStateMachine>();
+    }
+
+    public void RecomputeColliderParameters()
+    {
+        colliderRadius = colliderTransform.localScale.x / 2 / 1.5f;
+        colliderTopPoint = new Vector3(colliderTransform.position.x, transform.localPosition.y*2, colliderTransform.position.z);
+        colliderBottomPoint = new Vector3(colliderTransform.position.x, 0, colliderTransform.position.z);
     }
 
     void OnDrawGizmos()
@@ -38,7 +44,6 @@ public class PillarCollision : MonoBehaviour
             // UnityEngine.Debug.Log("trial not running");
             return;
         }
-        
         playerDetected = false;
         // Collider[] hitColliders = Physics.OverlapBox(transform.position, detectionBoxSize / 2);
         Collider[] hitColliders = Physics.OverlapCapsule(colliderBottomPoint, colliderTopPoint, colliderRadius);

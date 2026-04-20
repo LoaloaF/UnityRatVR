@@ -24,8 +24,10 @@ namespace Experiment.ExperimentFSM
                 stateMachine._sessionManager.currentRewardNum++;
                 Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
                 stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
-                // Color yellow = new Color(1, 1, 0, 1);
-                // stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
+                Color yellow = new Color(1, 1, 0, 1);
+                stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
+                AudioSource reward_beep = stateMachine._playerMovement.GetComponent<AudioSource>();
+                reward_beep.Play();
                 stateMachine._sessionManager.rewardPresent = true;
             }
             else

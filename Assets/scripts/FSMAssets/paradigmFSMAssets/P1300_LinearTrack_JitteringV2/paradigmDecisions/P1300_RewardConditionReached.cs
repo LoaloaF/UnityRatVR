@@ -21,7 +21,7 @@ namespace Experiment.ExperimentFSM
         public P1300_MovementInitiation movementInitiation;
         public float timer = 0f;
         public int reward1StateID = 0;
-        public int reward2StateID = 0;
+        // public int reward2StateID = 0;
 
         public override bool Decide(BaseStateMachine stateMachine)
         {

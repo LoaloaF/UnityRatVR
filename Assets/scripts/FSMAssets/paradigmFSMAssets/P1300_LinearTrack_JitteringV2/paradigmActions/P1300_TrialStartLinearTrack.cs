@@ -3,10 +3,11 @@ using JetBrains.Annotations;
 using RatVR.Scene;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using Debug = UnityEngine.Debug;
 namespace Experiment.ExperimentFSM
 {
     [CreateAssetMenu(menuName = "FSM/Actions/P1300/P1300_TrialStartLinearTrack")]
@@ -24,7 +25,8 @@ namespace Experiment.ExperimentFSM
 
         // Scenarios: 3 cue positions x 3 cue-reward distances = 9 scenarios
         private static readonly float[] cueOffsets = { -70f, 0f, 70f };
-        private static readonly float[] cueRewardDistances = {140f, 175f, 210f };
+        // private static readonly float[] cueRewardDistances = {140f, 175f, 210f }; //4x, 5x, 6x the original distance of 35cm between pillar 10 and pillar 4 in the default scenario
+        private float[] cueRewardDistances;
         public float cueOffset = 0f;
         public float rewardOffset = 0f;
 
@@ -32,12 +34,12 @@ namespace Experiment.ExperimentFSM
         private Dictionary<string, float> originalZPositions = new Dictionary<string, float>();
         private bool positionsInitialized = false;
 
-        private static readonly int[] cueGroup = { 2, 9, 10, 11 };
-        private static readonly int[] rewardGroup = { 3, 4, 12, 13, 14, 15, 104 };
+        private static readonly int[] cueGroup = { 2, 7, 9, 10};
+        private static readonly int[] rewardGroup = {4, 14, 15, 104 };
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            Vector3 newStartPosition = new Vector3(0, 0, -300f);
+            Vector3 newStartPosition = new Vector3(0, 0, -315);
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
             stateMachine._sceneController.floor.SetActive(true);
@@ -67,9 +69,21 @@ namespace Experiment.ExperimentFSM
                     child.gameObject.SetActive(true);
             }
 
+
+            float distance_param = float.Parse(stateMachine._sceneController.distanceCueReward);
+            cueRewardDistances = new float[] { 105f + distance_param, 140f + distance_param, 175f + distance_param }; // 3x, 4x, 5x the original distance of 35cm between pillar 10 and pillar 4 in the default scenario
+
+
             // Apply scenario offsets
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
             ApplyScenario(pillars);
+
+            foreach (GameObject pillar in pillars)                                                                                                                                                   
+            {
+                var pc = pillar.GetComponent<PillarCollision>();                                                                                                                                     
+                if (pc != null)
+                    pc.RecomputeColliderParameters();
+            }                                                                                                                                                                                        
 
             float randomValue = Random.Range(0f, 1f);
             float trialPortion = 0.5f;
@@ -79,13 +93,13 @@ namespace Experiment.ExperimentFSM
             if (randomValue > trialPortion)
             {
                 cueIndicator = 4;
-                Debug.Log("Cue at far");
+                Debug.Log("Cue indicator 4 is shown");
                 stateMachine._sessionManager.trialVariablesDict["C"] = "2";
             }
             else
             {
                 cueIndicator = 3;
-                Debug.Log("Cue at near");
+                Debug.Log("Cue indicator 3 is shown");
                 stateMachine._sessionManager.trialVariablesDict["C"] = "1";
             }
 
@@ -103,8 +117,9 @@ namespace Experiment.ExperimentFSM
             last3Cues[0] = last3Cues[1];
             last3Cues[1] = last3Cues[2];
             last3Cues[2] = cueIndicator;
-
+            
             rewardFlip = 0;
+            // cueIndicator = 4;
             if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("RF"))
                 rewardFlip = int.Parse(stateMachine._sessionManager.trialVariablesDict["RF"]);
 
@@ -118,17 +133,26 @@ namespace Experiment.ExperimentFSM
                         if (mesh.gameObject.name == "Cylinder")
                         {
 
-                            // Check if it's Pillar104_ and always set it to whitedots
+                            string cue1 = stateMachine._sceneController.cue1Texture;
+                            string cue2 = stateMachine._sceneController.cue2Texture;
+
                             if (child.name.StartsWith("Pillar104_") || child.name.StartsWith("Pillar4_"))
                             {
-                                mesh.material = stateMachine._sceneController.materials["blackandwhitedots"];
+                                mesh.material = stateMachine._sceneController.materials[cue1];
                             }
                             else
                             {
+                                // if ((cueIndicator == 3 && rewardFlip == 0) || (cueIndicator == 4 && rewardFlip == 1))
+                                //     mesh.material = stateMachine._sceneController.materials[cue1];
+                                // else if ((cueIndicator == 3 && rewardFlip == 1) || (cueIndicator == 4 && rewardFlip == 0))
+                                //     mesh.material = stateMachine._sceneController.materials[cue2];
                                 if ((cueIndicator == 3 && rewardFlip == 0) || (cueIndicator == 4 && rewardFlip == 1))
-                                    mesh.material = stateMachine._sceneController.materials["blackandwhitedots"];
+                                    mesh.material = stateMachine._sceneController.materials[cue1];
+   
+
                                 else if ((cueIndicator == 3 && rewardFlip == 1) || (cueIndicator == 4 && rewardFlip == 0))
-                                    mesh.material = stateMachine._sceneController.materials["blackandwhitelines"];
+                                    mesh.material = stateMachine._sceneController.materials[cue2];
+
                             }
                                 mesh.material.color = new Color(1, 1, 1, 0);
                                 float scaleOriginal = mesh.transform.localScale.y;

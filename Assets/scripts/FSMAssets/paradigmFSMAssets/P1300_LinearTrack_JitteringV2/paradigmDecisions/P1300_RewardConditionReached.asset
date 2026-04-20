@@ -18,4 +18,4 @@ MonoBehaviour:
   movementInitiation: {fileID: 11400000, guid: 249aa43ff489144bc9ed549b6ac619bf, type: 2}
   timer: 0
   reward1StateID: 1311
-  reward2StateID: 1313
+  reward2StateID: 1310

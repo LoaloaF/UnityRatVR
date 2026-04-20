@@ -32,6 +32,9 @@ namespace RatVR.Scene
         public GameObject meshTop, meshBottom, meshRight, meshLeft;
         
         public Dictionary<string, Material> materials = new Dictionary<string, Material>();
+        public string cue1Texture; //only used in paradigm P1300
+        public string cue2Texture; //only used in paradigm P1300
+        public string distanceCueReward; //only used in paradigm P1300
         public ExcelSessionMetaData sessionMetaData;
         public SceneGeometryData scene;
         public  GameObject Lighting;
@@ -60,6 +63,9 @@ namespace RatVR.Scene
 
             // get sceneMetaData (walls and the environment parameters) from the excel
             ExcelSceneMetaData sceneMetaData = excelScene.GetExcelSceneMetaData();
+            cue1Texture = sceneMetaData.cue1Texture;
+            cue2Texture = sceneMetaData.cue2Texture;
+            distanceCueReward = sceneMetaData.distance_cue_reward;
 
             // get sessionMetatData from the excel and initialize the sessionManager
             sessionMetaData = excelScene.GetExcelSessionMetaData();
@@ -134,7 +140,7 @@ namespace RatVR.Scene
 
             
             //Adjusted ceiling position for the tree
-            ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height + 180f, 0);
+            ceiling.transform.position = new Vector3(0, sceneData.TopWall.Height, 0);
 
             meshTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x -5f, 0.5f* sceneData.TopWall.Height, 0);
             meshBottom.transform.localPosition = new Vector3(-0.5f * sceneData.BaseLength * sceneData.Size.x +5f, 0.5f*sceneData.BottomWall.Height, 0);
@@ -191,8 +197,8 @@ namespace RatVR.Scene
                     pillar.GetComponentInChildren<MeshRenderer>().material = transparentMaterial;
                     CylinderTransform.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(pd.Height/2, pd.Height/2);
 
-                    // for the visible pillars, we use cube mesh instead of cylinder (only for paradigm 1300)
-                    if (pillar.name.StartsWith("Pillar2_") || pillar.name.StartsWith("Pillar104_") || pillar.name.StartsWith("Pillar4_") || pillar.name.StartsWith("Pillar10_")) 
+                    // if the shape is cube, change the mesh filter to cube and adjust the scale accordingly
+                    if (pd.Shape == "cube")
                     {
                         GameObject tempCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         CylinderTransform.GetComponent<MeshFilter>().mesh = tempCube.GetComponent<MeshFilter>().mesh;

@@ -45,6 +45,7 @@ namespace Experiment.ExperimentFSM
 
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
             Debug.Log("Pillar count: " + pillars.Length);
+            pillarCylinderMeshes.Clear();
 
             for (int pillarIdx = 1; pillarIdx < 17; pillarIdx++)
             {
@@ -68,9 +69,7 @@ namespace Experiment.ExperimentFSM
             }
  
 
-            MeshRenderer pillar3Mesh = pillarCylinderMeshes["3"];
             MeshRenderer pillar4Mesh = pillarCylinderMeshes["4"];
-            pillar3Mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
             pillar4Mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
 
 
@@ -130,6 +129,11 @@ namespace Experiment.ExperimentFSM
             rightWall.name = "RightWall";
             rightWall.transform.localScale = new Vector3(4, ySize*4 - 45f, arenaSize);
             rightWall.GetComponentInChildren<MeshRenderer>().material = stateMachine._sceneController.materials["grey"];
+
+
+            // Offset ceiling for the tree
+            stateMachine._sceneController.ceiling.transform.position = new Vector3(0, stateMachine._sceneController.ceiling.transform.position.y + 180f, 0);
+
 
             // Tree landmark outside left wall
             GameObject tree = Instantiate(Resources.Load<GameObject>("Tree Type4 03"), stateMachine.transform);

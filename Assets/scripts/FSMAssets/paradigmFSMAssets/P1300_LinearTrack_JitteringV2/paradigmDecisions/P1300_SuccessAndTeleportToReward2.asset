@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: P1300_SuccessAndTeleportToReward2
   m_EditorClassIdentifier: 
   switchDescription: 
-  timer: 0
+  timer: 24.254568
   trialStartLinearTrack: {fileID: 11400000, guid: f3ae3588270a4463f93099dda60695e6, type: 2}
-  rewardStateID: 1313
+  rewardStateID: 1310

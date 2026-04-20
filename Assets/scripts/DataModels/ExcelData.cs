@@ -17,16 +17,22 @@ namespace RatVR.ExcelData
         public ExcelWallData wallLeft;
 
         public bool cylinder;
- 
-        public ExcelSceneMetaData(  Vector2 size,
+        public string cue1Texture;
+        public string cue2Texture;
+        public string distance_cue_reward;
+        public ExcelSceneMetaData(Vector2 size,
                                     float baseLength,
                                     int wallZone,
                                     int wallZoneCollideDistance,
-                                    ExcelWallData wallTop, 
-                                    ExcelWallData wallRight, 
-                                    ExcelWallData wallBot, 
-                                    ExcelWallData wallLeft
-                                    ){
+                                    ExcelWallData wallTop,
+                                    ExcelWallData wallRight,
+                                    ExcelWallData wallBot,
+                                    ExcelWallData wallLeft,
+                                    string cue1Texture,
+                                    string cue2Texture,
+                                    string distance_cue_reward
+                                    )
+        {
             this.size = size;
             this.baseLength = baseLength;
             this.wallZone = wallZone;
@@ -35,6 +41,9 @@ namespace RatVR.ExcelData
             this.wallRight = wallRight;
             this.wallBot = wallBot;
             this.wallLeft = wallLeft;
+            this.cue1Texture = cue1Texture;
+            this.cue2Texture = cue2Texture;
+            this.distance_cue_reward = distance_cue_reward;
         }
     }
 
@@ -147,6 +156,8 @@ namespace RatVR.ExcelData
         public int pillarShowGround;
         public int pillarIsMoving;
 
+        public string pillarShape;
+
         public int isReward;
         public int isAirpuff;
 
@@ -162,6 +173,7 @@ namespace RatVR.ExcelData
             this.rewardRadius = float.Parse(values[6], System.Globalization.CultureInfo.InvariantCulture);
             this.pillarShowGround = int.Parse(values[7]);
             this.pillarIsMoving = int.Parse(values[8]);
+            this.pillarShape = values[9];
             this.isReward = 1;
             this.isAirpuff = 0;
             

@@ -51,6 +51,9 @@ namespace RatVR.Scene
         private int isMoving = 0;
         public int IsMoving { get { return isMoving; } set { isMoving = value; } }
 
+        private string shape = "cylinder";
+        public string Shape { get { return shape; } set { shape = value; } }
+
         public PillarData(ExcelObjectData excelObject, Vector2 pos)
         {
             this.uid = excelObject.object_name + "_" + System.Guid.NewGuid().ToString();
@@ -62,6 +65,7 @@ namespace RatVR.Scene
             rewardRadius = excelObject.rewardRadius;
             showGround = excelObject.pillarShowGround;
             isMoving = excelObject.pillarIsMoving;
+            shape = excelObject.pillarShape;
             transparency = excelObject.transparency;
             isReward = excelObject.isReward;
             isAirpuff = excelObject.isAirpuff;
