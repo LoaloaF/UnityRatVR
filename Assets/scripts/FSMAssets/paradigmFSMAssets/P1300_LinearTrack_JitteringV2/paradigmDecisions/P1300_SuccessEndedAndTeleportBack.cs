@@ -13,12 +13,9 @@ namespace Experiment.ExperimentFSM
     {
         public float timer = 0f;
         public P1300_TrialStartLinearTrack trialStartLinearTrack;
-        public int rewardStateID;
         public override bool Decide(BaseStateMachine stateMachine)
         {            
-            int cueIndicator = trialStartLinearTrack.cueIndicator;
-
-            if (timer > stateMachine._sessionManager.successSequenceLength && rewardStateID == trialStartLinearTrack.currentRewardStateID) {
+            if (timer > stateMachine._sessionManager.successSequenceLength) {
                 return true;
             }
             

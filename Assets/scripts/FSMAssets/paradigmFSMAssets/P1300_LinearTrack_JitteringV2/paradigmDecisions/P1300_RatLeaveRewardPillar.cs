@@ -14,7 +14,6 @@ namespace Experiment.ExperimentFSM
     {
 
         [SerializeField] private string pillarIdentifier;
-        [SerializeField] private int lastRewardState;
         public P1300_TrialStartLinearTrack trialStartLinearTrack;
         public override bool Decide(BaseStateMachine stateMachine)
         {
@@ -27,7 +26,7 @@ namespace Experiment.ExperimentFSM
                 if (!child.name.StartsWith("Pillar" + pillarIdentifier + "_"))
                     continue;
 
-                if (!child.GetComponentInChildren<PillarCollision>().PlayerDetected && lastRewardState == trialStartLinearTrack.currentRewardStateID)
+                if (!child.GetComponentInChildren<PillarCollision>().PlayerDetected)
                     return true;
                 else
                     return false;

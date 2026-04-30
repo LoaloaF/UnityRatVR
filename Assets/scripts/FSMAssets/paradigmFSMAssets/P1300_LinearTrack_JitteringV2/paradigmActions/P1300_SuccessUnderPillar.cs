@@ -17,26 +17,16 @@ namespace Experiment.ExperimentFSM
             int rewardDelay = stateMachine._sessionManager.rewardPostSoundDelay;
             int rewardLength = stateMachine._sessionManager.rewardAmount;
 
-            int maxRewardNum = int.Parse(stateMachine._sessionManager.trialVariablesDict["MRN"]);
 
-            if (stateMachine._sessionManager.currentRewardNum < maxRewardNum)
-            {
-                stateMachine._sessionManager.currentRewardNum++;
-                Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
-                stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
-                Color yellow = new Color(1, 1, 0, 1);
-                stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
-                AudioSource reward_beep = stateMachine._playerMovement.GetComponent<AudioSource>();
-                reward_beep.Play();
-                stateMachine._sessionManager.rewardPresent = true;
-            }
-            else
-            {
-                Debug.Log("Maximum number of rewards reached. Not sending reward.");
-                Color white = new Color(1, 1, 1, 1);
-                stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(white);
-            }
-
+            stateMachine._sessionManager.currentRewardNum++;
+            Debug.Log("sending success, reward delay: " + rewardDelay + " reward length: " + rewardLength + " seconds.");
+            stateMachine.GetComponent<PortentaInputInterface>().sendSuccess(rewardDelay, rewardLength);
+            Color yellow = new Color(1, 1, 0, 1);
+            stateMachine._sceneController.Lighting.GetComponent<globalLightController>().switchSceneColor(yellow);
+            AudioSource reward_beep = stateMachine._playerMovement.GetComponent<AudioSource>();
+            reward_beep.Play();
+            stateMachine._sessionManager.rewardPresent = true;
+            
         }
 
     }

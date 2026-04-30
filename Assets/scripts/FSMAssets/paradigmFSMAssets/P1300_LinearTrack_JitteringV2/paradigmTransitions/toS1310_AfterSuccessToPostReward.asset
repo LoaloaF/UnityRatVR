@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS1310_AfterSuccessToReward2
+  m_Name: toS1310_AfterSuccessToPostReward
   m_EditorClassIdentifier: 
   Decision: {fileID: 11400000, guid: 3cd06aa73a25445e38f6d7ed06dc3cb2, type: 2}
   TrueState: {fileID: 11400000, guid: e3e8338017f0347a9801207aa0caa5ce, type: 2}

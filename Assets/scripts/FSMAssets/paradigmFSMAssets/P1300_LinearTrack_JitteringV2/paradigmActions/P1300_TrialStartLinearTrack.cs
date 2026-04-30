@@ -20,7 +20,6 @@ namespace Experiment.ExperimentFSM
         public int firstRewardNum = 0;
         public int currentRewardStateID = 0;
         private float forwardGainDefault = -1;
-        private int rewardFlip = 0;
         private int[] last3Cues = new int[3] { -1, -1, -1 };
 
         // Scenarios: 3 cue positions x 3 cue-reward distances = 9 scenarios
@@ -94,13 +93,13 @@ namespace Experiment.ExperimentFSM
             {
                 cueIndicator = 4;
                 Debug.Log("Cue indicator 4 is shown");
-                stateMachine._sessionManager.trialVariablesDict["C"] = "2";
+                stateMachine._sessionManager.trialVariablesDict["C"] = "1";
             }
             else
             {
                 cueIndicator = 3;
                 Debug.Log("Cue indicator 3 is shown");
-                stateMachine._sessionManager.trialVariablesDict["C"] = "1";
+                stateMachine._sessionManager.trialVariablesDict["C"] = "2";
             }
 
             if (last3Cues[0] == last3Cues[1] && last3Cues[1] == last3Cues[2] && last3Cues[0] != -1)
@@ -117,11 +116,6 @@ namespace Experiment.ExperimentFSM
             last3Cues[0] = last3Cues[1];
             last3Cues[1] = last3Cues[2];
             last3Cues[2] = cueIndicator;
-            
-            rewardFlip = 0;
-            // cueIndicator = 4;
-            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("RF"))
-                rewardFlip = int.Parse(stateMachine._sessionManager.trialVariablesDict["RF"]);
 
             foreach (Transform child in stateMachine.transform)
             {
@@ -146,11 +140,9 @@ namespace Experiment.ExperimentFSM
                                 //     mesh.material = stateMachine._sceneController.materials[cue1];
                                 // else if ((cueIndicator == 3 && rewardFlip == 1) || (cueIndicator == 4 && rewardFlip == 0))
                                 //     mesh.material = stateMachine._sceneController.materials[cue2];
-                                if ((cueIndicator == 3 && rewardFlip == 0) || (cueIndicator == 4 && rewardFlip == 1))
+                                if (cueIndicator == 4)
                                     mesh.material = stateMachine._sceneController.materials[cue1];
-   
-
-                                else if ((cueIndicator == 3 && rewardFlip == 1) || (cueIndicator == 4 && rewardFlip == 0))
+                                else if (cueIndicator == 3)
                                     mesh.material = stateMachine._sceneController.materials[cue2];
 
                             }

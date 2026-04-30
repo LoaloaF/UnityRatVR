@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S1306.1_FailedCue
   m_EditorClassIdentifier: 
   stateID: 1306
-  Action: []
+  Action:
+  - {fileID: 11400000, guid: 1e37895f40230484fa59141cc80f5685, type: 2}
   Transitions:
   - {fileID: 11400000, guid: 2fd3ff60e2372467aa2251d559bbeeaf, type: 2}

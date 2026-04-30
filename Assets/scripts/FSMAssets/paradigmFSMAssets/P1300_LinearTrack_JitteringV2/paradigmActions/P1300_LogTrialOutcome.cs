@@ -7,27 +7,16 @@ namespace Experiment.ExperimentFSM
 
     public class P1300_LogTrialOutcome : FSMAction
     {
-        // Set per-asset in the Inspector: "success" or "failure"
-        public string outcome = "";
-        public P1300_TrialStartLinearTrack trialStartLinearTrack;
+        // Set per-asset in the Inspector: "success", "failure", or "" to leave that field untouched
+        public string cueOutcome = "";
+        public string rewardOutcome = "";
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            int trialID = stateMachine._sessionManager._currentTrialID;
-            string cue = trialStartLinearTrack.cueIndicator == 4 ? "cue1" : "cue2";
-            string cueOutcome = cue + "_" + outcome;
-
-            stateMachine._sessionManager.trialVariablesDict["RO"] = outcome;
-            stateMachine._sessionManager.trialVariablesDict["CO"] = cueOutcome;
-
-            if (outcome == "success")
-                stateMachine._sessionManager.successfulTrials += 1;
-            else if (outcome == "failure")
-                stateMachine._sessionManager.failedTrials += 1;
-            else
-                Debug.LogWarning("P1300_LogTrialOutcome: outcome not set correctly — expected 'success' or 'failure', got '" + outcome + "'");
-
-            Debug.Log("Trial " + trialID + ": " + cueOutcome);
+            if (cueOutcome != "")
+                stateMachine._sessionManager.trialVariablesDict["CO"] = cueOutcome;
+            if (rewardOutcome != "")
+                stateMachine._sessionManager.trialVariablesDict["RO"] = rewardOutcome;
         }
     }
 }

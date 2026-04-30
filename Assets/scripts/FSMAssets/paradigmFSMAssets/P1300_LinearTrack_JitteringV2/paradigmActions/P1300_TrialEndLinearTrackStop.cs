@@ -16,16 +16,12 @@ namespace Experiment.ExperimentFSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             // Add_Decimal if the variable is float or at least with decimal points
-            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST");
-            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST_2");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST_F");
+            stateMachine._sessionManager.Add_Decimal(stateMachine, "ST_L");
 
-            string trialPackageValuesArray = ",ST:" + stateMachine._sessionManager.trialVariablesDict["ST"] +
-                                             ",ST_2:" + stateMachine._sessionManager.trialVariablesDict["ST_2"] +
-                                            ",MRN:" + stateMachine._sessionManager.trialVariablesDict["MRN"] +
+            string trialPackageValuesArray = ",ST_F:" + stateMachine._sessionManager.trialVariablesDict["ST_F"] +
+                                             ",ST_L:" + stateMachine._sessionManager.trialVariablesDict["ST_L"] +
                                             ",C:" + stateMachine._sessionManager.trialVariablesDict["C"] +
-                                            ",SR:"+ stateMachine._sessionManager.trialVariablesDict["SR"] +
-                                            ",DR:"+ stateMachine._sessionManager.trialVariablesDict["DR"] +
-                                            ",RF:"+ stateMachine._sessionManager.trialVariablesDict["RF"] +
                                             ",NP:"+ stateMachine._sessionManager.trialVariablesDict["NP"] +
                                             ",GF:"+ stateMachine._sessionManager.trialVariablesDict["GF"] +
                                             ",CO:" + stateMachine._sessionManager.trialVariablesDict["CO"] +
