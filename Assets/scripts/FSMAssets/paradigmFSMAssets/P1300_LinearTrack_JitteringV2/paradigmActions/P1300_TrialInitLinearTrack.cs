@@ -157,14 +157,16 @@ namespace Experiment.ExperimentFSM
         PillarData cuePillar = stateMachine._sceneController.scene.Pillars.Find(p => p.UID.StartsWith("10_"));
         float rewardRadius = rewardPillar != null ? rewardPillar.RewardRadius : 0f;
         float cueRadius = cuePillar != null ? cuePillar.Radius : 0f;
-        if (offsetVisible <= rewardRadius)
-            throw new Exception($"P1300 Constraint 1 violated: visibleOffset ({offsetVisible}) must be > rewardRadius ({rewardRadius})");
+        if (offsetVisible <= rewardRadius || offsetVisible <= cueRadius)
+            throw new Exception($"P1300 Constraint 1 violated: visibleOffset ({offsetVisible}) must be > rewardRadius ({rewardRadius}) and > cueRadius ({cueRadius})");
         if (offsetCue <= offsetVisible + jsCue)
             throw new Exception($"P1300 Constraint 2 violated: cueOffset ({offsetCue}) must be > visibleOffset ({offsetVisible}) + cueJitter ({jsCue})");
         if (offsetReward <= offsetVisible + jsReward)
             throw new Exception($"P1300 Constraint 3 violated: rewardOffset ({offsetReward}) must be > visibleOffset ({offsetVisible}) + rewardJitter ({jsReward})");
         if (offsetCue + offsetReward + jsCue + jsReward + 2f * rewardRadius >= arenaLength)
             throw new Exception($"P1300 Constraint 4 violated: trial size ({offsetCue + offsetReward + jsCue + jsReward + 2f * rewardRadius}) must be < arenaLength ({arenaLength})");
+        if (offsetReward <= rewardRadius + cueRadius + jsReward)
+            throw new Exception($"P1300 Constraint 5 violated: rewardOffset ({offsetReward}) must be > rewardRadius ({rewardRadius}) + cueRadius ({cueRadius}) + rewardJitter ({jsReward})");
     }
     }
 }

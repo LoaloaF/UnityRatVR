@@ -22,11 +22,19 @@ namespace Experiment.ExperimentFSM
             string trialPackageValuesArray = ",ST_F:" + stateMachine._sessionManager.trialVariablesDict["ST_F"] +
                                              ",ST_L:" + stateMachine._sessionManager.trialVariablesDict["ST_L"] +
                                             ",C:" + stateMachine._sessionManager.trialVariablesDict["C"] +
-                                            ",NP:"+ stateMachine._sessionManager.trialVariablesDict["NP"] +
+                                            ",P_C1:"+ stateMachine._sessionManager.trialVariablesDict["P_C1"] +
                                             ",GF:"+ stateMachine._sessionManager.trialVariablesDict["GF"] +
-                                            ",CO:" + stateMachine._sessionManager.trialVariablesDict["CO"] +
-                                            ",RO:" + stateMachine._sessionManager.trialVariablesDict["RO"];
-
+                                            ",CO:\"" + stateMachine._sessionManager.trialVariablesDict["CO"] + "\"" +
+                                            ",RO:\"" + stateMachine._sessionManager.trialVariablesDict["RO"] + "\"" +         
+                                            ",P_CN:" + stateMachine._sessionManager.trialVariablesDict["P_CN"] +
+                                            ",P_CM:" + stateMachine._sessionManager.trialVariablesDict["P_CM"] +
+                                            ",P_CF:" + stateMachine._sessionManager.trialVariablesDict["P_CF"] +
+                                            ",P_RN:" + stateMachine._sessionManager.trialVariablesDict["P_RN"] +
+                                            ",P_RM:" + stateMachine._sessionManager.trialVariablesDict["P_RM"] +
+                                            ",P_RF:" + stateMachine._sessionManager.trialVariablesDict["P_RF"] +
+                                            ",CD:" + stateMachine._sessionManager.trialVariablesDict["CD"] +
+                                            ",CR:" + stateMachine._sessionManager.trialVariablesDict["RD"];
+                                            
             int outcome = stateMachine._sessionManager.currentRewardNum;
 
 

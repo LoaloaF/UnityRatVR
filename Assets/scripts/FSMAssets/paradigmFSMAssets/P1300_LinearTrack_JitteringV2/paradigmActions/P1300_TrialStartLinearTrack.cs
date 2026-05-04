@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 using Debug = UnityEngine.Debug;
 namespace Experiment.ExperimentFSM
 {
-    [CreateAssetMenu(menuName = "FSM/Actions/P1300/P1300_TrialStartLinearTrack")]
+        [CreateAssetMenu(menuName = "FSM/Actions/P1300/P1300_TrialStartLinearTrack")]
 
     public class P1300_TrialStartLinearTrack : FSMAction
     {
@@ -19,10 +19,12 @@ namespace Experiment.ExperimentFSM
         public int firstRewardNum = 0;
         public int currentRewardStateID = 0;
         private float forwardGainDefault = -1;
-        private int[] last3Cues = new int[3] { -1, -1, -1 };
+        private int[] last3Cues = { -1, -1, -1 };
 
-        public float cueOffset = 0f;
-        public float rewardOffset = 0f;
+        public float chosenCueDistance = 0f;
+        public float chosenRewardDistance = 0f;
+        public float[] cueProbabilites = { 0.33f, 0.33f, 0.33f};
+        public float[] rewardProbabilites = { 0.33f, 0.33f, 0.33f};
 
         private static readonly int[] cueDetectionGroup    = { 2, 10 };
         private static readonly int[] cueVisualGroup       = { 9 };
@@ -79,8 +81,8 @@ namespace Experiment.ExperimentFSM
 
             float randomValue = Random.Range(0f, 1f);
             float trialPortion = 0.5f;
-            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("NP"))
-                trialPortion = float.Parse(stateMachine._sessionManager.trialVariablesDict["NP"]);
+            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("P_C1"))
+                trialPortion = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_C1"]);
 
             if (randomValue > trialPortion)
             {
@@ -154,53 +156,87 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.rewardSucked = false;
         }
 
-    private void ApplyScenario(GameObject[] pillars, BaseStateMachine stateMachine)
-    {
-        float offsetCue     = float.Parse(stateMachine._sceneController.offsetCue);
-        float offsetReward  = float.Parse(stateMachine._sceneController.offsetReward);
-        float offsetVisible = float.Parse(stateMachine._sceneController.offsetVisible);
-        float jsCue         = float.Parse(stateMachine._sceneController.jitterStrengthCue);
-        float jsReward      = float.Parse(stateMachine._sceneController.jitterStrengthReward);
-
-        float arenaHalfZ = 0.5f * stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
-        float spawnZ = -arenaHalfZ;
-
-        float[] cueScenarios    = { offsetCue - jsCue,    offsetCue,    offsetCue + jsCue };
-        float[] rewardScenarios = { offsetReward - jsReward, offsetReward, offsetReward + jsReward };
-
-        float chosenCue    = cueScenarios[Random.Range(0, cueScenarios.Length)];
-        float chosenReward = rewardScenarios[Random.Range(0, rewardScenarios.Length)];
-
-        cueOffset    = chosenCue;
-        rewardOffset = chosenReward;
-
-        float cueZ         = spawnZ + chosenCue;
-        float cueVisualZ   = cueZ - offsetVisible;
-        float rewardZ      = spawnZ + chosenCue + chosenReward;
-        float rewardVisualZ = rewardZ - offsetVisible;
-
-        foreach (int idx in cueDetectionGroup)
-            MovePillarToZ(pillars, idx, cueZ);
-        foreach (int idx in cueVisualGroup)
-            MovePillarToZ(pillars, idx, cueVisualZ);
-        foreach (int idx in rewardDetectionGroup)
-            MovePillarToZ(pillars, idx, rewardZ);
-        foreach (int idx in rewardVisualGroup)
-            MovePillarToZ(pillars, idx, rewardVisualZ);
-
-        Debug.Log($"Scenario: chosenCue={chosenCue:F0}, chosenReward={chosenReward:F0}, cueZ={cueZ:F0}, rewardZ={rewardZ:F0}");
-    }
-
-    private void MovePillarToZ(GameObject[] pillars, int pillarIdx, float targetZ)
-    {
-        foreach (GameObject pillar in pillars)
+        private void ApplyScenario(GameObject[] pillars, BaseStateMachine stateMachine)
         {
-            if (pillar.name.StartsWith("Pillar" + pillarIdx + "_"))
+            float offsetCue     = float.Parse(stateMachine._sceneController.offsetCue);
+            float offsetReward  = float.Parse(stateMachine._sceneController.offsetReward);
+            float offsetVisible = float.Parse(stateMachine._sceneController.offsetVisible);
+            float jsCue         = float.Parse(stateMachine._sceneController.jitterStrengthCue);
+            float jsReward      = float.Parse(stateMachine._sceneController.jitterStrengthReward);
+
+            float probabilityCueNear = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_CN"]);
+            float probabilityCueMedium = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_CM"]);
+            float probablityCueFar = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_CF"]);
+
+            float probabilityRewardNear = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_RN"]);
+            float probabiltyRewardMedium = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_RM"]);
+            float probabilityRewardFar = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_RF"]);
+
+            float arenaHalfZ = 0.5f * stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
+            float spawnZ = -arenaHalfZ;
+
+            float[] cueScenarios    = { offsetCue - jsCue,    offsetCue,    offsetCue + jsCue };
+            float[] rewardScenarios = { offsetReward - jsReward, offsetReward, offsetReward + jsReward };
+
+            cueProbabilites = new float[] { probabilityCueNear, probabilityCueMedium, probablityCueFar };
+            rewardProbabilites = new float[] { probabilityRewardNear, probabiltyRewardMedium, probabilityRewardFar };
+
+            int chosenCueIndex = ChooseIndex(cueProbabilites);
+            int chosenRewardIndex = ChooseIndex(rewardProbabilites);
+
+            chosenCueDistance    = cueScenarios[chosenCueIndex];
+            chosenRewardDistance = rewardScenarios[chosenRewardIndex];
+
+            stateMachine._sessionManager.trialVariablesDict["CD"] = chosenCueDistance.ToString();
+            stateMachine._sessionManager.trialVariablesDict["RD"] = chosenRewardDistance.ToString();
+
+            float cueZ         = spawnZ + chosenCueDistance;
+            float cueVisualZ   = cueZ - offsetVisible;
+            float rewardZ      = spawnZ + chosenCueDistance + chosenRewardDistance;
+            float rewardVisualZ = rewardZ - offsetVisible;
+
+            foreach (int idx in cueDetectionGroup)
+                MovePillarToZ(pillars, idx, cueZ);
+            foreach (int idx in cueVisualGroup)
+                MovePillarToZ(pillars, idx, cueVisualZ);
+            foreach (int idx in rewardDetectionGroup)
+                MovePillarToZ(pillars, idx, rewardZ);
+            foreach (int idx in rewardVisualGroup)
+                MovePillarToZ(pillars, idx, rewardVisualZ);
+
+            Debug.Log($"Scenario: chosenCue={chosenCueDistance:F0}, chosenReward={chosenRewardDistance:F0}, cueZ={cueZ:F0}, rewardZ={rewardZ:F0}");
+        }
+
+        private void MovePillarToZ(GameObject[] pillars, int pillarIdx, float targetZ)
+        {
+            foreach (GameObject pillar in pillars)
             {
-                Vector3 pos = pillar.transform.position;
-                pillar.transform.position = new Vector3(pos.x, pos.y, targetZ);
+                if (pillar.name.StartsWith("Pillar" + pillarIdx + "_"))
+                {
+                    Vector3 pos = pillar.transform.position;
+                    pillar.transform.position = new Vector3(pos.x, pos.y, targetZ);
+                }
             }
         }
-    }
+
+        private int ChooseIndex(float[] probabilites)
+        { 
+            float randomValue = Random.Range(0f, 1f);
+
+            for (int i = 0; i < probabilites.Length; i++)
+            {
+                if (randomValue < probabilites[i])
+                {
+                    // Debug.Log("Chosen index: " + i);
+                    return i;
+                }
+                else
+                    randomValue -= probabilites[i];
+        
+            }
+           Debug.LogWarning("Probabilities do not sum to 1, returning random index by default");
+            return Random.Range(0, probabilites.Length);      
+        }  
+
     }
 }
