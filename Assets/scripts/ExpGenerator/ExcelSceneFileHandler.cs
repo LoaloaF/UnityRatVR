@@ -166,8 +166,14 @@ namespace Cathei.BakingSheet
             int wallZoneCollideDistance = int.Parse(hyperparams.GetCell(19, 4));
             string cue1Texture = hyperparams.GetCell(19, 5);
             string cue2Texture = hyperparams.GetCell(19, 6);
-            string distance_cue_reward = hyperparams.GetCell(19, 7);
-            return new ExcelSceneMetaData(size, baseLength, wallZone, wallZoneCollideDistance, topWall, rightWall, botWall, leftWall, cue1Texture, cue2Texture,distance_cue_reward);
+            string offsetCue = hyperparams.GetCell(19, 7);
+            string offsetReward = hyperparams.GetCell(19, 8);
+            string offsetVisible = hyperparams.GetCell(19, 9);
+            string jitterStrengthCue = hyperparams.GetCell(19, 10);
+            string jitterStrengthReward = hyperparams.GetCell(19, 11);
+
+            return new ExcelSceneMetaData(size, baseLength, wallZone, wallZoneCollideDistance, topWall, rightWall, botWall, leftWall, cue1Texture, cue2Texture, 
+            offsetCue, offsetReward, offsetVisible, jitterStrengthCue, jitterStrengthReward);
         }
 
         public ExcelSessionMetaData GetExcelSessionMetaData()

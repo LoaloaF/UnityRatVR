@@ -19,95 +19,14 @@ namespace Experiment.ExperimentFSM
         public P1300_TrialInitLinearTrack trialInitLinearTrack;
         public P1300_TrialStartLinearTrack trialStartLinearTrack;
         public P1300_MovementInitiation movementInitiation;
-        public float timer = 0f;
-        public int reward1StateID = 0;
-        // public int reward2StateID = 0;
-
+        
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            // if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("LR"))
-            // {
-            //     int lickRewardCheck = int.Parse(stateMachine._sessionManager.trialVariablesDict["LR"]);
-            //     if (lickRewardCheck == 1)
-            //     {
-            //         return LickReward(stateMachine);
-            //     }
-            //     else
-            //         return StayTimeReached(stateMachine);
-            // }
-            // else if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("DR"))
-            // {
-            //     int stayReward = int.Parse(stateMachine._sessionManager.trialVariablesDict["SR"]);
-            //
-            //     if (stateMachine._sessionManager.currentRewardNum == 0)
-            //     {
-            //         return StopMovement(stateMachine);
-            //     }
-            //     else if (stayReward == 1)
-            //         return LickReward(stateMachine) && StopMovement(stateMachine);
-            //     else
-            //         return LickReward(stateMachine);
-            // }
-            // else
-            //     return false;
-
             return StopMovement(stateMachine);
-        }
-
-        private bool LickReward(BaseStateMachine stateMachine)
-        {
-            var portentaPackage = trialInitLinearTrack.portentaOutputSHMInterface.PopExtractedItem();
-            if (portentaPackage != null && portentaPackage["N"].ToString().Trim() == "L") 
-            {
-                stateMachine._sessionManager.rewardPresent = false;
-                return true;
-            }
-            else 
-                return false;
-        }
-
-
-        private bool StayTimeReached(BaseStateMachine stateMachine)
-        {
-            float movementTime = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST_F"]);
-            
-            if (timer > movementTime) {
-                return true;
-            }
-            
-            timer += Time.deltaTime;
-            return false;
-        }
-
-        private void OnEnable() 
-        {
-            timer = 0;
         }
 
         private bool StopMovement(BaseStateMachine stateMachine)
         {
-            // float rawMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.rawMovementQueue));
-            // float yawMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.yawMovementQueue));
-            // float pitchMovementSum = Mathf.Abs(CalculateQueueSum(movementInitiation.pitchMovementQueue));
-            //
-            // float movementSum = rawMovementSum + yawMovementSum + pitchMovementSum;
-            //
-            // if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("ST_2"))
-            // {
-            //     if(trialStartLinearTrack.currentRewardStateID == reward1StateID)
-            //         stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
-            //     else
-            //         stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST_2"]);
-            // }
-            // else
-            //     stopThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST"]);
-            //
-            // // Debug.Log("Movement Sum: " + movementSum);
-            // stopThreshold = -1;
-            // if (movementSum < stopThreshold)
-            //     return true;
-            // else
-            //     return false;
 
             float forwardSum = Mathf.Abs(CalculateQueueSum(movementInitiation.rawMovementQueue));
             float lateralSum = Mathf.Abs(CalculateQueueSum(movementInitiation.yawMovementQueue))

@@ -32,9 +32,17 @@ namespace RatVR.Scene
         public GameObject meshTop, meshBottom, meshRight, meshLeft;
         
         public Dictionary<string, Material> materials = new Dictionary<string, Material>();
+
         public string cue1Texture; //only used in paradigm P1300
         public string cue2Texture; //only used in paradigm P1300
-        public string distanceCueReward; //only used in paradigm P1300
+
+        public string offsetCue; //only used in paradigm P1300
+        public string offsetReward; //only used in paradigm P1300
+        public string offsetVisible; //only used in paradigm P1300
+
+        public string jitterStrengthCue; //only used in paradigm P1300
+        public string jitterStrengthReward; //only used in paradigm P1300
+
         public ExcelSessionMetaData sessionMetaData;
         public SceneGeometryData scene;
         public  GameObject Lighting;
@@ -65,7 +73,12 @@ namespace RatVR.Scene
             ExcelSceneMetaData sceneMetaData = excelScene.GetExcelSceneMetaData();
             cue1Texture = sceneMetaData.cue1Texture;
             cue2Texture = sceneMetaData.cue2Texture;
-            distanceCueReward = sceneMetaData.distance_cue_reward;
+
+            offsetCue = sceneMetaData.offsetCue;
+            offsetReward = sceneMetaData.offsetReward;
+            offsetVisible = sceneMetaData.offsetVisible;
+            jitterStrengthCue = sceneMetaData.jitterStrengthCue;
+            jitterStrengthReward = sceneMetaData.jitterStrengthReward;
 
             // get sessionMetatData from the excel and initialize the sessionManager
             sessionMetaData = excelScene.GetExcelSessionMetaData();
@@ -204,6 +217,11 @@ namespace RatVR.Scene
                         CylinderTransform.GetComponent<MeshFilter>().mesh = tempCube.GetComponent<MeshFilter>().mesh;
                         Destroy(tempCube);
                         CylinderTransform.localScale = new Vector3(pd.Radius * 2, pd.Height * 2, pd.Radius * 2);
+                        
+                        GameObject tempCubeGround = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        GroundCylinderTransform.GetComponent<MeshFilter>().mesh = tempCubeGround.GetComponent<MeshFilter>().mesh;
+                        Destroy(tempCubeGround);
+                        GroundCylinderTransform.localScale = new Vector3(pd.RewardRadius*2, GroundCylinderTransform.localScale.y, pd.RewardRadius*2);
                     }
                 }
                 else

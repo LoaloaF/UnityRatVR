@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1311.2_RewardEntryCue2
+  m_Name: S1311.1_RewardZoneCue1
   m_EditorClassIdentifier: 
-  stateID: 1313
+  stateID: 1312
   Action:
   - {fileID: 11400000, guid: d63753726a1cf4d969f945895908d2f0, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 7457c15a6ebe6447ca332016b5271412, type: 2}
-  - {fileID: 11400000, guid: e4b215101125e4a7699a76bd9992ec25, type: 2}
+  - {fileID: 11400000, guid: d5deaee04396a4e989903902cbab5237, type: 2}
+  - {fileID: 11400000, guid: 691c4d65837e04b8f8d80abdf75922dd, type: 2}

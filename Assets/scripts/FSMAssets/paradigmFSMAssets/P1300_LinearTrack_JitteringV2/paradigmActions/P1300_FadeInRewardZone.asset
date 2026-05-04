@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1307_AfterCue
+  m_Script: {fileID: 11500000, guid: a651f881e76c544afbe4c8e29aecfa08, type: 3}
+  m_Name: P1300_FadeInRewardZone
   m_EditorClassIdentifier: 
-  stateID: 1308
-  Action:
-  - {fileID: 11400000, guid: 30a505081f5c94ec3b2482581530662d, type: 2}
-  Transitions:
-  - {fileID: 11400000, guid: 5bafa02a79d5c40008e3ce7ccb633a57, type: 2}
+  pillarIdentifier: 14
+  cueName: 4
+  cueName2: 104
+  cueShouldFadeIn: 1
+  fadeDistance: 70
+  trialInitLinearTrack: {fileID: 11400000, guid: 645fcd409e4f04fc2905939a899f2dfd, type: 2}

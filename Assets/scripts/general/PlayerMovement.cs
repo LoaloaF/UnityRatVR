@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     private int[] getKeyboardInput() {
         // mimic X input dimension/ forward rotation
         if (Input.GetKey(KeyCode.A)) {
-            XYZvelInput[0] = 2000;
+            XYZvelInput[0] = 1000;
         } else if (Input.GetKey(KeyCode.D)) {
             XYZvelInput[0] = -2000;
         } else {

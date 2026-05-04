@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1312.2_SuccessCue2
+  m_Name: S1306.1_StayedInCueZone
   m_EditorClassIdentifier: 
-  stateID: 1315
+  stateID: 1306
   Action:
-  - {fileID: 11400000, guid: a03545d2a96064a088c5501e5320a21f, type: 2}
-  - {fileID: 11400000, guid: f1346c7286cf74339bb591a24a9d416a, type: 2}
+  - {fileID: 11400000, guid: 1e37895f40230484fa59141cc80f5685, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 94f7b31354616486db18d506a3f33a90, type: 2}
+  - {fileID: 11400000, guid: 5bafa02a79d5c40008e3ce7ccb633a57, type: 2}

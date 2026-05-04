@@ -19,7 +19,11 @@ namespace RatVR.ExcelData
         public bool cylinder;
         public string cue1Texture;
         public string cue2Texture;
-        public string distance_cue_reward;
+        public string offsetCue;
+        public string offsetReward;
+        public string offsetVisible;
+        public string jitterStrengthCue;
+        public string jitterStrengthReward;
         public ExcelSceneMetaData(Vector2 size,
                                     float baseLength,
                                     int wallZone,
@@ -30,7 +34,11 @@ namespace RatVR.ExcelData
                                     ExcelWallData wallLeft,
                                     string cue1Texture,
                                     string cue2Texture,
-                                    string distance_cue_reward
+                                    string offsetCue,
+                                    string offsetReward,
+                                    string offsetVisible,
+                                    string jitterStrengthCue,
+                                    string jitterStrengthReward
                                     )
         {
             this.size = size;
@@ -43,7 +51,11 @@ namespace RatVR.ExcelData
             this.wallLeft = wallLeft;
             this.cue1Texture = cue1Texture;
             this.cue2Texture = cue2Texture;
-            this.distance_cue_reward = distance_cue_reward;
+            this.offsetCue = offsetCue;
+            this.offsetReward = offsetReward;
+            this.offsetVisible = offsetVisible;
+            this.jitterStrengthCue = jitterStrengthCue;
+            this.jitterStrengthReward = jitterStrengthReward;
         }
     }
 

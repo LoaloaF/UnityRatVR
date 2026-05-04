@@ -4,7 +4,6 @@ using RatVR.Scene;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Debug = UnityEngine.Debug;
@@ -22,23 +21,18 @@ namespace Experiment.ExperimentFSM
         private float forwardGainDefault = -1;
         private int[] last3Cues = new int[3] { -1, -1, -1 };
 
-        // Scenarios: 3 cue positions x 3 cue-reward distances = 9 scenarios
-        private static readonly float[] cueOffsets = { -70f, 0f, 70f };
-        // private static readonly float[] cueRewardDistances = {140f, 175f, 210f }; //4x, 5x, 6x the original distance of 35cm between pillar 10 and pillar 4 in the default scenario
-        private float[] cueRewardDistances;
         public float cueOffset = 0f;
         public float rewardOffset = 0f;
 
-        public float Distance = 0f; // for logging which scenario was used, can be set from outside if needed
-        private Dictionary<string, float> originalZPositions = new Dictionary<string, float>();
-        private bool positionsInitialized = false;
-
-        private static readonly int[] cueGroup = { 2, 7, 9, 10};
-        private static readonly int[] rewardGroup = {4, 14, 15, 104 };
+        private static readonly int[] cueDetectionGroup    = { 2, 10 };
+        private static readonly int[] cueVisualGroup       = { 9 };
+        private static readonly int[] rewardDetectionGroup = { 4, 104 };
+        private static readonly int[] rewardVisualGroup    = { 14 };
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            Vector3 newStartPosition = new Vector3(0, 0, -315);
+            float arenaHalfZ = 0.5f * stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
+            Vector3 newStartPosition = new Vector3(0, 0, -arenaHalfZ);
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
 
             stateMachine._sceneController.floor.SetActive(true);
@@ -48,7 +42,6 @@ namespace Experiment.ExperimentFSM
             stateMachine._sceneController.wallBottom.SetActive(true);
             stateMachine._sceneController.wallLeft.SetActive(true);
             stateMachine._sceneController.wallRight.SetActive(true);
-            rewardConditionReached.timer = 0;
             firstRewardNum = 0;
 
             fadeScreen = FindObjectOfType<FadeScreen>();
@@ -69,13 +62,13 @@ namespace Experiment.ExperimentFSM
             }
 
 
-            float distance_param = float.Parse(stateMachine._sceneController.distanceCueReward);
-            cueRewardDistances = new float[] { 105f + distance_param, 140f + distance_param, 175f + distance_param }; // 3x, 4x, 5x the original distance of 35cm between pillar 10 and pillar 4 in the default scenario
+            // float distance_param = float.Parse(stateMachine._sceneController.distanceCueReward);
+            // cueRewardDistances = new float[] { 105f + distance_param, 140f + distance_param, 175f + distance_param };
 
 
             // Apply scenario offsets
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
-            ApplyScenario(pillars);
+            ApplyScenario(pillars, stateMachine);
 
             foreach (GameObject pillar in pillars)                                                                                                                                                   
             {
@@ -148,7 +141,7 @@ namespace Experiment.ExperimentFSM
                             }
                                 mesh.material.color = new Color(1, 1, 1, 0);
                                 float scaleOriginal = mesh.transform.localScale.y;
-                                Debug.Log("Scale original: " + scaleOriginal);
+                                //Debug.Log("Scale original: " + scaleOriginal);
                                 mesh.material.mainTextureScale = new Vector2(scaleOriginal / 25f * 3f, scaleOriginal / 25f);
                         }
                     }
@@ -161,60 +154,51 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.rewardSucked = false;
         }
 
-    private void ApplyScenario(GameObject[] pillars)
+    private void ApplyScenario(GameObject[] pillars, BaseStateMachine stateMachine)
     {
-        if (originalZPositions.Count == 0)
-            positionsInitialized = false;
+        float offsetCue     = float.Parse(stateMachine._sceneController.offsetCue);
+        float offsetReward  = float.Parse(stateMachine._sceneController.offsetReward);
+        float offsetVisible = float.Parse(stateMachine._sceneController.offsetVisible);
+        float jsCue         = float.Parse(stateMachine._sceneController.jitterStrengthCue);
+        float jsReward      = float.Parse(stateMachine._sceneController.jitterStrengthReward);
 
-        if (!positionsInitialized)
-        {
-            foreach (int idx in cueGroup.Concat(rewardGroup).Concat(new[] { 8 }))
-            {
-                foreach (GameObject pillar in pillars)
-                {
-                    if (pillar.name.StartsWith("Pillar" + idx + "_"))
-                    {
-                        originalZPositions[idx.ToString()] = pillar.transform.position.z;
-                        break;
-                    }
-                }
-            }
-            positionsInitialized = true;
-        }
+        float arenaHalfZ = 0.5f * stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
+        float spawnZ = -arenaHalfZ;
 
-        // Pick random scenario: 1 of 3 cue positions x 1 of 3 distances
-        float chosenCueOffset = cueOffsets[Random.Range(0, cueOffsets.Length)];
-        float chosenDistance = cueRewardDistances[Random.Range(0, cueRewardDistances.Length)];
+        float[] cueScenarios    = { offsetCue - jsCue,    offsetCue,    offsetCue + jsCue };
+        float[] rewardScenarios = { offsetReward - jsReward, offsetReward, offsetReward + jsReward };
 
-        // Cue offset is relative to Pillar 10's original position
-        cueOffset = chosenCueOffset;
-        Distance = chosenDistance;
-            // Reward offset: place reward at (cue position + distance) relative to Pillar 4's original position
-        // trying out new logic where we take pillar 8 as the reference point
-        float cueNewZ = originalZPositions["10"] + chosenCueOffset;
-        float rewardOriginalZ = originalZPositions["4"];
-        rewardOffset = (cueNewZ + chosenDistance) - rewardOriginalZ;
+        float chosenCue    = cueScenarios[Random.Range(0, cueScenarios.Length)];
+        float chosenReward = rewardScenarios[Random.Range(0, rewardScenarios.Length)];
 
-        Debug.Log($"Scenario: cueOffset={cueOffset:F0}, distance={chosenDistance:F0}, rewardOffset={rewardOffset:F0}");
+        cueOffset    = chosenCue;
+        rewardOffset = chosenReward;
 
-        foreach (int idx in cueGroup)
-            MovePillar(pillars, idx, cueOffset);
-        foreach (int idx in rewardGroup)
-            MovePillar(pillars, idx, rewardOffset);
+        float cueZ         = spawnZ + chosenCue;
+        float cueVisualZ   = cueZ - offsetVisible;
+        float rewardZ      = spawnZ + chosenCue + chosenReward;
+        float rewardVisualZ = rewardZ - offsetVisible;
+
+        foreach (int idx in cueDetectionGroup)
+            MovePillarToZ(pillars, idx, cueZ);
+        foreach (int idx in cueVisualGroup)
+            MovePillarToZ(pillars, idx, cueVisualZ);
+        foreach (int idx in rewardDetectionGroup)
+            MovePillarToZ(pillars, idx, rewardZ);
+        foreach (int idx in rewardVisualGroup)
+            MovePillarToZ(pillars, idx, rewardVisualZ);
+
+        Debug.Log($"Scenario: chosenCue={chosenCue:F0}, chosenReward={chosenReward:F0}, cueZ={cueZ:F0}, rewardZ={rewardZ:F0}");
     }
 
-    private void MovePillar(GameObject[] pillars, int pillarIdx, float zOffset)
+    private void MovePillarToZ(GameObject[] pillars, int pillarIdx, float targetZ)
     {
-        string key = pillarIdx.ToString();
-        if (!originalZPositions.ContainsKey(key)) return;
-        float origZ = originalZPositions[key];
-
         foreach (GameObject pillar in pillars)
         {
             if (pillar.name.StartsWith("Pillar" + pillarIdx + "_"))
             {
                 Vector3 pos = pillar.transform.position;
-                pillar.transform.position = new Vector3(pos.x, pos.y, origZ + zOffset);
+                pillar.transform.position = new Vector3(pos.x, pos.y, targetZ);
             }
         }
     }

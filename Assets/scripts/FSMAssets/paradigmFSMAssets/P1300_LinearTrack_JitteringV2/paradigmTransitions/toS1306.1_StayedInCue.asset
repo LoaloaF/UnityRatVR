@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS1304_EnterCue
+  m_Name: toS1306.1_StayedInCue
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: b4add5dd425a1419fae707be2aff4494, type: 2}
-  TrueState: {fileID: 11400000, guid: 2870be3ff54174a2586bb749d72498a1, type: 2}
+  Decision: {fileID: 11400000, guid: 2a6af0a5fca42429383050f0953e82c3, type: 2}
+  TrueState: {fileID: 11400000, guid: 2713fcb848b494f69bd9984673ce0a17, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

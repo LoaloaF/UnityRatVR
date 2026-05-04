@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: P1300_ResetReward
   m_EditorClassIdentifier: 
   rewardConditionReached: {fileID: 11400000, guid: 2a6af0a5fca42429383050f0953e82c3, type: 2}
-  successReward1: {fileID: 11400000, guid: 3f88694d7045a4524be8fe163f6ba753, type: 2}
+  successReward1: {fileID: 11400000, guid: 736d7def815a94eee9c20e14486cc7d4, type: 2}
   successReward2: {fileID: 11400000, guid: 3cd06aa73a25445e38f6d7ed06dc3cb2, type: 2}

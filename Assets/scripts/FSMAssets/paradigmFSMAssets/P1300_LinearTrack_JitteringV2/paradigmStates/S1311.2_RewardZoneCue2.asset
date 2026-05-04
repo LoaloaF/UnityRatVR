@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57bf7ef69f53c649b2eecfb4fe920f2, type: 3}
-  m_Name: S1306.1_FailedCue
+  m_Name: S1311.2_RewardZoneCue2
   m_EditorClassIdentifier: 
-  stateID: 1306
+  stateID: 1313
   Action:
-  - {fileID: 11400000, guid: 1e37895f40230484fa59141cc80f5685, type: 2}
+  - {fileID: 11400000, guid: d63753726a1cf4d969f945895908d2f0, type: 2}
   Transitions:
-  - {fileID: 11400000, guid: 2fd3ff60e2372467aa2251d559bbeeaf, type: 2}
+  - {fileID: 11400000, guid: 7457c15a6ebe6447ca332016b5271412, type: 2}
+  - {fileID: 11400000, guid: e4b215101125e4a7699a76bd9992ec25, type: 2}

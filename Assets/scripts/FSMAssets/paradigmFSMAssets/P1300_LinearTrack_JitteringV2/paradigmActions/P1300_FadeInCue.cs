@@ -17,66 +17,29 @@ namespace Experiment.ExperimentFSM
         public bool cueShouldFadeIn = false;
         public float fadeDistance = 100f;
         public P1300_TrialInitLinearTrack trialInitLinearTrack;
-        private int doubleReward;
-        private MeshRenderer cueEnterPillarMesh;
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("DR"))
-            {
-                doubleReward = int.Parse(stateMachine._sessionManager.trialVariablesDict["DR"]);
-            }
-            else
-            {
-                doubleReward = 0;
-            }
-
-            if (!cueShouldFadeIn || doubleReward == 1)
+            if (!cueShouldFadeIn)
                 return;
 
             GameObject[] pillars = GameObject.FindGameObjectsWithTag("Pillar");
             
-            if (cueName == "1")
-                cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["6"];
-            else if (cueName == "2")
-                cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["10"];
-            if (cueName == "104" || cueName == "4" || cueName == "10")
-                cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["10"];
 
             foreach (GameObject pillar in pillars)
             {
                 if (pillar.name.StartsWith("Pillar" + cueName + "_"))
                 {
-                    if (stateMachine._playerMovement.transform.position.z < pillar.transform.position.z)
-                    {
-                        float distance = pillar.transform.position.z - stateMachine._playerMovement.transform.position.z;
-                        MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
-
-                        foreach (MeshRenderer mesh in meshRenderer)
-                        {
-                            if (mesh.gameObject.name == "Cylinder")
-                            {
-                                float enterToCueDistance = pillar.transform.position.z - cueEnterPillarMesh.transform.position.z;
-
-                                if (1 - (distance-enterToCueDistance)/fadeDistance < 0)
-                                    mesh.material.color = new Color(1, 1, 1, 0);
-                                else
-                                    mesh.material.color = new Color(1, 1, 1, 1);
-                                    // mesh.material.color = new Color(1, 1, 1, 1 - (distance-enterToCueDistance)/fadeDistance);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
-                        foreach (MeshRenderer mesh in meshRenderer)
+                    
+                    MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
+                    foreach (MeshRenderer mesh in meshRenderer)
                         {
                             if (mesh.gameObject.name == "Cylinder")
                             {
                                 mesh.material.color = new Color(1, 1, 1, 1);
                             }
                         }
-                    }
+                    
                 }
             }
 

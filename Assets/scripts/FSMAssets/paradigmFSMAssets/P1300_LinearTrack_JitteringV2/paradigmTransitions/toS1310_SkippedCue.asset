@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
-  m_Name: toS1310_Reward2
+  m_Name: toS1310_SkippedCue
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 7ebef8586b0ec4ca9b3f400ef56404b1, type: 2}
-  TrueState: {fileID: 11400000, guid: 7ec9db21bb5db41e99a97e7f18773e73, type: 2}
+  Decision: {fileID: 11400000, guid: 7b064fd60e3114e33a973f04474d13f0, type: 2}
+  TrueState: {fileID: 11400000, guid: b7017d6d973404fbeb29d0fbbbdbc15e, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}
