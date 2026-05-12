@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: P1300_RatLeaveRewardPillar2
   m_EditorClassIdentifier: 
   switchDescription: 
-  pillarIdentifier: 4
-  lastRewardState: 1310
+  pillarIdentifier: 2
   trialStartLinearTrack: {fileID: 11400000, guid: f3ae3588270a4463f93099dda60695e6, type: 2}

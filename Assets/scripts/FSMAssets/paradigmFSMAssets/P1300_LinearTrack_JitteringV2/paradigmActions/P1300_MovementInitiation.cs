@@ -25,6 +25,7 @@ namespace Experiment.ExperimentFSM
             rawMovementQueue.Enqueue(0);
             yawMovementQueue.Enqueue(0);
             pitchMovementQueue.Enqueue(0);
+            Debug.Log("rawMovementQueue: " + rawMovementQueue);
         }
 
     }

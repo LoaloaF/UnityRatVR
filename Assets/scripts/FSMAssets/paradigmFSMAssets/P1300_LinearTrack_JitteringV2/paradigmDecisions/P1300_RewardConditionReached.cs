@@ -19,7 +19,7 @@ namespace Experiment.ExperimentFSM
         public P1300_TrialInitLinearTrack trialInitLinearTrack;
         public P1300_TrialStartLinearTrack trialStartLinearTrack;
         public P1300_MovementInitiation movementInitiation;
-        
+
         public override bool Decide(BaseStateMachine stateMachine)
         {
             return StopMovement(stateMachine);
@@ -27,7 +27,7 @@ namespace Experiment.ExperimentFSM
 
         private bool StopMovement(BaseStateMachine stateMachine)
         {
-
+            Debug.Log("movement initiation forward queue: " + string.Join(", ", movementInitiation.rawMovementQueue));
             float forwardSum = Mathf.Abs(CalculateQueueSum(movementInitiation.rawMovementQueue));
             float lateralSum = Mathf.Abs(CalculateQueueSum(movementInitiation.yawMovementQueue))
                              + Mathf.Abs(CalculateQueueSum(movementInitiation.pitchMovementQueue));

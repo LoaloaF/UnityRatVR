@@ -16,7 +16,7 @@ namespace Experiment.ExperimentFSM
         //   cueIndicator == 4 → cue1 (go), cueIndicator == 3 → cue2 (no-go)
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            return trialStartLinearTrack.cueIndicator == 4;
+            return trialStartLinearTrack.cueIndicator == 1;
         }
     }
 }

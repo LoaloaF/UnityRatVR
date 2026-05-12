@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4741ac21e6a4d61be5194b81f7cecb, type: 3}
   m_Name: P1300_TrialStartLinearTrack
   m_EditorClassIdentifier: 
-  cueIndicator: 3
+  cueIndicator: 1
   fadeScreen: {fileID: 0}
   rewardConditionReached: {fileID: 11400000, guid: 2a6af0a5fca42429383050f0953e82c3, type: 2}
   firstRewardNum: 0
   currentRewardStateID: 0
-  cueJitterRange: 60
-  rewardJitterRange: 30
-  cueJitterOffset: 0
-  rewardJitterOffset: 0
+  chosenCueDistance: 280
+  chosenRewardDistance: 150
+  cueProbabilites:
+  - 0.33
+  - 0.33
+  - 0.33
+  rewardProbabilites:
+  - 0.33
+  - 0.33
+  - 0.33

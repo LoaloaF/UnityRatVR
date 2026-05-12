@@ -26,10 +26,14 @@ namespace Experiment.ExperimentFSM
         public float[] cueProbabilites = { 0.33f, 0.33f, 0.33f};
         public float[] rewardProbabilites = { 0.33f, 0.33f, 0.33f};
 
-        private static readonly int[] cueDetectionGroup    = { 2, 10 };
+        private static readonly int[] cueDetectionGroup    = { 1 };
         private static readonly int[] cueVisualGroup       = { 9 };
-        private static readonly int[] rewardDetectionGroup = { 4, 104 };
+        private static readonly int[] rewardDetectionGroup = { 2 };
         private static readonly int[] rewardVisualGroup    = { 14 };
+        private static readonly int[] cueFlankLeft         = { 101 };
+        private static readonly int[] cueFlankRight        = { 201 };
+        private static readonly int[] rewardFlankLeft      = { 102 };
+        private static readonly int[] rewardFlankRight     = { 202 };
 
         public override void Execute(BaseStateMachine stateMachine)
         {
@@ -86,21 +90,21 @@ namespace Experiment.ExperimentFSM
 
             if (randomValue > trialPortion)
             {
-                cueIndicator = 4;
-                Debug.Log("Cue indicator 4 is shown");
+                cueIndicator = 1;
+                Debug.Log("Cue indicator 1 is shown");
                 stateMachine._sessionManager.trialVariablesDict["C"] = "1";
             }
             else
             {
-                cueIndicator = 3;
-                Debug.Log("Cue indicator 3 is shown");
+                cueIndicator = 2;
+                Debug.Log("Cue indicator 2 is shown");
                 stateMachine._sessionManager.trialVariablesDict["C"] = "2";
             }
 
             if (last3Cues[0] == last3Cues[1] && last3Cues[1] == last3Cues[2] && last3Cues[0] != -1)
             {
-                cueIndicator = (last3Cues[0] == 3) ? 4 : 3;
-                stateMachine._sessionManager.trialVariablesDict["C"] = (cueIndicator == 3) ? "1" : "2";
+                cueIndicator = (last3Cues[0] == 2) ? 1 : 2;
+                stateMachine._sessionManager.trialVariablesDict["C"] = (cueIndicator == 2) ? "1" : "2";
                 Debug.Log("Overriding cue to avoid repetition");
             }
             else
@@ -114,7 +118,7 @@ namespace Experiment.ExperimentFSM
 
             foreach (Transform child in stateMachine.transform)
             {
-                if (child.name.StartsWith("Pillar1_") || child.name.StartsWith("Pillar2_") || child.name.StartsWith("Pillar104_") || child.name.StartsWith("Pillar10_") || child.name.StartsWith("Pillar4_"))
+                if (child.name.StartsWith("Pillar1_") || child.name.StartsWith("Pillar2_") || child.name.StartsWith("Pillar101_") || child.name.StartsWith("Pillar201_") || child.name.StartsWith("Pillar102_") || child.name.StartsWith("Pillar202_"))
                 {
                     MeshRenderer[] meshRenderer = child.GetComponentsInChildren<MeshRenderer>();
                     foreach (MeshRenderer mesh in meshRenderer)
@@ -125,19 +129,15 @@ namespace Experiment.ExperimentFSM
                             string cue1 = stateMachine._sceneController.cue1Texture;
                             string cue2 = stateMachine._sceneController.cue2Texture;
 
-                            if (child.name.StartsWith("Pillar104_") || child.name.StartsWith("Pillar4_"))
+                            if (child.name.StartsWith("Pillar102_") || child.name.StartsWith("Pillar202_") || child.name.StartsWith("Pillar2_"))
                             {
                                 mesh.material = stateMachine._sceneController.materials[cue1];
                             }
                             else
                             {
-                                // if ((cueIndicator == 3 && rewardFlip == 0) || (cueIndicator == 4 && rewardFlip == 1))
-                                //     mesh.material = stateMachine._sceneController.materials[cue1];
-                                // else if ((cueIndicator == 3 && rewardFlip == 1) || (cueIndicator == 4 && rewardFlip == 0))
-                                //     mesh.material = stateMachine._sceneController.materials[cue2];
-                                if (cueIndicator == 4)
+                                if (cueIndicator == 1)
                                     mesh.material = stateMachine._sceneController.materials[cue1];
-                                else if (cueIndicator == 3)
+                                else if (cueIndicator == 2)
                                     mesh.material = stateMachine._sceneController.materials[cue2];
 
                             }
@@ -174,9 +174,20 @@ namespace Experiment.ExperimentFSM
 
             float arenaHalfZ = 0.5f * stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
             float spawnZ = -arenaHalfZ;
+            
+            float cueFar = offsetCue + jsCue;
+            float cueMiddle = offsetCue;
+            float cueNear = offsetCue - jsCue;
 
-            float[] cueScenarios    = { offsetCue - jsCue,    offsetCue,    offsetCue + jsCue };
-            float[] rewardScenarios = { offsetReward - jsReward, offsetReward, offsetReward + jsReward };
+            float rewardFar = offsetReward + jsReward;
+            float rewardMiddle = offsetReward;
+            float rewardNear = offsetReward - jsReward;
+
+            float[] cueScenarios    = { cueNear, cueMiddle, cueFar };
+            float[] rewardScenarios = { rewardNear, rewardMiddle, rewardFar };
+
+            string[] cueScenarioLabels    = { "cueNear", "cueMedium", "cueFar" };
+            string[] rewardScenarioLabels = { "rewardNear", "rewardMedium", "rewardFar" };
 
             cueProbabilites = new float[] { probabilityCueNear, probabilityCueMedium, probablityCueFar };
             rewardProbabilites = new float[] { probabilityRewardNear, probabiltyRewardMedium, probabilityRewardFar };
@@ -187,8 +198,8 @@ namespace Experiment.ExperimentFSM
             chosenCueDistance    = cueScenarios[chosenCueIndex];
             chosenRewardDistance = rewardScenarios[chosenRewardIndex];
 
-            stateMachine._sessionManager.trialVariablesDict["CD"] = chosenCueDistance.ToString();
-            stateMachine._sessionManager.trialVariablesDict["RD"] = chosenRewardDistance.ToString();
+            stateMachine._sessionManager.trialVariablesDict["CD"] = cueScenarioLabels[chosenCueIndex];
+            stateMachine._sessionManager.trialVariablesDict["RD"] = rewardScenarioLabels[chosenRewardIndex];
 
             float cueZ         = spawnZ + chosenCueDistance;
             float cueVisualZ   = cueZ - offsetVisible;
@@ -204,7 +215,34 @@ namespace Experiment.ExperimentFSM
             foreach (int idx in rewardVisualGroup)
                 MovePillarToZ(pillars, idx, rewardVisualZ);
 
+            Transform leftWallT  = stateMachine.transform.Find("LeftWall");
+            Transform rightWallT = stateMachine.transform.Find("RightWall");
+            float leftWallX  = leftWallT  != null ? leftWallT.position.x  : 0f;
+            float rightWallX = rightWallT != null ? rightWallT.position.x : 0f;
+
+            foreach (int idx in cueFlankLeft)
+                MovePillarFlank(pillars, idx, leftWallX, cueZ, -1f);
+            foreach (int idx in cueFlankRight)
+                MovePillarFlank(pillars, idx, rightWallX, cueZ, 1f);
+            foreach (int idx in rewardFlankLeft)
+                MovePillarFlank(pillars, idx, leftWallX, rewardZ, -1f);
+            foreach (int idx in rewardFlankRight)
+                MovePillarFlank(pillars, idx, rightWallX, rewardZ, 1f);
+
             Debug.Log($"Scenario: chosenCue={chosenCueDistance:F0}, chosenReward={chosenRewardDistance:F0}, cueZ={cueZ:F0}, rewardZ={rewardZ:F0}");
+        }
+
+        private void MovePillarFlank(GameObject[] pillars, int pillarIdx, float wallX, float targetZ, float signX)
+        {
+            foreach (GameObject pillar in pillars)
+            {
+                if (pillar.name.StartsWith("Pillar" + pillarIdx + "_"))
+                {
+                    Transform cylinder = pillar.transform.Find("Cylinder");
+                    float radius = cylinder != null ? cylinder.localScale.x / 2f : 0f;
+                    pillar.transform.position = new Vector3(wallX + signX * radius - signX*2.1f, pillar.transform.position.y, targetZ); //-2.1f so that the pillar just sticks right out of the wall
+                }
+            }
         }
 
         private void MovePillarToZ(GameObject[] pillars, int pillarIdx, float targetZ)

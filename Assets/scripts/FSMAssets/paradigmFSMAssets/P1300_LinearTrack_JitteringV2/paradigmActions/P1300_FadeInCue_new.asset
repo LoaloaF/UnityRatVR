@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01e7427660b04f51b4fa368711bb2b9, type: 3}
-  m_Name: P1300_FadeInReward
+  m_Script: {fileID: 11500000, guid: 14f541476d8ca415bbdb1df23dc74430, type: 3}
+  m_Name: P1300_FadeInCue_new
   m_EditorClassIdentifier: 
-  cueName: 102
-  cueShouldFadeIn: 1
-  fadeDistance: 70
+  cueNameLeft: 101
+  cueNameRight: 201
+  cueNameCeiling: 1
+  cueShouldFadeIn: 0
+  fadeDistance: 0
   trialInitLinearTrack: {fileID: 11400000, guid: 645fcd409e4f04fc2905939a899f2dfd, type: 2}

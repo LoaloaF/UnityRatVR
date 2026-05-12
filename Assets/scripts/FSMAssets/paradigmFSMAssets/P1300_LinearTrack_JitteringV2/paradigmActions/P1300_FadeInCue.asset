@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01e7427660b04f51b4fa368711bb2b9, type: 3}
   m_Name: P1300_FadeInCue
   m_EditorClassIdentifier: 
-  cueName: 2
+  cueName: 101
   cueShouldFadeIn: 1
   fadeDistance: 70
   trialInitLinearTrack: {fileID: 11400000, guid: 645fcd409e4f04fc2905939a899f2dfd, type: 2}

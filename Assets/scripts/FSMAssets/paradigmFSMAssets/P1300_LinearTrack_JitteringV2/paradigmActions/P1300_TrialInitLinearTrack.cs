@@ -71,37 +71,11 @@ namespace Experiment.ExperimentFSM
             }
  
 
-            MeshRenderer pillar4Mesh = pillarCylinderMeshes["4"];
-            pillar4Mesh.material.mainTextureScale = new Vector2(3.37f, 3.37f);
-
-
             foreach (GameObject pillar in pillars)
             {
                 if (pillar.name.StartsWith("Pillar0_"))
                 {
                     pillar.SetActive(false);
-                }
-
-                else if (pillar.name.StartsWith("Pillar1_")|| pillar.name.StartsWith("Pillar2_"))
-                {
-                    MeshRenderer[] meshRenderer = pillar.GetComponentsInChildren<MeshRenderer>();
-                    foreach (MeshRenderer mesh in meshRenderer)
-                    {
-                        if (pillar.name.StartsWith("Pillar1_"))
-                        {
-                            if (mesh.material.color.a == 1)
-                                fadeInCue1.cueShouldFadeIn = false;
-                            else
-                                fadeInCue1.cueShouldFadeIn = false;  
-                        }
-                        else if (pillar.name.StartsWith("Pillar2_"))
-                        {
-                            if (mesh.material.color.a == 1)
-                                fadeInCue2.cueShouldFadeIn = true;
-                            else
-                                fadeInCue2.cueShouldFadeIn = false;
-                        }
-                    }
                 }
             }
 
@@ -153,8 +127,8 @@ namespace Experiment.ExperimentFSM
         float jsReward      = float.Parse(stateMachine._sceneController.jitterStrengthReward);
         float arenaLength   = stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
 
-        PillarData rewardPillar = stateMachine._sceneController.scene.Pillars.Find(p => p.UID.StartsWith("4_"));
-        PillarData cuePillar = stateMachine._sceneController.scene.Pillars.Find(p => p.UID.StartsWith("10_"));
+        PillarData rewardPillar = stateMachine._sceneController.scene.Pillars.Find(p => p.UID.StartsWith("2_"));
+        PillarData cuePillar = stateMachine._sceneController.scene.Pillars.Find(p => p.UID.StartsWith("1_"));
         float rewardRadius = rewardPillar != null ? rewardPillar.RewardRadius : 0f;
         float cueRadius = cuePillar != null ? cuePillar.Radius : 0f;
         if (offsetVisible <= rewardRadius || offsetVisible <= cueRadius)

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: P1300_LogRewardOutcomeStayed
   m_EditorClassIdentifier: 
   cueOutcome: 
-  rewardOutcome: stayed
+  rewardOutcome: stopped

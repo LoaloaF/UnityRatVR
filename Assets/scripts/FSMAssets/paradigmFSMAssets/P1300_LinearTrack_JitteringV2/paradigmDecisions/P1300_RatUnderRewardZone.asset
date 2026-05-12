@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: P1300_RatUnderRewardZone
   m_EditorClassIdentifier: 
   switchDescription: 
-  pillarIdentifier: 4
+  pillarIdentifier: 2
   returnTrue: 1

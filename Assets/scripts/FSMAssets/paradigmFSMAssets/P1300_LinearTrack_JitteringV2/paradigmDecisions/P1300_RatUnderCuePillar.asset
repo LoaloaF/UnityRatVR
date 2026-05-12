@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: P1300_RatUnderCuePillar
   m_EditorClassIdentifier: 
   switchDescription: 
-  pillarIdentifier: 10
+  pillarIdentifier: 1
   returnTrue: 1

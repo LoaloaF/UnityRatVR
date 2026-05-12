@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: P1300_FadeInRewardZone
   m_EditorClassIdentifier: 
   pillarIdentifier: 14
-  cueName: 4
-  cueName2: 104
+  cueName: 2
+  cueName2: 102
   cueShouldFadeIn: 1
   fadeDistance: 70
   trialInitLinearTrack: {fileID: 11400000, guid: 645fcd409e4f04fc2905939a899f2dfd, type: 2}
