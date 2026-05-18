@@ -17,6 +17,8 @@ namespace Experiment.ExperimentFSM
         public string cueNameRight;
         public string cueNameCeiling;
 
+        public string zoneDefinition; //reward or cue
+
         public bool cueShouldFadeIn = false;
         public float fadeDistance = 0f;
         public P1300_TrialInitLinearTrack trialInitLinearTrack;
@@ -37,7 +39,26 @@ namespace Experiment.ExperimentFSM
                         {
                             if (mesh.gameObject.name == "Cylinder")
                             {
-                                mesh.material.color = new Color(1, 1, 1, 1);
+                                if (zoneDefinition == "cueZone")
+                                {
+                                    mesh.material.color = new Color(1, 1, 1, 1);
+                                    if (stateMachine._sessionManager.trialLogDict["CZV_FID"] == "")
+                                    {
+                                    stateMachine._sessionManager.trialLogDict["CZV_FID"] = Time.frameCount.ToString();
+                                    stateMachine._sessionManager.trialLogDict["CZV_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
+                                    }
+
+
+                                }
+                                else if (zoneDefinition == "rewardZone")
+                                {
+                                    mesh.material.color = new Color(1, 1, 1, 1);
+                                    if (stateMachine._sessionManager.trialLogDict["RZV_FID"] == "")
+                                    {
+                                        stateMachine._sessionManager.trialLogDict["RZV_FID"] = Time.frameCount.ToString();
+                                        stateMachine._sessionManager.trialLogDict["RZV_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
+                                    }
+                                }     
                             }
                         }
                     }
@@ -45,7 +66,9 @@ namespace Experiment.ExperimentFSM
                 return;
             }
             
-            if (cueNameCeiling == "1" || cueNameCeiling == "101" ||  cueNameCeiling == "102")
+            
+            // fadeinlogic, deprecated and not fully updated
+            if (cueNameCeiling == "1" || cueNameCeiling == "101" || cueNameCeiling == "102")
                 cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["1"];
             else if (cueNameCeiling == "2" || cueNameCeiling == "201" || cueNameCeiling == "202")
                 cueEnterPillarMesh = trialInitLinearTrack.pillarCylinderMeshes["2"];

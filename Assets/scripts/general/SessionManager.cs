@@ -25,6 +25,7 @@ public sealed class SessionManager : MonoBehaviour
     public PlayerMovement _playerMovement;
 
     public Dictionary<string, string> trialVariablesDict = new Dictionary<string, string>();
+    public Dictionary<string, string> trialLogDict = new Dictionary<string, string>();
     private string[] trialVariablesNamesArray;
     private string[] trialVariablesDefaultArray;
 

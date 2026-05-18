@@ -21,7 +21,8 @@ namespace RatVR.ExcelData
         public string cue2Texture;
         public string offsetCue;
         public string offsetReward;
-        public string offsetVisible;
+        public string offsetVisibleCue;
+        public string offsetVisibleReward;
         public string jitterStrengthCue;
         public string jitterStrengthReward;
         public ExcelSceneMetaData(Vector2 size,
@@ -36,7 +37,8 @@ namespace RatVR.ExcelData
                                     string cue2Texture,
                                     string offsetCue,
                                     string offsetReward,
-                                    string offsetVisible,
+                                    string offsetVisibleCue,
+                                    string offsetVisibleReward,
                                     string jitterStrengthCue,
                                     string jitterStrengthReward
                                     )
@@ -53,7 +55,8 @@ namespace RatVR.ExcelData
             this.cue2Texture = cue2Texture;
             this.offsetCue = offsetCue;
             this.offsetReward = offsetReward;
-            this.offsetVisible = offsetVisible;
+            this.offsetVisibleCue = offsetVisibleCue;
+            this.offsetVisibleReward = offsetVisibleReward;
             this.jitterStrengthCue = jitterStrengthCue;
             this.jitterStrengthReward = jitterStrengthReward;
         }
@@ -73,6 +76,8 @@ namespace RatVR.ExcelData
         public int maximumTrialLength;
         public string trialPackageVariables;
         public string trialPackageVariablesDefault;
+        public string trialPackageInformation;
+        public string trialPackageInformationDefault;
         public int sessionFREEVAR2;
         public string sessionDescription;
         public string sessionFREEVAR4;
@@ -100,6 +105,8 @@ namespace RatVR.ExcelData
                                     int maximumTrialLength,
                                     string trialPackageVariables, 
                                     string trialPackageVariablesDefault,
+                                    string trialPackageInformation,
+                                    string trialPackageInformationDefault,
                                     int sessionFREEVAR2,
                                     string sessionDescription,
                                     string sessionFREEVAR4,
@@ -125,6 +132,8 @@ namespace RatVR.ExcelData
             this.maximumTrialLength = maximumTrialLength;
             this.trialPackageVariables = trialPackageVariables;
             this.trialPackageVariablesDefault = trialPackageVariablesDefault;
+            this.trialPackageInformation = trialPackageInformation;
+            this.trialPackageInformationDefault = trialPackageInformationDefault;
             this.sessionFREEVAR2 = sessionFREEVAR2;
             this.sessionDescription = sessionDescription;
             this.sessionFREEVAR4 = sessionFREEVAR4;

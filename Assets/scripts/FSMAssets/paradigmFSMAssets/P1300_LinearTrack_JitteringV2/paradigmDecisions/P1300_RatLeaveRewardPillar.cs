@@ -14,6 +14,7 @@ namespace Experiment.ExperimentFSM
     {
 
         [SerializeField] private string pillarIdentifier;
+        [SerializeField] private string zoneDefinition;
         public P1300_TrialStartLinearTrack trialStartLinearTrack;
         public override bool Decide(BaseStateMachine stateMachine)
         {
@@ -27,7 +28,24 @@ namespace Experiment.ExperimentFSM
                     continue;
 
                 if (!child.GetComponentInChildren<PillarCollision>().PlayerDetected)
+                {   
+                    if (zoneDefinition == "cueZone"){
+                        if (stateMachine._sessionManager.trialLogDict["CO_FID"] == "")
+                        {
+                            stateMachine._sessionManager.trialLogDict["CO_FID"] = Time.frameCount.ToString();
+                            stateMachine._sessionManager.trialLogDict["CO_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
+                        }
+                    }
+                    else if (zoneDefinition == "rewardZone"){
+                        if (stateMachine._sessionManager.trialLogDict["RO_FID"] == "")
+                        {
+                            stateMachine._sessionManager.trialLogDict["RO_FID"] = Time.frameCount.ToString();
+                            stateMachine._sessionManager.trialLogDict["RO_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
+                        }
+                    }
                     return true;
+
+                }
                 else
                     return false;
             }

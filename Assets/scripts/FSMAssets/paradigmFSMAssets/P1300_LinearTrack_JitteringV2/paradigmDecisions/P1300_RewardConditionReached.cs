@@ -19,6 +19,7 @@ namespace Experiment.ExperimentFSM
         public P1300_TrialInitLinearTrack trialInitLinearTrack;
         public P1300_TrialStartLinearTrack trialStartLinearTrack;
         public P1300_MovementInitiation movementInitiation;
+        [SerializeField] private string zoneDefinition;
 
         public override bool Decide(BaseStateMachine stateMachine)
         {
@@ -33,9 +34,27 @@ namespace Experiment.ExperimentFSM
                              + Mathf.Abs(CalculateQueueSum(movementInitiation.pitchMovementQueue));
 
             float forwardThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST_F"]);
-            float lateralThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST_L"]);
-
-            return forwardSum < forwardThreshold && lateralSum < lateralThreshold;
+            float offaxisThreshold = float.Parse(stateMachine._sessionManager.trialVariablesDict["ST_O"]);
+            
+             bool decision = forwardSum < forwardThreshold && lateralSum < offaxisThreshold;
+             if (decision)
+                {
+                    if (zoneDefinition == "cueZone"){
+                        if (stateMachine._sessionManager.trialLogDict["CO_FID"] == "")
+                        {
+                            stateMachine._sessionManager.trialLogDict["CO_FID"] = Time.frameCount.ToString();
+                            stateMachine._sessionManager.trialLogDict["CO_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
+                        }
+                    }
+                    else if (zoneDefinition == "rewardZone"){
+                        if (stateMachine._sessionManager.trialLogDict["RO_FID"] == "")
+                        {
+                            stateMachine._sessionManager.trialLogDict["RO_FID"] = Time.frameCount.ToString();
+                            stateMachine._sessionManager.trialLogDict["RO_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
+                        }
+                    }
+                }
+            return decision;
         }
 
         private float CalculateQueueSum(Queue<float> queue)

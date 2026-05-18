@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7895a3c42dcae4b36bfd23eaadb2790a, type: 3}
-  m_Name: P1300_LogCueOutcomeStayed
+  m_Name: P1300_LogRewardOutcomeStopped
   m_EditorClassIdentifier: 
-  cueOutcome: stopped
-  rewardOutcome: 
+  cueZoneOutcome: 
+  rewardZoneOutcome: stopped
+  trialStartLinearTrack: {fileID: 0}

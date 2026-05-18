@@ -31,12 +31,21 @@ namespace Experiment.ExperimentFSM
                     continue;
 
                     MeshRenderer[] meshRenderers = pillar.GetComponentsInChildren<MeshRenderer>();
-                    foreach (MeshRenderer mesh in meshRenderers)
+                foreach (MeshRenderer mesh in meshRenderers)
+                {
+                    if (mesh.gameObject.name == "Cylinder")
                     {
-                        if (mesh.gameObject.name == "Cylinder")
-                            mesh.material.color = new Color(1, 1, 1, 1);
+                        mesh.material.color = new Color(1, 1, 1, 1);
+                        if (stateMachine._sessionManager.trialLogDict["RZV_FID"] == "")
+                        {
+                            stateMachine._sessionManager.trialLogDict["RZV_FID"] = Time.frameCount.ToString();
+                            stateMachine._sessionManager.trialLogDict["RZV_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
+                        }
                     }
+
                 }
+                    
+            }
             
         }
 

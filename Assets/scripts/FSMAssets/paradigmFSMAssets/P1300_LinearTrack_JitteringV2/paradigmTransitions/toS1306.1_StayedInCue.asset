@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b228d3a736100459ea71936d094473, type: 3}
   m_Name: toS1306.1_StayedInCue
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: 2a6af0a5fca42429383050f0953e82c3, type: 2}
+  Decision: {fileID: 11400000, guid: fee949bfee1fc4938b4a35d2da8fc97f, type: 2}
   TrueState: {fileID: 11400000, guid: 2713fcb848b494f69bd9984673ce0a17, type: 2}
   FalseState: {fileID: 11400000, guid: da5de4176efc130acbcbc8a7513855ee, type: 2}

@@ -26,6 +26,7 @@ namespace Experiment.ExperimentFSM
             AudioSource reward_beep = stateMachine._playerMovement.GetComponent<AudioSource>();
             reward_beep.Play();
             stateMachine._sessionManager.rewardPresent = true;
+            stateMachine._sessionManager.trialLogDict["TO"] = "1";
             
         }
 

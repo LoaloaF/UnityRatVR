@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f541476d8ca415bbdb1df23dc74430, type: 3}
   m_Name: P1300_FadeInReward_new
   m_EditorClassIdentifier: 
-  cueNameLeft: 101
-  cueNameRight: 201
-  cueNameCeiling: 1
+  cueNameLeft: 102
+  cueNameRight: 202
+  cueNameCeiling: 2
+  zoneDefinition: rewardZone
   cueShouldFadeIn: 0
   fadeDistance: 0
   trialInitLinearTrack: {fileID: 11400000, guid: 645fcd409e4f04fc2905939a899f2dfd, type: 2}

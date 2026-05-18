@@ -27,9 +27,9 @@ namespace Experiment.ExperimentFSM
         public float[] rewardProbabilites = { 0.33f, 0.33f, 0.33f};
 
         private static readonly int[] cueDetectionGroup    = { 1 };
-        private static readonly int[] cueVisualGroup       = { 9 };
+        private static readonly int[] cueVisualGroup       = { 11 };
         private static readonly int[] rewardDetectionGroup = { 2 };
-        private static readonly int[] rewardVisualGroup    = { 14 };
+        private static readonly int[] rewardVisualGroup    = { 12 };
         private static readonly int[] cueFlankLeft         = { 101 };
         private static readonly int[] cueFlankRight        = { 201 };
         private static readonly int[] rewardFlankLeft      = { 102 };
@@ -37,6 +37,22 @@ namespace Experiment.ExperimentFSM
 
         public override void Execute(BaseStateMachine stateMachine)
         {
+            stateMachine._sessionManager.trialLogDict["C"]      = "";
+            stateMachine._sessionManager.trialLogDict["CZ_P"]   = "";
+            stateMachine._sessionManager.trialLogDict["RZ_P"]   = "";
+            stateMachine._sessionManager.trialLogDict["CO"]     = "";
+            stateMachine._sessionManager.trialLogDict["CO_FID"] = "";
+            stateMachine._sessionManager.trialLogDict["CO_PCT"] = "";
+            stateMachine._sessionManager.trialLogDict["RO"]     = "";
+            stateMachine._sessionManager.trialLogDict["RO_FID"] = "";
+            stateMachine._sessionManager.trialLogDict["RO_PCT"] = "";
+            stateMachine._sessionManager.trialLogDict["CZV_FID"] = "";
+            stateMachine._sessionManager.trialLogDict["CZV_PCT"] = "";
+            stateMachine._sessionManager.trialLogDict["RZV_FID"] = "";
+            stateMachine._sessionManager.trialLogDict["RZV_PCT"] = "";
+            stateMachine._sessionManager.trialLogDict["TO"] = "0";
+            stateMachine._sessionManager.trialLogDict["CC"] = "";
+            
             float arenaHalfZ = 0.5f * stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
             Vector3 newStartPosition = new Vector3(0, 0, -arenaHalfZ);
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
@@ -92,19 +108,19 @@ namespace Experiment.ExperimentFSM
             {
                 cueIndicator = 1;
                 Debug.Log("Cue indicator 1 is shown");
-                stateMachine._sessionManager.trialVariablesDict["C"] = "1";
+                stateMachine._sessionManager.trialLogDict["C"] = "1";
             }
             else
             {
                 cueIndicator = 2;
                 Debug.Log("Cue indicator 2 is shown");
-                stateMachine._sessionManager.trialVariablesDict["C"] = "2";
+                stateMachine._sessionManager.trialLogDict["C"] = "2";
             }
 
             if (last3Cues[0] == last3Cues[1] && last3Cues[1] == last3Cues[2] && last3Cues[0] != -1)
             {
                 cueIndicator = (last3Cues[0] == 2) ? 1 : 2;
-                stateMachine._sessionManager.trialVariablesDict["C"] = (cueIndicator == 2) ? "1" : "2";
+                stateMachine._sessionManager.trialLogDict["C"] = (cueIndicator == 2) ? "1" : "2";
                 Debug.Log("Overriding cue to avoid repetition");
             }
             else
@@ -160,7 +176,8 @@ namespace Experiment.ExperimentFSM
         {
             float offsetCue     = float.Parse(stateMachine._sceneController.offsetCue);
             float offsetReward  = float.Parse(stateMachine._sceneController.offsetReward);
-            float offsetVisible = float.Parse(stateMachine._sceneController.offsetVisible);
+            float offsetVisibleCue = float.Parse(stateMachine._sceneController.offsetVisibleCue);
+            float offsetVisibleReward = float.Parse(stateMachine._sceneController.offsetVisibleReward);
             float jsCue         = float.Parse(stateMachine._sceneController.jitterStrengthCue);
             float jsReward      = float.Parse(stateMachine._sceneController.jitterStrengthReward);
 
@@ -198,13 +215,13 @@ namespace Experiment.ExperimentFSM
             chosenCueDistance    = cueScenarios[chosenCueIndex];
             chosenRewardDistance = rewardScenarios[chosenRewardIndex];
 
-            stateMachine._sessionManager.trialVariablesDict["CD"] = cueScenarioLabels[chosenCueIndex];
-            stateMachine._sessionManager.trialVariablesDict["RD"] = rewardScenarioLabels[chosenRewardIndex];
+            stateMachine._sessionManager.trialLogDict["CZ_P"] = cueScenarioLabels[chosenCueIndex];
+            stateMachine._sessionManager.trialLogDict["RZ_P"] = rewardScenarioLabels[chosenRewardIndex];
 
             float cueZ         = spawnZ + chosenCueDistance;
-            float cueVisualZ   = cueZ - offsetVisible;
+            float cueVisualZ   = cueZ - offsetVisibleCue;
             float rewardZ      = spawnZ + chosenCueDistance + chosenRewardDistance;
-            float rewardVisualZ = rewardZ - offsetVisible;
+            float rewardVisualZ = rewardZ - offsetVisibleReward;
 
             foreach (int idx in cueDetectionGroup)
                 MovePillarToZ(pillars, idx, cueZ);

@@ -168,12 +168,13 @@ namespace Cathei.BakingSheet
             string cue2Texture = hyperparams.GetCell(19, 6);
             string offsetCue = hyperparams.GetCell(19, 7);
             string offsetReward = hyperparams.GetCell(19, 8);
-            string offsetVisible = hyperparams.GetCell(19, 9);
-            string jitterStrengthCue = hyperparams.GetCell(19, 10);
-            string jitterStrengthReward = hyperparams.GetCell(19, 11);
+            string offsetVisibleCue = hyperparams.GetCell(19, 9);
+            string offsetVisibleReward = hyperparams.GetCell(19, 10);
+            string jitterStrengthCue = hyperparams.GetCell(19, 11);
+            string jitterStrengthReward = hyperparams.GetCell(19, 12);
 
             return new ExcelSceneMetaData(size, baseLength, wallZone, wallZoneCollideDistance, topWall, rightWall, botWall, leftWall, cue1Texture, cue2Texture, 
-            offsetCue, offsetReward, offsetVisible, jitterStrengthCue, jitterStrengthReward);
+            offsetCue, offsetReward, offsetVisibleCue,offsetVisibleReward, jitterStrengthCue, jitterStrengthReward);
         }
 
         public ExcelSessionMetaData GetExcelSessionMetaData()
@@ -192,8 +193,11 @@ namespace Cathei.BakingSheet
             int maximumTrialLength = int.Parse(hyperparams.GetCell(1, 10));
             string trialPackageVariables = hyperparams.GetCell(1, 11);
             string trialPackageVariablesDefault = hyperparams.GetCell(1, 12);
+            string trialPackageInformation = hyperparams.GetCell(1, 13);
+            string trialPackageInformationDefault = hyperparams.GetCell(1, 14);
+
             int sessionFREEVAR2 = -1;
-            string sessionDescription = hyperparams.GetCell(1, 14);
+            // string sessionDescription = hyperparams.GetCell(1, 14);
             string sessionFREEVAR4 = "";
             int agentFREEVAR1 = -1;
             int agentFREEVAR2 = -1;
@@ -204,11 +208,11 @@ namespace Cathei.BakingSheet
             string agentFREEVAR7 = "";
             string agentFREEVAR8 = "";
 
-
-            return new ExcelSessionMetaData(rewardPostSoundDelay, rewardAmount, punishmentLength, 
-            punishmentInactivationLength, onWallZoneEntry, onInterTrialInterval, interTrialIntervalLength, 
-            abortInterTrialIntervalLength, successSequenceLength, maximumTrialLength, trialPackageVariables, 
-            trialPackageVariablesDefault, sessionFREEVAR2, sessionDescription, sessionFREEVAR4, agentFREEVAR1, agentFREEVAR2,
+            //sessionDescription is currently not used, but can be added as a free variable in the future if needed. For now, we just set it to an empty string to avoid null values.
+            return new ExcelSessionMetaData(rewardPostSoundDelay, rewardAmount, punishmentLength,
+            punishmentInactivationLength, onWallZoneEntry, onInterTrialInterval, interTrialIntervalLength,
+            abortInterTrialIntervalLength, successSequenceLength, maximumTrialLength, trialPackageVariables,
+            trialPackageVariablesDefault, trialPackageInformation, trialPackageInformationDefault, sessionFREEVAR2, "", sessionFREEVAR4, agentFREEVAR1, agentFREEVAR2,
             agentFREEVAR3, agentFREEVAR4, agentFREEVAR5, agentFREEVAR6, agentFREEVAR7, agentFREEVAR8);
         }
     }

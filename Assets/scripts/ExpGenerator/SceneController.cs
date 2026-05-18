@@ -38,7 +38,9 @@ namespace RatVR.Scene
 
         public string offsetCue; //only used in paradigm P1300
         public string offsetReward; //only used in paradigm P1300
-        public string offsetVisible; //only used in paradigm P1300
+
+        public string offsetVisibleCue; //only used in paradigm P1300
+        public string offsetVisibleReward; //only used in paradigm P1300
 
         public string jitterStrengthCue; //only used in paradigm P1300
         public string jitterStrengthReward; //only used in paradigm P1300
@@ -76,7 +78,8 @@ namespace RatVR.Scene
 
             offsetCue = sceneMetaData.offsetCue;
             offsetReward = sceneMetaData.offsetReward;
-            offsetVisible = sceneMetaData.offsetVisible;
+            offsetVisibleCue = sceneMetaData.offsetVisibleCue;
+            offsetVisibleReward = sceneMetaData.offsetVisibleReward;
             jitterStrengthCue = sceneMetaData.jitterStrengthCue;
             jitterStrengthReward = sceneMetaData.jitterStrengthReward;
 
