@@ -114,7 +114,7 @@ namespace Experiment.ExperimentFSM
             // Tree landmark outside left wall
             GameObject tree = Instantiate(Resources.Load<GameObject>("Tree Type4 03"), stateMachine.transform);
             tree.name = "TreeLandmark";
-            tree.transform.position = new Vector3(Math.Abs(xPos) * -1f - 18f, 0, 220f);
+            tree.transform.position = new Vector3(Math.Abs(xPos) * -1f - 18f, 0, arenaSize / 2f * 0.75f);
             tree.transform.localScale = new Vector3(35f, 35f, 35f);
         }
 
@@ -135,10 +135,10 @@ namespace Experiment.ExperimentFSM
         if (offsetVisibleReward <= rewardRadius || offsetVisibleCue <= cueRadius)
             throw new Exception($"P1300 Constraint 1 violated: visibleOffsetReward ({offsetVisibleReward}) must be > rewardRadius({rewardRadius}) and offsetVisibleCue ({offsetVisibleCue}) > cueRadius ({cueRadius})");
         if (offsetCue <= offsetVisibleCue + jsCue)
-            throw new Exception($"P1300 Constraint 2 violated: cueOffset ({offsetCue}) must be > visibleOffsetCue ({offsetVisibleCue}) + cueJitter ({jsCue})");
+            throw new Exception($"P1300 Constraint 2 violated: cueOffset ({offsetCue}) must be > visibleOffsetCue ({offsetVisibleCue}) + JitterStrengthCue ({jsCue})");
         if (offsetReward <= offsetVisibleReward + jsReward)
-            throw new Exception($"P1300 Constraint 3 violated: rewardOffset ({offsetReward}) must be > visibleOffsetReward ({offsetVisibleReward}) + rewardJitter ({jsReward})");
-        if (offsetCue + offsetReward + jsCue + jsReward + 2f * rewardRadius >= arenaLength)
+            throw new Exception($"P1300 Constraint 3 violated: rewardOffset ({offsetReward}) must be > visibleOffsetReward ({offsetVisibleReward}) + JitterStrengthReward ({jsReward})");
+        if (offsetCue + offsetReward + jsCue + jsReward + 2f * rewardRadius > arenaLength)
             throw new Exception($"P1300 Constraint 4 violated: trial size ({offsetCue + offsetReward + jsCue + jsReward + 2f * rewardRadius}) must be < arenaLength ({arenaLength})");
         if (offsetReward <= rewardRadius + cueRadius + jsReward)
             throw new Exception($"P1300 Constraint 5 violated: rewardOffset ({offsetReward}) must be > rewardRadius ({rewardRadius}) + cueRadius ({cueRadius}) + rewardJitter ({jsReward})");

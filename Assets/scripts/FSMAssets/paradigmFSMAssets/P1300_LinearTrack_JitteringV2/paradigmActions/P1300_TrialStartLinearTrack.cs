@@ -37,9 +37,9 @@ namespace Experiment.ExperimentFSM
 
         public override void Execute(BaseStateMachine stateMachine)
         {
-            stateMachine._sessionManager.trialLogDict["C"]      = "";
-            stateMachine._sessionManager.trialLogDict["CZ_P"]   = "";
-            stateMachine._sessionManager.trialLogDict["RZ_P"]   = "";
+            stateMachine._sessionManager.trialLogDict["CID"]      = "";
+            stateMachine._sessionManager.trialLogDict["CZ_POS"]   = "";
+            stateMachine._sessionManager.trialLogDict["RZ_POS"]   = "";
             stateMachine._sessionManager.trialLogDict["CO"]     = "";
             stateMachine._sessionManager.trialLogDict["CO_FID"] = "";
             stateMachine._sessionManager.trialLogDict["CO_PCT"] = "";
@@ -52,7 +52,7 @@ namespace Experiment.ExperimentFSM
             stateMachine._sessionManager.trialLogDict["RZV_PCT"] = "";
             stateMachine._sessionManager.trialLogDict["TO"] = "0";
             stateMachine._sessionManager.trialLogDict["CC"] = "";
-            
+
             float arenaHalfZ = 0.5f * stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
             Vector3 newStartPosition = new Vector3(0, 0, -arenaHalfZ);
             stateMachine._playerMovement.TeleportRat(newStartPosition.x, newStartPosition.z, newStartPosition.y);
@@ -75,7 +75,7 @@ namespace Experiment.ExperimentFSM
                 forwardGainDefault = stateMachine._playerMovement.ballForwardNormToCentimeter;
 
             if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("GF"))
-                stateMachine._playerMovement.ballForwardNormToCentimeter = forwardGainDefault * float.Parse(stateMachine._sessionManager.trialVariablesDict["GF"]);
+                stateMachine._playerMovement.ballForwardNormToCentimeter = forwardGainDefault * float.Parse(stateMachine._sessionManager.trialVariablesDict["G_F"]);
 
             foreach (Transform child in stateMachine.transform)
             {
@@ -101,26 +101,26 @@ namespace Experiment.ExperimentFSM
 
             float randomValue = Random.Range(0f, 1f);
             float trialPortion = 0.5f;
-            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("P_C1"))
-                trialPortion = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_C1"]);
+            if (stateMachine._sessionManager.trialVariablesDict.ContainsKey("P_CID1"))
+                trialPortion = float.Parse(stateMachine._sessionManager.trialVariablesDict["P_CID1"]);
 
             if (randomValue > trialPortion)
             {
                 cueIndicator = 1;
                 Debug.Log("Cue indicator 1 is shown");
-                stateMachine._sessionManager.trialLogDict["C"] = "1";
+                stateMachine._sessionManager.trialLogDict["CID"] = "1";
             }
             else
             {
                 cueIndicator = 2;
                 Debug.Log("Cue indicator 2 is shown");
-                stateMachine._sessionManager.trialLogDict["C"] = "2";
+                stateMachine._sessionManager.trialLogDict["CID"] = "2";
             }
 
             if (last3Cues[0] == last3Cues[1] && last3Cues[1] == last3Cues[2] && last3Cues[0] != -1)
             {
                 cueIndicator = (last3Cues[0] == 2) ? 1 : 2;
-                stateMachine._sessionManager.trialLogDict["C"] = (cueIndicator == 2) ? "1" : "2";
+                stateMachine._sessionManager.trialLogDict["CID"] = (cueIndicator == 2) ? "1" : "2";
                 Debug.Log("Overriding cue to avoid repetition");
             }
             else
@@ -215,8 +215,8 @@ namespace Experiment.ExperimentFSM
             chosenCueDistance    = cueScenarios[chosenCueIndex];
             chosenRewardDistance = rewardScenarios[chosenRewardIndex];
 
-            stateMachine._sessionManager.trialLogDict["CZ_P"] = cueScenarioLabels[chosenCueIndex];
-            stateMachine._sessionManager.trialLogDict["RZ_P"] = rewardScenarioLabels[chosenRewardIndex];
+            stateMachine._sessionManager.trialLogDict["CZ_POS"] = cueScenarioLabels[chosenCueIndex];
+            stateMachine._sessionManager.trialLogDict["RZ_POS"] = rewardScenarioLabels[chosenRewardIndex];
 
             float cueZ         = spawnZ + chosenCueDistance;
             float cueVisualZ   = cueZ - offsetVisibleCue;

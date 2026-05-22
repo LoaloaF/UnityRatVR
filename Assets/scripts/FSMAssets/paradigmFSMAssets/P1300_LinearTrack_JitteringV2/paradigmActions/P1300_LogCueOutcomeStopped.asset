@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cueZoneOutcome: stopped
   rewardZoneOutcome: 
-  trialStartLinearTrack: {fileID: 0}
+  trialStartLinearTrack: {fileID: 11400000, guid: f3ae3588270a4463f93099dda60695e6, type: 2}

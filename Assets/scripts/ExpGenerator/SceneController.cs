@@ -92,8 +92,28 @@ namespace RatVR.Scene
             List<ExcelObjectData> excelObjects = excelScene.GetExcelSceneObjects();
             List <PillarData> pillars = PillarData.PillarDataFromExcel(excelObjects, excelScene.ScenePlacement());
 
+            // Override arena Z length to match P1300 worst-case trial size (Far cue + Far reward + reward zone passthrough)
+            if (float.TryParse(sceneMetaData.offsetCue,            out float oc) &&
+                float.TryParse(sceneMetaData.offsetReward,         out float or_) &&
+                float.TryParse(sceneMetaData.jitterStrengthCue,    out float jc) &&
+                float.TryParse(sceneMetaData.jitterStrengthReward, out float jr))
+            {
+                PillarData rewardPillar = pillars.Find(p => p.UID.StartsWith("2_"));
+                if (rewardPillar != null)
+                {
+                    float trialSize = oc + or_ + jc + jr + 3f * rewardPillar.RewardRadius;
+                    float newSizeY  = trialSize / sceneMetaData.baseLength;
+                    UnityEngine.Debug.Log($"[Arena] trialSize={trialSize:F1}, overriding size.y {sceneMetaData.size.y:F2}→{newSizeY:F2}");
+                    sceneMetaData.size = new Vector2(sceneMetaData.size.x, newSizeY);
+                }
+                else
+                {
+                    UnityEngine.Debug.LogWarning("[Arena] No pillar with UID=2 found, skipping arena Z override");
+                }
+            }
+
             // generate sceneGeometryData
-            scene = new SceneGeometryData(1, 
+            scene = new SceneGeometryData(1,
                                           sceneMetaData.baseLength, 
                                           sceneMetaData.size,
                                           sceneMetaData.wallTop, 
@@ -141,8 +161,8 @@ namespace RatVR.Scene
             // also remember the ceiling height
             wallTop.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.TopWall.Height);          
             wallBottom.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.BottomWall.Height);
-            wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.RightWall.Height);
-            wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.x, 1, 0.1f * sceneData.LeftWall.Height);
+            wallRight.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.RightWall.Height);
+            wallLeft.transform.localScale = new Vector3(0.1f * sceneData.BaseLength * sceneData.Size.y, 1, 0.1f * sceneData.LeftWall.Height);
             
             
             // wallTop.transform.localPosition = new Vector3(0.5f * sceneData.BaseLength * sceneData.Size.x, 0.5f* sceneData.TopWall.Height, 0);

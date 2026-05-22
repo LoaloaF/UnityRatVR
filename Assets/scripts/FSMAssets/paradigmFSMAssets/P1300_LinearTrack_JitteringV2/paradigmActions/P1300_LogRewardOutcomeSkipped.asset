@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7895a3c42dcae4b36bfd23eaadb2790a, type: 3}
   m_Name: P1300_LogRewardOutcomeSkipped
   m_EditorClassIdentifier: 
-  cueOutcome: 
-  rewardOutcome: skipped
+  cueZoneOutcome: 
+  rewardZoneOutcome: skipped
+  trialStartLinearTrack: {fileID: 11400000, guid: f3ae3588270a4463f93099dda60695e6, type: 2}

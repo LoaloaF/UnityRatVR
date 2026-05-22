@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b05d2eefe8f74c6b99234b388b3ab4f, type: 3}
-  m_Name: P1300_RatLeaveRewardPillar2
+  m_Script: {fileID: 11500000, guid: d2b51b8ac1d104ba99360ac296f48143, type: 3}
+  m_Name: P1300_RatUnderRewardPillarCue1
   m_EditorClassIdentifier: 
   switchDescription: 
   pillarIdentifier: 2
-  zoneDefinition: rewardZone
+  cueIdentifier: 1
+  returnTrue: 1
   trialStartLinearTrack: {fileID: 11400000, guid: f3ae3588270a4463f93099dda60695e6, type: 2}

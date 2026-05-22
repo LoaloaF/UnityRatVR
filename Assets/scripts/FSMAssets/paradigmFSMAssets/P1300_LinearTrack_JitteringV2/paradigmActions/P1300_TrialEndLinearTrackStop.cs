@@ -21,9 +21,9 @@ namespace Experiment.ExperimentFSM
 
             string trialPackageValuesArray = ",ST_F:" + stateMachine._sessionManager.trialVariablesDict["ST_F"] +
                                              ",ST_O:" + stateMachine._sessionManager.trialVariablesDict["ST_O"] +
-                                            ",C:" + stateMachine._sessionManager.trialLogDict["C"] +
-                                            ",P_C1:"+ stateMachine._sessionManager.trialVariablesDict["P_C1"] +
-                                            ",GF:"+ stateMachine._sessionManager.trialVariablesDict["GF"] +
+                                            ",CID:" + stateMachine._sessionManager.trialLogDict["CID"] +
+                                            ",P_CID1:" + stateMachine._sessionManager.trialVariablesDict["P_CID1"] +
+                                            ",G_F:" + stateMachine._sessionManager.trialVariablesDict["G_F"] +
                                             ",CO:\"" + stateMachine._sessionManager.trialLogDict["CO"] + "\"" +
                                             ",CO_FID:" + stateMachine._sessionManager.trialLogDict["CO_FID"] +
                                             ",CO_PCT:" + stateMachine._sessionManager.trialLogDict["CO_PCT"] +
@@ -37,12 +37,14 @@ namespace Experiment.ExperimentFSM
                                             ",P_RN:" + stateMachine._sessionManager.trialVariablesDict["P_RN"] +
                                             ",P_RM:" + stateMachine._sessionManager.trialVariablesDict["P_RM"] +
                                             ",P_RF:" + stateMachine._sessionManager.trialVariablesDict["P_RF"] +
-                                            ",CZ_P:" + stateMachine._sessionManager.trialLogDict["CZ_P"] +
-                                            ",RZ_P:" + stateMachine._sessionManager.trialLogDict["RZ_P"] +
+                                            ",CZ_POS:" + stateMachine._sessionManager.trialLogDict["CZ_POS"] +
+                                            ",RZ_POS:" + stateMachine._sessionManager.trialLogDict["RZ_POS"] +
                                             ",CZV_FID:" + stateMachine._sessionManager.trialLogDict["CZV_FID"] +
                                             ",CZV_PCT:" + stateMachine._sessionManager.trialLogDict["CZV_PCT"] +
                                             ",RZV_FID:" + stateMachine._sessionManager.trialLogDict["RZV_FID"] +
-                                            ",RZV_PCT:" + stateMachine._sessionManager.trialLogDict["RZV_PCT"];
+                                            ",RZV_PCT:" + stateMachine._sessionManager.trialLogDict["RZV_PCT"] +
+                                            ",CC:" + stateMachine._sessionManager.trialLogDict["CC"];
+;
                                             
             int outcome = stateMachine._sessionManager.currentRewardNum;
 

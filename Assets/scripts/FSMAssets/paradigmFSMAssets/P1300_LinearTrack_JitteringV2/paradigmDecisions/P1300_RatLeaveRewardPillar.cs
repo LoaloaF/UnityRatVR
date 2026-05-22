@@ -28,15 +28,18 @@ namespace Experiment.ExperimentFSM
                     continue;
 
                 if (!child.GetComponentInChildren<PillarCollision>().PlayerDetected)
-                {   
-                    if (zoneDefinition == "cueZone"){
+                {
+                    if (zoneDefinition == "cueZone")
+                    {
                         if (stateMachine._sessionManager.trialLogDict["CO_FID"] == "")
                         {
                             stateMachine._sessionManager.trialLogDict["CO_FID"] = Time.frameCount.ToString();
                             stateMachine._sessionManager.trialLogDict["CO_PCT"] = stateMachine._sessionManager.getUnixTimestampMicroseconds().ToString();
                         }
+                    
                     }
-                    else if (zoneDefinition == "rewardZone"){
+                    else if (zoneDefinition == "rewardZone")
+                    {
                         if (stateMachine._sessionManager.trialLogDict["RO_FID"] == "")
                         {
                             stateMachine._sessionManager.trialLogDict["RO_FID"] = Time.frameCount.ToString();

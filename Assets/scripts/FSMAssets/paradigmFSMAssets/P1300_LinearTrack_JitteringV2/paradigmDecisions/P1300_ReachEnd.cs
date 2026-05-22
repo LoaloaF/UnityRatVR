@@ -14,7 +14,9 @@ namespace Experiment.ExperimentFSM
     {
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            if (stateMachine._playerMovement.transform.position.z > 260f)
+
+            float Arenalength = stateMachine._sceneController.scene.BaseLength * stateMachine._sceneController.scene.Size.y;
+            if (stateMachine._playerMovement.transform.position.z >= Arenalength/2f - 10f)
             {
                 return true;
             }
